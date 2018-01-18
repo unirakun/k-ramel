@@ -14,8 +14,8 @@ export default {
     format: process.env.FORMAT || 'umd',
     sourcemap: path.resolve(pkg.main),
     globals: {
-      redux: 'redux',
-      'k-redux-factory': 'kReduxFactory',
+      redux: 'Redux',
+      'k-redux-factory': 'k-redux-factory',
     },
   },
   plugins: [
