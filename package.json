@@ -11,7 +11,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "ci": "npm-run-all --parallel lint"
+    "ci": "npm-run-all --parallel lint coveralls"
   },
   "dependencies": {
     "k-redux-factory": "^4.1.1",
