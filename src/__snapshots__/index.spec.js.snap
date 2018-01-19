@@ -305,3 +305,23 @@ Object {
   },
 }
 `;
+
+exports[`k-simple-state without custom options init should init the state 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "initial value!",
+      },
+    },
+  },
+}
+`;

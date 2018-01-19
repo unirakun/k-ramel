@@ -117,6 +117,24 @@ describe('k-simple-state', () => {
       },
     }, options)
 
+    describe('init', () => {
+      it('should init the state', () => {
+        const store = getNewStore({
+          init: {
+            ui: {
+              screens: {
+                newTodo: 'initial value!',
+              },
+            },
+          },
+        })
+
+        expect({
+          state: store.getState(),
+        }).toMatchSnapshot()
+      })
+    })
+
     describe('hide redux', () => {
       it('should not mutate the state', () => {
         const store = getNewStore({ hideRedux: false })
