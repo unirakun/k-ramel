@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`k-simple-state configuration with helpers should initialized 1`] = `
+exports[`k-simple-state with helpers should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -18,7 +18,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with helpers should instanciate a keyValue reducer 1`] = `
+exports[`k-simple-state with helpers should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -54,7 +54,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with helpers should instanciate a simpleObject reducer 1`] = `
+exports[`k-simple-state with helpers should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -75,7 +75,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with plain object should initialized 1`] = `
+exports[`k-simple-state with plain object should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -93,7 +93,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with plain object should instanciate a keyValue reducer 1`] = `
+exports[`k-simple-state with plain object should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -129,7 +129,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with plain object should instanciate a simpleObject reducer 1`] = `
+exports[`k-simple-state with plain object should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -144,6 +144,227 @@ Object {
     "ui": Object {
       "screens": Object {
         "newTodo": "finish tests",
+      },
+    },
+  },
+}
+`;
+
+exports[`k-simple-state with raw reducers should dispatch action to the raw reducer 1`] = `
+Object {
+  "config": "new config",
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "config": "new config",
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`k-simple-state with raw reducers should initialized 1`] = `
+Object {
+  "data": Object {
+    "todos": Object {
+      "array": Array [],
+      "data": Object {},
+      "initialized": false,
+      "keys": Array [],
+    },
+  },
+  "ui": Object {
+    "config": "defaultState",
+    "screens": Object {
+      "newTodo": Object {},
+    },
+  },
+}
+`;
+
+exports[`k-simple-state with raw reducers should instanciate a keyValue reducer 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [
+          Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        ],
+        "data": Object {
+          "2": Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        },
+        "initialized": true,
+        "keys": Array [
+          2,
+        ],
+      },
+    },
+    "ui": Object {
+      "config": "defaultState",
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+  "todo": Object {
+    "id": 2,
+    "label": "find a name",
+  },
+}
+`;
+
+exports[`k-simple-state with raw reducers should instanciate a simpleObject reducer 1`] = `
+Object {
+  "label": "finish tests",
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "config": "defaultState",
+      "screens": Object {
+        "newTodo": "finish tests",
+      },
+    },
+  },
+}
+`;
+
+exports[`k-simple-state without custom options hide redux should dispatch action 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [
+          Object {
+            "id": "3",
+            "label": "hide-redux",
+          },
+        ],
+        "data": Object {
+          "3": Object {
+            "id": "3",
+            "label": "hide-redux",
+          },
+        },
+        "initialized": true,
+        "keys": Array [
+          "3",
+        ],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+  "todo": Object {
+    "id": "3",
+    "label": "hide-redux",
+  },
+}
+`;
+
+exports[`k-simple-state without custom options hide redux should not mutate the state 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`k-simple-state without custom options init should init the state 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "initial value!",
+      },
+    },
+  },
+}
+`;
+
+exports[`k-simple-state without custom options middlewares should call middlewares 1`] = `
+Object {
+  "spy": Array [
+    Array [
+      Object {
+        "action": Object {
+          "payload": "new",
+          "type": "@@krf/SET_NEWTODO",
+        },
+        "state": Object {
+          "data": Object {
+            "todos": Object {
+              "array": Array [],
+              "data": Object {},
+              "initialized": false,
+              "keys": Array [],
+            },
+          },
+          "ui": Object {
+            "screens": Object {
+              "newTodo": Object {},
+            },
+          },
+        },
+      },
+    ],
+  ],
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "new",
       },
     },
   },
