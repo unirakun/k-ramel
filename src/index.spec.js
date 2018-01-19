@@ -23,6 +23,23 @@ const getNewStoreWithHelpers = () => createStore({
   },
 })
 
+const getNewStoreWithReducers = () => createStore({
+  data: {
+    todos: keyValue({ key: 'id' }),
+  },
+  ui: {
+    config: (state = 'defaultState', action) => {
+      switch (action.type) {
+        case 'SET_CONFIG': return action.payload
+        default: return state
+      }
+    },
+    screens: {
+      newTodo: simpleObject(),
+    },
+  },
+})
+
 describe('k-simple-state', () => {
   const simpleTests = (getStore) => {
     it('should initialized', () => {
@@ -64,4 +81,23 @@ describe('k-simple-state', () => {
   describe('configuration with plain object', () => simpleTests(getNewStore))
 
   describe('configuration with helpers', () => simpleTests(getNewStoreWithHelpers))
+
+  describe('configuration with raw reducers', () => {
+    simpleTests(getNewStoreWithReducers)
+
+    it('should dispatch action to the raw reducer', () => {
+      const store = getNewStoreWithReducers()
+
+      // mutation
+      store.dispatch({ type: 'SET_CONFIG', payload: 'new config' })
+
+      // selection
+      const { config } = store.getState().ui
+
+      expect({
+        state: store.getState(),
+        config,
+      }).toMatchSnapshot()
+    })
+  })
 })
