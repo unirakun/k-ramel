@@ -249,3 +249,59 @@ Object {
   },
 }
 `;
+
+exports[`k-simple-state without custom options hide redux should dispatch action 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [
+          Object {
+            "id": "3",
+            "label": "hide-redux",
+          },
+        ],
+        "data": Object {
+          "3": Object {
+            "id": "3",
+            "label": "hide-redux",
+          },
+        },
+        "initialized": true,
+        "keys": Array [
+          "3",
+        ],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+  "todo": Object {
+    "id": "3",
+    "label": "hide-redux",
+  },
+}
+`;
+
+exports[`k-simple-state without custom options hide redux should not mutate the state 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+}
+`;

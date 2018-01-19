@@ -104,4 +104,36 @@ describe('k-simple-state', () => {
       }).toMatchSnapshot()
     })
   })
+
+  describe('without custom options', () => {
+    const getNewStore = options => createStore({
+      data: {
+        todos: { type: 'keyValue', key: 'id' },
+      },
+      ui: {
+        screens: {
+          newTodo: { type: 'simpleObject' },
+        },
+      },
+    }, options)
+
+    describe('hide redux', () => {
+      it('should not mutate the state', () => {
+        const store = getNewStore({ hideRedux: false })
+        store.data.todos.add({ id: '3', label: 'hide-redux' })
+        expect({
+          state: store.getState(),
+        }).toMatchSnapshot()
+      })
+
+      it('should dispatch action', () => {
+        const store = getNewStore({ hideRedux: false })
+        store.dispatch(store.data.todos.add({ id: '3', label: 'hide-redux' }))
+        expect({
+          state: store.getState(),
+          todo: store.data.todos.get(3)(store.getState()),
+        }).toMatchSnapshot()
+      })
+    })
+  })
 })
