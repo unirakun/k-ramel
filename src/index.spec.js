@@ -18,7 +18,7 @@ describe('k-simple-state', () => {
       const todo = store.data.todos.get(2)
 
       expect({
-        state: store.getState(),
+        state: store.getStore().getState(),
         todo,
       }).toMatchSnapshot()
     })
