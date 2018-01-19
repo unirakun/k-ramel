@@ -1,45 +1,6 @@
 /* eslint-env jest */
 import { createStore, simpleObject, keyValue } from './index'
 
-const getNewStore = () => createStore({
-  data: {
-    todos: { type: 'keyValue', key: 'id' },
-  },
-  ui: {
-    screens: {
-      newTodo: { type: 'simpleObject' },
-    },
-  },
-})
-
-const getNewStoreWithHelpers = () => createStore({
-  data: {
-    todos: keyValue({ key: 'id' }),
-  },
-  ui: {
-    screens: {
-      newTodo: simpleObject(),
-    },
-  },
-})
-
-const getNewStoreWithReducers = () => createStore({
-  data: {
-    todos: keyValue({ key: 'id' }),
-  },
-  ui: {
-    config: (state = 'defaultState', action) => {
-      switch (action.type) {
-        case 'SET_CONFIG': return action.payload
-        default: return state
-      }
-    },
-    screens: {
-      newTodo: simpleObject(),
-    },
-  },
-})
-
 describe('k-simple-state', () => {
   const simpleTests = (getStore) => {
     it('should initialized', () => {
@@ -78,15 +39,58 @@ describe('k-simple-state', () => {
     })
   }
 
-  describe('configuration with plain object', () => simpleTests(getNewStore))
+  describe('with plain object', () => {
+    const getNewStore = () => createStore({
+      data: {
+        todos: { type: 'keyValue', key: 'id' },
+      },
+      ui: {
+        screens: {
+          newTodo: { type: 'simpleObject' },
+        },
+      },
+    })
 
-  describe('configuration with helpers', () => simpleTests(getNewStoreWithHelpers))
+    simpleTests(getNewStore)
+  })
 
-  describe('configuration with raw reducers', () => {
-    simpleTests(getNewStoreWithReducers)
+  describe('with helpers', () => {
+    const getNewStore = () => createStore({
+      data: {
+        todos: keyValue({ key: 'id' }),
+      },
+      ui: {
+        screens: {
+          newTodo: simpleObject(),
+        },
+      },
+    })
+
+    simpleTests(getNewStore)
+  })
+
+  describe('with raw reducers', () => {
+    const getNewStore = () => createStore({
+      data: {
+        todos: keyValue({ key: 'id' }),
+      },
+      ui: {
+        config: (state = 'defaultState', action) => {
+          switch (action.type) {
+            case 'SET_CONFIG': return action.payload
+            default: return state
+          }
+        },
+        screens: {
+          newTodo: simpleObject(),
+        },
+      },
+    })
+
+    simpleTests(getNewStore)
 
     it('should dispatch action to the raw reducer', () => {
-      const store = getNewStoreWithReducers()
+      const store = getNewStore()
 
       // mutation
       store.dispatch({ type: 'SET_CONFIG', payload: 'new config' })

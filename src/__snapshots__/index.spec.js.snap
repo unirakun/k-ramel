@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`k-simple-state configuration with helpers should initialized 1`] = `
+exports[`k-simple-state with helpers should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -18,7 +18,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with helpers should instanciate a keyValue reducer 1`] = `
+exports[`k-simple-state with helpers should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -54,7 +54,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with helpers should instanciate a simpleObject reducer 1`] = `
+exports[`k-simple-state with helpers should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -75,7 +75,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with plain object should initialized 1`] = `
+exports[`k-simple-state with plain object should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -93,7 +93,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with plain object should instanciate a keyValue reducer 1`] = `
+exports[`k-simple-state with plain object should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -129,7 +129,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with plain object should instanciate a simpleObject reducer 1`] = `
+exports[`k-simple-state with plain object should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -150,7 +150,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with raw reducers should dispatch action to the raw reducer 1`] = `
+exports[`k-simple-state with raw reducers should dispatch action to the raw reducer 1`] = `
 Object {
   "config": "new config",
   "state": Object {
@@ -172,7 +172,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with raw reducers should initialized 1`] = `
+exports[`k-simple-state with raw reducers should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -191,7 +191,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with raw reducers should instanciate a keyValue reducer 1`] = `
+exports[`k-simple-state with raw reducers should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -228,7 +228,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state configuration with raw reducers should instanciate a simpleObject reducer 1`] = `
+exports[`k-simple-state with raw reducers should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
