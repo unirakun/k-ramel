@@ -143,6 +143,7 @@ const defaultOptions = {
   middlewares: [],
   init: {},
 }
+
 export default (definition, options) => {
   // options
   const innerOptions = { ...defaultOptions, ...options }
