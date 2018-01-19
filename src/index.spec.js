@@ -117,6 +117,25 @@ describe('k-simple-state', () => {
       },
     }, options)
 
+    describe('middlewares', () => {
+      it('should call middlewares', () => {
+        const spy = jest.fn()
+        const middlewares = [
+          store => next => (action) => {
+            spy({ state: store.getState(), action })
+            next(action)
+          },
+        ]
+        const store = getNewStore({ middlewares })
+        store.ui.screens.newTodo.set('new')
+
+        expect({
+          state: store.getState(),
+          spy: spy.mock.calls,
+        }).toMatchSnapshot()
+      })
+    })
+
     describe('init', () => {
       it('should init the state', () => {
         const store = getNewStore({

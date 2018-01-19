@@ -325,3 +325,48 @@ Object {
   },
 }
 `;
+
+exports[`k-simple-state without custom options middlewares should call middlewares 1`] = `
+Object {
+  "spy": Array [
+    Array [
+      Object {
+        "action": Object {
+          "payload": "new",
+          "type": "@@krf/SET_NEWTODO",
+        },
+        "state": Object {
+          "data": Object {
+            "todos": Object {
+              "array": Array [],
+              "data": Object {},
+              "initialized": false,
+              "keys": Array [],
+            },
+          },
+          "ui": Object {
+            "screens": Object {
+              "newTodo": Object {},
+            },
+          },
+        },
+      },
+    ],
+  ],
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "new",
+      },
+    },
+  },
+}
+`;
