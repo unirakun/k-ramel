@@ -1,7 +1,7 @@
 /* eslint-env jest */
-import { createState, simpleObject, keyValue } from './index'
+import { createStore, simpleObject, keyValue } from './index'
 
-const getNewStore = () => createState({
+const getNewStore = () => createStore({
   data: {
     todos: { type: 'keyValue', key: 'id' },
   },
@@ -12,7 +12,7 @@ const getNewStore = () => createState({
   },
 })
 
-const getNewStoreWithHelpers = () => createState({
+const getNewStoreWithHelpers = () => createStore({
   data: {
     todos: keyValue({ key: 'id' }),
   },
