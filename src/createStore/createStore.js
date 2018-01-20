@@ -31,8 +31,7 @@ export default (definition, options = defaultOptions) => {
   // exports
   return {
     ...reducerTree,
+    ...store,
     getStore: () => store,
-    getState: store.getState,
-    dispatch: store.dispatch,
   }
 }
