@@ -9,7 +9,7 @@ const defaultOptions = {
   init: {},
 }
 
-export default (definition, options) => {
+export default (definition, options = defaultOptions) => {
   // options
   const innerOptions = { ...defaultOptions, ...options }
 
