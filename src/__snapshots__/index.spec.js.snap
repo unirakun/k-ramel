@@ -2,6 +2,7 @@
 
 exports[`k-simple-state bugs should works with first level reducers 1`] = `
 Object {
+  "label": "yeah it works",
   "state": Object {
     "label": "yeah it works",
   },
