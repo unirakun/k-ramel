@@ -173,4 +173,19 @@ describe('k-simple-state', () => {
       })
     })
   })
+
+  describe('bugs', () => {
+    it('should works with first level reducers', () => {
+      const store = createStore({
+        label: { type: 'simpleObject' },
+      })
+
+      store.label.set('yeah it works')
+
+      expect({
+        state: store.getState(),
+        label: store.label.get(),
+      }).toMatchSnapshot()
+    })
+  })
 })
