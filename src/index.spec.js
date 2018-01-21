@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { createStore, simpleObject, keyValue } from './index'
+import { createStore, simpleObject, keyValue, applyMiddleware } from './index'
 
 describe('k-simple-state', () => {
   const simpleTests = (getStore) => {
@@ -120,13 +120,11 @@ describe('k-simple-state', () => {
     describe('middlewares', () => {
       it('should call middlewares', () => {
         const spy = jest.fn()
-        const middlewares = [
-          store => next => (action) => {
-            spy({ state: store.getState(), action })
-            next(action)
-          },
-        ]
-        const store = getNewStore({ middlewares })
+        const middleware = store => next => (action) => {
+          spy({ state: store.getState(), action })
+          next(action)
+        }
+        const store = getNewStore({ enhancer: applyMiddleware(middleware) })
         store.ui.screens.newTodo.set('new')
 
         expect({
