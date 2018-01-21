@@ -1,6 +1,6 @@
 /* eslint-env jest */
 export default (lib) => {
-  const { createStore, simpleObject, keyValue } = lib
+  const { createStore, simpleObject, keyValue, compose, applyMiddleware } = lib
 
   describe('k-simple-state', () => {
     const simpleTests = (getStore) => {
@@ -121,13 +121,11 @@ export default (lib) => {
       describe('middlewares', () => {
         it('should call middlewares', () => {
           const spy = jest.fn()
-          const middlewares = [
-            store => next => (action) => {
-              spy({ state: store.getState(), action })
-              next(action)
-            },
-          ]
-          const store = getNewStore({ middlewares })
+          const middleware = store => next => (action) => {
+            spy({ state: store.getState(), action })
+            next(action)
+          }
+          const store = getNewStore({ enhancer: compose(applyMiddleware(middleware)) })
           store.ui.screens.newTodo.set('new')
 
           expect({
@@ -173,6 +171,21 @@ export default (lib) => {
           }).toMatchSnapshot()
         })
       })
+    })
+  })
+
+  describe('bugs', () => {
+    it('should works with first level reducers', () => {
+      const store = createStore({
+        label: { type: 'simpleObject' },
+      })
+
+      store.label.set('yeah it works')
+
+      expect({
+        state: store.getState(),
+        label: store.label.get(),
+      }).toMatchSnapshot()
     })
   })
 }

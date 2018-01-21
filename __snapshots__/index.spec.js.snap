@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`bugs should works with first level reducers 1`] = `
+Object {
+  "label": "yeah it works",
+  "state": Object {
+    "label": "yeah it works",
+  },
+}
+`;
+
 exports[`k-simple-state with helpers should initialized 1`] = `
 Object {
   "data": Object {

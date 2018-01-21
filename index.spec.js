@@ -26,11 +26,11 @@ describe('react connection', () => {
 
     // create store with a middleware to make sure dispatch works
     const spy = jest.fn()
-    const middlewares = [() => next => (action) => { spy(action); next(action) }]
+    const middleware = () => next => (action) => { spy(action); next(action) }
     const store = lib.createStore({
       ui: { label: { type: 'simpleObject', defaultData: 'data' } },
     }, {
-      middlewares,
+      enhancer: lib.applyMiddleware(middleware),
       hideRedux: false,
     })
 
