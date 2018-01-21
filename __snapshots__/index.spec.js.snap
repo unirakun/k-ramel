@@ -379,3 +379,16 @@ Object {
   },
 }
 `;
+
+exports[`react connection should connect redux store 1`] = `
+Object {
+  "actionDispatched": Array [
+    Array [
+      Object {
+        "type": "CLICKED",
+      },
+    ],
+  ],
+  "html": "<div>test: data</div>",
+}
+`;

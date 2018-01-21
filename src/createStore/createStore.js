@@ -5,7 +5,7 @@ import combine from './combine'
 
 const defaultOptions = {
   hideRedux: true,
-  middlewares: [],
+  enhancer: undefined,
   init: {},
 }
 
@@ -31,8 +31,7 @@ export default (definition, options = defaultOptions) => {
   // exports
   return {
     ...reducerTree,
+    ...store,
     getStore: () => store,
-    getState: store.getState,
-    dispatch: store.dispatch,
   }
 }
