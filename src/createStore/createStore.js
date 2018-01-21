@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import reduxFactory from './reduxFactory'
 import toContext from './toContext'
 import combine from './combine'
@@ -20,7 +20,7 @@ export default (definition, options = defaultOptions) => {
   const store = createStore(
     combine(reducerTree),
     innerOptions.init,
-    applyMiddleware(...innerOptions.middlewares),
+    innerOptions.enhancer,
   )
 
   // convert to a contextualized version
