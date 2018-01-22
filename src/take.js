@@ -2,7 +2,7 @@ import { isRegExp, isString, isFunction } from 'lodash'
 
 const take = (match, callback) => (action, store) => {
   const isMatching = ( // test matching
-    // to a string converted to regexp
+    // to a string
     (
       isString(match) &&
       action.type === match

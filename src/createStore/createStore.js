@@ -4,6 +4,22 @@ import toContext from './toContext'
 import combine from './combine'
 import listenFactory from './listenFactory'
 
+const getListen = (options) => {
+  const { listeners, enhancer } = options
+
+  if (listeners) {
+    const listen = listenFactory(listeners)
+
+    // add this middleware to enhancer
+    const middleware = applyMiddleware(listen.middleware)
+    if (enhancer) return { enhancer: compose(enhancer, middleware), listen }
+
+    return { enhancer: middleware, listen }
+  }
+
+  return { enhancer }
+}
+
 const defaultOptions = {
   hideRedux: true,
   enhancer: undefined,
@@ -14,31 +30,23 @@ const defaultOptions = {
 export default (definition, options = defaultOptions) => {
   // options
   const innerOptions = { ...defaultOptions, ...options }
+  const { init, hideRedux } = innerOptions
 
   // this is reducer exports (action/selectors)
   let reducerTree = reduxFactory(definition)
 
-  // listeners are there, instanciate the listen middleware
-  let listen
-  let { enhancer } = innerOptions
-  if (innerOptions.listeners) {
-    listen = listenFactory(innerOptions.listeners)
-
-    // add this middleware to enhancer
-    const { middleware } = listen
-    if (enhancer) enhancer = compose(enhancer, applyMiddleware(middleware))
-    enhancer = applyMiddleware(middleware)
-  }
+  // instanciate the listen middleware
+  const { enhancer, listen } = getListen(innerOptions)
 
   // this is the redux store
   const reduxStore = createStore(
     combine(reducerTree),
-    innerOptions.init,
+    init,
     enhancer,
   )
 
   // convert to a contextualized version
-  if (innerOptions.hideRedux) {
+  if (hideRedux) {
     reducerTree = toContext(reducerTree, reduxStore)
   }
 
