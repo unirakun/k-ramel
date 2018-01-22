@@ -197,6 +197,22 @@ export default (lib) => {
   })
 
   describe('listen middleware', () => {
+    it('should works with others middlewares', () => {
+      const spyCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        enhancer: compose(applyMiddleware(() => next => action => next(action))),
+        listeners: [
+          take(/SET_CONFIG/, spyCatch),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+    })
+
     it('should still dispatch events', () => {
       const store = createStore({
         config: { type: 'simpleObject' },
