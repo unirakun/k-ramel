@@ -16,6 +16,7 @@ export default {
     globals: {
       redux: 'Redux',
       'k-redux-factory': 'k-redux-factory',
+      lodash: '_',
     },
   },
   plugins: [
@@ -26,5 +27,5 @@ export default {
     }),
     uglify(),
   ],
-  external: ['k-redux-factory', 'redux'],
+  external: ['k-redux-factory', 'redux', 'lodash'],
 }

@@ -6,6 +6,7 @@ export default (lib) => {
     keyValue,
     compose,
     applyMiddleware,
+    take,
   } = lib
 
   describe('k-simple-state', () => {
@@ -208,6 +209,97 @@ export default (lib) => {
       expect({
         state: store.getState(),
         config: store.config.get(),
+      }).toMatchSnapshot()
+    })
+
+    it('should not catch action', () => {
+      const spy = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [take('NO_CATCH', spy)],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spy.mock.calls.length).toBe(0)
+    })
+
+    it('should catch action -regexp-', () => {
+      const spyCatch = jest.fn()
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          take(/SET_CONFIG/, spyCatch),
+          take(/OUPS_CONFIG/, spyNoCatch),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyCatch.mock.calls[0]).toMatchSnapshot()
+    })
+
+    it('should catch action -string-', () => {
+      const spyCatch = jest.fn()
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          take('@@krf/SET_CONFIG', spyCatch),
+          take('@@oups/SET_CONFIG', spyCatch),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+    })
+
+    it('should catch action -function-', () => {
+      const spyFilter = jest.fn(() => true)
+      const spyCatch = jest.fn()
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          take(spyFilter, spyCatch),
+          take(() => false, spyCatch),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyFilter.mock.calls.length).toBe(1)
+      expect(spyFilter.mock.calls[0]).toMatchSnapshot()
+    })
+
+    it('should catch and dispatch a new action', () => {
+      const spy = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+        saved: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          take(/SET_SAVED/, spy),
+          take(/SET_CONFIG/, (action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spy.mock.calls.length).toBe(1)
+      expect({
+        state: store.getState(),
       }).toMatchSnapshot()
     })
   })

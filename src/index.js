@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+export { applyMiddleware, compose } from 'redux'
 export { default as createStore } from './createStore'
 export * from './factoryHelpers'
-export { applyMiddleware, compose } from 'redux'
+export { default as take } from './take'

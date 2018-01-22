@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import reduxFactory from './reduxFactory'
 import toContext from './toContext'
 import combine from './combine'
-import listenFactory from './listen'
+import listenFactory from './listenFactory'
 
 const defaultOptions = {
   hideRedux: true,

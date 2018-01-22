@@ -380,6 +380,51 @@ Object {
 }
 `;
 
+exports[`listen middleware should catch action -function- 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET_CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "getStore": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch action -regexp- 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET_CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "getStore": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch and dispatch a new action 1`] = `
+Object {
+  "state": Object {
+    "config": "this is dispatched !",
+    "saved": "SET_CONFIG is triggered :)",
+  },
+}
+`;
+
 exports[`listen middleware should still dispatch events 1`] = `
 Object {
   "config": "this is dispatched !",
