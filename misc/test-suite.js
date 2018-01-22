@@ -1,6 +1,12 @@
 /* eslint-env jest */
 export default (lib) => {
-  const { createStore, simpleObject, keyValue, compose, applyMiddleware } = lib
+  const {
+    createStore,
+    simpleObject,
+    keyValue,
+    compose,
+    applyMiddleware,
+  } = lib
 
   describe('k-simple-state', () => {
     const simpleTests = (getStore) => {
@@ -185,6 +191,23 @@ export default (lib) => {
       expect({
         state: store.getState(),
         label: store.label.get(),
+      }).toMatchSnapshot()
+    })
+  })
+
+  describe('listen middleware', () => {
+    it('should still dispatch events', () => {
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [jest.fn()],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect({
+        state: store.getState(),
+        config: store.config.get(),
       }).toMatchSnapshot()
     })
   })

@@ -380,6 +380,15 @@ Object {
 }
 `;
 
+exports[`listen middleware should still dispatch events 1`] = `
+Object {
+  "config": "this is dispatched !",
+  "state": Object {
+    "config": "this is dispatched !",
+  },
+}
+`;
+
 exports[`react connection should connect redux store 1`] = `
 Object {
   "actionDispatched": Array [

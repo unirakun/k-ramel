@@ -379,3 +379,12 @@ Object {
   },
 }
 `;
+
+exports[`listen middleware should still dispatch events 1`] = `
+Object {
+  "config": "this is dispatched !",
+  "state": Object {
+    "config": "this is dispatched !",
+  },
+}
+`;
