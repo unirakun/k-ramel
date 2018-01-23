@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build:core": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
+    "build:react": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.react.js",
     "build": "npm-run-all --parallel build:*",
     "lint:js": "eslint --ext js src",
     "lint": "npm-run-all --parallel lint:*",
@@ -22,6 +23,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.3",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
@@ -60,7 +62,10 @@
     "env": {
       "build": {
         "plugins": [
-          "external-helpers"
+          "external-helpers",
+          "transform-class-properties",
+          "transform-react-jsx",
+          "transform-object-rest-spread"
         ]
       },
       "test": {
@@ -75,7 +80,8 @@
         "plugins": [
           "transform-es2015-modules-commonjs",
           "transform-object-rest-spread",
-          "babel-plugin-transform-react-jsx"
+          "transform-react-jsx",
+          "transform-class-properties"
         ]
       }
     }
