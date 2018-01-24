@@ -1,11 +1,11 @@
-const withParams = ['get', 'getBy']
+const withParams = ['get', 'getBy', 'hasKey']
 
 const keysConfig = {
   keyValue: [
     // actions
     ['set', 'add', 'update', 'addOrUpdate', 'replace', 'remove', 'orderBy', 'reset'],
     // selectors
-    ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState'],
+    ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState', 'hasKey'],
   ],
   simpleObject: [
     // actions
