@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`react/getWrappedDisplayName should print a displayName 1`] = `
+Object {
+  "Component.constructor.name": "Component.constructor.name",
+  "Component.displayName": "Component.displayName",
+  "Component.name": "Component.name",
+  "Unknown": "Unknown",
+}
+`;
