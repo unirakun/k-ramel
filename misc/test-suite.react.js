@@ -39,5 +39,66 @@ export default (lib) => {
       const wrapper = mount(<WrappedComponent />, { context: { store: testStore } })
       expect(wrapper.find('div').html()).toMatchSnapshot()
     })
+
+    it('should inject callbacks')
+
+    it('should refresh when store changes', () => {
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const Component = ({ label }) => <div>{label}</div>
+      const WrappedComponent = inject(store => ({ label: store.config.get() }))(Component)
+
+      // test
+      testStore.config.set('a label')
+      const wrapper = mount(<WrappedComponent />, { context: { store: testStore } })
+      testStore.config.set('an other label')
+
+      expect(wrapper.find('div').html()).toMatchSnapshot()
+    })
+
+    it('should refresh when props changes', () => {
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const Component = ({ label, id }) => <div>{label}-{id}</div>
+      const WrappedComponent = inject((store, ownProps) => ({
+        label: store.config.get(),
+        id: ownProps.id,
+      }))(Component)
+
+      // test
+      testStore.config.set('a label')
+      const wrapper = mount(<WrappedComponent id={3} />, { context: { store: testStore } })
+      wrapper.setProps({ id: 2 })
+
+      expect(wrapper.find('div').html()).toMatchSnapshot()
+    })
+
+    it('should unsubscribe on unmount', () => {
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const Component = ({ label }) => <div>{label}</div>
+      const WrappedComponent = inject(store => ({ label: store.config.get() }))(Component)
+
+      // test
+      testStore.config.set('a label')
+      const wrapper = mount(<WrappedComponent />, { context: { store: testStore } })
+      wrapper.unmount()
+
+      testStore.config.set('an other label')
+    })
+
+    it('should not refresh component when there is no change')
   })
 }
