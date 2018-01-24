@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`react should inject store to a component 1`] = `"<div>a label</div>"`;
+
+exports[`react should provide store as context 1`] = `"<div>{\\"this\\":\\"is my store\\"}</div>"`;
+
+exports[`react should refresh when props changes 1`] = `"<div>a label-2</div>"`;
+
+exports[`react should refresh when store changes 1`] = `"<div>an other label</div>"`;
