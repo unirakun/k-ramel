@@ -28,16 +28,16 @@ export default injectFunction => WrappedComponent => class extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.readStore(nextProps)()
+    this.inject(nextProps)
   }
 
   componentWillUnmount() {
     this.unsubscribe()
   }
 
-  inject = () => {
+  inject = (nextProps) => {
     const { injectedProps } = this.state
-    const newInjectedProps = injectFunction(this.context.store, this.props)
+    const newInjectedProps = injectFunction(this.context.store, nextProps || this.props)
 
     if (shallowEqual(injectedProps, newInjectedProps)) return
 
