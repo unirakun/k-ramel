@@ -1,9 +1,11 @@
+const withParams = ['get', 'getBy', 'hasKey']
+
 const keysConfig = {
   keyValue: [
     // actions
     ['set', 'add', 'update', 'addOrUpdate', 'replace', 'remove', 'orderBy', 'reset'],
     // selectors
-    ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState'],
+    ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState', 'hasKey'],
   ],
   simpleObject: [
     // actions
@@ -53,7 +55,10 @@ export default (root, store) => {
           const legacySelector = reducer[selector]
 
           return {
-            [selector]: (...args) => legacySelector(...args)(store.getState()),
+            [selector]: (...args) => {
+              if (withParams.includes(selector)) return legacySelector(...args)(store.getState())
+              return legacySelector(store.getState())
+            },
           }
         })
         .reduce(
