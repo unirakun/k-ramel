@@ -6,7 +6,7 @@ export default injectFunction => WrappedComponent => class extends Component {
   static displayName = `inject(${getWrappedDisplayName(WrappedComponent)}`
 
   static contextTypes = {
-    kStore: () => null, // this is to avoid importing prop-types
+    store: () => null, // this is to avoid importing prop-types
   }
 
   constructor(props, context) {
@@ -19,7 +19,7 @@ export default injectFunction => WrappedComponent => class extends Component {
 
   componentWillMount() {
     // subscribe
-    this.unsubscribe = this.context.kStore.subscribe(() => {
+    this.unsubscribe = this.context.store.subscribe(() => {
       this.inject()
     })
 
@@ -37,7 +37,7 @@ export default injectFunction => WrappedComponent => class extends Component {
 
   inject = () => {
     const { injectedProps } = this.state
-    const newInjectedProps = injectFunction(this.context.kStore, this.props)
+    const newInjectedProps = injectFunction(this.context.store, this.props)
 
     if (shallowEqual(injectedProps, newInjectedProps)) return
 
