@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import shallowEqual from 'fbjs/lib/shallowEqual'
 import getWrappedDisplayName from './getWrappedDisplayName'
 
 export default injectFunction => WrappedComponent => class extends Component {
@@ -35,9 +36,14 @@ export default injectFunction => WrappedComponent => class extends Component {
   }
 
   inject = () => {
+    const { injectedProps } = this.state
+    const newInjectedProps = injectFunction(this.context.kStore, this.props)
+
+    if (shallowEqual(injectedProps, newInjectedProps)) return
+
     this.setState(state => ({
       ...state,
-      injectedProps: injectFunction(this.context.kStore, this.props),
+      injectedProps: newInjectedProps,
     }))
   }
 

@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import getWrappedDisplayName from './getWrappedDisplayName'
 
-// inspired from mobx-react/Provider :
 export default store => WrappedComponent => class extends Component {
   static displayName = `provider(${getWrappedDisplayName(WrappedComponent)})`
 
