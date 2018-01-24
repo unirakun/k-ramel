@@ -1,25 +1,29 @@
 import { isRegExp, isString, isFunction } from 'lodash'
 
-const take = match => callback => (action, store) => {
-  const isMatching = ( // test matching
-    // to a string
-    (
-      isString(match) &&
-      action.type === match
-    )
-    // to a function
-    || (
-      isFunction(match) &&
-      match(action, store)
-    )
-    // to a regexp
-    || (
-      isRegExp(match) &&
-      action.type.match(match)
-    )
+const isMatching = (action, store) => matcher => ( // test matching
+  // to a string
+  (
+    isString(matcher) &&
+    action.type === matcher
   )
+  // to a function
+  || (
+    isFunction(matcher) &&
+    matcher(action, store)
+  )
+  // to a regexp
+  || (
+    isRegExp(matcher) &&
+    action.type.match(matcher)
+  )
+)
 
-  if (isMatching) return callback(action, store)
+const take = (...matchers) => callback => (action, store) => {
+  const match = matchers
+    .map(isMatching(action, store))
+    .reduce((acc, curr) => acc && curr, true)
+
+  if (match) return callback(action, store)
   return false
 }
 
