@@ -1,3 +1,5 @@
+const withParams = ['get', 'getBy']
+
 const keysConfig = {
   keyValue: [
     // actions
@@ -53,7 +55,10 @@ export default (root, store) => {
           const legacySelector = reducer[selector]
 
           return {
-            [selector]: (...args) => legacySelector(...args)(store.getState()),
+            [selector]: (...args) => {
+              if (withParams.includes(selector)) return legacySelector(...args)(store.getState())
+              return legacySelector(store.getState())
+            },
           }
         })
         .reduce(
