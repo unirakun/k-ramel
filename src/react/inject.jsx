@@ -17,14 +17,13 @@ export default injectFunction => WrappedComponent => class extends Component {
   }
 
   componentWillMount() {
-    const { kStore } = this.context
-
-    this.unsubscribe = kStore.subscribe(() => {
-      this.setState(state => ({
-        ...state,
-        injectedProps: injectFunction(kStore),
-      }))
+    // subscribe
+    this.unsubscribe = this.context.kStore.subscribe(() => {
+      this.inject()
     })
+
+    // run in once
+    this.inject()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,6 +32,13 @@ export default injectFunction => WrappedComponent => class extends Component {
 
   componentWillUnmount() {
     this.unsubscribe()
+  }
+
+  inject = () => {
+    this.setState(state => ({
+      ...state,
+      injectedProps: injectFunction(this.context.kStore, this.props),
+    }))
   }
 
   render() {
