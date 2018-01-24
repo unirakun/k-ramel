@@ -1,7 +1,9 @@
 /* eslint-env jest */
 /* eslint-disable
   react/jsx-filename-extension,
-  react/prop-types
+  react/prop-types,
+  jsx-a11y/click-events-have-key-events,
+  jsx-a11y/no-static-element-interactions
 */
 import React from 'react'
 import { mount } from 'enzyme'
@@ -40,7 +42,21 @@ export default (lib) => {
       expect(wrapper.find('div').html()).toMatchSnapshot()
     })
 
-    it('should inject callbacks')
+    it('should inject callbacks', () => {
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const Component = ({ onClick }) => <div onClick={onClick} />
+      const WrappedComponent = inject(store => ({ onClick: () => store.config.set('clicked !') }))(Component)
+
+      // test
+      const wrapper = mount(<WrappedComponent />, { context: { store: testStore } })
+      wrapper.find('div').simulate('click')
+      expect(testStore.config.get()).toEqual('clicked !')
+    })
 
     it('should refresh when store changes', () => {
       // store
@@ -99,6 +115,28 @@ export default (lib) => {
       testStore.config.set('an other label')
     })
 
-    it('should not refresh component when there is no change')
+    it('should not refresh component when there is no change', () => {
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+        dummy: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const spy = jest.fn()
+      const Component = ({ label }) => {
+        spy()
+        return <div>{label}</div>
+      }
+      const WrappedComponent = inject(store => ({ label: store.config.get() }))(Component)
+
+      // try to render and wrapped component
+      testStore.config.set('a label')
+      mount(<WrappedComponent />, { context: { store: testStore } })
+      testStore.dummy.set('this should not trigger a re-render')
+
+      // only one render
+      expect(spy.mock.calls.length).toBe(1)
+    })
   })
 }
