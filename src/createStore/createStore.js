@@ -12,7 +12,7 @@ const getListen = (options) => {
 
     // add this middleware to enhancer
     const middleware = applyMiddleware(listen.middleware)
-    if (enhancer) return { enhancer: compose(enhancer, middleware), listen }
+    if (enhancer) return { enhancer: compose(middleware, enhancer), listen }
 
     return { enhancer: middleware, listen }
   }
