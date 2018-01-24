@@ -299,6 +299,27 @@ export default (lib) => {
       expect(spyFilter.mock.calls[0]).toMatchSnapshot()
     })
 
+    it('should catch action with multiple matchers', () => {
+      const spyCatch = jest.fn()
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          take(() => true, () => true)(spyCatch),
+          take(() => false, () => true)(spyNoCatch),
+          take(() => true, () => false)(spyNoCatch),
+          take(() => false, () => false)(spyNoCatch),
+          take(() => true, () => true)(spyCatch),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(2)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+    })
+
     it('should catch and dispatch a new action', () => {
       const spy = jest.fn()
       const store = createStore({
