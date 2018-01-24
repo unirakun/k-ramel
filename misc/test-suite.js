@@ -204,7 +204,7 @@ export default (lib) => {
       }, {
         enhancer: compose(applyMiddleware(() => next => action => next(action))),
         listeners: [
-          take(/SET_CONFIG/, spyCatch),
+          take(/SET_CONFIG/)(spyCatch),
         ],
       })
 
@@ -233,7 +233,7 @@ export default (lib) => {
       const store = createStore({
         config: { type: 'simpleObject' },
       }, {
-        listeners: [take('NO_CATCH', spy)],
+        listeners: [take('NO_CATCH')(spy)],
       })
 
       store.config.set('this is dispatched !')
@@ -248,8 +248,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(/SET_CONFIG/, spyCatch),
-          take(/OUPS_CONFIG/, spyNoCatch),
+          take(/SET_CONFIG/)(spyCatch),
+          take(/OUPS_CONFIG/)(spyNoCatch),
         ],
       })
 
@@ -267,8 +267,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take('@@krf/SET_CONFIG', spyCatch),
-          take('@@oups/SET_CONFIG', spyCatch),
+          take('@@krf/SET_CONFIG')(spyCatch),
+          take('@@oups/SET_CONFIG')(spyCatch),
         ],
       })
 
@@ -286,8 +286,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(spyFilter, spyCatch),
-          take(() => false, spyCatch),
+          take(spyFilter)(spyCatch),
+          take(() => false)(spyCatch),
         ],
       })
 
@@ -306,8 +306,8 @@ export default (lib) => {
         saved: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(/SET_SAVED/, spy),
-          take(/SET_CONFIG/, (action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
+          take(/SET_SAVED/)(spy),
+          take(/SET_CONFIG/)((action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
         ],
       })
 

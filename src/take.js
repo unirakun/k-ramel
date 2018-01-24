@@ -1,6 +1,6 @@
 import { isRegExp, isString, isFunction } from 'lodash'
 
-const take = (match, callback) => (action, store) => {
+const take = match => callback => (action, store) => {
   const isMatching = ( // test matching
     // to a string
     (
