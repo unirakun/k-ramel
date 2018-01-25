@@ -6,7 +6,9 @@ export default (lib) => {
     keyValue,
     compose,
     applyMiddleware,
-    take,
+    when,
+    reaction,
+    reactions,
   } = lib
 
   describe('k-simple-state', () => {
@@ -204,7 +206,7 @@ export default (lib) => {
       }, {
         enhancer: compose(applyMiddleware(() => next => action => next(action))),
         listeners: [
-          take(/SET_CONFIG/)(spyCatch),
+          when(/SET_CONFIG/)(spyCatch),
         ],
       })
 
@@ -233,7 +235,7 @@ export default (lib) => {
       const store = createStore({
         config: { type: 'simpleObject' },
       }, {
-        listeners: [take('NO_CATCH')(spy)],
+        listeners: [when('NO_CATCH')(spy)],
       })
 
       store.config.set('this is dispatched !')
@@ -248,8 +250,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(/SET_CONFIG/)(spyCatch),
-          take(/OUPS_CONFIG/)(spyNoCatch),
+          when(/SET_CONFIG/)(spyCatch),
+          when(/OUPS_CONFIG/)(spyNoCatch),
         ],
       })
 
@@ -267,8 +269,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take('@@krf/SET_CONFIG')(spyCatch),
-          take('@@oups/SET_CONFIG')(spyCatch),
+          when('@@krf/SET_CONFIG')(spyCatch),
+          when('@@oups/SET_CONFIG')(spyCatch),
         ],
       })
 
@@ -286,8 +288,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(spyFilter)(spyCatch),
-          take(() => false)(spyCatch),
+          when(spyFilter)(spyCatch),
+          when(() => false)(spyCatch),
         ],
       })
 
@@ -306,11 +308,11 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(() => true, () => true)(spyCatch),
-          take(() => false, () => true)(spyNoCatch),
-          take(() => true, () => false)(spyNoCatch),
-          take(() => false, () => false)(spyNoCatch),
-          take(() => true, () => true)(spyCatch),
+          when(() => true, () => true)(spyCatch),
+          when(() => false, () => true)(spyNoCatch),
+          when(() => true, () => false)(spyNoCatch),
+          when(() => false, () => false)(spyNoCatch),
+          when(() => true, () => true)(spyCatch),
         ],
       })
 
@@ -327,8 +329,8 @@ export default (lib) => {
         saved: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(/SET_SAVED/)(spy),
-          take(/SET_CONFIG/)((action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
+          when(/SET_SAVED/)(spy),
+          when(/SET_CONFIG/)((action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
         ],
       })
 
@@ -338,6 +340,66 @@ export default (lib) => {
       expect({
         state: store.getState(),
       }).toMatchSnapshot()
+    })
+
+    it('should catch action decorated by reaction hof', () => {
+      const spyCatch = jest.fn()
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          when(/SET_CONFIG/)(reaction(spyCatch)),
+          when(/OUPS_CONFIG/)(reaction(spyNoCatch)),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyCatch.mock.calls[0]).toMatchSnapshot()
+    })
+
+    it('should catch action decorated by reaction hof, DSL way', () => {
+      const spyCatch = reaction(jest.fn())
+      const spyNoCatch = reaction(jest.fn())
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          spyCatch.when(/SET_CONFIG/),
+          spyNoCatch.when(/OUPS_CONFIG/),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyCatch.mock.calls[0]).toMatchSnapshot()
+    })
+
+    it('should catch action decorated by reaction hof, DSL way, with multiple keys', () => {
+      const { spyCatch, spyNoCatch } = reactions({
+        spyCatch: jest.fn(),
+        spyNoCatch: jest.fn(),
+      })
+
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          spyCatch.when(/SET_CONFIG/),
+          spyNoCatch.when(/OUPS_CONFIG/),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyCatch.mock.calls[0]).toMatchSnapshot()
     })
   })
 }

@@ -18,7 +18,7 @@ const isMatching = (action, store) => matcher => ( // test matching
   )
 )
 
-const take = (...matchers) => callback => (action, store) => {
+export const when = (...matchers) => callback => (action, store) => {
   const match = matchers
     .map(isMatching(action, store))
     .reduce((acc, curr) => acc && curr, true)
@@ -27,4 +27,10 @@ const take = (...matchers) => callback => (action, store) => {
   return false
 }
 
-export default take
+export const reaction = fn => Object.assign(
+  fn,
+  { when: (...args) => when(...args)(fn) },
+)
+
+export const reactions = fns => Object.keys(fns)
+  .reduce((acc, curr) => ({ ...acc, [curr]: reaction(fns[curr]) }), {})
