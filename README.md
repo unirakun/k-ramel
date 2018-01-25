@@ -1,6 +1,6 @@
 # k-simple-state
 
-State manager for you components apps, the safe and easy way.
+State manager for your components apps, the safe and easy way.
 
 [![CircleCI](https://circleci.com/gh/alakarteio/k-simple-state.svg?style=shield)](https://circleci.com/gh/alakarteio/k-simple-state) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-simple-state/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-simple-state?branch=master) [![NPM Version](https://badge.fury.io/js/k-simple-state.svg)](https://www.npmjs.com/package/k-simple-state)
 [![Size](http://img.badgesize.io/alakarteio/k-simple-state/master/index.js.svg)]()
