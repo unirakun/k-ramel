@@ -26,7 +26,7 @@ export default (lib) => {
         const todo = store.data.todos.get(2)
 
         expect({
-          state: store.getStore().getState(),
+          state: store.getState(),
           todo,
         }).toMatchSnapshot()
       })

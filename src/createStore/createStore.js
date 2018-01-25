@@ -54,7 +54,6 @@ export default (definition, options = defaultOptions) => {
   const store = {
     ...reducerTree,
     ...reduxStore,
-    getStore: () => reduxStore,
   }
 
   // pass store to listen (after it has be created)
