@@ -416,6 +416,60 @@ Array [
 ]
 `;
 
+exports[`listen middleware should catch action decorated by reaction hof 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET_CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "getStore": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch action decorated by reaction hof, DSL way 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET_CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "getStore": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch action decorated by reaction hof, DSL way, with multiple keys 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET_CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "getStore": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+]
+`;
+
 exports[`listen middleware should catch and dispatch a new action 1`] = `
 Object {
   "state": Object {

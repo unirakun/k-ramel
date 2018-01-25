@@ -7,6 +7,8 @@ export default (lib) => {
     compose,
     applyMiddleware,
     when,
+    reaction,
+    reactions,
   } = lib
 
   describe('k-simple-state', () => {
@@ -338,6 +340,66 @@ export default (lib) => {
       expect({
         state: store.getState(),
       }).toMatchSnapshot()
+    })
+
+    it('should catch action decorated by reaction hof', () => {
+      const spyCatch = jest.fn()
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          when(/SET_CONFIG/)(reaction(spyCatch)),
+          when(/OUPS_CONFIG/)(reaction(spyNoCatch)),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyCatch.mock.calls[0]).toMatchSnapshot()
+    })
+
+    it('should catch action decorated by reaction hof, DSL way', () => {
+      const spyCatch = reaction(jest.fn())
+      const spyNoCatch = reaction(jest.fn())
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          spyCatch.when(/SET_CONFIG/),
+          spyNoCatch.when(/OUPS_CONFIG/),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyCatch.mock.calls[0]).toMatchSnapshot()
+    })
+
+    it('should catch action decorated by reaction hof, DSL way, with multiple keys', () => {
+      const { spyCatch, spyNoCatch } = reactions({
+        spyCatch: jest.fn(),
+        spyNoCatch: jest.fn(),
+      })
+
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          spyCatch.when(/SET_CONFIG/),
+          spyNoCatch.when(/OUPS_CONFIG/),
+        ],
+      })
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect(spyCatch.mock.calls[0]).toMatchSnapshot()
     })
   })
 }
