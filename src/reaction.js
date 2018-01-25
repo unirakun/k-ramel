@@ -29,9 +29,7 @@ export const when = (...matchers) => callback => (action, store) => {
 
 export const reaction = fn => Object.assign(
   fn,
-  {
-    when: (...args) => when(...args)(fn),
-  },
+  { when: (...args) => when(...args)(fn) },
 )
 
 export const reactions = fns => Object.keys(fns)
