@@ -6,7 +6,7 @@ export default (lib) => {
     keyValue,
     compose,
     applyMiddleware,
-    take,
+    when,
   } = lib
 
   describe('k-simple-state', () => {
@@ -204,7 +204,7 @@ export default (lib) => {
       }, {
         enhancer: compose(applyMiddleware(() => next => action => next(action))),
         listeners: [
-          take(/SET_CONFIG/)(spyCatch),
+          when(/SET_CONFIG/)(spyCatch),
         ],
       })
 
@@ -233,7 +233,7 @@ export default (lib) => {
       const store = createStore({
         config: { type: 'simpleObject' },
       }, {
-        listeners: [take('NO_CATCH')(spy)],
+        listeners: [when('NO_CATCH')(spy)],
       })
 
       store.config.set('this is dispatched !')
@@ -248,8 +248,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(/SET_CONFIG/)(spyCatch),
-          take(/OUPS_CONFIG/)(spyNoCatch),
+          when(/SET_CONFIG/)(spyCatch),
+          when(/OUPS_CONFIG/)(spyNoCatch),
         ],
       })
 
@@ -267,8 +267,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take('@@krf/SET_CONFIG')(spyCatch),
-          take('@@oups/SET_CONFIG')(spyCatch),
+          when('@@krf/SET_CONFIG')(spyCatch),
+          when('@@oups/SET_CONFIG')(spyCatch),
         ],
       })
 
@@ -286,8 +286,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(spyFilter)(spyCatch),
-          take(() => false)(spyCatch),
+          when(spyFilter)(spyCatch),
+          when(() => false)(spyCatch),
         ],
       })
 
@@ -306,11 +306,11 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(() => true, () => true)(spyCatch),
-          take(() => false, () => true)(spyNoCatch),
-          take(() => true, () => false)(spyNoCatch),
-          take(() => false, () => false)(spyNoCatch),
-          take(() => true, () => true)(spyCatch),
+          when(() => true, () => true)(spyCatch),
+          when(() => false, () => true)(spyNoCatch),
+          when(() => true, () => false)(spyNoCatch),
+          when(() => false, () => false)(spyNoCatch),
+          when(() => true, () => true)(spyCatch),
         ],
       })
 
@@ -327,8 +327,8 @@ export default (lib) => {
         saved: { type: 'simpleObject' },
       }, {
         listeners: [
-          take(/SET_SAVED/)(spy),
-          take(/SET_CONFIG/)((action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
+          when(/SET_SAVED/)(spy),
+          when(/SET_CONFIG/)((action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
         ],
       })
 
