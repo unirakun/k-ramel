@@ -16,7 +16,7 @@ export default (lib) => {
   } = lib
 
   describe('react', () => {
-    it('should provide store as context', () => {
+    xit('should provide store as context', () => {
       const store = { this: 'is my store' }
       const App = (props, context) => <div>{JSON.stringify(context.store)}</div>
       App.contextTypes = { store: () => null }
@@ -26,7 +26,7 @@ export default (lib) => {
       expect(wrapper.html()).toMatchSnapshot()
     })
 
-    it('should inject store to a component', () => {
+    xit('should inject store to a component', () => {
       // store
       const testStore = createStore({
         config: { type: 'simpleObject' },
@@ -58,7 +58,7 @@ export default (lib) => {
       expect(testStore.config.get()).toEqual('clicked !')
     })
 
-    it('should refresh when store changes', () => {
+    xit('should refresh when store changes', () => {
       // store
       const testStore = createStore({
         config: { type: 'simpleObject' },
@@ -76,7 +76,7 @@ export default (lib) => {
       expect(wrapper.find('div').html()).toMatchSnapshot()
     })
 
-    it('should refresh when props changes', () => {
+    xit('should refresh when props changes', () => {
       // store
       const testStore = createStore({
         config: { type: 'simpleObject' },
@@ -97,7 +97,7 @@ export default (lib) => {
       expect(wrapper.find('div').html()).toMatchSnapshot()
     })
 
-    it('should unsubscribe on unmount', () => {
+    xit('should unsubscribe on unmount', () => {
       // store
       const testStore = createStore({
         config: { type: 'simpleObject' },
@@ -115,7 +115,7 @@ export default (lib) => {
       testStore.config.set('an other label')
     })
 
-    it('should not refresh component when there is no change', () => {
+    xit('should not refresh component when there is no change', () => {
       // store
       const testStore = createStore({
         config: { type: 'simpleObject' },
