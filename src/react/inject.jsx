@@ -44,32 +44,32 @@ export default injectFunction => WrappedComponent => class extends Component {
     this.inject(nextProps)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.first) return true
+
+    return !(
+      shallowEqual(this.props, nextProps)
+      && shallowEqual(
+        withoutFunctions(nextState.injectedProps),
+        withoutFunctions(this.state.injectedProps),
+      )
+    )
+  }
+
   componentWillUnmount() {
     this.unsubscribe()
   }
 
   inject = (nextProps) => {
-    const { injectedProps } = this.state
-    const newInjectedProps = injectFunction(this.context.store, nextProps || this.props)
-
-    if (
-      !this.first
-      && (nextProps === undefined || shallowEqual(this.props, nextProps))
-      && shallowEqual(
-        withoutFunctions(injectedProps),
-        withoutFunctions(newInjectedProps),
-      )
-    ) { return }
-
-    this.first = false
-
     this.setState(state => ({
       ...state,
-      injectedProps: newInjectedProps,
+      injectedProps: injectFunction(this.context.store, nextProps || this.props),
     }))
   }
 
   render() {
+    if (this.first) this.first = false
+
     return (
       <WrappedComponent
         /* this is parent props */
