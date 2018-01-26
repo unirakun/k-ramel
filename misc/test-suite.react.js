@@ -128,7 +128,10 @@ export default (lib) => {
         spy()
         return <div>{label}</div>
       }
-      const WrappedComponent = inject(store => ({ label: store.config.get() }))(Component)
+      const WrappedComponent = inject(store => ({
+        label: store.config.get(),
+        fn: () => {},
+      }))(Component)
 
       // try to render and wrapped component
       testStore.config.set('a label')
