@@ -49,14 +49,16 @@ TODO
 ```js
 import { createStore } from 'k-simple-state'
 
+// Create a store of todos
 const store = createStore({
   todos: { type: 'keyValue', key: 'id' },
 })
 
 // this next line will dispatch a k-redux-factory and update the store
 store.todos.add({ id: 2, label: 'write a better README' })
-// you can retrieve data as easy as that
-console.log(store.todos.get(2))
+
+// you can retrieve data like that
+const todo = store.todos.get(2)
 ```
 
 ### Connect it with ReactJS
@@ -75,11 +77,12 @@ export default createStore({
 
 **app.jsx**
 ```js
-import { provider } from 'k-simple-state'
-import Todos from './todos.container' // this is the container version of <Todos />
+import { provider } from 'k-simple-state/react'
+import store from './store'
+import TodosContainer from './todos.container'
 
 // The application is just a list of todos
-const App = () => <Todos />
+const App = () => <TodosContainer />
 
 // Use `provider` HoC to inject store to the React context
 export default provider(store)(App)
@@ -89,8 +92,10 @@ export default provider(store)(App)
 
 **todos.container.js**
 ```js
-import { inject } from 'k-simple-state'
-import Todos from './todos' // this time this is the graphical component (JSX one)
+import { inject } from 'k-simple-state/react'
+
+// this time this is the graphical component (JSX one)
+import Todos from './todos'
 
 // inject is an HoC, like connect from react-redux,
 // it take one parameter and returns props to be injected to the wrapped components
@@ -106,6 +111,7 @@ export default inject(store => ({
 **todos.jsx**
 ```js
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Todos = ({ todos, onAdd }) => (
   <div>
@@ -121,5 +127,5 @@ Todos.propTypes = {
   onAdd: PropTypes.func.isRequired,
 }
 
-export Todos
+export default Todos
 ```
