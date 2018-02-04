@@ -25,9 +25,10 @@ TODO
 
 ## API
 ### createStore(<store_description>, <options>)
-`createStore` take two parameters:
-  1. `<store_description>`, this is an object describing your store, it can be nested. See [store description](#storedescription) to have full detail
-  2. `<options>`, this is an object with key value. See [options](#options) to have full detail
+| parameter | required | description |
+|---|---|---|
+| [<store_description>](#store_description) | required | object describing your store, it can be nested |
+| [<options>](#options) | optional | all options you may want to override |
 
 #### store_description
 Here a simple example of store description:
@@ -43,6 +44,19 @@ Here a simple example of store description:
 - TODO: with custom reducer
 - TODO: explain keyValue/simpleObject by referencing k-redux-factory
 - TODO: with helpers (keyValue()/simpleObject())
+
+#### options
+All options are optionals to keep the default usage as simple as possible.
+| key | type | default | description |
+|---|---|---|---|
+| listeners | `array` | `undefined` | array of all listeners. Listeners are a big part of this lib, you can [click here for detail](#TODO). |
+| devtools | `boolean` | `true` | [redux-devtools](https://github.com/zalmoxisus/redux-devtools-extension) is activated. |
+| hideRedux | `boolean` | `true` | Actions and selectors from [`k-redux-factory`](https://github.com/alakarteio/k-redux-factory) are used without specifying `dispatch` or `getState` |
+| enhancer | redux enhancer | `undefined` | Usual `compose` and `applyMiddlare` you already use with Redux can be injected here (like router, redux-saga, etc). <br />`compose` and `applyMiddleware` from Redux are exposed by the lib. To use them:<br /> ```js import { compose, applyMiddleware } from 'k-simple-state'```. |
+| init | `object` | `undefined` | the default value of your store. |
+
+#### listeners
+TODO
 
 ## Examples
 Full example
