@@ -6,11 +6,11 @@ import listenFactory from './listenFactory'
 
 /* eslint-env browser */
 const enhanceRedux = (options) => {
-  const { listeners } = options
+  const { listeners, devtools } = options
   let { enhancer } = options
 
   // add devtools extension
-  if (enhancer && window && window.devToolsExtension) {
+  if (devtools && enhancer && window && window.devToolsExtension) {
     enhancer = compose(enhancer, window.devToolsExtension())
   }
 
@@ -33,6 +33,7 @@ const defaultOptions = {
   enhancer: undefined,
   init: {},
   listeners: undefined,
+  devtools: true,
 }
 
 export default (definition, options = defaultOptions) => {
