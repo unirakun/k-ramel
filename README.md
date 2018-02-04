@@ -61,6 +61,7 @@ console.log(store.todos.get(2))
 
 ### Connect it with ReactJS
 1. Create a store
+
 **store.js**
 ```js
 import { createStore } from 'k-simple-state'
@@ -71,6 +72,7 @@ export default createStore({
 ```
 
 2. Provide the store to React context
+
 **app.jsx**
 ```js
 import { provider } from 'k-simple-state'
@@ -84,6 +86,7 @@ export default provider(store)(App)
 ```
 
 3. Use `inject` to interact with the store, wrap your `<Todos />` graphical component in a container
+
 **todos.container.js**
 ```js
 import { inject } from 'k-simple-state'
@@ -94,11 +97,12 @@ import Todos from './todos' // this time this is the graphical component (JSX on
 // (FYI: props injected to the wrapped components are added to the props injected by parent component)
 export default inject(store => ({
   todos: store.todos.getAsArray(),
-  onAdd: (label) => store.todos.add({ id: Date.now(), label }),
+  onAdd: label => store.todos.add({ id: Date.now(), label }),
 }))(Todos)
 ```
 
 4. Write your classical React JSX component (here, as pure function)
+
 **todos.jsx**
 ```js
 import React from 'react'
