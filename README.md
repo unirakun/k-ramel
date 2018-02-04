@@ -27,23 +27,8 @@ TODO
 ### createStore(<store_description>, \<options>)
 | parameter | required | description |
 |---|---|---|
-| [<store_description>](#store_description) | required | object describing your store, it can be nested |
+| <store_description>| required | object describing your store, it can be nested |
 | [\<options>](#options) | optional | all options you may want to override |
-
-#### store_description
-Here a simple example of store description:
-```js
-{
-  data: {
-    todos: { type: 'keyValue', key: 'id' },
-  },
-  newTodo: { type: 'simpleObject' },
-}
-```
-
-- TODO: with custom reducer
-- TODO: explain keyValue/simpleObject by referencing k-redux-factory
-- TODO: with helpers (keyValue()/simpleObject())
 
 #### options
 All options are optionals to keep the default usage as simple as possible.
