@@ -4,9 +4,17 @@ import toContext from './toContext'
 import combine from './combine'
 import listenFactory from './listenFactory'
 
-const getListen = (options) => {
-  const { listeners, enhancer } = options
+/* eslint-env browser */
+const enhanceRedux = (options) => {
+  const { listeners } = options
+  let { enhancer } = options
 
+  // add devtools extension
+  if (enhancer && window && window.devToolsExtension) {
+    enhancer = compose(enhancer, window.devToolsExtension())
+  }
+
+  // add custom listeners extension
   if (listeners) {
     const listen = listenFactory(listeners)
 
@@ -36,7 +44,7 @@ export default (definition, options = defaultOptions) => {
   let reducerTree = reduxFactory(definition)
 
   // instanciate the listen middleware
-  const { enhancer, listen } = getListen(innerOptions)
+  const { enhancer, listen } = enhanceRedux(innerOptions)
 
   // this is the redux store
   const reduxStore = createStore(
