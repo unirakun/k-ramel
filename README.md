@@ -49,12 +49,12 @@ TODO
 ```js
 import { createStore } from 'k-simple-state'
 
-// Create a store of todos
+// create a store of todos
 const store = createStore({
   todos: { type: 'keyValue', key: 'id' },
 })
 
-// this next line will dispatch a k-redux-factory and update the store
+// this next line will dispatch a k-redux-factory action and update the store
 store.todos.add({ id: 2, label: 'write a better README' })
 
 // you can retrieve data like that
@@ -66,10 +66,10 @@ const todo = store.todos.get(2)
 
 **store.js**
 ```js
-import { createStore } from 'k-simple-state'
+import { createStore, keyValue } from 'k-simple-state'
 
 export default createStore({
-  todos: { type: 'keyValue', key: 'id' },
+  todos: keyValue({ key: 'id' }),
 })
 ```
 
@@ -81,10 +81,9 @@ import { provider } from 'k-simple-state/react'
 import store from './store'
 import TodosContainer from './todos.container'
 
-// The application is just a list of todos
 const App = () => <TodosContainer />
 
-// Use `provider` HoC to inject store to the React context
+// use `provider` HoC to inject store to the React context
 export default provider(store)(App)
 ```
 
@@ -93,13 +92,11 @@ export default provider(store)(App)
 **todos.container.js**
 ```js
 import { inject } from 'k-simple-state/react'
-
-// this time this is the graphical component (JSX one)
 import Todos from './todos'
 
-// inject is an HoC, like connect from react-redux,
-// it take one parameter and returns props to be injected to the wrapped components
-// (FYI: props injected to the wrapped components are added to the props injected by parent component)
+// `inject` is an HoC, like `connect` from react-redux,
+// it takes one parameter and returns props to be injected to the wrapped component
+// (FYI: props injected to the wrapped component are added to the props given by the parent)
 export default inject(store => ({
   todos: store.todos.getAsArray(),
   onAdd: event => store.todos.add({ id: Date.now(), label: event.target.value }),
