@@ -1,30 +1,16 @@
-import { createStore, compose, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import reduxFactory from './reduxFactory'
 import toContext from './toContext'
 import combine from './combine'
-import listenFactory from './listenFactory'
-
-const getListen = (options) => {
-  const { listeners, enhancer } = options
-
-  if (listeners) {
-    const listen = listenFactory(listeners)
-
-    // add this middleware to enhancer
-    const middleware = applyMiddleware(listen.middleware)
-    if (enhancer) return { enhancer: compose(middleware, enhancer), listen }
-
-    return { enhancer: middleware, listen }
-  }
-
-  return { enhancer }
-}
+import enhanceRedux from './enhanceRedux'
 
 const defaultOptions = {
   hideRedux: true,
   enhancer: undefined,
   init: {},
   listeners: undefined,
+  devtools: true,
+  name: 'store',
 }
 
 export default (definition, options = defaultOptions) => {
@@ -35,8 +21,8 @@ export default (definition, options = defaultOptions) => {
   // this is reducer exports (action/selectors)
   let reducerTree = reduxFactory(definition)
 
-  // instanciate the listen middleware
-  const { enhancer, listen } = getListen(innerOptions)
+  // instanciate the listen middleware and prepare redux enhancers
+  const { enhancer, listen } = enhanceRedux(innerOptions)
 
   // this is the redux store
   const reduxStore = createStore(
@@ -56,7 +42,7 @@ export default (definition, options = defaultOptions) => {
     ...reduxStore,
   }
 
-  // pass store to listen (after it has be created)
+  // pass store to listen (after it has been created)
   if (listen) listen.setStore(store)
 
   return store

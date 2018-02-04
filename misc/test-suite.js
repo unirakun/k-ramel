@@ -402,4 +402,57 @@ export default (lib) => {
       expect(spyCatch.mock.calls[0]).toMatchSnapshot()
     })
   })
+
+  describe('redux devtools', () => {
+    const { devToolsExtension } = window
+    afterEach(() => {
+      window.devToolsExtension = devToolsExtension
+    })
+
+    it('should add redux devtools to middlewares [w/o name, w/o enhancer]', () => {
+      const enhancer = jest.fn(f => f)
+      window.devToolsExtension = jest.fn(() => enhancer)
+
+      createStore({ dumb: { type: 'simpleObject' } })
+      expect({
+        devToolsExtension: window.devToolsExtension.mock.calls,
+        devToolsEnhancer: enhancer.mock.calls,
+      }).toMatchSnapshot()
+    })
+
+    it('should add redux devtools to middlewares [w name, w/o enhancer]', () => {
+      const enhancer = jest.fn(f => f)
+      window.devToolsExtension = jest.fn(() => enhancer)
+
+      createStore({ dumb: { type: 'simpleObject' } }, { name: 'my-store' })
+      expect({
+        devToolsExtension: window.devToolsExtension.mock.calls,
+        devToolsEnhancer: enhancer.mock.calls,
+      }).toMatchSnapshot()
+    })
+
+    it('should add redux devtools to middlewares [w name, w enhancer]', () => {
+      const otherEnhancer = jest.fn(f => f)
+      const enhancer = jest.fn(f => f)
+      window.devToolsExtension = jest.fn(() => enhancer)
+
+      createStore({ dumb: { type: 'simpleObject' } }, { enhancer: otherEnhancer, name: 'my-store' })
+      expect({
+        devToolsExtension: window.devToolsExtension.mock.calls,
+        devToolsEnhancer: enhancer.mock.calls,
+        otherEnhancer: otherEnhancer.mock.calls,
+      }).toMatchSnapshot()
+    })
+
+    it('should not add redux devtools to middlewares', () => {
+      const enhancer = jest.fn(f => f)
+      window.devToolsExtension = jest.fn(() => enhancer)
+
+      createStore({ dumb: { type: 'simpleObject' } }, { devtools: false })
+      expect({
+        devToolsExtension: window.devToolsExtension.mock.calls,
+        devToolsEnhancer: enhancer.mock.calls,
+      }).toMatchSnapshot()
+    })
+  })
 }
