@@ -4,9 +4,9 @@ import { onlyUpdateForPropTypes } from 'recompose'
 import Todo from '../todo'
 
 const Todos = ({ style, className, todos }) => (
-  <div style={style} className={className}>
+  <ul style={style} className={`todo-list ${className}`}>
     {todos.map(id => <Todo key={id} id={id} />)}
-  </div>
+  </ul>
 )
 
 Todos.propTypes = {

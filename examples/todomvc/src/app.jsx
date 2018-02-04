@@ -2,7 +2,9 @@ import React from 'react'
 import Todos from './components/todos'
 
 const App = () => (
-  <Todos />
+  <section className="todoapp">
+    <Todos />
+  </section>
 )
 
 export default App

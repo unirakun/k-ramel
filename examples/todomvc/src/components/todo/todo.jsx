@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { onlyUpdateForPropTypes } from 'recompose'
 
 const Todo = ({ style, className, label }) => (
-  <div style={style} className={className}>
-    {label}
-  </div>
+  <li style={style} className={className}>
+    <label>{label}</label>
+  </li>
 )
 
 Todo.propTypes = {
