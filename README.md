@@ -97,7 +97,7 @@ import Todos from './todos' // this time this is the graphical component (JSX on
 // (FYI: props injected to the wrapped components are added to the props injected by parent component)
 export default inject(store => ({
   todos: store.todos.getAsArray(),
-  onAdd: label => store.todos.add({ id: Date.now(), label }),
+  onAdd: event => store.todos.add({ id: Date.now(), label: event.target.value }),
 }))(Todos)
 ```
 
