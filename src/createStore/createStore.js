@@ -34,6 +34,7 @@ const defaultOptions = {
   init: {},
   listeners: undefined,
   devtools: true,
+  name: 'store',
 }
 
 export default (definition, options = defaultOptions) => {
