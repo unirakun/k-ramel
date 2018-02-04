@@ -1,32 +1,8 @@
-import { createStore, compose, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import reduxFactory from './reduxFactory'
 import toContext from './toContext'
 import combine from './combine'
-import listenFactory from './listenFactory'
-
-/* eslint-env browser */
-const enhanceRedux = (options) => {
-  const { listeners, devtools, name } = options
-  let { enhancer } = options
-
-  // add devtools extension
-  if (devtools && enhancer && window && window.devToolsExtension) {
-    enhancer = compose(enhancer, window.devToolsExtension({ name }))
-  }
-
-  // add custom listeners extension
-  if (listeners) {
-    const listen = listenFactory(listeners)
-
-    // add this middleware to enhancer
-    const middleware = applyMiddleware(listen.middleware)
-    if (enhancer) return { enhancer: compose(middleware, enhancer), listen }
-
-    return { enhancer: middleware, listen }
-  }
-
-  return { enhancer }
-}
+import enhanceRedux from './enhanceRedux'
 
 const defaultOptions = {
   hideRedux: true,
@@ -45,7 +21,7 @@ export default (definition, options = defaultOptions) => {
   // this is reducer exports (action/selectors)
   let reducerTree = reduxFactory(definition)
 
-  // instanciate the listen middleware
+  // instanciate the listen middleware and prepare redux enhancers
   const { enhancer, listen } = enhanceRedux(innerOptions)
 
   // this is the redux store
@@ -66,7 +42,7 @@ export default (definition, options = defaultOptions) => {
     ...reduxStore,
   }
 
-  // pass store to listen (after it has be created)
+  // pass store to listen (after it has been created)
   if (listen) listen.setStore(store)
 
   return store
