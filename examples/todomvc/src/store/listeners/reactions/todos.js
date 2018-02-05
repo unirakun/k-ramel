@@ -11,6 +11,7 @@ export const add = reaction((action, store) => {
   const label = store.ui.newTodo.get()
 
   store.data.todos.add({ id: Date.now(), label })
+  store.ui.newTodo.reset()
 })
 
 export const clearNew = reaction((action, store) => {
