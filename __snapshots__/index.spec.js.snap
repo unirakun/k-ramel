@@ -495,3 +495,66 @@ Object {
   "html": "<div>test: data</div>",
 }
 `;
+
+exports[`redux devtools should add redux devtools to middlewares [w name, w enhancer] 1`] = `
+Object {
+  "devToolsEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+  "devToolsExtension": Array [
+    Array [
+      Object {
+        "name": "my-store",
+      },
+    ],
+  ],
+  "otherEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+}
+`;
+
+exports[`redux devtools should add redux devtools to middlewares [w name, w/o enhancer] 1`] = `
+Object {
+  "devToolsEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+  "devToolsExtension": Array [
+    Array [
+      Object {
+        "name": "my-store",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`redux devtools should add redux devtools to middlewares [w/o name, w/o enhancer] 1`] = `
+Object {
+  "devToolsEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+  "devToolsExtension": Array [
+    Array [
+      Object {
+        "name": "store",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`redux devtools should not add redux devtools to middlewares 1`] = `
+Object {
+  "devToolsEnhancer": Array [],
+  "devToolsExtension": Array [],
+}
+`;

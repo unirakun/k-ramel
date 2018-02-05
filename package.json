@@ -11,7 +11,7 @@
     "lint:js": "eslint --ext js src",
     "lint": "npm-run-all --parallel lint:*",
     "test": "jest",
-    "coveralls": "jest --coverage --collectCoverageFrom=src/**/*.js{x} && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx} && cat ./coverage/lcov.info | coveralls",
     "ci": "npm-run-all --parallel lint coveralls"
   },
   "dependencies": {
