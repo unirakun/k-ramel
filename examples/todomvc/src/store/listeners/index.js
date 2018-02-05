@@ -13,4 +13,5 @@ export default [
   when(/@@krf\/.*_ALL/)(todos.updateViews),
   when('@@krf/UPDATE_FOOTER')(list.update),
   when(/@@krf\/.*_ALL/)(list.update),
+  when('@@ui/HEADER_ON_COMPLETE_ALL')(todos.completeAll),
 ]

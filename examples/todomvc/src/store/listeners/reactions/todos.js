@@ -44,3 +44,9 @@ export const updateViews = reaction((action, store) => {
   store.data.todos.completed.set(completed)
   store.data.todos.active.set(active)
 })
+
+export const completeAll = reaction((action, store) => {
+  const allCompleted = store.data.todos.all.getLength() === store.data.todos.completed.getLength()
+  const todos = store.data.todos.all.getAsArray()
+  store.data.todos.all.set(todos.map(todo => ({ ...todo, completed: !allCompleted })))
+})
