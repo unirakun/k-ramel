@@ -6,8 +6,8 @@ const Header = ({
   style,
   className,
   newTodo,
-  addTodo,
-  onNewTodoChange,
+  onKeyDown,
+  onChange,
 }) => (
   <header style={style} className={`header ${className}`}>
     <h1>todos</h1>
@@ -17,8 +17,8 @@ const Header = ({
       placeholder="What needs to be done?"
       autoFocus
       value={newTodo}
-      onKeyDown={addTodo}
-      onChange={onNewTodoChange}
+      onKeyDown={onKeyDown}
+      onChange={onChange}
     />
   </header>
 )
@@ -27,14 +27,16 @@ Header.propTypes = {
   style: PropTypes.object,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   newTodo: PropTypes.string,
-  onNewTodoChange: PropTypes.func.isRequired,
-  addTodo: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
+  onChange: PropTypes.func,
 }
 
 Header.defaultProps = {
   style: undefined,
   className: undefined,
   newTodo: '',
+  onKeyDown: undefined,
+  onChange: undefined,
 }
 
 export default onlyUpdateForPropTypes(Header)

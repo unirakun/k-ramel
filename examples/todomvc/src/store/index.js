@@ -6,6 +6,9 @@ export default createStore(
     data: {
       todos: { type: 'keyValue', key: 'id' },
     },
+    ui: {
+      newTodo: { type: 'simpleObject' },
+    },
   },
   {
     listeners,
