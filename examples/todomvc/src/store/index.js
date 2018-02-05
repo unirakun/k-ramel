@@ -11,7 +11,6 @@ export default createStore(
       },
     },
     ui: {
-      keys: simpleObject({ defaultData: [] }),
       footer: simpleObject({
         defaultData: {
           todos: 0,

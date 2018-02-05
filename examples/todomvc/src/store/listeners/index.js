@@ -1,5 +1,5 @@
 import { when } from 'k-simple-state'
-import { todos, footer, list } from './reactions'
+import { todos, footer } from './reactions'
 
 export default [
   when('@@ui/APP_LOADED')(todos.load),
@@ -11,7 +11,5 @@ export default [
   when('@@ui/FOOTER_ON_CLEAR_COMPLETED')(todos.clearCompleted),
   when(/@@krf\/.*_ALL/)(footer.updateCounts),
   when(/@@krf\/.*_ALL/)(todos.updateViews),
-  when('@@krf/UPDATE_FOOTER')(list.update),
-  when(/@@krf\/.*_ALL/)(list.update),
   when('@@ui/HEADER_ON_COMPLETE_ALL')(todos.completeAll),
 ]
