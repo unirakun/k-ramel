@@ -26,7 +26,7 @@ export const remove = reaction((action, store) => {
   store.data.todos.remove(action.payload)
 })
 
-export const complete = reaction((action, store) => {
+export const toggleComplete = reaction((action, store) => {
   const todo = store.data.todos.get(action.payload)
-  store.data.todos.add({ ...todo, completed: !todo.completed })
+  store.data.todos.update({ id: action.payload, completed: !todo.completed })
 })

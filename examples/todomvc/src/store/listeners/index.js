@@ -7,5 +7,5 @@ export default [
   when('@@ui/ADD_TODO_KEYDOWN', action => action.payload === 27)(todos.clearNew),
   when('@@ui/ADD_TODO_CHANGE')(todos.setNew),
   when('@@ui/TODO_ON_REMOVE')(todos.remove),
-  when('@@ui/TODO_ON_COMPLETE')(todos.complete),
+  when('@@ui/TODO_ON_COMPLETE')(todos.toggleComplete),
 ]
