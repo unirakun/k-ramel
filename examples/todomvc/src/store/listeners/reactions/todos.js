@@ -16,3 +16,7 @@ export const add = reaction((action, store) => {
 export const clearNew = reaction((action, store) => {
   store.ui.newTodo.reset()
 })
+
+export const setNew = reaction((action, store) => {
+  store.ui.newTodo.set(action.payload)
+})
