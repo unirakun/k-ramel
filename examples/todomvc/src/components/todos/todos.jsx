@@ -12,7 +12,7 @@ const Todos = ({ style, className, todos }) => (
 Todos.propTypes = {
   style: PropTypes.object,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  todos: PropTypes.arrayOf(PropTypes.string),
+  todos: PropTypes.arrayOf(PropTypes.number),
 }
 
 Todos.defaultProps = {
