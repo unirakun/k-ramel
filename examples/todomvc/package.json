@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "hoc-react-loader": "^6.3.0",
-    "k-simple-state": "../../",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.0",
@@ -12,6 +11,7 @@
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
+    "postinstall": "ln -sf ../../../ node_modules/k-simple-state",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

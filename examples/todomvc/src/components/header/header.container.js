@@ -3,7 +3,9 @@ import Component from './header'
 
 
 export default inject(store => ({
+  // data
   newTodo: store.ui.newTodo.get(),
-  onKeyDown: e => store.ui.newTodo.set(e.target.value),
-  addTodo: () => store.dispatch({ type: '@@ui/ADD_TODO_CLICKED' }),
+  // callbacks
+  onKeyDown: e => store.dispatch({ type: '@@ui/ADD_TODO_KEYDOWN', payload: e.keyCode }),
+  onChange: e => store.ui.newTodo.set(e.target.value),
 }))(Component)

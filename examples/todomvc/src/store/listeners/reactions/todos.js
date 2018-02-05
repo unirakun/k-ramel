@@ -6,3 +6,13 @@ export const load = reaction((action, store) => {
     { id: '2', label: 'write other examples' },
   ])
 })
+
+export const add = reaction((action, store) => {
+  const label = store.ui.newTodo.get()
+
+  store.data.todos.add({ id: Date.now(), label })
+})
+
+export const clearNew = reaction((action, store) => {
+  store.ui.newTodo.reset()
+})
