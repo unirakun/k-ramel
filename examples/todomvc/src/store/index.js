@@ -7,8 +7,7 @@ export default createStore(
       todos: { type: 'keyValue', key: 'id' },
     },
     ui: {
-      filter: { type: 'simpleObject', defaultData: 'all' },
-      footer: { type: 'simpleObject', defaultData: { todos: 0, todosLeft: 0, todosCompleted: 0 } },
+      footer: { type: 'simpleObject', defaultData: { todos: 0, todosLeft: 0, todosCompleted: 0, filter: 'all' } },
       newTodo: { type: 'simpleObject', defaultData: '' },
     },
   },
