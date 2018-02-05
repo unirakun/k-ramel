@@ -8,6 +8,7 @@ export default [
   when('@@ui/ADD_TODO_CHANGE')(todos.setNew),
   when('@@ui/TODO_ON_REMOVE')(todos.remove),
   when('@@ui/TODO_ON_COMPLETE')(todos.toggleComplete),
+  when('@@ui/FOOTER_ON_CLEAR_COMPLETED')(todos.clearCompleted),
   when(/SET_TODOS/)(footer.updateCounts),
   when(/UPDATE_TODOS/)(footer.updateCounts),
 ]

@@ -30,3 +30,9 @@ export const toggleComplete = reaction((action, store) => {
   const todo = store.data.todos.get(action.payload)
   store.data.todos.update({ id: action.payload, completed: !todo.completed })
 })
+
+export const clearCompleted = reaction((action, store) => {
+  const completed = store.data.todos.getBy('completed', true)
+
+  store.data.todos.remove(completed.map(todo => todo.id))
+})
