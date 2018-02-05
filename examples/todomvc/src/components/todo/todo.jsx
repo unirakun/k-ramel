@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { onlyUpdateForPropTypes } from 'recompose'
+import classnames from 'classnames'
 
 const Todo = ({
   // style
@@ -18,7 +19,7 @@ const Todo = ({
   onChange,
   onKeyDown,
 }) => (
-  <li style={style} className={className}>
+  <li style={style} className={classnames(className, { completed, editing })}>
     <div className="view">
       <input
         className="toggle"
