@@ -21,3 +21,12 @@ export const clearNew = reaction((action, store) => {
 export const setNew = reaction((action, store) => {
   store.ui.newTodo.set(action.payload)
 })
+
+export const remove = reaction((action, store) => {
+  store.data.todos.remove(action.payload)
+})
+
+export const complete = reaction((action, store) => {
+  const todo = store.data.todos.get(action.payload)
+  store.data.todos.add({ ...todo, completed: !todo.completed })
+})
