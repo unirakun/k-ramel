@@ -4,12 +4,19 @@ import { onlyUpdateForPropTypes } from 'recompose'
 import classnames from 'classnames'
 
 const Footer = ({
+  // style
   style,
   className,
+  // data
   todos,
   todosLeft,
   todosCompleted,
+  filter,
+  // callbacks
   onClearCompleted,
+  onClickAll,
+  onClickCompleted,
+  onClickActive,
 }) => {
   if (todos === 0) return null
   return (
@@ -19,13 +26,13 @@ const Footer = ({
       </span>
       <ul className="filters">
         <li>
-          <a className="selected">All</a>
+          <a className={classnames({ selected: filter === 'all' })} onClick={onClickAll}>All</a>
         </li>
         <li>
-          <a>Active</a>
+          <a className={classnames({ selected: filter === 'active' })} onClick={onClickActive}>Active</a>
         </li>
         <li>
-          <a>Completed</a>
+          <a className={classnames({ selected: filter === 'completed' })} onClick={onClickCompleted}>Completed</a>
         </li>
       </ul>
       {todosCompleted > 0 &&
@@ -38,21 +45,35 @@ const Footer = ({
 }
 
 Footer.propTypes = {
+  // style
   style: PropTypes.object,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  // data
   todos: PropTypes.number,
   todosLeft: PropTypes.number,
   todosCompleted: PropTypes.number,
+  filter: PropTypes.string,
+  // callbacks
   onClearCompleted: PropTypes.func,
+  onClickAll: PropTypes.func,
+  onClickCompleted: PropTypes.func,
+  onClickActive: PropTypes.func,
 }
 
 Footer.defaultProps = {
+  // style
   style: undefined,
   className: undefined,
+  // data
   todos: 0,
   todosLeft: 0,
   todosCompleted: 0,
+  filter: 'all',
+  // callbacks
   onClearCompleted: undefined,
+  onClickAll: undefined,
+  onClickCompleted: undefined,
+  onClickActive: undefined,
 }
 
 export default onlyUpdateForPropTypes(Footer)
