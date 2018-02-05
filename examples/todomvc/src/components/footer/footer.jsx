@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { onlyUpdateForPropTypes } from 'recompose'
+import classnames from 'classnames'
 
 const Footer = ({
   style,
@@ -18,13 +19,13 @@ const Footer = ({
       </span>
       <ul className="filters">
         <li>
-          All
+          <a className="selected">All</a>
         </li>
         <li>
-          Active
+          <a>Active</a>
         </li>
         <li>
-          Completed
+          <a>Completed</a>
         </li>
       </ul>
       {todosCompleted > 0 &&
