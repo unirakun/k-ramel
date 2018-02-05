@@ -9,6 +9,5 @@ export default [
   when('@@ui/TODO_ON_REMOVE')(todos.remove),
   when('@@ui/TODO_ON_COMPLETE')(todos.toggleComplete),
   when('@@ui/FOOTER_ON_CLEAR_COMPLETED')(todos.clearCompleted),
-  when(/SET_TODOS/)(footer.updateCounts),
-  when(/UPDATE_TODOS/)(footer.updateCounts),
+  when(/@@krf\/.*_TODOS/)(footer.updateCounts),
 ]
