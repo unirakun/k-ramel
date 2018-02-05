@@ -1,7 +1,7 @@
 import { reaction } from 'k-simple-state'
 
 export const updateCounts = reaction((action, store) => {
-  const todos = store.data.todos.getAsArray()
+  const todos = store.data.todos.all.getAsArray()
 
   // numbers
   const { length } = todos
