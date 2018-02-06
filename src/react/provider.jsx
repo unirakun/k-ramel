@@ -13,6 +13,10 @@ export default store => WrappedComponent => class extends Component {
     return { store }
   }
 
+  componentWillMount() {
+    store.dispatch('@@kst/INIT')
+  }
+
   render() {
     return <WrappedComponent {...this.props} />
   }
