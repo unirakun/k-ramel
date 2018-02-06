@@ -1,4 +1,4 @@
-export default (listeners) => {
+export default (listeners, drivers) => {
   // k-simple-state store
   let innerStore
 
@@ -13,7 +13,7 @@ export default (listeners) => {
       const res = next(action)
 
       // trigger listeners
-      listeners.forEach((listener) => { listener(action, innerStore) })
+      listeners.forEach((listener) => { listener(action, innerStore, drivers) })
 
       // return action result
       return res

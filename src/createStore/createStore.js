@@ -11,11 +11,21 @@ const defaultOptions = {
   listeners: undefined,
   devtools: true,
   name: 'store',
+  drivers: {
+    http: (...args) => fetch(...args),
+  },
 }
 
 export default (definition, options = defaultOptions) => {
   // options
-  const innerOptions = { ...defaultOptions, ...options }
+  const innerOptions = {
+    ...defaultOptions,
+    ...options,
+    drivers: {
+      ...defaultOptions.drivers,
+      ...options.drivers,
+    },
+  }
   const { init, hideRedux } = innerOptions
 
   // this is reducer exports (action/selectors)

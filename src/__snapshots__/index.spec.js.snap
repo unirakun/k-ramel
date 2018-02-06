@@ -411,6 +411,9 @@ Array [
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
+  Object {
+    "http": [Function],
+  },
 ]
 `;
 
@@ -427,6 +430,9 @@ Array [
     "replaceReducer": [Function],
     "subscribe": [Function],
     Symbol(observable): [Function],
+  },
+  Object {
+    "http": [Function],
   },
 ]
 `;
@@ -445,6 +451,9 @@ Array [
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
+  Object {
+    "http": [Function],
+  },
 ]
 `;
 
@@ -462,6 +471,9 @@ Array [
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
+  Object {
+    "http": [Function],
+  },
 ]
 `;
 
@@ -471,6 +483,16 @@ Object {
     "config": "this is dispatched !",
     "saved": "SET_CONFIG is triggered :)",
   },
+}
+`;
+
+exports[`listen middleware should give drivers 1`] = `
+Object {
+  "dumbDriver": Array [
+    Array [
+      "I am called with a dumb driver",
+    ],
+  ],
 }
 `;
 
