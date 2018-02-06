@@ -102,6 +102,7 @@
     },
     "rules": {
       "import/no-extraneous-dependencies": "off",
+      "import/prefer-default-export": "off",
       "semi": [
         2,
         "never"
