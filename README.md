@@ -45,16 +45,16 @@ All options are optionals to keep the default usage as simple as possible.
 TODO
 
 ## Examples
-### Simple one, with k-redux-factory
+### Create a simple store
 ```js
-import { createStore } from 'k-simple-state'
+import { createStore, keyValue } from 'k-simple-state'
 
 // create a store of todos
 const store = createStore({
-  todos: { type: 'keyValue', key: 'id' },
+  todos: keyValue({ key: 'id' }),
 })
 
-// this next line will dispatch a k-redux-factory action and update the store
+// dispatch an action and update the store in one line, without k-simple-state inner reducer
 store.todos.add({ id: 2, label: 'write a better README' })
 
 // you can retrieve data like that
@@ -62,18 +62,7 @@ const todo = store.todos.get(2)
 ```
 
 ### Connect it with ReactJS
-1. Create a store
-
-**store.js**
-```js
-import { createStore, keyValue } from 'k-simple-state'
-
-export default createStore({
-  todos: keyValue({ key: 'id' }),
-})
-```
-
-2. Provide the store to React context
+1. Provide this store to React context
 
 **app.jsx**
 ```js
@@ -87,7 +76,7 @@ const App = () => <TodosContainer />
 export default provider(store)(App)
 ```
 
-3. Use `inject` to interact with the store, wrap your `<Todos />` graphical component in a container
+2. Use `inject` to interact with the store, wrap your `<Todos />` graphical component in a container
 
 **todos.container.js**
 ```js
