@@ -1,5 +1,21 @@
 version: 2
 jobs:
+  lockfile:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - cache-lockfile-{{ checksum "package.json" }}
+            - cache-lockfile
+      - run: 'sudo yarn global add greenkeeper-lockfile@1'
+      - run: 'greenkeeper-lockfile-update'
+      - run: 'greenkeeper-lockfile-upload'
+      - save_cache:
+          key: cache-lockfile-{{ checksum "package.json" }}
+          paths:
+            - ~/.cache/yarn
   debug:
     docker:
       - image: circleci/node:latest
@@ -20,5 +36,16 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+            - ~/.cache/yarn
           key: dependencies-{{ checksum "package.json" }}
       - run: yarn ci
+
+workflows:
+  version: 2
+  workflow_name:
+    jobs:
+      - debug
+      - lockfile
+      - build:
+          requires:
+            - lockfile
