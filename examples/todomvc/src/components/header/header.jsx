@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { onlyUpdateForPropTypes } from 'recompose'
+import cn from 'classnames'
 
 const Header = ({
   style,
@@ -9,7 +10,7 @@ const Header = ({
   onKeyDown,
   onChange,
 }) => (
-  <header style={style} className={`header ${className}`}>
+  <header style={style} className={cn('header', className)}>
     <h1>todos</h1>
     <input
       className="new-todo"

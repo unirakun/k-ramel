@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { onlyUpdateForPropTypes } from 'recompose'
+import cn from 'classnames'
 import Todo from '../todo'
 
 const Todos = ({
@@ -24,7 +25,7 @@ const Todos = ({
         <label onClick={onCompleteAll} />
       </Fragment>
     }
-    <ul style={style} className={`todo-list ${className}`}>
+    <ul style={style} className={cn('todo-list', className)}>
       {todos.map(id => <Todo key={id} id={id} />)}
     </ul>
   </section>
@@ -43,8 +44,8 @@ Todos.propTypes = {
 
 Todos.defaultProps = {
   // style
-  style: {},
-  className: '',
+  style: undefined,
+  className: undefined,
   // data
   todos: [],
   allCompleted: false,
