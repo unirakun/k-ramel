@@ -2946,10 +2946,6 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoc-react-loader@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/hoc-react-loader/-/hoc-react-loader-6.3.0.tgz#2f5e8ae373a12dfe78fc175ff42b444ca38ef226"
-
 hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
