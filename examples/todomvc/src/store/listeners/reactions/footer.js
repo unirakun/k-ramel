@@ -2,10 +2,11 @@ import { reaction } from 'k-simple-state'
 
 export const updateCounts = reaction((action, store) => {
   const todos = store.data.todos.all.getAsArray()
+  const completedTodos = store.data.todos.all.getBy('completed', true)
 
-  // numbers
+  // count todos
   const { length } = todos
-  const completed = todos.filter(todo => !!todo.completed).length
+  const completed = completedTodos.length
   const left = length - completed
 
   // store it
