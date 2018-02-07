@@ -21,7 +21,12 @@ export default (root) => {
 
     // - leaf
     if (type) { // k-redux-factory
-      return factory({ name, path, ...options })
+      return factory({
+        name,
+        path,
+        prefix: (path && path.replace(/\./g, '_')) || '',
+        ...options,
+      })
     } else if (typeof options === 'function') { // custom reducer
       return options
     }

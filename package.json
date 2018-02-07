@@ -15,7 +15,7 @@
     "ci": "npm-run-all --parallel lint coveralls"
   },
   "dependencies": {
-    "k-redux-factory": "^4.3.0",
+    "k-redux-factory": "^5.0.0",
     "redux": "^3.7.2"
   },
   "devDependencies": {

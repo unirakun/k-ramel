@@ -370,7 +370,7 @@ Object {
       Object {
         "action": Object {
           "payload": "new",
-          "type": "@@krf/SET_NEWTODO",
+          "type": "@@krf/SET>UI_SCREENS>NEWTODO",
         },
         "state": Object {
           "data": Object {
@@ -412,7 +412,7 @@ exports[`listen middleware should catch action -function- 1`] = `
 Array [
   Object {
     "payload": "this is dispatched !",
-    "type": "@@krf/SET_CONFIG",
+    "type": "@@krf/SET>CONFIG",
   },
   Object {
     "config": [Function],
@@ -429,7 +429,7 @@ exports[`listen middleware should catch action -regexp- 1`] = `
 Array [
   Object {
     "payload": "this is dispatched !",
-    "type": "@@krf/SET_CONFIG",
+    "type": "@@krf/SET>CONFIG",
   },
   Object {
     "config": [Function],
@@ -449,7 +449,7 @@ exports[`listen middleware should catch action decorated by reaction hof 1`] = `
 Array [
   Object {
     "payload": "this is dispatched !",
-    "type": "@@krf/SET_CONFIG",
+    "type": "@@krf/SET>CONFIG",
   },
   Object {
     "config": [Function],
@@ -469,7 +469,7 @@ exports[`listen middleware should catch action decorated by reaction hof, DSL wa
 Array [
   Object {
     "payload": "this is dispatched !",
-    "type": "@@krf/SET_CONFIG",
+    "type": "@@krf/SET>CONFIG",
   },
   Object {
     "config": [Function],
@@ -489,7 +489,7 @@ exports[`listen middleware should catch action decorated by reaction hof, DSL wa
 Array [
   Object {
     "payload": "this is dispatched !",
-    "type": "@@krf/SET_CONFIG",
+    "type": "@@krf/SET>CONFIG",
   },
   Object {
     "config": [Function],
