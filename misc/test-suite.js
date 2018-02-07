@@ -478,4 +478,42 @@ export default (lib) => {
       }).toMatchSnapshot()
     })
   })
+
+  describe('dispatch', () => {
+    const customReducer = (state = '', action) => {
+      switch (action.type) {
+        case 'SET_DUMB': return 'ok !'
+        default: return state
+      }
+    }
+    const newStore = () => createStore({ dumb: customReducer })
+
+    it('should dispatch a classic action', () => {
+      const store = newStore()
+
+      const before = store.getState()
+      const dispatch = store.dispatch({ type: 'SET_DUMB' })
+      const after = store.getState()
+
+      expect({
+        before,
+        dispatch,
+        after,
+      }).toMatchSnapshot()
+    })
+
+    it('should dispatch string as a classic redux action', () => {
+      const store = newStore()
+
+      const before = store.getState()
+      const dispatch = store.dispatch('SET_DUMB')
+      const after = store.getState()
+
+      expect({
+        before,
+        dispatch,
+        after,
+      }).toMatchSnapshot()
+    })
+  })
 }

@@ -52,6 +52,13 @@ export default (definition, options = defaultOptions) => {
     ...reduxStore,
   }
 
+  // custom dispatch
+  const reduxDispatch = store.dispatch
+  store.dispatch = (action, ...args) => {
+    if (typeof action === 'string') return reduxDispatch({ type: action })
+    return reduxDispatch(action, ...args)
+  }
+
   // pass store to listen (after it has been created)
   if (listen) listen.setStore(store)
 
