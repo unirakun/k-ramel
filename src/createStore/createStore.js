@@ -12,7 +12,7 @@ const defaultOptions = {
   devtools: true,
   name: 'store',
   drivers: {
-    http: (...args) => fetch(...args),
+    http: (global || window).fetch,
   },
 }
 

@@ -440,7 +440,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": [Function],
+    "http": undefined,
   },
 ]
 `;
@@ -460,7 +460,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": [Function],
+    "http": undefined,
   },
 ]
 `;
@@ -480,7 +480,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": [Function],
+    "http": undefined,
   },
 ]
 `;
@@ -500,7 +500,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": [Function],
+    "http": undefined,
   },
 ]
 `;
