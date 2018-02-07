@@ -21,9 +21,15 @@ export default store => name => async (url, options = {}, ...args) => {
       data = await raw.json()
     }
   } catch (ex) {
-    dispatch('FAILED', ex)
-  } finally {
-    dispatch('ENDED', data, raw.status)
+    dispatch('FAILED', ex, (raw || {}).status)
+    return ex
+  }
+
+  const { status } = raw
+  if (status >= 400 || status < 200) {
+    dispatch('FAILED', data, status)
+  } else {
+    dispatch('ENDED', data, status)
   }
 
   return data
