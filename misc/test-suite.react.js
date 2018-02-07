@@ -16,14 +16,18 @@ export default (lib) => {
   } = lib
 
   describe('react', () => {
-    it('should provide store as context', () => {
-      const store = { this: 'is my store' }
+    it('should provide store as context and dispatch an INIT event', () => {
+      const dispatch = jest.fn()
+      const store = { this: 'is my store', dispatch }
       const App = (props, context) => <div>{JSON.stringify(context.store)}</div>
       App.contextTypes = { store: () => null }
       const Provided = provider(store)(App)
       const wrapper = mount(<Provided />)
 
-      expect(wrapper.html()).toMatchSnapshot()
+      expect({
+        html: wrapper.html(),
+        dispatch: dispatch.mock.calls,
+      }).toMatchSnapshot()
     })
 
     it('should inject store to a component', () => {
