@@ -9,7 +9,7 @@ export default [
   when('@@ui/TODO_ON_REMOVE')(todos.remove),
   when('@@ui/TODO_ON_COMPLETE')(todos.toggleComplete),
   when('@@ui/FOOTER_ON_CLEAR_COMPLETED')(todos.clearCompleted),
-  when(/@@krf\/.*_ALL/)(footer.updateCounts),
-  when(/@@krf\/.*_ALL/)(todos.updateViews),
+  when(/@@krf\/.*_DATA\.TODOS\.ALL/)(footer.updateCounts),
+  when(/@@krf\/.*_DATA\.TODOS\.ALL/)(todos.updateViews),
   when('@@ui/HEADER_ON_COMPLETE_ALL')(todos.completeAll),
 ]
