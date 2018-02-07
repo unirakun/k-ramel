@@ -71,6 +71,147 @@ Object {
 }
 `;
 
+exports[`drivers http should fetch data and calls json() 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "result": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should fetch data and dispatch a FAILED 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "status": 404,
+          "url": "http://google.fr",
+        },
+        "status": 404,
+        "type": "@@http/GOOGLE>GET>FAILED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {},
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should safely fail to parse json 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": [Error: oups-json-http://google.fr],
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>FAILED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should safely fail to request 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": [Error: oups-http://google.fr],
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>FAILED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {},
+    ],
+  ],
+}
+`;
+
 exports[`k-simple-state with helpers should initialized 1`] = `
 Object {
   "data": Object {
