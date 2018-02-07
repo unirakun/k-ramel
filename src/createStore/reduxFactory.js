@@ -24,7 +24,7 @@ export default (root) => {
       return factory({
         name,
         path,
-        prefix: `${path ? '>' : ''}${path ? path.replace(/\./g, '_') : ''}${path ? '>' : ''}`,
+        prefix: `${path ? path.replace(/\./g, '_') : ''}${path ? '>' : ''}`,
         ...options,
       })
     } else if (typeof options === 'function') { // custom reducer
