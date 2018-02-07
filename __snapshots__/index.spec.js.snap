@@ -370,7 +370,7 @@ Object {
       Object {
         "action": Object {
           "payload": "new",
-          "type": "@@krf/SET_NEWTODO",
+          "type": "@@krf/SET_|UI_SCREENS|NEWTODO",
         },
         "state": Object {
           "data": Object {
