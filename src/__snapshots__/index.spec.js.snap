@@ -9,6 +9,34 @@ Object {
 }
 `;
 
+exports[`dispatch should dispatch a classic action 1`] = `
+Object {
+  "after": Object {
+    "dumb": "ok !",
+  },
+  "before": Object {
+    "dumb": "",
+  },
+  "dispatch": Object {
+    "type": "SET_DUMB",
+  },
+}
+`;
+
+exports[`dispatch should dispatch string as a classic redux action 1`] = `
+Object {
+  "after": Object {
+    "dumb": "ok !",
+  },
+  "before": Object {
+    "dumb": "",
+  },
+  "dispatch": Object {
+    "type": "SET_DUMB",
+  },
+}
+`;
+
 exports[`k-simple-state with helpers should initialized 1`] = `
 Object {
   "data": Object {

@@ -6,6 +6,6 @@ import App from './app'
 
 export default compose(
   provider(store),
-  inject(st => ({ load: () => { st.dispatch({ type: '@@ui/APP_LOADED' }) } })),
+  inject(st => ({ load: () => { st.dispatch('@@ui/APP_LOADED') } })),
   loader(),
 )(App)
