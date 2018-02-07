@@ -37,6 +37,40 @@ Object {
 }
 `;
 
+exports[`drivers http should fetch data an trigger common events 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "json": [Function],
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {},
+    ],
+  ],
+}
+`;
+
 exports[`k-simple-state with helpers should initialized 1`] = `
 Object {
   "data": Object {
@@ -440,7 +474,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": undefined,
+    "http": [Function],
   },
 ]
 `;
@@ -460,7 +494,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": undefined,
+    "http": [Function],
   },
 ]
 `;
@@ -480,7 +514,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": undefined,
+    "http": [Function],
   },
 ]
 `;
@@ -500,7 +534,7 @@ Array [
     Symbol(observable): [Function],
   },
   Object {
-    "http": undefined,
+    "http": [Function],
   },
 ]
 `;
