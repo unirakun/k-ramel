@@ -229,7 +229,7 @@ export default (lib) => {
       }, {
         enhancer: compose(applyMiddleware(() => next => action => next(action))),
         listeners: [
-          when(/SET_CONFIG/)(spyCatch),
+          when(/SET>CONFIG/)(spyCatch),
         ],
       })
 
@@ -273,8 +273,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          when(/SET_CONFIG/)(spyCatch),
-          when(/OUPS_CONFIG/)(spyNoCatch),
+          when(/SET>CONFIG/)(spyCatch),
+          when(/OUPS>CONFIG/)(spyNoCatch),
         ],
       })
 
@@ -292,8 +292,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          when('@@krf/SET_CONFIG')(spyCatch),
-          when('@@oups/SET_CONFIG')(spyCatch),
+          when('@@krf/SET>CONFIG')(spyCatch),
+          when('@@oups/SET>CONFIG')(spyCatch),
         ],
       })
 
@@ -352,8 +352,8 @@ export default (lib) => {
         saved: { type: 'simpleObject' },
       }, {
         listeners: [
-          when(/SET_SAVED/)(spy),
-          when(/SET_CONFIG/)((action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
+          when(/SET>SAVED/)(spy),
+          when(/SET>CONFIG/)((action, innerStore) => { innerStore.saved.set('SET_CONFIG is triggered :)') }),
         ],
       })
 
@@ -372,8 +372,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          when(/SET_CONFIG/)(reaction(spyCatch)),
-          when(/OUPS_CONFIG/)(reaction(spyNoCatch)),
+          when(/SET>CONFIG/)(reaction(spyCatch)),
+          when(/OUPS>CONFIG/)(reaction(spyNoCatch)),
         ],
       })
 
@@ -391,8 +391,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          spyCatch.when(/SET_CONFIG/),
-          spyNoCatch.when(/OUPS_CONFIG/),
+          spyCatch.when(/SET>CONFIG/),
+          spyNoCatch.when(/OUPS>CONFIG/),
         ],
       })
 
@@ -413,8 +413,8 @@ export default (lib) => {
         config: { type: 'simpleObject' },
       }, {
         listeners: [
-          spyCatch.when(/SET_CONFIG/),
-          spyNoCatch.when(/OUPS_CONFIG/),
+          spyCatch.when(/SET>CONFIG/),
+          spyNoCatch.when(/OUPS>CONFIG/),
         ],
       })
 
