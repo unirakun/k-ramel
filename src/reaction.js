@@ -18,12 +18,12 @@ const isMatching = (action, store) => matcher => ( // test matching
   )
 )
 
-export const when = (...matchers) => callback => (action, store) => {
+export const when = (...matchers) => callback => (action, store, drivers) => {
   const match = matchers
     .map(isMatching(action, store))
     .reduce((acc, curr) => acc && curr, true)
 
-  if (match) return callback(action, store)
+  if (match) return callback(action, store, drivers)
   return false
 }
 

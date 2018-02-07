@@ -199,6 +199,29 @@ export default (lib) => {
   })
 
   describe('listen middleware', () => {
+    it('should give drivers', () => {
+      const dumbDriver = jest.fn()
+
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          when('DISPATCHED')((action, st, drivers) => {
+            drivers.dumbDriver('I am called with a dumb driver')
+          }),
+        ],
+        drivers: {
+          dumbDriver,
+        },
+      })
+
+      store.dispatch({ type: 'DISPATCHED' })
+
+      expect({
+        dumbDriver: dumbDriver.mock.calls,
+      }).toMatchSnapshot()
+    })
+
     it('should works with others middlewares', () => {
       const spyCatch = jest.fn()
       const store = createStore({
