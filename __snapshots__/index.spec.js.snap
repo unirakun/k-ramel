@@ -212,7 +212,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with helpers should initialized 1`] = `
+exports[`k-ramel with helpers should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -230,7 +230,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with helpers should instanciate a keyValue reducer 1`] = `
+exports[`k-ramel with helpers should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -266,7 +266,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with helpers should instanciate a simpleObject reducer 1`] = `
+exports[`k-ramel with helpers should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -287,7 +287,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with plain object should initialized 1`] = `
+exports[`k-ramel with plain object should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -305,7 +305,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with plain object should instanciate a keyValue reducer 1`] = `
+exports[`k-ramel with plain object should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -341,7 +341,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with plain object should instanciate a simpleObject reducer 1`] = `
+exports[`k-ramel with plain object should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -362,7 +362,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with raw reducers should dispatch action to the raw reducer 1`] = `
+exports[`k-ramel with raw reducers should dispatch action to the raw reducer 1`] = `
 Object {
   "config": "new config",
   "state": Object {
@@ -384,7 +384,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with raw reducers should initialized 1`] = `
+exports[`k-ramel with raw reducers should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
@@ -403,7 +403,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with raw reducers should instanciate a keyValue reducer 1`] = `
+exports[`k-ramel with raw reducers should instanciate a keyValue reducer 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -440,7 +440,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state with raw reducers should instanciate a simpleObject reducer 1`] = `
+exports[`k-ramel with raw reducers should instanciate a simpleObject reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -462,7 +462,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state without custom options hide redux should dispatch action 1`] = `
+exports[`k-ramel without custom options hide redux should dispatch action 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -498,7 +498,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state without custom options hide redux should not mutate the state 1`] = `
+exports[`k-ramel without custom options hide redux should not mutate the state 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -518,7 +518,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state without custom options init should init the state 1`] = `
+exports[`k-ramel without custom options init should init the state 1`] = `
 Object {
   "state": Object {
     "data": Object {
@@ -538,7 +538,7 @@ Object {
 }
 `;
 
-exports[`k-simple-state without custom options middlewares should call middlewares 1`] = `
+exports[`k-ramel without custom options middlewares should call middlewares 1`] = `
 Object {
   "spy": Array [
     Array [

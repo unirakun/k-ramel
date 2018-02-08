@@ -1,4 +1,4 @@
-import { provider } from 'k-simple-state/react'
+import { provider } from 'k-ramel/react'
 import store from './store'
 import App from './app'
 

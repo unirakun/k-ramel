@@ -5,7 +5,7 @@ import uglify from 'rollup-plugin-uglify'
 export default {
   input: 'src/react/index.js',
   output: {
-    name: 'k-simple-state-react',
+    name: 'k-ramel-react',
     file: 'react.js',
     format: process.env.FORMAT || 'umd',
     sourcemap: 'react.js',

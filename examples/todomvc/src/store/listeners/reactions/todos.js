@@ -1,4 +1,4 @@
-import { reaction } from 'k-simple-state'
+import { reaction } from 'k-ramel'
 
 export const load = reaction((action, store) => {
   store.data.todos.all.set([
