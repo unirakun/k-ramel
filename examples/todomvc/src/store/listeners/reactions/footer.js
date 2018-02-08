@@ -1,4 +1,4 @@
-import { reaction } from 'k-simple-state'
+import { reaction } from 'k-ramel'
 
 export const updateCounts = reaction((action, store) => {
   const todos = store.data.todos.all.getAsArray()

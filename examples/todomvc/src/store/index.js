@@ -1,4 +1,4 @@
-import { createStore, simpleObject, keyValue } from 'k-simple-state'
+import { createStore, simpleObject, keyValue } from 'k-ramel'
 import listeners from './listeners'
 
 export default createStore(

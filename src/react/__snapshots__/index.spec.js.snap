@@ -6,7 +6,7 @@ exports[`react should provide store as context and dispatch an INIT event 1`] = 
 Object {
   "dispatch": Array [
     Array [
-      "@@kst/INIT",
+      "@@krml/INIT",
     ],
   ],
   "html": "<div>{\\"this\\":\\"is my store\\"}</div>",

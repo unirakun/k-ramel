@@ -1,8 +1,8 @@
-import { when } from 'k-simple-state'
+import { when } from 'k-ramel'
 import { todos, footer } from './reactions'
 
 export default [
-  when('@@kst/INIT')(todos.load),
+  when('@@krml/INIT')(todos.load),
   when('@@ui/ADD_TODO_KEYDOWN', action => action.payload === 13)(todos.add),
   when('@@ui/ADD_TODO_KEYDOWN', action => action.payload === 27)(todos.clearNew),
   when('@@ui/ADD_TODO_CHANGE')(todos.setNew),

@@ -1,8 +1,8 @@
 export default (listeners, drivers) => {
-  // k-simple-state store
+  // k-ramel store
   let innerStore
 
-  // k-simple-state drivers (enhanced with store)
+  // k-ramel drivers (enhanced with store)
   let innerDrivers
 
   return {

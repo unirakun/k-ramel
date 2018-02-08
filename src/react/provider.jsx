@@ -14,7 +14,7 @@ export default store => WrappedComponent => class extends Component {
   }
 
   componentWillMount() {
-    store.dispatch('@@kst/INIT')
+    store.dispatch('@@krml/INIT')
   }
 
   render() {

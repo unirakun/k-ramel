@@ -11,7 +11,7 @@ export default (lib) => {
     reactions,
   } = lib
 
-  describe('k-simple-state', () => {
+  describe('k-ramel', () => {
     const simpleTests = (getStore) => {
       it('should initialized', () => {
         const store = getStore()
