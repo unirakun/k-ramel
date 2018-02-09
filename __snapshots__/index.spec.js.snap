@@ -65,7 +65,9 @@ Object {
   "fetch": Array [
     Array [
       "http://google.fr",
-      Object {},
+      Object {
+        "headers": Object {},
+      },
     ],
   ],
 }
@@ -138,7 +140,9 @@ Object {
   "fetch": Array [
     Array [
       "http://google.fr",
-      Object {},
+      Object {
+        "headers": Object {},
+      },
     ],
   ],
 }
@@ -206,7 +210,9 @@ Object {
   "fetch": Array [
     Array [
       "http://google.fr",
-      Object {},
+      Object {
+        "headers": Object {},
+      },
     ],
   ],
 }
