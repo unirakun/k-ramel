@@ -525,6 +525,114 @@ export default (lib) => {
         if (window) window.fetch = fetch
       })
 
+      it('should stringify data but not override content-type', async () => {
+        // mock
+        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        (global || window).fetch = mockedFetch
+
+        // dispatch spy
+        const spy = jest.fn()
+
+        // wait
+        let resolver
+        const wait = new Promise((resolve) => { resolver = resolve })
+
+        // store
+        const store = createStore({
+          config: { type: 'simpleObject' },
+        }, {
+          listeners: [
+            when('DISPATCHED')(async (action, st, { http }) => {
+              await http('GOOGLE').post('http://google.fr', { some: 'data' }, { headers: { 'Content-Type': 'my-contentType' } })
+              resolver()
+            }),
+            when(() => true)(action => spy(action)),
+          ],
+        })
+
+        // dispatch event
+        store.dispatch({ type: 'DISPATCHED' })
+        await wait
+
+        // assert
+        expect({
+          dispatch: spy.mock.calls,
+          fetch: mockedFetch.mock.calls,
+        }).toMatchSnapshot()
+      })
+
+      it('should stringify data with method helper', async () => {
+        // mock
+        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        (global || window).fetch = mockedFetch
+
+        // dispatch spy
+        const spy = jest.fn()
+
+        // wait
+        let resolver
+        const wait = new Promise((resolve) => { resolver = resolve })
+
+        // store
+        const store = createStore({
+          config: { type: 'simpleObject' },
+        }, {
+          listeners: [
+            when('DISPATCHED')(async (action, st, { http }) => {
+              await http('GOOGLE').post('http://google.fr', { some: 'data' })
+              resolver()
+            }),
+            when(() => true)(action => spy(action)),
+          ],
+        })
+
+        // dispatch event
+        store.dispatch({ type: 'DISPATCHED' })
+        await wait
+
+        // assert
+        expect({
+          dispatch: spy.mock.calls,
+          fetch: mockedFetch.mock.calls,
+        }).toMatchSnapshot()
+      })
+
+      it('should works with method helper (OPTIONS)', async () => {
+        // mock
+        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        (global || window).fetch = mockedFetch
+
+        // dispatch spy
+        const spy = jest.fn()
+
+        // wait
+        let resolver
+        const wait = new Promise((resolve) => { resolver = resolve })
+
+        // store
+        const store = createStore({
+          config: { type: 'simpleObject' },
+        }, {
+          listeners: [
+            when('DISPATCHED')(async (action, st, { http }) => {
+              await http('GOOGLE').options('http://google.fr')
+              resolver()
+            }),
+            when(() => true)(action => spy(action)),
+          ],
+        })
+
+        // dispatch event
+        store.dispatch({ type: 'DISPATCHED' })
+        await wait
+
+        // assert
+        expect({
+          dispatch: spy.mock.calls,
+          fetch: mockedFetch.mock.calls,
+        }).toMatchSnapshot()
+      })
+
       it('should set authorization header', async () => {
         // mock
         const mockedFetch = jest.fn(() => Promise.resolve({}));
