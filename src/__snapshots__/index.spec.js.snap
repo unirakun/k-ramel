@@ -214,6 +214,21 @@ Object {
 }
 `;
 
+exports[`drivers http should set authorization header 1`] = `
+Object {
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {
+          "Authorization": "Bearer <my-token>",
+        },
+      },
+    ],
+  ],
+}
+`;
+
 exports[`k-ramel with helpers should initialized 1`] = `
 Object {
   "data": Object {

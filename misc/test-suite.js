@@ -525,6 +525,41 @@ export default (lib) => {
         if (window) window.fetch = fetch
       })
 
+      it('should set authorization header', async () => {
+        // mock
+        const mockedFetch = jest.fn(() => Promise.resolve({}));
+        (global || window).fetch = mockedFetch
+
+        // wait
+        let resolver
+        const wait = new Promise((resolve) => { resolver = resolve })
+
+        // store
+        const store = createStore({
+          config: { type: 'simpleObject' },
+        }, {
+          listeners: [
+            when('SET_HEADER')(async (action, st, { http }) => {
+              http.setAuthorization('Bearer <my-token>')
+              resolver()
+            }),
+            when('DISPATCHED')(async (action, st, { http }) => {
+              await http('GOOGLE')('http://google.fr')
+              resolver()
+            }),
+          ],
+        })
+
+        store.dispatch({ type: 'SET_HEADER' })
+        store.dispatch({ type: 'DISPATCHED' })
+        await wait
+
+        // assert
+        expect({
+          fetch: mockedFetch.mock.calls,
+        }).toMatchSnapshot()
+      })
+
       it('should safely fail to parse json', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({
