@@ -8,7 +8,6 @@ export default (store) => {
     // options
     const { method = 'GET' } = options
     const headers = { ...innerHeaders, ...options.headers }
-    const type = headers['Content-Type'] || ''
     const innerOptions = { ...options, headers }
 
     // dispatcher
@@ -22,7 +21,7 @@ export default (store) => {
       raw = await (global || window).fetch(url, innerOptions, ...args)
       data = raw
 
-      if (type.includes('json')) {
+      if (raw.headers && raw.headers.get('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
         data = await raw.json()
       }
     } catch (ex) {

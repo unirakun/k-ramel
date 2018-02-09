@@ -528,6 +528,7 @@ export default (lib) => {
       it('should safely fail to parse json', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({
+          headers: { get: () => 'application/json' },
           json: () => { throw new Error(`oups-json-${url}`) },
         }));
         (global || window).fetch = mockedFetch
@@ -545,7 +546,7 @@ export default (lib) => {
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr', { headers: { 'Content-Type': 'application/json' } })
+              await http('GOOGLE')('http://google.fr')
               resolver()
             }),
             when(() => true)(action => spy(action)),
@@ -642,6 +643,7 @@ export default (lib) => {
       it('should fetch data and calls json()', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({
+          headers: { get: () => 'application/json' },
           json: () => Promise.resolve({ result: url }),
         }));
         (global || window).fetch = mockedFetch
@@ -659,7 +661,7 @@ export default (lib) => {
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr', { headers: { 'Content-Type': 'application/json' } })
+              await http('GOOGLE')('http://google.fr')
               resolver()
             }),
             when(() => true)(action => spy(action)),

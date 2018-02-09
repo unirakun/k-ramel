@@ -102,9 +102,7 @@ Object {
     Array [
       "http://google.fr",
       Object {
-        "headers": Object {
-          "Content-Type": "application/json",
-        },
+        "headers": Object {},
       },
     ],
   ],
@@ -175,9 +173,7 @@ Object {
     Array [
       "http://google.fr",
       Object {
-        "headers": Object {
-          "Content-Type": "application/json",
-        },
+        "headers": Object {},
       },
     ],
   ],
