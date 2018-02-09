@@ -65,7 +65,9 @@ Object {
   "fetch": Array [
     Array [
       "http://google.fr",
-      Object {},
+      Object {
+        "headers": Object {},
+      },
     ],
   ],
 }
@@ -100,9 +102,7 @@ Object {
     Array [
       "http://google.fr",
       Object {
-        "headers": Object {
-          "Content-Type": "application/json",
-        },
+        "headers": Object {},
       },
     ],
   ],
@@ -138,7 +138,9 @@ Object {
   "fetch": Array [
     Array [
       "http://google.fr",
-      Object {},
+      Object {
+        "headers": Object {},
+      },
     ],
   ],
 }
@@ -171,9 +173,7 @@ Object {
     Array [
       "http://google.fr",
       Object {
-        "headers": Object {
-          "Content-Type": "application/json",
-        },
+        "headers": Object {},
       },
     ],
   ],
@@ -206,7 +206,24 @@ Object {
   "fetch": Array [
     Array [
       "http://google.fr",
-      Object {},
+      Object {
+        "headers": Object {},
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should set authorization header 1`] = `
+Object {
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {
+          "Authorization": "Bearer <my-token>",
+        },
+      },
     ],
   ],
 }
