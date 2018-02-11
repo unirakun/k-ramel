@@ -17,6 +17,37 @@ export default (lib) => {
   } = lib
 
   describe('react', () => {
+    it('should works with undefined listeners', () => {
+      // store
+      const add = jest.fn()
+      const remove = jest.fn()
+      const store = {
+        listeners: {
+          add,
+          remove,
+        },
+      }
+
+      // tested component
+      const DummyComponent = () => <div>Dummy</div>
+      const WrappedComponent = withListeners()(DummyComponent)
+
+      // mount
+      const wrapper = mount(<WrappedComponent />, { context: { store } })
+      expect(wrapper.find('div').text()).toEqual('Dummy')
+      expect(add.mock.calls.length).toBe(1)
+      expect(remove.mock.calls.length).toBe(0)
+
+      // unmount
+      wrapper.unmount()
+      expect(add.mock.calls.length).toBe(1)
+      expect(remove.mock.calls.length).toBe(1)
+
+      // listeners are in call
+      expect(add.mock.calls[0][0]).toEqual([])
+      expect(remove.mock.calls[0][0]).toEqual([])
+    })
+
     it('should add listeners at mount', () => {
       // store
       const add = jest.fn()
