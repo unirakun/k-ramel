@@ -11,15 +11,11 @@ export default (options) => {
   enhancer = addDevTools(options)
 
   // add custom listeners extension
-  if (listeners) {
-    const listen = listenFactory(listeners, drivers)
+  const listen = listenFactory(listeners, drivers)
 
-    // add this middleware to enhancer
-    const middleware = applyMiddleware(listen.middleware)
-    if (enhancer) return { enhancer: compose(middleware, enhancer), listen }
+  // add this middleware to enhancer
+  const middleware = applyMiddleware(listen.middleware)
+  if (enhancer) return { enhancer: compose(middleware, enhancer), listen }
 
-    return { enhancer: middleware, listen }
-  }
-
-  return { enhancer }
+  return { enhancer: middleware, listen }
 }
