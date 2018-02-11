@@ -13,9 +13,42 @@ export default (lib) => {
   const {
     provider,
     inject,
+    withListeners,
   } = lib
 
   describe('react', () => {
+    it('should add listeners at mount', () => {
+      // store
+      const add = jest.fn()
+      const remove = jest.fn()
+      const store = {
+        listeners: {
+          add,
+          remove,
+        },
+      }
+
+      // tested component
+      const DummyComponent = () => <div>Dummy</div>
+      const listeners = [() => { console.log('listen1') }, () => { console.log('listen2') }]
+      const WrappedComponent = withListeners(listeners)(DummyComponent)
+
+      // mount
+      const wrapper = mount(<WrappedComponent />, { context: { store } })
+      expect(wrapper.find('div').text()).toEqual('Dummy')
+      expect(add.mock.calls.length).toBe(1)
+      expect(remove.mock.calls.length).toBe(0)
+
+      // unmount
+      wrapper.unmount()
+      expect(add.mock.calls.length).toBe(1)
+      expect(remove.mock.calls.length).toBe(1)
+
+      // listeners are in call
+      expect(add.mock.calls[0][0]).toBe(listeners)
+      expect(remove.mock.calls[0][0]).toBe(listeners)
+    })
+
     it('should provide store as context and dispatch an INIT event', () => {
       const dispatch = jest.fn()
       const store = { this: 'is my store', dispatch }
