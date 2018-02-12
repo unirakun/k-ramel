@@ -4,7 +4,7 @@ import getWrappedDisplayName from './getWrappedDisplayName'
 const defaultListeners = []
 
 export default (listeners = defaultListeners) => WrappedComponent => class extends Component {
-  static displayName = `withListeners(${getWrappedDisplayName(WrappedComponent)}`
+  static displayName = `listen(${getWrappedDisplayName(WrappedComponent)}`
 
   static contextTypes = {
     store: () => null, // this is to avoid importing prop-types

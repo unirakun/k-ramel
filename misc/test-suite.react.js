@@ -13,7 +13,7 @@ export default (lib) => {
   const {
     provider,
     inject,
-    withListeners,
+    listen,
   } = lib
 
   describe('react', () => {
@@ -30,7 +30,7 @@ export default (lib) => {
 
       // tested component
       const DummyComponent = () => <div>Dummy</div>
-      const WrappedComponent = withListeners()(DummyComponent)
+      const WrappedComponent = listen()(DummyComponent)
 
       // mount
       const wrapper = mount(<WrappedComponent />, { context: { store } })
@@ -62,7 +62,7 @@ export default (lib) => {
       // tested component
       const DummyComponent = () => <div>Dummy</div>
       const listeners = [() => { console.log('listen1') }, () => { console.log('listen2') }]
-      const WrappedComponent = withListeners(listeners)(DummyComponent)
+      const WrappedComponent = listen(listeners)(DummyComponent)
 
       // mount
       const wrapper = mount(<WrappedComponent />, { context: { store } })
