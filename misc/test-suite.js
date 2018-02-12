@@ -199,6 +199,36 @@ export default (lib) => {
   })
 
   describe('listen middleware', () => {
+    it('should add listeners after creation and root ones should works', () => {
+      const spyCatchRoot = jest.fn()
+      const spyCatch = jest.fn()
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          when('@@krf/SET>CONFIG')(spyCatchRoot),
+          when('@@oups/SET>CONFIG')(spyNoCatch),
+        ],
+      })
+
+      // add listeners
+      const listeners = [
+        when('@@krf/SET>CONFIG')(spyCatch),
+        when('@@oups/SET>CONFIG')(spyNoCatch),
+      ]
+      store.listeners.add(listeners)
+      store.config.set('this is dispatched !')
+
+      // remove listeners
+      store.listeners.remove(listeners)
+      store.config.set('this is dispatched !')
+
+      expect(spyCatchRoot.mock.calls.length).toBe(2)
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+    })
+
     it('should give drivers', () => {
       const dumbDriver = jest.fn()
 

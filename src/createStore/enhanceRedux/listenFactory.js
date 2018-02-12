@@ -1,9 +1,12 @@
-export default (listeners, drivers) => {
+export default (rootListeners = [], drivers) => {
   // k-ramel store
   let innerStore
 
   // k-ramel drivers (enhanced with store)
   let innerDrivers
+
+  // k-ramel listners
+  let innerListeners = [rootListeners]
 
   return {
     // this setter is needed since the middleware is pass to redux
@@ -18,13 +21,26 @@ export default (listeners, drivers) => {
         )
     },
 
+    // this is to add new listeners
+    addListeners: (listeners) => {
+      innerListeners = [...innerListeners, listeners]
+    },
+
+    // this is to remove listeners
+    removeListeners: (listeners) => {
+      innerListeners = innerListeners.filter(l => l !== listeners)
+    },
+
     // redux middleware
     middleware: () => next => (action) => {
       // dispatch action
       const res = next(action)
 
       // trigger listeners
-      listeners.forEach((listener) => { listener(action, innerStore, innerDrivers) })
+      innerListeners
+        .forEach((listeners) => {
+          listeners.forEach((listener) => { listener(action, innerStore, innerDrivers) })
+        })
 
       // return action result
       return res

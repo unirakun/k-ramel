@@ -49,6 +49,10 @@ export default (definition, options = defaultOptions) => {
   const store = {
     ...reducerTree,
     ...reduxStore,
+    listeners: {
+      add: listen.addListeners,
+      remove: listen.removeListeners,
+    },
   }
 
   // custom dispatch
@@ -59,7 +63,7 @@ export default (definition, options = defaultOptions) => {
   }
 
   // pass store to listen (after it has been created)
-  if (listen) listen.setStore(store)
+  listen.setStore(store)
 
   return store
 }
