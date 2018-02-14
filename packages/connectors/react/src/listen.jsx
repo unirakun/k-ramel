@@ -3,22 +3,37 @@ import getWrappedDisplayName from './getWrappedDisplayName'
 
 const defaultListeners = []
 
-export default (listeners = defaultListeners) => WrappedComponent => class extends Component {
-  static displayName = `listen(${getWrappedDisplayName(WrappedComponent)}`
+const toActionFactory = (name) => {
+  const suffix = `${name ? '>' : ''}${name || ''}`
+  return type => `@@krm/LISTENERS>${type}${suffix}`
+}
 
-  static contextTypes = {
-    store: () => null, // this is to avoid importing prop-types
-  }
+export default (listeners = defaultListeners, name) => (WrappedComponent) => {
+  const toAction = toActionFactory(name)
 
-  componentWillMount() {
-    this.context.store.listeners.add(listeners)
-  }
+  return class extends Component {
+    static displayName = `listen(${getWrappedDisplayName(WrappedComponent)}`
 
-  componentWillUnmount() {
-    this.context.store.listeners.remove(listeners)
-  }
+    static contextTypes = {
+      store: () => null, // this is to avoid importing prop-types
+    }
 
-  render() {
-    return <WrappedComponent {...this.props} />
+    componentWillMount() {
+      const { store } = this.context
+
+      store.listeners.add(listeners)
+      store.dispatch(toAction('ADDED'))
+    }
+
+    componentWillUnmount() {
+      const { store } = this.context
+
+      store.dispatch(toAction('REMOVING'))
+      store.listeners.remove(listeners)
+    }
+
+    render() {
+      return <WrappedComponent {...this.props} />
+    }
   }
 }

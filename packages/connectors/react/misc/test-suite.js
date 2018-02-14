@@ -21,11 +21,13 @@ export default (lib) => {
       // store
       const add = jest.fn()
       const remove = jest.fn()
+      const dispatch = jest.fn()
       const store = {
         listeners: {
           add,
           remove,
         },
+        dispatch,
       }
 
       // tested component
@@ -48,15 +50,47 @@ export default (lib) => {
       expect(remove.mock.calls[0][0]).toEqual([])
     })
 
+    it('should dispatch events at mount with a given name', () => {
+      // store
+      const dispatch = jest.fn()
+      const store = {
+        listeners: {
+          add: jest.fn(),
+          remove: jest.fn(),
+        },
+        dispatch,
+      }
+
+      // tested component
+      const DummyComponent = () => <div>Dummy</div>
+      const listeners = []
+      const WrappedComponent = listen(listeners, 'my-name')(DummyComponent)
+
+      // mount
+      const wrapper = mount(<WrappedComponent />, { context: { store } })
+      expect(dispatch.mock.calls.length).toBe(1)
+
+      // unmount
+      wrapper.unmount()
+      expect(dispatch.mock.calls.length).toBe(2)
+
+      // snap dispatched action
+      expect({
+        dispatch: dispatch.mock.calls,
+      }).toMatchSnapshot()
+    })
+
     it('should add listeners at mount', () => {
       // store
       const add = jest.fn()
       const remove = jest.fn()
+      const dispatch = jest.fn()
       const store = {
         listeners: {
           add,
           remove,
         },
+        dispatch,
       }
 
       // tested component
@@ -69,15 +103,22 @@ export default (lib) => {
       expect(wrapper.find('div').text()).toEqual('Dummy')
       expect(add.mock.calls.length).toBe(1)
       expect(remove.mock.calls.length).toBe(0)
+      expect(dispatch.mock.calls.length).toBe(1)
 
       // unmount
       wrapper.unmount()
       expect(add.mock.calls.length).toBe(1)
       expect(remove.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls.length).toBe(2)
 
       // listeners are in call
       expect(add.mock.calls[0][0]).toBe(listeners)
       expect(remove.mock.calls[0][0]).toBe(listeners)
+
+      // snap dispatched action
+      expect({
+        dispatch: dispatch.mock.calls,
+      }).toMatchSnapshot()
     })
 
     it('should provide store as context and dispatch an INIT event', () => {
