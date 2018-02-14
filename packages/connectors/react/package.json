@@ -15,6 +15,8 @@
     "ci": "npm-run-all --parallel lint coveralls"
   },
   "devDependencies": {
-    "k-ramel": "^0.7.0"
+    "k-ramel": "^0.7.0",
+    "cross-env": "5.1.3",
+    "eslint": "4.17.0"
   }
 }
