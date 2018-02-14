@@ -1,23 +1,26 @@
 {
-  "name": "k-ramel",
-  "version": "0.7.0",
+  "name": "@krml/workspace",
+  "private": true,
+  "version": "0.1.0",
   "main": "index.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build:core": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
-    "build:react": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.react.js",
-    "build": "npm-run-all --parallel build:*",
-    "lint:js": "eslint --ext js src",
-    "lint": "npm-run-all --parallel lint:*",
-    "test": "jest",
-    "coveralls": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx} && cat ./coverage/lcov.info | coveralls",
-    "ci": "npm-run-all --parallel lint coveralls"
+    "build:core": "echo TODO",
+    "build:react": "echo TODO",
+    "build": "echo TODO",
+    "lint:js": "echo TODO",
+    "lint": "echo TODO",
+    "test": "jest --projects",
+    "coveralls": "echo TODO",
+    "ci": "echo TODO"
   },
-  "dependencies": {
-    "k-redux-factory": "5.0.1",
-    "redux": "3.7.2"
-  },
+  "workspaces": [
+    "packages/k-ramel",
+    "packages/drivers/*",
+    "packages/connectors/*",
+    "examples/*"
+  ],
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
@@ -38,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.6.1",
     "jest": "22.2.2",
+    "lodash": "^4.17.5",
     "npm-run-all": "4.1.2",
     "react": "16.2.0",
     "react-dom": "16.2.0",
@@ -110,6 +114,7 @@
     }
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./misc/test-setup.js"
+    "setupTestFrameworkScriptFile": "./misc/test-setup.js",
+    "testEnvironment": "node"
   }
 }

@@ -1,0 +1,83 @@
+{
+  "name": "k-ramel",
+  "version": "0.7.0",
+  "main": "index.js",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:core": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
+    "build:react": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.react.js",
+    "build": "npm-run-all --parallel build:*",
+    "lint:js": "eslint --ext js src",
+    "lint": "npm-run-all --parallel lint:*",
+    "test": "jest",
+    "coveralls": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx} && cat ./coverage/lcov.info | coveralls",
+    "ci": "npm-run-all --parallel lint coveralls"
+  },
+  "dependencies": {
+    "k-redux-factory": "5.0.1",
+    "redux": "3.7.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ],
+    "env": {
+      "build": {
+        "plugins": [
+          "external-helpers",
+          "transform-class-properties",
+          "transform-react-jsx",
+          "transform-object-rest-spread"
+        ]
+      },
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "modules": false
+            }
+          ]
+        ],
+        "plugins": [
+          "transform-es2015-modules-commonjs",
+          "transform-object-rest-spread",
+          "transform-react-jsx",
+          "transform-class-properties"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb"
+    ],
+    "plugins": [
+      "babel"
+    ],
+    "globals": {
+      "fetch": false
+    },
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": "off",
+      "import/prefer-default-export": "off",
+      "semi": [
+        2,
+        "never"
+      ]
+    }
+  }
+}

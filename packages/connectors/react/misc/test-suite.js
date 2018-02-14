@@ -7,7 +7,7 @@
 */
 import React from 'react'
 import { mount } from 'enzyme'
-import { createStore } from '../index'
+import { createStore } from 'k-ramel'
 
 export default (lib) => {
   const {

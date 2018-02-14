@@ -1,0 +1,20 @@
+{
+  "name": "@krml/react",
+  "version": "0.7.0",
+  "main": "index.js",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:core": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
+    "build:react": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.react.js",
+    "build": "npm-run-all --parallel build:*",
+    "lint:js": "eslint --ext js src",
+    "lint": "npm-run-all --parallel lint:*",
+    "test": "jest",
+    "coveralls": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx} && cat ./coverage/lcov.info | coveralls",
+    "ci": "npm-run-all --parallel lint coveralls"
+  },
+  "devDependencies": {
+    "k-ramel": "^0.7.0"
+  }
+}
