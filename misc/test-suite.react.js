@@ -21,11 +21,13 @@ export default (lib) => {
       // store
       const add = jest.fn()
       const remove = jest.fn()
+      const dispatch = jest.fn()
       const store = {
         listeners: {
           add,
           remove,
         },
+        dispatch,
       }
 
       // tested component
@@ -52,11 +54,13 @@ export default (lib) => {
       // store
       const add = jest.fn()
       const remove = jest.fn()
+      const dispatch = jest.fn()
       const store = {
         listeners: {
           add,
           remove,
         },
+        dispatch,
       }
 
       // tested component

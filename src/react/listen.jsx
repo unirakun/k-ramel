@@ -3,6 +3,8 @@ import getWrappedDisplayName from './getWrappedDisplayName'
 
 const defaultListeners = []
 
+const toAction = () => type => `@@krm/LISTENERS>${type}`
+
 export default (listeners = defaultListeners) => WrappedComponent => class extends Component {
   static displayName = `listen(${getWrappedDisplayName(WrappedComponent)}`
 
@@ -11,11 +13,19 @@ export default (listeners = defaultListeners) => WrappedComponent => class exten
   }
 
   componentWillMount() {
-    this.context.store.listeners.add(listeners)
+    const { store } = this.context
+
+    store.dispatch(toAction('ADDING'))
+    store.listeners.add(listeners)
+    store.dispatch(toAction('ADDED'))
   }
 
   componentWillUnmount() {
-    this.context.store.listeners.remove(listeners)
+    const { store } = this.context
+
+    store.dispatch(toAction('REMOVING'))
+    store.listeners.remove(listeners)
+    store.dispatch(toAction('REMOVED'))
   }
 
   render() {
