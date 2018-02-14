@@ -1,0 +1,18 @@
+{
+  "name": "k-ramel",
+  "version": "0.7.0",
+  "main": "index.js",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "description": "State manager for you components apps, the safe and easy way.",
+  "repository": "https://github.com/alakarteio/k-ramel",
+  "license": "MIT",
+  "dependencies": {
+    "k-redux-factory": "5.0.1",
+    "redux": "3.7.2",
+    "@k-ramel/driver-http": "0.7.0"
+  },
+  "devDependencies": {
+    "cross-env": "5.1.3",
+    "eslint": "4.17.0"
+  }
+}

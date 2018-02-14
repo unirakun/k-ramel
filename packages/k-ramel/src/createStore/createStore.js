@@ -1,9 +1,9 @@
 import { createStore } from 'redux'
+import http from '@k-ramel/driver-http'
 import reduxFactory from './reduxFactory'
 import toContext from './toContext'
 import combine from './combine'
 import enhanceRedux from './enhanceRedux'
-import drivers from './drivers'
 
 const defaultOptions = {
   hideRedux: true,
@@ -12,7 +12,9 @@ const defaultOptions = {
   listeners: undefined,
   devtools: true,
   name: 'store',
-  drivers,
+  drivers: {
+    http,
+  },
 }
 
 export default (definition, options = defaultOptions) => {
