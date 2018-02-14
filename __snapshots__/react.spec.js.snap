@@ -4,16 +4,10 @@ exports[`react should add listeners at mount 1`] = `
 Object {
   "dispatch": Array [
     Array [
-      "@@krm/LISTENERS>ADDING",
-    ],
-    Array [
       "@@krm/LISTENERS>ADDED",
     ],
     Array [
       "@@krm/LISTENERS>REMOVING",
-    ],
-    Array [
-      "@@krm/LISTENERS>REMOVED",
     ],
   ],
 }
@@ -23,16 +17,10 @@ exports[`react should dispatch events at mount with a given name 1`] = `
 Object {
   "dispatch": Array [
     Array [
-      "@@krm/LISTENERS>ADDING>my-name",
-    ],
-    Array [
       "@@krm/LISTENERS>ADDED>my-name",
     ],
     Array [
       "@@krm/LISTENERS>REMOVING>my-name",
-    ],
-    Array [
-      "@@krm/LISTENERS>REMOVED>my-name",
     ],
   ],
 }

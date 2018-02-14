@@ -68,11 +68,11 @@ export default (lib) => {
 
       // mount
       const wrapper = mount(<WrappedComponent />, { context: { store } })
-      expect(dispatch.mock.calls.length).toBe(2)
+      expect(dispatch.mock.calls.length).toBe(1)
 
       // unmount
       wrapper.unmount()
-      expect(dispatch.mock.calls.length).toBe(4)
+      expect(dispatch.mock.calls.length).toBe(2)
 
       // snap dispatched action
       expect({
@@ -103,13 +103,13 @@ export default (lib) => {
       expect(wrapper.find('div').text()).toEqual('Dummy')
       expect(add.mock.calls.length).toBe(1)
       expect(remove.mock.calls.length).toBe(0)
-      expect(dispatch.mock.calls.length).toBe(2)
+      expect(dispatch.mock.calls.length).toBe(1)
 
       // unmount
       wrapper.unmount()
       expect(add.mock.calls.length).toBe(1)
       expect(remove.mock.calls.length).toBe(1)
-      expect(dispatch.mock.calls.length).toBe(4)
+      expect(dispatch.mock.calls.length).toBe(2)
 
       // listeners are in call
       expect(add.mock.calls[0][0]).toBe(listeners)

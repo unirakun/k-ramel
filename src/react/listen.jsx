@@ -21,7 +21,6 @@ export default (listeners = defaultListeners, name) => (WrappedComponent) => {
     componentWillMount() {
       const { store } = this.context
 
-      store.dispatch(toAction('ADDING'))
       store.listeners.add(listeners)
       store.dispatch(toAction('ADDED'))
     }
@@ -31,7 +30,6 @@ export default (listeners = defaultListeners, name) => (WrappedComponent) => {
 
       store.dispatch(toAction('REMOVING'))
       store.listeners.remove(listeners)
-      store.dispatch(toAction('REMOVED'))
     }
 
     render() {
