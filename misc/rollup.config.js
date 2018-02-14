@@ -14,9 +14,12 @@ export default {
     format: process.env.FORMAT || 'umd',
     sourcemap: path.resolve(pkg.main),
     globals: {
+      react: 'React',
       redux: 'Redux',
       'k-redux-factory': 'k-redux-factory',
       lodash: '_',
+      'fbjs/lib/shallowEqual': 'fbjs/lib/shallowEqual',
+      '@k-ramel/driver-http': '@k-ramel/driver-http',
     },
   },
   plugins: [
@@ -27,5 +30,12 @@ export default {
     }),
     uglify(),
   ],
-  external: ['k-redux-factory', 'redux', 'lodash'],
+  external: [
+    '@k-ramel/driver-http',
+    'fbjs/lib/shallowEqual',
+    'react',
+    'k-redux-factory',
+    'redux',
+    'lodash',
+  ],
 }

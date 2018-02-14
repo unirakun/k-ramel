@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "k-redux-factory": "5.0.1",
-    "redux": "3.7.2"
+    "redux": "3.7.2",
+    "@k-ramel/driver-http": "0.7.0"
   },
   "babel": {
     "presets": [

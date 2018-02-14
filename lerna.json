@@ -1,0 +1,20 @@
+{
+  "lerna": "2.8.0",
+  "packages": [
+    "packages/k-ramel",
+    "packages/drivers/*",
+    "packages/connectors/*",
+    "examples/*"
+  ],
+  "version": "0.0.0",
+  "npmClient": "yarn",
+  "npmClientArgs": [
+    "--production",
+    "--no-optional"
+  ],
+  "command": {
+    "init": {
+      "exact": true
+    }
+  }
+}
