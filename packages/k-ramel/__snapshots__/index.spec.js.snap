@@ -1,0 +1,944 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`bugs should works with first level reducers 1`] = `
+Object {
+  "label": "yeah it works",
+  "state": Object {
+    "label": "yeah it works",
+  },
+}
+`;
+
+exports[`dispatch should dispatch a classic action 1`] = `
+Object {
+  "after": Object {
+    "dumb": "ok !",
+  },
+  "before": Object {
+    "dumb": "",
+  },
+  "dispatch": Object {
+    "type": "SET_DUMB",
+  },
+}
+`;
+
+exports[`dispatch should dispatch string as a classic redux action 1`] = `
+Object {
+  "after": Object {
+    "dumb": "ok !",
+  },
+  "before": Object {
+    "dumb": "",
+  },
+  "dispatch": Object {
+    "type": "SET_DUMB",
+  },
+}
+`;
+
+exports[`drivers http should fetch data an trigger common events 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "json": [Function],
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should fetch data and calls json() 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "result": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should fetch data and dispatch a FAILED 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "status": 404,
+          "url": "http://google.fr",
+        },
+        "status": 404,
+        "type": "@@http/GOOGLE>GET>FAILED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should safely fail to parse json 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": [Error: oups-json-http://google.fr],
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>FAILED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should safely fail to request 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": [Error: oups-http://google.fr],
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>FAILED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should set authorization header 1`] = `
+Object {
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {
+          "Authorization": "Bearer <my-token>",
+        },
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should stringify data but not override content-type 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>POST>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "options": Object {
+            "body": "{\\"some\\":\\"data\\"}",
+            "headers": Object {
+              "Content-Type": "my-contentType",
+            },
+            "method": "POST",
+          },
+          "url": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>POST>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "body": "{\\"some\\":\\"data\\"}",
+        "headers": Object {
+          "Content-Type": "my-contentType",
+        },
+        "method": "POST",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should stringify data with method helper 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>POST>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "options": Object {
+            "body": "{\\"some\\":\\"data\\"}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "POST",
+          },
+          "url": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>POST>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "body": "{\\"some\\":\\"data\\"}",
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers http should works with method helper (OPTIONS) 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>OPTIONS>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "payload": Object {
+          "options": Object {
+            "headers": Object {},
+            "method": "OPTIONS",
+          },
+          "url": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>OPTIONS>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+        "method": "OPTIONS",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`k-ramel with helpers should initialized 1`] = `
+Object {
+  "data": Object {
+    "todos": Object {
+      "array": Array [],
+      "data": Object {},
+      "initialized": false,
+      "keys": Array [],
+    },
+  },
+  "ui": Object {
+    "screens": Object {
+      "newTodo": Object {},
+    },
+  },
+}
+`;
+
+exports[`k-ramel with helpers should instanciate a keyValue reducer 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [
+          Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        ],
+        "data": Object {
+          "2": Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        },
+        "initialized": true,
+        "keys": Array [
+          2,
+        ],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+  "todo": Object {
+    "id": 2,
+    "label": "find a name",
+  },
+}
+`;
+
+exports[`k-ramel with helpers should instanciate a simpleObject reducer 1`] = `
+Object {
+  "label": "finish tests",
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "finish tests",
+      },
+    },
+  },
+}
+`;
+
+exports[`k-ramel with plain object should initialized 1`] = `
+Object {
+  "data": Object {
+    "todos": Object {
+      "array": Array [],
+      "data": Object {},
+      "initialized": false,
+      "keys": Array [],
+    },
+  },
+  "ui": Object {
+    "screens": Object {
+      "newTodo": Object {},
+    },
+  },
+}
+`;
+
+exports[`k-ramel with plain object should instanciate a keyValue reducer 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [
+          Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        ],
+        "data": Object {
+          "2": Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        },
+        "initialized": true,
+        "keys": Array [
+          2,
+        ],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+  "todo": Object {
+    "id": 2,
+    "label": "find a name",
+  },
+}
+`;
+
+exports[`k-ramel with plain object should instanciate a simpleObject reducer 1`] = `
+Object {
+  "label": "finish tests",
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "finish tests",
+      },
+    },
+  },
+}
+`;
+
+exports[`k-ramel with raw reducers should dispatch action to the raw reducer 1`] = `
+Object {
+  "config": "new config",
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "config": "new config",
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`k-ramel with raw reducers should initialized 1`] = `
+Object {
+  "data": Object {
+    "todos": Object {
+      "array": Array [],
+      "data": Object {},
+      "initialized": false,
+      "keys": Array [],
+    },
+  },
+  "ui": Object {
+    "config": "defaultState",
+    "screens": Object {
+      "newTodo": Object {},
+    },
+  },
+}
+`;
+
+exports[`k-ramel with raw reducers should instanciate a keyValue reducer 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [
+          Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        ],
+        "data": Object {
+          "2": Object {
+            "id": 2,
+            "label": "find a name",
+          },
+        },
+        "initialized": true,
+        "keys": Array [
+          2,
+        ],
+      },
+    },
+    "ui": Object {
+      "config": "defaultState",
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+  "todo": Object {
+    "id": 2,
+    "label": "find a name",
+  },
+}
+`;
+
+exports[`k-ramel with raw reducers should instanciate a simpleObject reducer 1`] = `
+Object {
+  "label": "finish tests",
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "config": "defaultState",
+      "screens": Object {
+        "newTodo": "finish tests",
+      },
+    },
+  },
+}
+`;
+
+exports[`k-ramel without custom options hide redux should dispatch action 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [
+          Object {
+            "id": "3",
+            "label": "hide-redux",
+          },
+        ],
+        "data": Object {
+          "3": Object {
+            "id": "3",
+            "label": "hide-redux",
+          },
+        },
+        "initialized": true,
+        "keys": Array [
+          "3",
+        ],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+  "todo": Object {
+    "id": "3",
+    "label": "hide-redux",
+  },
+}
+`;
+
+exports[`k-ramel without custom options hide redux should not mutate the state 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": Object {},
+      },
+    },
+  },
+}
+`;
+
+exports[`k-ramel without custom options init should init the state 1`] = `
+Object {
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "initial value!",
+      },
+    },
+  },
+}
+`;
+
+exports[`k-ramel without custom options middlewares should call middlewares 1`] = `
+Object {
+  "spy": Array [
+    Array [
+      Object {
+        "action": Object {
+          "payload": "new",
+          "type": "@@krf/SET>UI_SCREENS>NEWTODO",
+        },
+        "state": Object {
+          "data": Object {
+            "todos": Object {
+              "array": Array [],
+              "data": Object {},
+              "initialized": false,
+              "keys": Array [],
+            },
+          },
+          "ui": Object {
+            "screens": Object {
+              "newTodo": Object {},
+            },
+          },
+        },
+      },
+    ],
+  ],
+  "state": Object {
+    "data": Object {
+      "todos": Object {
+        "array": Array [],
+        "data": Object {},
+        "initialized": false,
+        "keys": Array [],
+      },
+    },
+    "ui": Object {
+      "screens": Object {
+        "newTodo": "new",
+      },
+    },
+  },
+}
+`;
+
+exports[`listen middleware should catch action -function- 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET>CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "listeners": Object {
+      "add": [Function],
+      "remove": [Function],
+    },
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch action -regexp- 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET>CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "listeners": Object {
+      "add": [Function],
+      "remove": [Function],
+    },
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+  Object {
+    "http": [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch action decorated by reaction hof 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET>CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "listeners": Object {
+      "add": [Function],
+      "remove": [Function],
+    },
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+  Object {
+    "http": [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch action decorated by reaction hof, DSL way 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET>CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "listeners": Object {
+      "add": [Function],
+      "remove": [Function],
+    },
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+  Object {
+    "http": [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch action decorated by reaction hof, DSL way, with multiple keys 1`] = `
+Array [
+  Object {
+    "payload": "this is dispatched !",
+    "type": "@@krf/SET>CONFIG",
+  },
+  Object {
+    "config": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "listeners": Object {
+      "add": [Function],
+      "remove": [Function],
+    },
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    Symbol(observable): [Function],
+  },
+  Object {
+    "http": [Function],
+  },
+]
+`;
+
+exports[`listen middleware should catch and dispatch a new action 1`] = `
+Object {
+  "state": Object {
+    "config": "this is dispatched !",
+    "saved": "SET_CONFIG is triggered :)",
+  },
+}
+`;
+
+exports[`listen middleware should give drivers 1`] = `
+Object {
+  "dumbDriver": Array [
+    Array [
+      "I am called with a dumb driver",
+    ],
+  ],
+}
+`;
+
+exports[`listen middleware should still dispatch events 1`] = `
+Object {
+  "config": "this is dispatched !",
+  "state": Object {
+    "config": "this is dispatched !",
+  },
+}
+`;
+
+exports[`redux devtools should add redux devtools to middlewares [w name, w enhancer] 1`] = `
+Object {
+  "devToolsEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+  "devToolsExtension": Array [
+    Array [
+      Object {
+        "name": "my-store",
+      },
+    ],
+  ],
+  "otherEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+}
+`;
+
+exports[`redux devtools should add redux devtools to middlewares [w name, w/o enhancer] 1`] = `
+Object {
+  "devToolsEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+  "devToolsExtension": Array [
+    Array [
+      Object {
+        "name": "my-store",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`redux devtools should add redux devtools to middlewares [w/o name, w/o enhancer] 1`] = `
+Object {
+  "devToolsEnhancer": Array [
+    Array [
+      [Function],
+    ],
+  ],
+  "devToolsExtension": Array [
+    Array [
+      Object {
+        "name": "store",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`redux devtools should not add redux devtools to middlewares 1`] = `
+Object {
+  "devToolsEnhancer": Array [],
+  "devToolsExtension": Array [],
+}
+`;
