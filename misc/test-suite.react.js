@@ -73,15 +73,22 @@ export default (lib) => {
       expect(wrapper.find('div').text()).toEqual('Dummy')
       expect(add.mock.calls.length).toBe(1)
       expect(remove.mock.calls.length).toBe(0)
+      expect(dispatch.mock.calls.length).toBe(2)
 
       // unmount
       wrapper.unmount()
       expect(add.mock.calls.length).toBe(1)
       expect(remove.mock.calls.length).toBe(1)
+      expect(dispatch.mock.calls.length).toBe(4)
 
       // listeners are in call
       expect(add.mock.calls[0][0]).toBe(listeners)
       expect(remove.mock.calls[0][0]).toBe(listeners)
+
+      // snap dispatched action
+      expect({
+        dispatch: dispatch.mock.calls,
+      }).toMatchSnapshot()
     })
 
     it('should provide store as context and dispatch an INIT event', () => {

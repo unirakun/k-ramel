@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`react should add listeners at mount 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      "@@krm/LISTENERS>ADDING",
+    ],
+    Array [
+      "@@krm/LISTENERS>ADDED",
+    ],
+    Array [
+      "@@krm/LISTENERS>REMOVING",
+    ],
+    Array [
+      "@@krm/LISTENERS>REMOVED",
+    ],
+  ],
+}
+`;
+
 exports[`react should inject store to a component 1`] = `"<div>a label</div>"`;
 
 exports[`react should provide store as context and dispatch an INIT event 1`] = `

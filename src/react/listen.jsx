@@ -3,7 +3,7 @@ import getWrappedDisplayName from './getWrappedDisplayName'
 
 const defaultListeners = []
 
-const toAction = () => type => `@@krm/LISTENERS>${type}`
+const toAction = type => `@@krm/LISTENERS>${type}`
 
 export default (listeners = defaultListeners) => WrappedComponent => class extends Component {
   static displayName = `listen(${getWrappedDisplayName(WrappedComponent)}`
