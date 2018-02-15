@@ -121,5 +121,9 @@
       "!**/node_modules/**",
       "!examples/**"
     ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

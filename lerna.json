@@ -7,11 +7,6 @@
     "examples/*"
   ],
   "version": "0.0.0",
-  "npmClient": "yarn",
-  "npmClientArgs": [
-    "--production",
-    "--no-optional"
-  ],
   "command": {
     "init": {
       "exact": true
