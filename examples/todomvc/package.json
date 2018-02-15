@@ -1,16 +1,16 @@
 {
   "name": "todomvc",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "k-ramel": "^0.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.0",
     "recompose": "^0.26.0",
     "tinycolor2": "^1.4.1",
-    "todomvc-app-css": "^2.1.0",
-    "k-ramel": "^0.7.0"
+    "todomvc-app-css": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
