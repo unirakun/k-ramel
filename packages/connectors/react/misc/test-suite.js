@@ -151,6 +151,34 @@ export default (lib) => {
       expect(wrapper.find('div').html()).toMatchSnapshot()
     })
 
+    it('should not throw when using inject without params', () => {
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const Component = () => <div />
+      const WrappedComponent = inject()(Component)
+
+      // test
+      mount(<WrappedComponent />, { context: { store: testStore } })
+    })
+
+    it('should not throw when inject function return undefined', () => {
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const Component = () => <div />
+      const WrappedComponent = inject(() => {})(Component)
+
+      // test
+      mount(<WrappedComponent />, { context: { store: testStore } })
+    })
+
     it('should inject callbacks', () => {
       // store
       const testStore = createStore({
