@@ -23,8 +23,6 @@ export default (rootListeners = [], drivers, withDevTools) => {
         )
     },
 
-    getStore: () => innerStore,
-
     // this is to add new listeners
     addListeners: (listeners) => {
       innerListeners = [...innerListeners, listeners]
