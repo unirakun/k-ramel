@@ -33,8 +33,8 @@ export default (rootListeners = [], drivers) => {
 
 
     enhancer: (createStore) => {
-      const ListenEnhancer = (reducer, preloadedState, enhancer) => {
-        if (enhancer) return enhancer(ListenEnhancer)(reducer, preloadedState)
+      const listenEnhancer = (reducer, preloadedState, enhancer) => {
+        if (enhancer) return enhancer(listenEnhancer)(reducer, preloadedState)
 
         const innerReducer = (state, action) => {
           // trigger listeners in other javascript tick
@@ -52,7 +52,7 @@ export default (rootListeners = [], drivers) => {
         return createStore(innerReducer, preloadedState)
       }
 
-      return ListenEnhancer
+      return listenEnhancer
     },
   }
 }
