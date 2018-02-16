@@ -8,7 +8,7 @@
   "scripts": {
     "build": "lerna exec --parallel --scope @k-ramel/* --scope k-ramel -- yarn cross-env NODE_ENV=build rollup -c ${PWD}/misc/rollup.config.js",
     "lint": "lerna exec --parallel --scope @k-ramel/* --scope k-ramel -- eslint --ext js,jsx src",
-    "test": "jest --projects",
+    "test": "jest",
     "coveralls": "jest --projects --coverage && cat ./coverage/lcov.info | coveralls",
     "ci": "npm-run-all --parallel lint coveralls"
   },

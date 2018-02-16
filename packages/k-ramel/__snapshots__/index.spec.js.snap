@@ -534,6 +534,25 @@ Object {
 }
 `;
 
+exports[`listen middleware should dispatch an EXCEPTION action when reaction is on error 1`] = `
+Object {
+  "actions": Array [
+    Array [
+      Object {
+        "payload": Object {
+          "exception": [Error: Exception !],
+          "from": Object {
+            "payload": "this is dispatched !",
+            "type": "@@krf/SET>CONFIG",
+          },
+        },
+        "type": "@@krml/EXCEPTION",
+      },
+    ],
+  ],
+}
+`;
+
 exports[`listen middleware should give drivers 1`] = `
 Object {
   "dumbDriver": Array [
