@@ -28,6 +28,16 @@ Object {
 
 exports[`react should inject store to a component 1`] = `"<div>a label</div>"`;
 
+exports[`react should not throw an exception if no provider is part of parents 1`] = `
+Array [
+  Array [
+    "To use the inject function, one of the parents of this component needs to be a \`provider\`.
+Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs
+Error thrown from the call to \`inject\` for Component",
+  ],
+]
+`;
+
 exports[`react should provide store as context and dispatch an INIT event 1`] = `
 Object {
   "dispatch": Array [
