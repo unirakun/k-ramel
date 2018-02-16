@@ -31,8 +31,18 @@ export default injectFunction => WrappedComponent => class extends Component {
   }
 
   componentWillMount() {
+    const { store } = this.context
+
+    if (!store) {
+      // eslint-disable-next-line no-console
+      console.error('To use the inject function, one of the parents of this component needs to be a `provider`.\n' +
+          'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n' +
+          `Error thrown from the call to \`inject\` for ${getWrappedDisplayName(WrappedComponent)}`)
+      return
+    }
+
     // subscribe
-    this.unsubscribe = this.context.store.subscribe(() => {
+    this.unsubscribe = store.subscribe(() => {
       this.inject()
     })
 
