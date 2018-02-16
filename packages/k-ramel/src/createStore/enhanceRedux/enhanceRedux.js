@@ -1,21 +1,20 @@
-import { compose, applyMiddleware } from 'redux'
-import addDevTools from './addDevTools'
+import { compose } from 'redux'
+import getDevTools from './getDevTools'
 import listenFactory from './listenFactory'
 
 /* eslint-env browser */
 export default (options) => {
-  const { listeners, drivers } = options
-  let { enhancer } = options
-
-  // add redux-devtools extension (if necessary)
-  enhancer = addDevTools(options)
-
-  // add custom listeners extension
+  const { listeners, drivers, enhancer } = options
   const listen = listenFactory(listeners, drivers)
 
-  // add this middleware to enhancer
-  const middleware = applyMiddleware(listen.middleware)
-  if (enhancer) return { enhancer: compose(middleware, enhancer), listen }
+  const enhancers = [
+    listen.enhancer,
+    enhancer,
+    getDevTools(options),
+  ].filter(en => en !== undefined)
 
-  return { enhancer: middleware, listen }
+  return {
+    enhancer: compose(...enhancers),
+    listen,
+  }
 }
