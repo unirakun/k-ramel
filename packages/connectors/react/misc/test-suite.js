@@ -151,6 +151,29 @@ export default (lib) => {
       expect(wrapper.find('div').html()).toMatchSnapshot()
     })
 
+    it('should not throw an exception if no provider is part of parents', () => {
+      const { error } = console
+      /* eslint-disable no-console */
+      console.error = jest.fn()
+
+      // store
+      const testStore = createStore({
+        config: { type: 'simpleObject' },
+      })
+
+      // tested component
+      const Component = ({ label }) => <div>{label}</div>
+      const WrappedComponent = inject(store => ({ label: store.config.get() }))(Component)
+
+      // test
+      testStore.config.set('a label')
+      mount(<WrappedComponent />)
+      expect(console.error.mock.calls).toMatchSnapshot()
+
+      console.error = error
+      /* eslint-enable no-console */
+    })
+
     it('should inject callbacks', () => {
       // store
       const testStore = createStore({
