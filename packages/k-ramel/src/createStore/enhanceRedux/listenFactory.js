@@ -31,19 +31,28 @@ export default (rootListeners = [], drivers) => {
       innerListeners = innerListeners.filter(l => l !== listeners)
     },
 
-    // redux middleware
-    middleware: () => next => (action) => {
-      // dispatch action
-      const res = next(action)
 
-      // trigger listeners
-      innerListeners
-        .forEach((listeners) => {
-          listeners.forEach((listener) => { listener(action, innerStore, innerDrivers) })
-        })
+    enhancer: (createStore) => {
+      const ListenEnhancer = (reducer, preloadedState, enhancer) => {
+        if (enhancer) return enhancer(ListenEnhancer)(reducer, preloadedState)
 
-      // return action result
-      return res
+        const innerReducer = (state, action) => {
+          // trigger listeners in other javascript tick
+          // (so I am not dispatching inside a reducer, which is not accepter by redux)
+          setTimeout(() => {
+            innerListeners
+              .forEach((listeners) => {
+                listeners.forEach((listener) => { listener(action, innerStore, innerDrivers) })
+              })
+          }, 0)
+
+          // dispatch action
+          return reducer(state, action)
+        }
+        return createStore(innerReducer, preloadedState)
+      }
+
+      return ListenEnhancer
     },
   }
 }
