@@ -34,10 +34,15 @@ export default injectFunction => WrappedComponent => class extends Component {
     const { store } = this.context
 
     if (!store) {
+      const bold = 'font-weight: bolder; font-style: italic;'
       // eslint-disable-next-line no-console
-      console.error('To use the inject function, one of the parents of this component needs to be a `provider`.\n' +
-          'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n' +
-          `Error thrown from the call to \`inject\` for ${getWrappedDisplayName(WrappedComponent)}`)
+      console.error(
+        `[k-ramel/react] Error in %cinject%c for the component %c${getWrappedDisplayName(WrappedComponent)}%c\n` +
+        '\t> The store needs to be provided by an ancestor of this component.\n' +
+        '\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\n' +
+        'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n',
+        bold, '', bold, '', bold, '', bold, '', bold, '', bold, '',
+      )
       return
     }
 
