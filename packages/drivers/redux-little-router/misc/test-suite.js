@@ -68,8 +68,6 @@ export default (driver) => {
             {
               listeners: [
                 when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
-                  console.log(st.getState().router)
-                  console.log(router.getState())
                   spy(router.getState())
                 }),
               ],

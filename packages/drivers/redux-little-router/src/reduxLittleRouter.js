@@ -12,16 +12,6 @@ const isParentResultParam = (result, key, value) => {
   return isParentResultParam(result.parent, key, value)
 }
 
-const routeSelectors = (currentState = {}) => ({
-  getState: () => currentState,
-  getRouteParam: key => currentState.params && currentState.params[key],
-  getQueryParam: key => currentState.query && currentState.query[key],
-  getResultParam: key => currentState.result && currentState.result[key],
-  getParentResultParam: key => getParentResultParam(currentState.result, key),
-  isRoute: route => currentState.route === route,
-  isParentResultParam: (key, value) => isParentResultParam(currentState.result, key, value),
-})
-
 export default selector => ({ dispatch, getState }) => ({
   /* actions */
   push: path => dispatch(push(path)),
@@ -32,7 +22,11 @@ export default selector => ({ dispatch, getState }) => ({
   block: callback => dispatch(block(callback)),
   unblock: () => dispatch(unblock()),
   /* route selectors */
-  ...routeSelectors(selector(getState())),
-  /* previous route selectors */
-  getPreviousRoute: () => routeSelectors(selector(getState()).previous),
+  getState: () => selector(getState()),
+  getRouteParam: key => selector(getState()).params && selector(getState()).params[key],
+  getQueryParam: key => selector(getState()).query && selector(getState()).query[key],
+  getResultParam: key => selector(getState()).result && selector(getState()).result[key],
+  getParentResultParam: key => getParentResultParam(selector(getState()).result, key),
+  isRoute: route => selector(getState()).route === route,
+  isParentResultParam: (key, value) => isParentResultParam(selector(getState()).result, key, value),
 })

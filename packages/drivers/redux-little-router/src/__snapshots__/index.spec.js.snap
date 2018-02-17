@@ -17,9 +17,33 @@ exports[`drivers redux-little-router dispatch actions should dispatch unblock 1`
 exports[`drivers redux-little-router dispatch selectors should get router state 1`] = `
 Object {
   "hash": "",
-  "key": undefined,
+  "key": "6dwpw7",
+  "options": Object {},
   "params": Object {},
   "pathname": "/foo",
+  "previous": Object {
+    "hash": "",
+    "key": undefined,
+    "params": Object {},
+    "pathname": "/foo",
+    "query": Object {},
+    "queue": Array [
+      Object {
+        "hash": "",
+        "options": Object {},
+        "pathname": "/foo",
+      },
+    ],
+    "result": Object {
+      "parent": Object {
+        "route": "/",
+      },
+      "title": "FOO_ROUTE",
+    },
+    "route": "/foo",
+    "search": "",
+    "state": undefined,
+  },
   "query": Object {},
   "queue": Array [],
   "result": Object {
@@ -39,6 +63,5 @@ Object {
     },
   },
   "search": "",
-  "state": undefined,
 }
 `;
