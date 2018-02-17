@@ -2,9 +2,14 @@
 
 State manager for your components apps, the safe and easy way.
 
-[![CircleCI](https://circleci.com/gh/alakarteio/k-ramel.svg?style=shield)](https://circleci.com/gh/alakarteio/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel)
-[![Size](http://img.badgesize.io/alakarteio/k-ramel/master/index.js.svg)]() [![Greenkeeper badge](https://badges.greenkeeper.io/alakarteio/k-ramel.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/alakarteio/k-ramel.svg?style=shield)](https://circleci.com/gh/alakarteio/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel) [![Greenkeeper badge](https://badges.greenkeeper.io/alakarteio/k-ramel.svg)](https://greenkeeper.io/)
 
+## Size
+| packages | size | gziped |
+| -- | -- | -- |
+| `k-ramel` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/index.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/index.js.svg?compression=gzip)]() |
+| `@k-ramel/react` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/index.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/index.js.svg?compression=gzip)]() |
+| `@k-ramel/driver-http` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/index.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/index.js.svg?compression=gzip)]() |
 
 ## Contents
  - [Purpose](#purpose)
