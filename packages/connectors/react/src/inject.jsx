@@ -64,8 +64,8 @@ export default injectFunction => WrappedComponent => class extends Component {
     this.setState(state => ({
       ...state,
       injectedProps: injectFunction
-        ? injectFunction(this.context.store, nextProps || this.props) || {}
-        : {},
+        ? injectFunction(this.context.store, nextProps || this.props) || defaultObject
+        : defaultObject,
     }))
   }
 
