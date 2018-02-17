@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`drivers redux-little-router dispatch actions should dispatch block 1`] = `"ROUTER_BLOCK"`;
+
+exports[`drivers redux-little-router dispatch actions should dispatch go 1`] = `"ROUTER_GO"`;
+
+exports[`drivers redux-little-router dispatch actions should dispatch goBack 1`] = `"ROUTER_GO_BACK"`;
+
+exports[`drivers redux-little-router dispatch actions should dispatch goForward 1`] = `"ROUTER_GO_FORWARD"`;
+
+exports[`drivers redux-little-router dispatch actions should dispatch push 1`] = `"ROUTER_PUSH"`;
+
+exports[`drivers redux-little-router dispatch actions should dispatch replace 1`] = `"ROUTER_REPLACE"`;
+
+exports[`drivers redux-little-router dispatch actions should dispatch unblock 1`] = `"ROUTER_UNBLOCK"`;
+
+exports[`drivers redux-little-router dispatch selectors should get router state 1`] = `
+Object {
+  "hash": "",
+  "key": undefined,
+  "params": Object {},
+  "pathname": "/foo",
+  "query": Object {},
+  "queue": Array [],
+  "result": Object {
+    "parent": Object {
+      "route": "/",
+    },
+    "title": "FOO_ROUTE",
+  },
+  "route": "/foo",
+  "routes": Object {
+    "/": Object {},
+    "/foo": Object {
+      "parent": Object {
+        "route": "/",
+      },
+      "title": "FOO_ROUTE",
+    },
+  },
+  "search": "",
+  "state": undefined,
+}
+`;

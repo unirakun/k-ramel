@@ -120,7 +120,8 @@
       "packages/**/src/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!examples/**"
-    ]
+    ],
+    "testURL": "http://test.k-ramel.com"
   },
   "publishConfig": {
     "access": "public",
