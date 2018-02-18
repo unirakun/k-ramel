@@ -5,7 +5,7 @@ const defaultListeners = []
 
 const toActionFactory = (name) => {
   const suffix = `${name ? '>' : ''}${name || ''}`
-  return type => `@@krm/LISTENERS>${type}${suffix}`
+  return type => `@@krml/LISTENERS>${type}${suffix}`
 }
 
 export default (listeners = defaultListeners, name) => (WrappedComponent) => {
