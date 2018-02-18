@@ -7,9 +7,9 @@ State manager for your components apps, the safe and easy way.
 ## Size
 | packages | size | gziped |
 | -- | -- | -- |
-| `k-ramel` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/index.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/index.js.svg?compression=gzip)]() |
-| `@k-ramel/react` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/index.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/index.js.svg?compression=gzip)]() |
-| `@k-ramel/driver-http` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/index.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/index.js.svg?compression=gzip)]() |
+| `k-ramel` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg?compression=gzip)]() |
+| `@k-ramel/react` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg?compression=gzip)]() |
+| `@k-ramel/driver-http` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg?compression=gzip)]() |
 
 ## Contents
  - [Purpose](#purpose)
