@@ -1,21 +1,21 @@
 /* eslint-env jest */
-import { compose, applyMiddleware } from 'redux'
-import { routerForBrowser, push } from 'redux-little-router'
+import { push } from 'redux-little-router'
 import { createStore as krmlCreateStore, when } from 'k-ramel'
 import omit from 'lodash/omit'
 
 export default (driver) => {
+  /* create k-ramel store with redux-little-router driver */
   const createStore = (description, options, routes) => {
-    const { reducer, middleware, enhancer } = routerForBrowser({ routes })
+    const router = driver({ routes }, state => state.router)
     return krmlCreateStore({
-      router: reducer,
+      router: router.getReducer(),
       ...description,
     }, {
       ...options,
-      enhancer: compose(enhancer, applyMiddleware(middleware)),
+      enhancer: router.getEnhancer(),
       drivers: {
         ...options.drivers,
-        router: driver(state => state.router),
+        router,
       },
     })
   }
@@ -69,7 +69,7 @@ export default (driver) => {
             {
               listeners: [
                 when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
-                  spy(omit(router.getState(), 'key'))
+                  spy(omit(router.get(), 'key'))
                 }),
               ],
             },

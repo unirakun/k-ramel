@@ -4,7 +4,7 @@
   "main": "index.js",
   "author": "Benjamin PETETOT <bpetetot@gmail.com>",
   "license": "MIT",
-  "description": "Driver for redux-little-router",
+  "description": "redux-little-router driver for k-ramel",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/redux-little-router",
   "devDependencies": {
     "cross-env": "5.1.3",
@@ -15,7 +15,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "dependencies": {
-    "redux-little-router": "^15.0.0"
+  "peerDependencies": {
+    "redux-little-router": "15.x"
   }
 }

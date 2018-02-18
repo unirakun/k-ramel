@@ -1,5 +1,5 @@
 # @k-ramel/driver-redux-little-router
-> HTTP driver for redux-little-router
+> redux-little-router driver for k-ramel
 
  - Main repository: [k-ramel](https://github.com/alakarteio/k-ramel)
 
