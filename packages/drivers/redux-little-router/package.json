@@ -4,7 +4,7 @@
   "main": "index.js",
   "author": "Benjamin PETETOT <bpetetot@gmail.com>",
   "license": "MIT",
-  "description": "HTTP driver for redux-little-router",
+  "description": "Driver for redux-little-router",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/redux-little-router",
   "devDependencies": {
     "cross-env": "5.1.3",
