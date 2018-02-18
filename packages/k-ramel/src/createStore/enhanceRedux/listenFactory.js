@@ -1,4 +1,6 @@
-export default (rootListeners = [], drivers) => {
+import { applyMiddleware } from 'redux'
+
+export default (rootListeners = [], drivers, withDevTools) => {
   // k-ramel store
   let innerStore
 
@@ -32,7 +34,9 @@ export default (rootListeners = [], drivers) => {
     },
 
     // redux middleware
-    middleware: () => next => (action) => {
+    enhancer: applyMiddleware(() => next => (action) => {
+      const innerAction = withDevTools ? action.action : action
+
       // dispatch action
       const res = next(action)
 
@@ -40,7 +44,7 @@ export default (rootListeners = [], drivers) => {
       innerListeners
         .forEach((listeners) => {
           try {
-            listeners.forEach((listener) => { listener(action, innerStore, innerDrivers) })
+            listeners.forEach((listener) => { listener(innerAction, innerStore, innerDrivers) })
           } catch (exception) {
             innerStore.dispatch({ type: '@@krml/EXCEPTION', payload: { from: action, exception } })
           }
@@ -48,6 +52,6 @@ export default (rootListeners = [], drivers) => {
 
       // return action result
       return res
-    },
+    }),
   }
 }
