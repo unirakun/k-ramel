@@ -3,6 +3,7 @@
   "version": "0.8.0",
   "private": true,
   "dependencies": {
+    "@k-ramel/react": "^0.8.0",
     "classnames": "^2.2.5",
     "k-ramel": "^0.8.0",
     "react": "^16.2.0",

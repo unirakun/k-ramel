@@ -199,6 +199,28 @@ export default (lib) => {
   })
 
   describe('listen middleware', () => {
+    it('should dispatch an EXCEPTION action when reaction is on error', () => {
+      const spyCatch = jest.fn(() => { throw new Error('Exception !') })
+      const spyNoCatch = jest.fn()
+      const store = createStore({
+        config: { type: 'simpleObject' },
+      }, {
+        listeners: [
+          when('@@krf/SET>CONFIG')(spyCatch),
+          when('@@oups/SET>CONFIG')(spyCatch),
+        ],
+      })
+      store.dispatch = jest.fn(store.dispatch)
+
+      store.config.set('this is dispatched !')
+
+      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyNoCatch.mock.calls.length).toBe(0)
+      expect({
+        actions: store.dispatch.mock.calls,
+      }).toMatchSnapshot()
+    })
+
     it('should add listeners after creation and root ones should works', () => {
       const spyCatchRoot = jest.fn()
       const spyCatch = jest.fn()
