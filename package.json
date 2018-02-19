@@ -6,9 +6,12 @@
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "lerna exec --parallel --scope @k-ramel/* --scope k-ramel -- yarn cross-env NODE_ENV=build rollup -c ${PWD}/misc/rollup.config.js",
+    "lerna:build": "lerna exec --parallel --scope @k-ramel/* --scope k-ramel -- yarn cross-env NODE_ENV=build rollup -c ${PWD}/misc/rollup.config.js",
+    "build:es": "cross-env FORMAT=es yarn lerna:build",
+    "build:umd": "cross-env FORMAT=umd yarn lerna:build",
+    "build": "npm-run-all --parallel build:*",
     "lint": "lerna exec --parallel --scope @k-ramel/* --scope k-ramel -- eslint --ext js,jsx src",
-    "test": "jest --projects",
+    "test": "jest",
     "coveralls": "jest --projects --coverage && cat ./coverage/lcov.info | coveralls",
     "ci": "npm-run-all --parallel lint coveralls"
   },
@@ -50,6 +53,7 @@
     "rollup": "0.56.1",
     "rollup-plugin-babel": "3.0.3",
     "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-uglify": "3.0.0"
   },
   "babel": {

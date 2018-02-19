@@ -1,18 +1,18 @@
-import path from 'path'
 import fs from 'fs'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import uglify from 'rollup-plugin-uglify'
+import sourcemaps from 'rollup-plugin-sourcemaps'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
 
 export default {
-  input: pkg['jsnext:main'] || 'src/index.js',
+  input: 'src/index.js',
   output: {
-    name: pkg.amdName || pkg.name,
-    file: pkg.main,
-    format: process.env.FORMAT || 'umd',
-    sourcemap: path.resolve(pkg.main),
+    name: pkg.name,
+    file: `dist/index.${process.env.FORMAT}.js`,
+    format: process.env.FORMAT,
+    sourcemap: true,
     globals: {
       react: 'React',
       redux: 'Redux',
@@ -24,6 +24,7 @@ export default {
     },
   },
   plugins: [
+    sourcemaps(),
     babel(),
     commonjs({
       include: 'node_modules/**',
