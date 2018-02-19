@@ -71,7 +71,7 @@ const todo = store.todos.get(2)
 
 **app.jsx**
 ```js
-import { provider } from 'k-ramel/react'
+import { provider } from '@k-ramel/react'
 import store from './store'
 import TodosContainer from './todos.container'
 
@@ -85,7 +85,7 @@ export default provider(store)(App)
 
 **todos.container.js**
 ```js
-import { inject } from 'k-ramel/react'
+import { inject } from '@k-ramel/react'
 import Todos from './todos'
 
 // `inject` is an HoC, like `connect` from react-redux,
