@@ -545,6 +545,7 @@ Object {
             "payload": "this is dispatched !",
             "type": "@@krf/SET>CONFIG",
           },
+          "message": "Exception !",
         },
         "type": "@@krml/EXCEPTION",
       },

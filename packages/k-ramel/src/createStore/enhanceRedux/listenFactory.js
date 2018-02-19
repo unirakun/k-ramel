@@ -52,7 +52,6 @@ export default (rootListeners = [], drivers, withDevTools) => {
                 from: action,
                 exception,
                 message: exception.message,
-                stack: exception.stack,
               },
             })
           }
