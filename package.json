@@ -131,5 +131,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "peerDependencies": {
+    "redux-form": "^7.2.3"
   }
 }

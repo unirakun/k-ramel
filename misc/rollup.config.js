@@ -38,6 +38,7 @@ export default {
     'react',
     'k-redux-factory',
     'redux',
+    'redux-form',
     'lodash',
     'redux-little-router',
   ],
