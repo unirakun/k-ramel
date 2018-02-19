@@ -13,11 +13,12 @@ const isParentResultParam = (result, key, value) => {
   return isParentResultParam(result.parent, key, value)
 }
 
-export default (config, selector) => {
-  const { reducer, middleware, enhancer } = routerForBrowser(config)
+export default (config, selector, implem) => {
+  const { reducer, middleware, enhancer } = implem ? implem(config) : routerForBrowser(config)
 
   const driver = ({ dispatch, getState }) => {
     const get = () => selector(getState())
+    const getResult = () => get().result
     return ({
       /* actions */
       push: path => dispatch(push(path)),
@@ -31,10 +32,10 @@ export default (config, selector) => {
       get,
       getRouteParam: key => get().params && get().params[key],
       getQueryParam: key => get().query && get().query[key],
-      getResultParam: key => get().result && get().result[key],
-      getParentResultParam: key => getParentResultParam(get().result, key),
+      getResultParam: key => getResult() && getResult()[key],
+      getParentResultParam: key => getParentResultParam(getResult(), key),
       isRoute: route => get().route === route,
-      isParentResultParam: (key, value) => isParentResultParam(get().result, key, value),
+      isParentResultParam: (key, value) => isParentResultParam(getResult(), key, value),
     })
   }
 
