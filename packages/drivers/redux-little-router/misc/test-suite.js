@@ -5,8 +5,8 @@ import omit from 'lodash/omit'
 
 export default (driver) => {
   /* create k-ramel store with redux-little-router driver */
-  const createStore = (description, options, routes, impl) => {
-    const router = driver({ routes }, state => state.router, impl)
+  const createStore = (description, options, routes) => {
+    const router = driver(routes, state => state.router)
     return krmlCreateStore({
       router: router.getReducer(),
       ...description,
@@ -25,23 +25,17 @@ export default (driver) => {
       describe('router implementation', () => {
         it('should overide default router implementation', () => {
           // spy
-          const routerImplSpy = jest.fn(() => ({
-            reducer: () => {},
-            enhancer: () => () => {},
-            middleware: () => () => {},
-          }))
+          const routerImplSpy = () => ({
+            reducer: 'CUSTOM ROUTER IMPL REDUCER',
+            enhancer: () => {},
+            middleware: () => {},
+          })
 
           // store
-          createStore(
-            {},
-            {},
-            /* routes */
-            { '/': { '/foo': { title: 'FOO_ROUTE' } } },
-            routerImplSpy,
-          )
+          const router = driver(routerImplSpy({ routes: { '/': { '/foo': { title: 'FOO_ROUTE' } } } }))
 
           // assert
-          expect(routerImplSpy.mock.calls).toMatchSnapshot()
+          expect(router.getReducer()).toBe('CUSTOM ROUTER IMPL REDUCER')
         })
       })
 

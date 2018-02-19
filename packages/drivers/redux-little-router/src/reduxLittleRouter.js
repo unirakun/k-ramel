@@ -13,8 +13,11 @@ const isParentResultParam = (result, key, value) => {
   return isParentResultParam(result.parent, key, value)
 }
 
-export default (config, selector, implem) => {
-  const { reducer, middleware, enhancer } = implem ? implem(config) : routerForBrowser(config)
+const isRouterImpl = ({ reducer, middleware, enhancer }) => reducer && enhancer && middleware
+
+export default (config, selector) => {
+  const { reducer, middleware, enhancer } =
+    isRouterImpl(config) ? config : routerForBrowser({ routes: config })
 
   const driver = ({ dispatch, getState }) => {
     const get = () => selector(getState())
