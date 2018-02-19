@@ -46,7 +46,15 @@ export default (rootListeners = [], drivers, withDevTools) => {
           try {
             listeners.forEach((listener) => { listener(innerAction, innerStore, innerDrivers) })
           } catch (exception) {
-            innerStore.dispatch({ type: '@@krml/EXCEPTION', payload: { from: action, exception } })
+            innerStore.dispatch({
+              type: '@@krml/EXCEPTION',
+              payload: {
+                from: action,
+                exception,
+                message: exception.message,
+                stack: exception.stack,
+              },
+            })
           }
         })
 
