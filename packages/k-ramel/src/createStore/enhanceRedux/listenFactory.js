@@ -35,7 +35,7 @@ export default (rootListeners = [], drivers, withDevTools) => {
 
     // redux middleware
     enhancer: applyMiddleware(() => next => (action) => {
-      const innerAction = withDevTools ? action.action : action
+      const innerAction = withDevTools ? (action.action || action) : action
 
       // dispatch action
       const res = next(action)
