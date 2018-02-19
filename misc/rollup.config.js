@@ -20,6 +20,7 @@ export default {
       lodash: '_',
       'fbjs/lib/shallowEqual': 'fbjs/lib/shallowEqual',
       '@k-ramel/driver-http': '@k-ramel/driver-http',
+      'redux-little-router': 'redux-little-router',
     },
   },
   plugins: [
@@ -38,5 +39,6 @@ export default {
     'k-redux-factory',
     'redux',
     'lodash',
+    'redux-little-router',
   ],
 }

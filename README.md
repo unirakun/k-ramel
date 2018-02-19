@@ -10,6 +10,7 @@ State manager for your components apps, the safe and easy way.
 | `k-ramel` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg?compression=gzip)]() |
 | `@k-ramel/react` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg?compression=gzip)]() |
 | `@k-ramel/driver-http` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg?compression=gzip)]() |
+| `@k-ramel/driver-redux-little-router` | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
 
 ## Contents
  - [Purpose](#purpose)
@@ -71,7 +72,7 @@ const todo = store.todos.get(2)
 
 **app.jsx**
 ```js
-import { provider } from 'k-ramel/react'
+import { provider } from '@k-ramel/react'
 import store from './store'
 import TodosContainer from './todos.container'
 
@@ -85,7 +86,7 @@ export default provider(store)(App)
 
 **todos.container.js**
 ```js
-import { inject } from 'k-ramel/react'
+import { inject } from '@k-ramel/react'
 import Todos from './todos'
 
 // `inject` is an HoC, like `connect` from react-redux,

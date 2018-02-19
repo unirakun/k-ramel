@@ -49,6 +49,7 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-redux": "5.0.7",
+    "redux-little-router": "15.0.0",
     "rollup": "0.56.2",
     "rollup-plugin-babel": "3.0.3",
     "rollup-plugin-commonjs": "8.3.0",
@@ -124,7 +125,8 @@
       "packages/**/src/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!examples/**"
-    ]
+    ],
+    "testURL": "http://test.k-ramel.com"
   },
   "publishConfig": {
     "access": "public",
