@@ -5,8 +5,8 @@ import omit from 'lodash/omit'
 
 export default (driver) => {
   /* create k-ramel store with redux-little-router driver */
-  const createStore = (description, options, routes) => {
-    const router = driver({ routes }, state => state.router)
+  const createStore = (description, options, routes, impl) => {
+    const router = driver({ routes }, state => state.router, impl)
     return krmlCreateStore({
       router: router.getReducer(),
       ...description,
@@ -22,6 +22,29 @@ export default (driver) => {
 
   describe('drivers', () => {
     describe('redux-little-router', () => {
+      describe('router implementation', () => {
+        it('should overide default router implementation', () => {
+          // spy
+          const routerImplSpy = jest.fn(() => ({
+            reducer: () => {},
+            enhancer: () => () => {},
+            middleware: () => () => {},
+          }))
+
+          // store
+          createStore(
+            {},
+            {},
+            /* routes */
+            { '/': { '/foo': { title: 'FOO_ROUTE' } } },
+            routerImplSpy,
+          )
+
+          // assert
+          expect(routerImplSpy.mock.calls).toMatchSnapshot()
+        })
+      })
+
       describe('dispatch actions', () => {
         const routerDispatchTest = (routerAction, ...args) => {
           // spy
@@ -58,7 +81,7 @@ export default (driver) => {
         it('should dispatch unblock', () => routerDispatchTest('unblock'))
       })
 
-      describe('dispatch selectors', () => {
+      describe('selectors', () => {
         it('should get router state', () => {
           // spy
           const spy = jest.fn()

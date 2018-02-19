@@ -14,7 +14,23 @@ exports[`drivers redux-little-router dispatch actions should dispatch replace 1`
 
 exports[`drivers redux-little-router dispatch actions should dispatch unblock 1`] = `"ROUTER_UNBLOCK"`;
 
-exports[`drivers redux-little-router dispatch selectors should get router state 1`] = `
+exports[`drivers redux-little-router router implementation should overide default router implementation 1`] = `
+Array [
+  Array [
+    Object {
+      "routes": Object {
+        "/": Object {
+          "/foo": Object {
+            "title": "FOO_ROUTE",
+          },
+        },
+      },
+    },
+  ],
+]
+`;
+
+exports[`drivers redux-little-router selectors should get router state 1`] = `
 Array [
   Array [
     Object {
