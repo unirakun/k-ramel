@@ -27,7 +27,7 @@ export default (definition, options = defaultOptions) => {
       ...options.drivers,
     },
   }
-  const { init, hideRedux } = innerOptions
+  const { init, hideRedux, drivers } = innerOptions
 
   // this is reducer exports (action/selectors)
   let reducerTree = reduxFactory(definition)
@@ -47,7 +47,7 @@ export default (definition, options = defaultOptions) => {
     reducerTree = toContext(reducerTree, reduxStore)
   }
 
-  // exported store (our own)
+  // store (our own)
   const store = {
     ...reducerTree,
     ...reduxStore,
@@ -56,6 +56,13 @@ export default (definition, options = defaultOptions) => {
       remove: listen.removeListeners,
     },
   }
+
+  // store with driver
+  store.drivers = Object.keys(drivers)
+    .reduce(
+      (acc, driver) => ({ ...acc, [driver]: drivers[driver](store) }),
+      {},
+    )
 
   // custom dispatch
   const reduxDispatch = store.dispatch
