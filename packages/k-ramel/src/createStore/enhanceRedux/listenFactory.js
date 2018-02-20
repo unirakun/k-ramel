@@ -4,9 +4,6 @@ export default (rootListeners = [], drivers, withDevTools) => {
   // k-ramel store
   let innerStore
 
-  // k-ramel drivers (enhanced with store)
-  let innerDrivers
-
   // k-ramel listners
   let innerListeners = [rootListeners]
 
@@ -15,12 +12,6 @@ export default (rootListeners = [], drivers, withDevTools) => {
     // createStore, and then BEFORE, we have store instanciated
     setStore: (store) => {
       innerStore = store
-      innerDrivers = Object
-        .keys(drivers)
-        .reduce(
-          (acc, driver) => ({ ...acc, [driver]: drivers[driver](store) }),
-          {},
-        )
     },
 
     // this is to add new listeners
@@ -44,7 +35,9 @@ export default (rootListeners = [], drivers, withDevTools) => {
       innerListeners
         .forEach((listeners) => {
           try {
-            listeners.forEach((listener) => { listener(innerAction, innerStore, innerDrivers) })
+            listeners.forEach((listener) => {
+              listener(innerAction, innerStore, innerStore.drivers)
+            })
           } catch (exception) {
             innerStore.dispatch({
               type: '@@krml/EXCEPTION',

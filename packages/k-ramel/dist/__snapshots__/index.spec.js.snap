@@ -417,6 +417,9 @@ Array [
   Object {
     "config": [Function],
     "dispatch": [Function],
+    "drivers": Object {
+      "http": [Function],
+    },
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -438,6 +441,9 @@ Array [
   Object {
     "config": [Function],
     "dispatch": [Function],
+    "drivers": Object {
+      "http": [Function],
+    },
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -462,6 +468,9 @@ Array [
   Object {
     "config": [Function],
     "dispatch": [Function],
+    "drivers": Object {
+      "http": [Function],
+    },
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -486,6 +495,9 @@ Array [
   Object {
     "config": [Function],
     "dispatch": [Function],
+    "drivers": Object {
+      "http": [Function],
+    },
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -510,6 +522,9 @@ Array [
   Object {
     "config": [Function],
     "dispatch": [Function],
+    "drivers": Object {
+      "http": [Function],
+    },
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
