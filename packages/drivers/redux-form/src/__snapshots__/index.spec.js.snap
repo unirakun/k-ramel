@@ -1,85 +1,332 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`drivers http should fetch data an trigger common events 1`] = `
+exports[`drivers redux-form should dispatch action 1`] = `
 Object {
   "dispatch": Array [
     Array [
       Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "index": undefined,
+        },
         "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>STARTED",
+        "type": "@@redux-form/ARRAY_INSERT",
       },
     ],
     Array [
       Object {
-        "type": "DISPATCHED",
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "from": undefined,
+          "to": undefined,
+        },
+        "type": "@@redux-form/ARRAY_MOVE",
       },
     ],
     Array [
       Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/ARRAY_POP",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "payload": undefined,
+        "type": "@@redux-form/ARRAY_PUSH",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "index": undefined,
+        },
+        "type": "@@redux-form/ARRAY_REMOVE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/ARRAY_REMOVE_ALL",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/ARRAY_SHIFT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "index": undefined,
+          "removeNum": undefined,
+        },
+        "type": "@@redux-form/ARRAY_SPLICE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "payload": undefined,
+        "type": "@@redux-form/ARRAY_UNSHIFT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "payload": undefined,
+        "type": "@@redux-form/AUTOFILL",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "touch": undefined,
+        },
+        "payload": undefined,
+        "type": "@@redux-form/BLUR",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "persistentSubmitErrors": undefined,
+          "touch": undefined,
+        },
+        "payload": undefined,
+        "type": "@@redux-form/CHANGE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/CLEAR_ASYNC_ERROR",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/CLEAR_SUBMIT_ERRORS",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "fields": Array [],
+          "form": "form",
+          "keepTouched": "field1",
+          "persistentSubmitErrors": undefined,
+        },
+        "type": "@@redux-form/CLEAR_FIELDS",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": Array [
+            "form",
+            "field1",
+          ],
+        },
+        "type": "@@redux-form/DESTROY",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/FOCUS",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+          "keepDirty": undefined,
+        },
+        "payload": "field1",
+        "type": "@@redux-form/INITIALIZE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
         "payload": Object {
-          "json": [Function],
+          "name": "field1",
+          "type": undefined,
         },
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>ENDED",
-      },
-    ],
-  ],
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "headers": Object {},
-      },
-    ],
-  ],
-}
-`;
-
-exports[`drivers http should fetch data and calls json() 1`] = `
-Object {
-  "dispatch": Array [
-    Array [
-      Object {
-        "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>STARTED",
+        "type": "@@redux-form/REGISTER_FIELD",
       },
     ],
     Array [
       Object {
-        "type": "DISPATCHED",
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/RESET",
       },
     ],
     Array [
       Object {
+        "meta": Object {
+          "form": "form",
+          "sections": Array [
+            "field1",
+          ],
+        },
+        "type": "@@redux-form/RESET_SECTION",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_FAILED",
+      },
+    ],
+    Array [
+      Object {
+        "error": false,
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_SUCCEEDED",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/START_ASYNC_VALIDATION",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/START_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": "field1",
+        "type": "@@redux-form/STOP_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": "field1",
+        "type": "@@redux-form/STOP_ASYNC_VALIDATION",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/TOUCH",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
         "payload": Object {
-          "result": "http://google.fr",
+          "destroyOnUnmount": true,
+          "name": "field1",
         },
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>ENDED",
+        "type": "@@redux-form/UNREGISTER_FIELD",
       },
     ],
-  ],
-  "fetch": Array [
     Array [
-      "http://google.fr",
       Object {
-        "headers": Object {},
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/UNTOUCH",
       },
     ],
-  ],
-}
-`;
-
-exports[`drivers http should fetch data and dispatch a FAILED 1`] = `
-Object {
-  "dispatch": Array [
     Array [
       Object {
-        "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>STARTED",
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "indexA": 1,
+          "indexB": 0,
+        },
+        "type": "@@redux-form/ARRAY_SWAP",
       },
     ],
     Array [
@@ -87,166 +334,155 @@ Object {
         "type": "DISPATCHED",
       },
     ],
+  ],
+}
+`;
+
+exports[`drivers redux-form should dispatch async submit and submit failed 1`] = `
+Object {
+  "dispatch": Array [
     Array [
       Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+          "keepDirty": false,
+          "updateUnregisteredFields": false,
+        },
         "payload": Object {
-          "status": 404,
-          "url": "http://google.fr",
+          "field1": "value1",
+          "field2": "value2",
         },
-        "status": 404,
-        "type": "@@http/GOOGLE>GET>FAILED",
-      },
-    ],
-  ],
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "headers": Object {},
-      },
-    ],
-  ],
-}
-`;
-
-exports[`drivers http should safely fail to parse json 1`] = `
-Object {
-  "dispatch": Array [
-    Array [
-      Object {
-        "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>STARTED",
+        "type": "@@redux-form/INITIALIZE",
       },
     ],
     Array [
       Object {
-        "type": "DISPATCHED",
-      },
-    ],
-    Array [
-      Object {
-        "payload": [Error: oups-json-http://google.fr],
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>FAILED",
-      },
-    ],
-  ],
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "headers": Object {},
-      },
-    ],
-  ],
-}
-`;
-
-exports[`drivers http should safely fail to request 1`] = `
-Object {
-  "dispatch": Array [
-    Array [
-      Object {
-        "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>STARTED",
-      },
-    ],
-    Array [
-      Object {
-        "payload": [Error: oups-http://google.fr],
-        "status": undefined,
-        "type": "@@http/GOOGLE>GET>FAILED",
-      },
-    ],
-    Array [
-      Object {
-        "type": "DISPATCHED",
-      },
-    ],
-  ],
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "headers": Object {},
-      },
-    ],
-  ],
-}
-`;
-
-exports[`drivers http should set authorization header 1`] = `
-Object {
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "headers": Object {
-          "Authorization": "Bearer <my-token>",
+        "meta": Object {
+          "form": "form",
         },
-      },
-    ],
-  ],
-}
-`;
-
-exports[`drivers http should stringify data but not override content-type 1`] = `
-Object {
-  "dispatch": Array [
-    Array [
-      Object {
-        "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>POST>STARTED",
-      },
-    ],
-    Array [
-      Object {
-        "type": "DISPATCHED",
-      },
-    ],
-    Array [
-      Object {
         "payload": Object {
-          "options": Object {
-            "body": "{\\"some\\":\\"data\\"}",
-            "headers": Object {
-              "Content-Type": "my-contentType",
-            },
-            "method": "POST",
-          },
-          "url": "http://google.fr",
+          "name": "field1",
+          "type": "Field",
         },
-        "status": undefined,
-        "type": "@@http/GOOGLE>POST>ENDED",
+        "type": "@@redux-form/REGISTER_FIELD",
       },
     ],
-  ],
-  "fetch": Array [
     Array [
-      "http://google.fr",
       Object {
-        "body": "{\\"some\\":\\"data\\"}",
-        "headers": Object {
-          "Content-Type": "my-contentType",
+        "meta": Object {
+          "form": "form",
         },
-        "method": "POST",
+        "payload": Object {
+          "name": "field2",
+          "type": "Field",
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/START_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "type": "ASYNC_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "fields": Array [],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_FAILED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
       },
     ],
   ],
 }
 `;
 
-exports[`drivers http should stringify data with method helper 1`] = `
+exports[`drivers redux-form should dispatch async submit and submit succeeded 1`] = `
 Object {
   "dispatch": Array [
     Array [
       Object {
-        "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>POST>STARTED",
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+          "keepDirty": false,
+          "updateUnregisteredFields": false,
+        },
+        "payload": Object {
+          "field1": "value1",
+          "field2": "value2",
+        },
+        "type": "@@redux-form/INITIALIZE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "name": "field1",
+          "type": "Field",
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "name": "field2",
+          "type": "Field",
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/START_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "type": "ASYNC_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": false,
+        "meta": Object {
+          "fields": Array [],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_SUCCEEDED",
       },
     ],
     Array [
@@ -256,73 +492,76 @@ Object {
     ],
     Array [
       Object {
-        "payload": Object {
-          "options": Object {
-            "body": "{\\"some\\":\\"data\\"}",
-            "headers": Object {
-              "Content-Type": "application/json",
-            },
-            "method": "POST",
-          },
-          "url": "http://google.fr",
+        "error": false,
+        "meta": Object {
+          "form": "form",
         },
-        "status": undefined,
-        "type": "@@http/GOOGLE>POST>ENDED",
-      },
-    ],
-  ],
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "body": "{\\"some\\":\\"data\\"}",
-        "headers": Object {
-          "Content-Type": "application/json",
-        },
-        "method": "POST",
+        "payload": undefined,
+        "type": "@@redux-form/STOP_SUBMIT",
       },
     ],
   ],
 }
 `;
 
-exports[`drivers http should works with method helper (OPTIONS) 1`] = `
+exports[`drivers redux-form should select form 1`] = `
 Object {
-  "dispatch": Array [
-    Array [
-      Object {
-        "payload": undefined,
-        "status": undefined,
-        "type": "@@http/GOOGLE>OPTIONS>STARTED",
-      },
+  "results": Object {
+    "getFormAsyncErrors": undefined,
+    "getFormError": undefined,
+    "getFormInitialValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "getFormMeta": Object {},
+    "getFormNames": Array [
+      "form",
     ],
-    Array [
-      Object {
-        "type": "DISPATCHED",
-      },
+    "getFormSubmitErrors": Object {},
+    "getFormSyncErrors": Object {},
+    "getFormSyncWarnings": Object {},
+    "getFormValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "hasSubmitFailed": false,
+    "hasSubmitSucceeded": false,
+    "isDirty": false,
+    "isInvalid": false,
+    "isPristine": true,
+    "isSubmitting": false,
+    "isValid": true,
+  },
+}
+`;
+
+exports[`drivers redux-form should select form with other path of form state 1`] = `
+Object {
+  "results": Object {
+    "getFormAsyncErrors": undefined,
+    "getFormError": undefined,
+    "getFormInitialValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "getFormMeta": Object {},
+    "getFormNames": Array [
+      "form",
     ],
-    Array [
-      Object {
-        "payload": Object {
-          "options": Object {
-            "headers": Object {},
-            "method": "OPTIONS",
-          },
-          "url": "http://google.fr",
-        },
-        "status": undefined,
-        "type": "@@http/GOOGLE>OPTIONS>ENDED",
-      },
-    ],
-  ],
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "headers": Object {},
-        "method": "OPTIONS",
-      },
-    ],
-  ],
+    "getFormSubmitErrors": Object {},
+    "getFormSyncErrors": Object {},
+    "getFormSyncWarnings": Object {},
+    "getFormValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "hasSubmitFailed": false,
+    "hasSubmitSucceeded": false,
+    "isDirty": false,
+    "isInvalid": false,
+    "isPristine": true,
+    "isSubmitting": false,
+    "isValid": true,
+  },
 }
 `;

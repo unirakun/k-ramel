@@ -1,31 +1,60 @@
 /* eslint-env jest */
+/* eslint-disable react/jsx-filename-extension */
 import { createStore as krmlCreateStore, when } from 'k-ramel'
+import React from 'react'
+import { mount } from 'enzyme'
+import { reducer } from 'redux-form'
+import makeComponent from './form'
+import { actionNames } from '../src/actions'
+import { selectorNames } from '../src/selectors'
 
 export default (driver) => {
-  const createStore = (description, options) => krmlCreateStore(
+  const createStore = (description, options, getFormState) => krmlCreateStore(
     description,
     {
       ...options,
       drivers: {
         ...options.drivers,
-        http: driver,
+        reduxform: driver(getFormState),
       },
     },
   )
 
   describe('drivers', () => {
-    describe('http', () => {
-      const { fetch } = (global || window)
-      afterEach(() => {
-        if (global) global.fetch = fetch
-        if (window) window.fetch = fetch
+    describe('redux-form', () => {
+      it('should dispatch action', () => {
+        // dispatch spy
+        const spy = jest.fn()
+
+        // store
+        const store = createStore(
+          {
+            form: reducer,
+          },
+          {
+            listeners: [
+              when('DISPATCHED')((action, st, { reduxform }) => {
+                actionNames
+                  .filter(a => !a.includes('arraySwap'))
+                  .forEach(a => reduxform('form')[a]('field1'))
+                // exclude arraySwap because this action have mandatory parameters.
+                reduxform('form').arraySwap('field1', 1, 0)
+              }),
+              when(() => true)(action => spy(action)),
+            ],
+          },
+        )
+
+        // dispatch event
+        store.dispatch({ type: 'DISPATCHED' })
+
+        // assert
+        expect({
+          dispatch: spy.mock.calls,
+        }).toMatchSnapshot()
       })
 
-      it('should stringify data but not override content-type', async () => {
-        // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
-        (global || window).fetch = mockedFetch
-
+      it('should dispatch async submit and submit succeeded', async () => {
         // dispatch spy
         const spy = jest.fn()
 
@@ -34,17 +63,27 @@ export default (driver) => {
         const wait = new Promise((resolve) => { resolver = resolve })
 
         // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE').post('http://google.fr', { some: 'data' }, { headers: { 'Content-Type': 'my-contentType' } })
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
+        const store = createStore(
+          {
+            form: reducer,
+          },
+          {
+            listeners: [
+              when('DISPATCHED')((action, st, { reduxform }) => {
+                reduxform('form').asyncSubmit(() => {
+                  st.dispatch({ type: 'ASYNC_SUBMIT' })
+                  reduxform('form').setSubmitSucceeded()
+                })
+                resolver()
+              }),
+              when(() => true)(action => spy(action)),
+            ],
+          },
+        )
+
+        // mount basic form
+        const Component = makeComponent(store, { field1: 'value1', field2: 'value2' })
+        mount(<Component />)
 
         // dispatch event
         store.dispatch({ type: 'DISPATCHED' })
@@ -53,15 +92,10 @@ export default (driver) => {
         // assert
         expect({
           dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
         }).toMatchSnapshot()
       })
 
-      it('should stringify data with method helper', async () => {
-        // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
-        (global || window).fetch = mockedFetch
-
+      it('should dispatch async submit and submit failed', async () => {
         // dispatch spy
         const spy = jest.fn()
 
@@ -70,17 +104,27 @@ export default (driver) => {
         const wait = new Promise((resolve) => { resolver = resolve })
 
         // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE').post('http://google.fr', { some: 'data' })
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
+        const store = createStore(
+          {
+            form: reducer,
+          },
+          {
+            listeners: [
+              when('DISPATCHED')((action, st, { reduxform }) => {
+                reduxform('form').asyncSubmit(() => {
+                  st.dispatch({ type: 'ASYNC_SUBMIT' })
+                  reduxform('form').setSubmitFailed()
+                })
+                resolver()
+              }),
+              when(() => true)(action => spy(action)),
+            ],
+          },
+        )
+
+        // mount basic form
+        const Component = makeComponent(store, { field1: 'value1', field2: 'value2' })
+        mount(<Component />)
 
         // dispatch event
         store.dispatch({ type: 'DISPATCHED' })
@@ -89,270 +133,74 @@ export default (driver) => {
         // assert
         expect({
           dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
         }).toMatchSnapshot()
       })
 
-      it('should works with method helper (OPTIONS)', async () => {
-        // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
-        (global || window).fetch = mockedFetch
-
-        // dispatch spy
-        const spy = jest.fn()
-
-        // wait
-        let resolver
-        const wait = new Promise((resolve) => { resolver = resolve })
+      it('should select form', () => {
+        // spy
+        let results = {}
 
         // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE').options('http://google.fr')
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
+        const store = createStore(
+          {
+            form: reducer,
+          },
+          {
+            listeners: [
+              when('DISPATCHED')((action, st, { reduxform }) => {
+                results = selectorNames
+                  .filter(s => !s.includes('getFormNames'))
+                  .reduce((acc, cur) => ({ [cur]: reduxform('form')[cur]('form'), ...acc }), {})
+                results = { getFormNames: reduxform('form').getFormNames(), ...results }
+              }),
+            ],
+          },
+        )
+
+        // mount basic form
+        const Component = makeComponent(store, { field1: 'value1', field2: 'value2' })
+        mount(<Component />)
 
         // dispatch event
         store.dispatch({ type: 'DISPATCHED' })
-        await wait
 
         // assert
         expect({
-          dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
+          results,
         }).toMatchSnapshot()
       })
 
-      it('should set authorization header', async () => {
-        // mock
-        const mockedFetch = jest.fn(() => Promise.resolve({}));
-        (global || window).fetch = mockedFetch
-
-        // wait
-        let resolver
-        const wait = new Promise((resolve) => { resolver = resolve })
+      it('should select form with other path of form state', () => {
+        // spy
+        let results = {}
 
         // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('SET_HEADER')(async (action, st, { http }) => {
-              http.setAuthorization('Bearer <my-token>')
-              resolver()
-            }),
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr')
-              resolver()
-            }),
-          ],
-        })
+        const store = createStore(
+          {
+            ui: { form: reducer },
+          }, {
+            listeners: [
+              when('DISPATCHED')((action, st, { reduxform }) => {
+                results = selectorNames
+                  .filter(s => !s.includes('getFormNames'))
+                  .reduce((acc, cur) => ({ [cur]: reduxform('form')[cur]('form'), ...acc }), {})
+                results = { getFormNames: reduxform('form').getFormNames(), ...results }
+              }),
+            ],
+          },
+          state => state.ui.form,
+        )
 
-        store.dispatch({ type: 'SET_HEADER' })
-        store.dispatch({ type: 'DISPATCHED' })
-        await wait
-
-        // assert
-        expect({
-          fetch: mockedFetch.mock.calls,
-        }).toMatchSnapshot()
-      })
-
-      it('should safely fail to parse json', async () => {
-        // mock
-        const mockedFetch = jest.fn(url => Promise.resolve({
-          headers: { get: () => 'application/json' },
-          json: () => { throw new Error(`oups-json-${url}`) },
-        }));
-        (global || window).fetch = mockedFetch
-
-        // dispatch spy
-        const spy = jest.fn()
-
-        // wait
-        let resolver
-        const wait = new Promise((resolve) => { resolver = resolve })
-
-        // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr')
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
+        // mount basic form
+        const Component = makeComponent(store, { field1: 'value1', field2: 'value2' })
+        mount(<Component />)
 
         // dispatch event
         store.dispatch({ type: 'DISPATCHED' })
-        await wait
 
         // assert
         expect({
-          dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
-        }).toMatchSnapshot()
-      })
-
-
-      it('should safely fail to request', async () => {
-        // mock
-        const mockedFetch = jest.fn((url) => { throw new Error(`oups-${url}`) });
-        (global || window).fetch = mockedFetch
-
-        // dispatch spy
-        const spy = jest.fn()
-
-        // wait
-        let resolver
-        const wait = new Promise((resolve) => { resolver = resolve })
-
-        // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr')
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
-
-        // dispatch event
-        store.dispatch({ type: 'DISPATCHED' })
-        await wait
-
-        // assert
-        expect({
-          dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
-        }).toMatchSnapshot()
-      })
-
-      it('should fetch data and dispatch a FAILED', async () => {
-        // mock
-        const mockedFetch = jest.fn(url => Promise.resolve({
-          status: 404,
-          url,
-        }));
-        (global || window).fetch = mockedFetch
-
-        // dispatch spy
-        const spy = jest.fn()
-
-        // wait
-        let resolver
-        const wait = new Promise((resolve) => { resolver = resolve })
-
-        // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr')
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
-
-        // dispatch event
-        store.dispatch({ type: 'DISPATCHED' })
-        await wait
-
-        // assert
-        expect({
-          dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
-        }).toMatchSnapshot()
-      })
-
-      it('should fetch data and calls json()', async () => {
-        // mock
-        const mockedFetch = jest.fn(url => Promise.resolve({
-          headers: { get: () => 'application/json' },
-          json: () => Promise.resolve({ result: url }),
-        }));
-        (global || window).fetch = mockedFetch
-
-        // dispatch spy
-        const spy = jest.fn()
-
-        // wait
-        let resolver
-        const wait = new Promise((resolve) => { resolver = resolve })
-
-        // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr')
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
-
-        // dispatch event
-        store.dispatch({ type: 'DISPATCHED' })
-        await wait
-
-        // assert
-        expect({
-          dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
-        }).toMatchSnapshot()
-      })
-
-      it('should fetch data an trigger common events', async () => {
-        // mock
-        const mockedFetch = jest.fn(url => Promise.resolve({
-          json: () => Promise.resolve({ result: url }),
-        }));
-        (global || window).fetch = mockedFetch
-
-        // dispatch spy
-        const spy = jest.fn()
-
-        // wait
-        let resolver
-        const wait = new Promise((resolve) => { resolver = resolve })
-
-        // store
-        const store = createStore({
-          config: { type: 'simpleObject' },
-        }, {
-          listeners: [
-            when('DISPATCHED')(async (action, st, { http }) => {
-              await http('GOOGLE')('http://google.fr')
-              resolver()
-            }),
-            when(() => true)(action => spy(action)),
-          ],
-        })
-
-        // dispatch event
-        store.dispatch({ type: 'DISPATCHED' })
-        await wait
-
-        // assert
-        expect({
-          dispatch: spy.mock.calls,
-          fetch: mockedFetch.mock.calls,
+          results,
         }).toMatchSnapshot()
       })
     })
