@@ -5,6 +5,12 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -17,6 +23,7 @@ Object {
     ],
     Array [
       Object {
+        "fetch": undefined,
         "payload": Object {
           "json": [Function],
         },
@@ -41,6 +48,12 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -53,6 +66,7 @@ Object {
     ],
     Array [
       Object {
+        "fetch": undefined,
         "payload": Object {
           "result": "http://google.fr",
         },
@@ -77,6 +91,12 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -89,6 +109,7 @@ Object {
     ],
     Array [
       Object {
+        "fetch": undefined,
         "payload": Object {
           "status": 404,
           "url": "http://google.fr",
@@ -114,6 +135,12 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -126,6 +153,12 @@ Object {
     ],
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+          },
+        ],
         "payload": [Error: oups-json-http://google.fr],
         "status": undefined,
         "type": "@@http/GOOGLE>GET>FAILED",
@@ -148,6 +181,12 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -155,6 +194,12 @@ Object {
     ],
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+          },
+        ],
         "payload": [Error: oups-http://google.fr],
         "status": undefined,
         "type": "@@http/GOOGLE>GET>FAILED",
@@ -197,6 +242,16 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "body": "{\\"some\\":\\"data\\"}",
+            "headers": Object {
+              "Content-Type": "my-contentType",
+            },
+            "method": "POST",
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>POST>STARTED",
@@ -209,6 +264,7 @@ Object {
     ],
     Array [
       Object {
+        "fetch": undefined,
         "payload": Object {
           "options": Object {
             "body": "{\\"some\\":\\"data\\"}",
@@ -244,6 +300,16 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "body": "{\\"some\\":\\"data\\"}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "POST",
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>POST>STARTED",
@@ -256,6 +322,7 @@ Object {
     ],
     Array [
       Object {
+        "fetch": undefined,
         "payload": Object {
           "options": Object {
             "body": "{\\"some\\":\\"data\\"}",
@@ -291,6 +358,13 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+            "method": "OPTIONS",
+          },
+        ],
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>OPTIONS>STARTED",
@@ -303,6 +377,7 @@ Object {
     ],
     Array [
       Object {
+        "fetch": undefined,
         "payload": Object {
           "options": Object {
             "headers": Object {},
