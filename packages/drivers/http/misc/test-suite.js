@@ -129,7 +129,7 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
-      it('should set authorization header', async () => {
+      it('should set customs options', async () => {
         // mock
         const mockedFetch = jest.fn(() => Promise.resolve({}));
         (global || window).fetch = mockedFetch
@@ -143,24 +143,50 @@ export default (driver) => {
           config: { type: 'simpleObject' },
         }, {
           listeners: [
-            when('SET_HEADER')(async (action, st, { http }) => {
+            when('SET_OPTIONS')(async (action, st, { http }) => {
+              // overalls options
+              http.setOptions({
+                headers: {
+                  Authorization: 'nope auth',
+                  other: 'header',
+                },
+                credentials: 'nope credentials',
+                other: 'option',
+              })
+
+              // override authorization header from previous options
               http.setAuthorization('Bearer <my-token>')
-              resolver()
+
+              // override credentials from previous options
+              http.setCredentials('include')
             }),
             when('DISPATCHED')(async (action, st, { http }) => {
+              // not custom per request options (should use globals)
               await http('GOOGLE')('http://google.fr')
+
+              // custom per request options
+              await http('GOOGLE_OVERRIDE')('http://google_2.fr', {
+                headers: {
+                  yep: 'new one header',
+                  Authorization: 'new auth',
+                },
+                credentials: 'new credentials',
+                yep: 'new one option',
+              })
               resolver()
             }),
           ],
         })
 
-        store.dispatch({ type: 'SET_HEADER' })
-        store.dispatch({ type: 'DISPATCHED' })
+        store.dispatch('SET_OPTIONS')
+        store.dispatch('DISPATCHED')
         await wait
 
         // assert
         expect({
-          fetch: mockedFetch.mock.calls,
+          fetchCounts: mockedFetch.mock.calls.length,
+          globalOptions: mockedFetch.mock.calls[0],
+          overridedOptions: mockedFetch.mock.calls[1],
         }).toMatchSnapshot()
       })
 

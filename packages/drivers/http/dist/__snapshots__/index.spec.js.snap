@@ -222,17 +222,32 @@ Object {
 }
 `;
 
-exports[`drivers http should set authorization header 1`] = `
+exports[`drivers http should set customs options 1`] = `
 Object {
-  "fetch": Array [
-    Array [
-      "http://google.fr",
-      Object {
-        "headers": Object {
-          "Authorization": "Bearer <my-token>",
-        },
+  "fetchCounts": 2,
+  "globalOptions": Array [
+    "http://google.fr",
+    Object {
+      "credentials": "include",
+      "headers": Object {
+        "Authorization": "Bearer <my-token>",
+        "other": "header",
       },
-    ],
+      "other": "option",
+    },
+  ],
+  "overridedOptions": Array [
+    "http://google_2.fr",
+    Object {
+      "credentials": "new credentials",
+      "headers": Object {
+        "Authorization": "new auth",
+        "other": "header",
+        "yep": "new one header",
+      },
+      "other": "option",
+      "yep": "new one option",
+    },
   ],
 }
 `;

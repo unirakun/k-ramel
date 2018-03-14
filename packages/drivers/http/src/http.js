@@ -8,13 +8,14 @@ const dispatchFactory = store => name => method =>
 
 export default (store) => {
   const innerHeaders = {}
+  let innerOptions = {}
 
   const driver = (name) => {
     const ownFetch = async (url, options = {}, ...args) => {
       // options
       const { method = 'GET' } = options
-      const headers = { ...innerHeaders, ...options.headers }
-      const innerOptions = { ...options, headers }
+      const appliedHeaders = { ...innerOptions.headers, ...innerHeaders, ...options.headers }
+      const appliedOptions = { ...innerOptions, ...options, headers: appliedHeaders }
 
       // dispatcher
       const dispatch = dispatchFactory(store)(name)(method)
@@ -22,7 +23,7 @@ export default (store) => {
       // request
       let data
       let raw
-      const fetchArgs = [url, innerOptions, ...args]
+      const fetchArgs = [url, appliedOptions, ...args]
       dispatch('STARTED', undefined, undefined, fetchArgs)
       try {
         raw = await (global || window).fetch(...fetchArgs)
@@ -51,19 +52,19 @@ export default (store) => {
       .forEach((method) => {
         ownFetch[method.toLowerCase()] = (url, data, options = {}) => {
           const { headers = {} } = options
-          let innerOptions = options
+          let appliedOptions = options
 
           // attach data as JSON object
           if (data && ['object', 'array'].includes(typeof data)) {
-            if (!headers['Content-Type']) innerOptions = { ...innerOptions, headers: { ...headers, 'Content-Type': 'application/json' } }
+            if (!headers['Content-Type']) appliedOptions = { ...appliedOptions, headers: { ...headers, 'Content-Type': 'application/json' } }
 
-            innerOptions = { ...innerOptions, body: JSON.stringify(data) }
+            appliedOptions = { ...appliedOptions, body: JSON.stringify(data) }
           }
 
           // set method
-          innerOptions = { ...innerOptions, method }
+          appliedOptions = { ...appliedOptions, method }
 
-          return ownFetch(url, innerOptions)
+          return ownFetch(url, appliedOptions)
         }
       })
 
@@ -71,9 +72,9 @@ export default (store) => {
   }
 
   // custom helpers
-  driver.setAuthorization = (authorization) => {
-    innerHeaders.Authorization = authorization
-  }
+  driver.setAuthorization = (authorization) => { innerHeaders.Authorization = authorization }
+  driver.setOptions = (options) => { innerOptions = options }
+  driver.setCredentials = (credentials) => { innerOptions = { ...innerOptions, credentials } }
 
   return driver
 }
