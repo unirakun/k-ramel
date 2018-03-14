@@ -6,7 +6,7 @@ const dispatchFactory = store => name => method =>
     fetch,
   })
 
-export default (store) => {
+const getDriver = (store) => {
   const innerHeaders = {}
   let innerOptions = {}
 
@@ -75,6 +75,8 @@ export default (store) => {
   driver.setAuthorization = (authorization) => { innerHeaders.Authorization = authorization }
   driver.setOptions = (options) => { innerOptions = options }
   driver.setCredentials = (credentials) => { innerOptions = { ...innerOptions, credentials } }
-
-  return driver
 }
+
+export default () => ({
+  getDriver,
+})
