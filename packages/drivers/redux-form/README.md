@@ -1,7 +1,8 @@
 # @k-ramel/driver-redux-form
-> redux-form driver for k-ramel
-
+> Redux Form driver for k-ramel makes accessible all actions and selectors of Redux Form  
+ 
  - Main repository: [k-ramel](https://github.com/alakarteio/k-ramel)
+ - Redux Form API for [actions](https://redux-form.com/7.3.0/docs/api/actioncreators.md/#action-creators) and [selectors](https://redux-form.com/7.3.0/docs/api/selectors.md/#selectors)
 
 ## Examples
 In store description (See main documentation about description)
@@ -17,10 +18,10 @@ export default () => ({
 In store definition (See main documentation about description)
 ```js
 /* store.js */
-import { createStore } from '@k-ramel/k-ramel'
+import { createStore } from 'k-ramel'
 import description from './description'
 import listeners from './listeners'
-import reduxform from '@k-ramel/driver-reduf-form'
+import reduxform from '@k-ramel/driver-redux-form'
 
 export default () => {
   const store = createStore(
@@ -29,7 +30,7 @@ export default () => {
       listeners,
       drivers: {
         // by default getFormState = state => state.form
-        reduxform(/* optional : getFormState */)
+        form: reduxform(/* optional : getFormState */)
       },
     },
   )
@@ -41,9 +42,9 @@ export default () => {
 In a reaction (See main documentation about listeners/reactions)
 ```js
 /* reaction.js */
-import { reaction } from '@k-ramel/k-ramel'
+import { reaction } from 'k-ramel'
 
-export const signin = reaction((store, action, drivers) => {
+export const signin = (store, action, drivers) => {
   const { form, http } = drivers
   const signinForm = form('signin')
   const loginValues = signinForm.getFormValues()
@@ -53,5 +54,5 @@ export const signin = reaction((store, action, drivers) => {
   } else {
     signinForm.setSubmitFailed()
   }
-})
+}
 ```
