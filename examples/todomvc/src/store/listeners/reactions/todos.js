@@ -1,52 +1,52 @@
-import { reaction } from 'k-ramel'
-
-export const load = reaction((action, store) => {
-  store.data.todos.all.set([
+export const load = (action, store) => {
+  store.data.todos.set([
     { id: 1, label: 'write README.md', completed: false },
     { id: 2, label: 'write other examples', completed: false },
   ])
-})
+}
 
-export const add = reaction((action, store) => {
+export const add = (action, store) => {
   const label = store.ui.newTodo.get()
 
-  store.data.todos.all.add({ id: Date.now(), label, completed: false })
+  store.data.todos.add({ id: Date.now(), label, completed: false })
   store.ui.newTodo.reset()
-})
+}
 
-export const clearNew = reaction((action, store) => {
+export const clearNew = (action, store) => {
   store.ui.newTodo.reset()
-})
+}
 
-export const setNew = reaction((action, store) => {
+export const setNew = (action, store) => {
   store.ui.newTodo.set(action.payload)
-})
+}
 
-export const remove = reaction((action, store) => {
-  store.data.todos.all.remove(action.payload)
-})
+export const remove = (action, store) => {
+  store.data.todos.remove(action.payload)
+}
 
-export const toggleComplete = reaction((action, store) => {
-  const todo = store.data.todos.all.get(action.payload)
-  store.data.todos.all.update({ id: action.payload, completed: !todo.completed })
-})
+export const toggleComplete = (action, store) => {
+  const todo = store.data.todos.get(action.payload)
+  store.data.todos.update({ id: action.payload, completed: !todo.completed })
+}
 
-export const clearCompleted = reaction((action, store) => {
-  const completed = store.data.todos.all.getBy('completed', true)
+export const clearCompleted = (action, store) => {
+  store.data.todos.remove(store.ui.views.completed.get())
+}
 
-  store.data.todos.all.remove(completed.map(todo => todo.id))
-})
+export const updateViews = (action, store) => {
+  const todos = store.data.todos.getAsArray()
+  const completed = todos.filter(t => t.completed).map(t => t.id)
+  const active = todos.filter(t => !t.completed).map(t => t.id)
 
-export const updateViews = reaction((action, store) => {
-  const completed = store.data.todos.all.getBy('completed', true)
-  const active = store.data.todos.all.getBy('completed', false)
+  store.ui.views.all.set(todos.map(t => t.id))
+  store.ui.views.completed.set(completed)
+  store.ui.views.active.set(active)
 
-  store.data.todos.completed.set(completed)
-  store.data.todos.active.set(active)
-})
+  store.dispatch('@@ui/VIEWS/UPDATED')
+}
 
-export const completeAll = reaction((action, store) => {
-  const allCompleted = store.data.todos.all.getLength() === store.data.todos.completed.getLength()
-  const todos = store.data.todos.all.getAsArray()
-  store.data.todos.all.set(todos.map(todo => ({ ...todo, completed: !allCompleted })))
-})
+export const completeAll = (action, store) => {
+  const todos = store.data.todos.getAsArray()
+  const allCompleted = todos.length === store.ui.views.completed.get().length
+  store.data.todos.set(todos.map(todo => ({ ...todo, completed: !allCompleted })))
+}
