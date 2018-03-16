@@ -263,7 +263,9 @@ export default (lib) => {
           }),
         ],
         drivers: {
-          dumbDriver: (/* store */) => dumbDriver,
+          dumbDriver: ({
+            getDriver: (/* store */) => dumbDriver,
+          }),
         },
       })
 

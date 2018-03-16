@@ -6,13 +6,11 @@ import omit from 'lodash/omit'
 export default (driver) => {
   /* create k-ramel store with redux-little-router driver */
   const createStore = (description, options, routes) => {
-    const router = driver(routes, state => state.router)
+    const router = driver(routes)
     return krmlCreateStore({
-      router: router.getReducer(),
       ...description,
     }, {
       ...options,
-      enhancer: router.getEnhancer(),
       drivers: {
         ...options.drivers,
         router,
@@ -35,7 +33,7 @@ export default (driver) => {
           const router = driver(routerImplSpy({ routes: { '/': { '/foo': { title: 'FOO_ROUTE' } } } }))
 
           // assert
-          expect(router.getReducer()).toBe('CUSTOM ROUTER IMPL REDUCER')
+          expect(router.getReducer().reducer).toBe('CUSTOM ROUTER IMPL REDUCER')
         })
       })
 
@@ -63,7 +61,7 @@ export default (driver) => {
           store.dispatch('DISPATCHED')
 
           // assert
-          expect(spy.mock.calls[0][0].type).toMatchSnapshot()
+          expect(spy.mock.calls[1][0].type).toMatchSnapshot()
         }
 
         it('should dispatch push', () => routerDispatchTest('push', '/foo'))
@@ -85,7 +83,7 @@ export default (driver) => {
             {},
             {
               listeners: [
-                when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
+                when('CHECK')((action, st, { router }) => {
                   spy(omit(router.get(), 'key'))
                 }),
               ],
@@ -96,6 +94,7 @@ export default (driver) => {
 
           // dispatch action
           store.dispatch(push('/foo'))
+          store.dispatch('CHECK')
 
           // assert
           expect(spy.mock.calls).toMatchSnapshot()
@@ -111,7 +110,7 @@ export default (driver) => {
           {},
           {
             listeners: [
-              when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
+              when('CHECK')((action, st, { router }) => {
                 spy(router.getRouteParam('id'))
               }),
             ],
@@ -122,6 +121,7 @@ export default (driver) => {
 
         // dispatch action
         store.dispatch(push('/foo/123'))
+        store.dispatch('CHECK')
 
         // assert
         expect(spy.mock.calls).toMatchSnapshot()
@@ -137,7 +137,7 @@ export default (driver) => {
         {},
         {
           listeners: [
-            when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
+            when('CHECK')((action, st, { router }) => {
               spy(router.getQueryParam('bar'))
             }),
           ],
@@ -148,6 +148,7 @@ export default (driver) => {
 
       // dispatch action
       store.dispatch(push('/foo?bar=baz'))
+      store.dispatch('CHECK')
 
       // assert
       expect(spy.mock.calls).toMatchSnapshot()
@@ -162,7 +163,7 @@ export default (driver) => {
         {},
         {
           listeners: [
-            when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
+            when('CHECK')((action, st, { router }) => {
               spy(router.getResultParam('title'))
               spy(router.getResultParam('dont-exists'))
             }),
@@ -174,6 +175,7 @@ export default (driver) => {
 
       // dispatch action
       store.dispatch(push('/foo'))
+      store.dispatch('CHECK')
 
       // assert
       expect(spy.mock.calls).toMatchSnapshot()
@@ -188,7 +190,7 @@ export default (driver) => {
         {},
         {
           listeners: [
-            when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
+            when('CHECK')((action, st, { router }) => {
               spy(router.getParentResultParam('title'))
               spy(router.getParentResultParam('dont-exists'))
             }),
@@ -200,6 +202,7 @@ export default (driver) => {
 
       // dispatch action
       store.dispatch(push('/foo'))
+      store.dispatch('CHECK')
 
       // assert
       expect(spy.mock.calls).toMatchSnapshot()
@@ -214,7 +217,7 @@ export default (driver) => {
         {},
         {
           listeners: [
-            when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
+            when('CHECK')((action, st, { router }) => {
               spy(router.isRoute('/foo'))
               spy(router.isRoute('/bar'))
             }),
@@ -226,6 +229,7 @@ export default (driver) => {
 
       // dispatch action
       store.dispatch(push('/foo'))
+      store.dispatch('CHECK')
 
       // assert
       expect(spy.mock.calls).toMatchSnapshot()
@@ -240,7 +244,7 @@ export default (driver) => {
         {},
         {
           listeners: [
-            when('ROUTER_LOCATION_CHANGED')((action, st, { router }) => {
+            when('CHECK')((action, st, { router }) => {
               spy(router.isParentResultParam('title', 'FOO_ROUTE'))
               spy(router.isParentResultParam('title', 'ROOT'))
               spy(router.isParentResultParam('title', 'DOESNT MATCH'))
@@ -253,6 +257,7 @@ export default (driver) => {
 
       // dispatch action
       store.dispatch(push('/foo'))
+      store.dispatch('CHECK')
 
       // assert
       expect(spy.mock.calls).toMatchSnapshot()

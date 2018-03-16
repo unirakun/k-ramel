@@ -8,7 +8,7 @@ export default (driver) => {
       ...options,
       drivers: {
         ...options.drivers,
-        http: driver,
+        http: driver(),
       },
     },
   )
