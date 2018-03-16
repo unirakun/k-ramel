@@ -44,7 +44,7 @@ const init = selector => ({ getState, dispatch }) => {
   if (initialLocation) dispatch(initializeCurrentLocation(initialLocation))
 }
 
-export default (config, selector) => {
+export default (config, selector, path) => {
   const {
     reducer,
     middleware,
@@ -53,7 +53,7 @@ export default (config, selector) => {
 
   return {
     getDriver: getDriver(selector),
-    getReducer: () => ({ reducer, path: 'router' }), // FIXME: hardcoded router
+    getReducer: () => ({ reducer, path }),
     getEnhancer: () => compose(enhancer, applyMiddleware(middleware)),
     init: init(selector),
   }
