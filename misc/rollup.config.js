@@ -1,7 +1,7 @@
 import fs from 'fs'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
-// import uglify from 'rollup-plugin-uglify'
+import uglify from 'rollup-plugin-uglify'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
@@ -30,7 +30,7 @@ export default {
       include: 'node_modules/**',
       extensions: ['.js', '.jsx'],
     }),
-    // uglify(),
+    uglify(),
   ],
   external: [
     '@k-ramel/driver-http',
