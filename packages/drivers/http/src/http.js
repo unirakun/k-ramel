@@ -75,6 +75,8 @@ const getDriver = (store) => {
   driver.setAuthorization = (authorization) => { innerHeaders.Authorization = authorization }
   driver.setOptions = (options) => { innerOptions = options }
   driver.setCredentials = (credentials) => { innerOptions = { ...innerOptions, credentials } }
+
+  return driver
 }
 
 export default () => ({

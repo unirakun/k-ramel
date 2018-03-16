@@ -13,7 +13,7 @@ const defaultOptions = {
   devtools: true,
   name: 'store',
   drivers: {
-    http,
+    http: http(),
   },
 }
 
@@ -60,7 +60,7 @@ export default (definition, options = defaultOptions) => {
   // store with driver
   store.drivers = Object.keys(drivers)
     .reduce(
-      (acc, driver) => ({ ...acc, [driver]: drivers[driver](store) }),
+      (acc, driver) => ({ ...acc, [driver]: drivers[driver].getDriver(store) }),
       {},
     )
 
