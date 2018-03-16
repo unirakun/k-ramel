@@ -1,4 +1,4 @@
-import { routerForBrowser, push, replace, go, goBack, goForward, block, unblock } from 'redux-little-router'
+import { routerForBrowser, push, replace, go, goBack, goForward, block, unblock, initializeCurrentLocation } from 'redux-little-router'
 import { compose, applyMiddleware } from 'redux'
 
 const getParentResultParam = (result, key) => {
@@ -39,6 +39,11 @@ const getDriver = selector => ({ dispatch, getState }) => {
   })
 }
 
+const init = selector => ({ getState, dispatch }) => {
+  const initialLocation = selector(getState())
+  if (initialLocation) dispatch(initializeCurrentLocation(initialLocation))
+}
+
 export default (config, selector) => {
   const {
     reducer,
@@ -48,7 +53,8 @@ export default (config, selector) => {
 
   return {
     getDriver: getDriver(selector),
-    getReducer: () => reducer,
+    getReducer: () => ({ reducer, path: 'router' }), // FIXME: hardcoded router
     getEnhancer: () => compose(enhancer, applyMiddleware(middleware)),
+    init: init(selector),
   }
 }
