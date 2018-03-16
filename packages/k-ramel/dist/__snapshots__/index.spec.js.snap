@@ -573,7 +573,15 @@ exports[`listen middleware should give drivers 1`] = `
 Object {
   "dumbDriver": Array [
     Array [
-      "I am called with a dumb driver",
+      "I am called with a dumb driver, state is 2",
+    ],
+  ],
+  "init": Array [
+    Array [
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+      },
     ],
   ],
 }

@@ -253,17 +253,27 @@ export default (lib) => {
 
     it('should give drivers', () => {
       const dumbDriver = jest.fn()
+      const init = jest.fn()
 
       const store = createStore({
         config: { type: 'simpleObject' },
+        a: {},
       }, {
         listeners: [
           when('DISPATCHED')((action, st, drivers) => {
-            drivers.dumbDriver('I am called with a dumb driver')
+            drivers.dumbDriver(`I am called with a dumb driver, state is ${st.getState().a.path}`)
           }),
         ],
         drivers: {
           dumbDriver: ({
+            init: (st) => { init({ dispatch: st.dispatch, getState: st.getState }) },
+            getReducer: () => ({
+              reducer: (state = 0, action) => {
+                if (action.type === 'DISPATCHED') return state + 2
+                return state
+              },
+              path: 'a.path',
+            }),
             getDriver: (/* store */) => dumbDriver,
           }),
         },
@@ -273,6 +283,7 @@ export default (lib) => {
 
       expect({
         dumbDriver: dumbDriver.mock.calls,
+        init: init.mock.calls,
       }).toMatchSnapshot()
     })
 
