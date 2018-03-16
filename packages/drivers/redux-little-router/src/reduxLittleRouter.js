@@ -44,7 +44,7 @@ const init = selector => ({ getState, dispatch }) => {
   if (initialLocation) dispatch(initializeCurrentLocation(initialLocation))
 }
 
-export default (config, selector, path) => {
+export default (config, selector = state => state.router, path = 'router') => {
   const {
     reducer,
     middleware,
