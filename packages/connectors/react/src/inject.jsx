@@ -45,14 +45,13 @@ export default injectFunction => WrappedComponent => class extends Component {
       )
       return
     }
-
-    // subscribe
-    this.unsubscribe = store.subscribe(() => {
-      this.inject()
-    })
+    this.store = store
 
     // run in once
     this.inject()
+
+    // subscribe
+    this.unsubscribe = store.subscribe(() => { this.inject() })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -72,20 +71,19 @@ export default injectFunction => WrappedComponent => class extends Component {
   }
 
   componentWillUnmount() {
+    this.store = undefined
     this.unsubscribe()
   }
 
   inject = (nextProps) => {
-    this.setState((state) => {
-      const { store } = this.context
+    if (!this.store) return
 
-      return {
-        ...state,
-        injectedProps: injectFunction
-          ? injectFunction(store, nextProps || this.props, store.drivers) || defaultObject
-          : defaultObject,
-      }
-    })
+    this.setState(state => ({
+      ...state,
+      injectedProps: injectFunction
+        ? injectFunction(this.store, nextProps || this.props, this.store.drivers) || defaultObject
+        : defaultObject,
+    }))
   }
 
   render() {

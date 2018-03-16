@@ -1,2 +1,101 @@
-!function(r,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e(require("redux-little-router"),require("redux")):"function"==typeof define&&define.amd?define(["redux-little-router","redux"],e):r["@k-ramel/driver-redux-little-router"]=e(r["redux-little-router"],r.Redux)}(this,function(r,e){"use strict";return function(t,n){var u=function(r){var e=r.reducer,t=r.middleware,n=r.enhancer;return e&&n&&t}(t)?t:r.routerForBrowser({routes:t}),o=u.reducer,i=u.middleware,c=u.enhancer,a=function(e){var t=e.dispatch,u=e.getState,o=function(){return n(u())},i=function(){return o().result};return{push:function(e){return t(r.push(e))},replace:function(e){return t(r.replace(e))},go:function(e){return t(r.go(e))},goBack:function(){return t(r.goBack())},goForward:function(){return t(r.goForward())},block:function(e){return t(r.block(e))},unblock:function(){return t(r.unblock())},get:o,getRouteParam:function(r){return o().params&&o().params[r]},getQueryParam:function(r){return o().query&&o().query[r]},getResultParam:function(r){return i()&&i()[r]},getParentResultParam:function(r){return function r(e,t){if(e)return e[t]?e[t]:r(e.parent,t)}(i(),r)},isRoute:function(r){return o().route===r},isParentResultParam:function(r,e){return function r(e,t,n){return!!e&&(e[t]===n||r(e.parent,t,n))}(i(),r,e)}}};return a.getReducer=function(){return o},a.getEnhancer=function(){return e.compose(c,e.applyMiddleware(i))},a}});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('redux-little-router'), require('redux')) :
+	typeof define === 'function' && define.amd ? define(['redux-little-router', 'redux'], factory) :
+	(global['@k-ramel/driver-redux-little-router'] = factory(global['redux-little-router'],global.Redux));
+}(this, (function (reduxLittleRouter,redux) { 'use strict';
+
+var _getParentResultParam = function _getParentResultParam(result, key) {
+  if (!result) return undefined;
+  if (result[key]) return result[key];
+  return _getParentResultParam(result.parent, key);
+};
+
+var _isParentResultParam = function _isParentResultParam(result, key, value) {
+  if (!result) return false;
+  if (result[key] === value) return true;
+  return _isParentResultParam(result.parent, key, value);
+};
+
+var isRouterImpl = function isRouterImpl(_ref) {
+  var reducer = _ref.reducer,
+      middleware = _ref.middleware,
+      enhancer = _ref.enhancer;
+  return reducer && enhancer && middleware;
+};
+
+var reduxLittleRouter$1 = (function (config, selector) {
+  var _ref2 = isRouterImpl(config) ? config : reduxLittleRouter.routerForBrowser({ routes: config }),
+      reducer = _ref2.reducer,
+      middleware = _ref2.middleware,
+      enhancer = _ref2.enhancer;
+
+  var driver = function driver(_ref3) {
+    var dispatch = _ref3.dispatch,
+        getState = _ref3.getState;
+
+    var get = function get() {
+      return selector(getState());
+    };
+    var getResult = function getResult() {
+      return get().result;
+    };
+    return {
+      /* actions */
+      push: function push(path) {
+        return dispatch(reduxLittleRouter.push(path));
+      },
+      replace: function replace(path) {
+        return dispatch(reduxLittleRouter.replace(path));
+      },
+      go: function go(nbLocations) {
+        return dispatch(reduxLittleRouter.go(nbLocations));
+      },
+      goBack: function goBack() {
+        return dispatch(reduxLittleRouter.goBack());
+      },
+      goForward: function goForward() {
+        return dispatch(reduxLittleRouter.goForward());
+      },
+      block: function block(callback) {
+        return dispatch(reduxLittleRouter.block(callback));
+      },
+      unblock: function unblock() {
+        return dispatch(reduxLittleRouter.unblock());
+      },
+      /* route selectors */
+      get: get,
+      getRouteParam: function getRouteParam(key) {
+        return get().params && get().params[key];
+      },
+      getQueryParam: function getQueryParam(key) {
+        return get().query && get().query[key];
+      },
+      getResultParam: function getResultParam(key) {
+        return getResult() && getResult()[key];
+      },
+      getParentResultParam: function getParentResultParam(key) {
+        return _getParentResultParam(getResult(), key);
+      },
+      isRoute: function isRoute(route) {
+        return get().route === route;
+      },
+      isParentResultParam: function isParentResultParam(key, value) {
+        return _isParentResultParam(getResult(), key, value);
+      }
+    };
+  };
+
+  driver.getReducer = function () {
+    return reducer;
+  };
+  driver.getEnhancer = function () {
+    return redux.compose(enhancer, redux.applyMiddleware(middleware));
+  };
+
+  return driver;
+});
+
+return reduxLittleRouter$1;
+
+})));
 //# sourceMappingURL=index.umd.js.map

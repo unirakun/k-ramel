@@ -1,2 +1,294 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("react"),require("fbjs/lib/shallowEqual")):"function"==typeof define&&define.amd?define(["exports","react","fbjs/lib/shallowEqual"],t):t(e["@k-ramel/react"]={},e.React,e["fbjs/lib/shallowEqual"])}(this,function(e,t,n){"use strict";var r="default"in t?t.default:t;n=n&&n.hasOwnProperty("default")?n.default:n;var o=function(e){return e.displayName||e.name||e.constructor&&e.constructor.name||"Unknown"},i=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},c=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),u=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},s=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)},a=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t},l={},f=function(e){return Object.keys(e).reduce(function(t,n){var r=e[n];return"function"==typeof r?t:u({},t,function(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}({},n,r))},l)},p=[];e.inject=function(e){return function(p){var h,d;return d=h=function(t){function h(t,n){i(this,h);var r=a(this,(h.__proto__||Object.getPrototypeOf(h)).call(this,t,n));return r.inject=function(t){r.setState(function(n){var o=r.context.store;return u({},n,{injectedProps:e&&e(o,t||r.props,o.drivers)||l})})},r.first=!0,r.state={injectedProps:{}},r}return s(h,t),c(h,[{key:"componentWillMount",value:function(){var e=this,t=this.context.store;if(t)this.unsubscribe=t.subscribe(function(){e.inject()}),this.inject();else{var n="font-weight: bolder; font-style: italic;";console.error("[k-ramel/react] Error in %cinject%c for the component %c"+o(p)+"%c\n\t> The store needs to be provided by an ancestor of this component.\n\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\nCheck the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n",n,"",n,"",n,"",n,"",n,"",n,"")}}},{key:"componentWillReceiveProps",value:function(e){this.inject(e)}},{key:"shouldComponentUpdate",value:function(e,t){return!!this.first||!(n(this.props,e)&&n(f(t.injectedProps),f(this.state.injectedProps)))}},{key:"componentWillUnmount",value:function(){this.unsubscribe()}},{key:"render",value:function(){return this.first&&(this.first=!1),r.createElement(p,u({},this.props,this.state.injectedProps))}}]),h}(t.Component),h.displayName="inject("+o(p),h.contextTypes={store:function(){return null}},d}},e.provider=function(e){return function(n){var u,l;return l=u=function(t){function o(){return i(this,o),a(this,(o.__proto__||Object.getPrototypeOf(o)).apply(this,arguments))}return s(o,t),c(o,[{key:"getChildContext",value:function(){return{store:e}}},{key:"componentWillMount",value:function(){e.dispatch("@@krml/INIT")}},{key:"render",value:function(){return r.createElement(n,this.props)}}]),o}(t.Component),u.displayName="provider("+o(n)+")",u.childContextTypes={store:function(){return null}},l}},e.listen=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:p,n=arguments[1];return function(u){var l,f,p=function(e){var t=(e?">":"")+(e||"");return function(e){return"@@krml/LISTENERS>"+e+t}}(n);return f=l=function(t){function n(){return i(this,n),a(this,(n.__proto__||Object.getPrototypeOf(n)).apply(this,arguments))}return s(n,t),c(n,[{key:"componentWillMount",value:function(){var t=this.context.store;t.listeners.add(e),t.dispatch(p("ADDED"))}},{key:"componentWillUnmount",value:function(){var t=this.context.store;t.dispatch(p("REMOVING")),t.listeners.remove(e)}},{key:"render",value:function(){return r.createElement(u,this.props)}}]),n}(t.Component),l.displayName="listen("+o(u),l.contextTypes={store:function(){return null}},f}},Object.defineProperty(e,"__esModule",{value:!0})});
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('fbjs/lib/shallowEqual')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'react', 'fbjs/lib/shallowEqual'], factory) :
+	(factory((global['@k-ramel/react'] = {}),global.React,global['fbjs/lib/shallowEqual']));
+}(this, (function (exports,React,shallowEqual) { 'use strict';
+
+var React__default = 'default' in React ? React['default'] : React;
+shallowEqual = shallowEqual && shallowEqual.hasOwnProperty('default') ? shallowEqual['default'] : shallowEqual;
+
+var getWrappedDisplayName = (function (Component) {
+  return Component.displayName || Component.name || Component.constructor && Component.constructor.name || 'Unknown';
+});
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+var defaultObject = {};
+var withoutFunctions = function withoutFunctions(object) {
+  return Object.keys(object).reduce(function (acc, key) {
+    var value = object[key];
+    if (typeof value === 'function') return acc;
+    return _extends({}, acc, defineProperty({}, key, value));
+  }, defaultObject);
+};
+
+var inject = (function (injectFunction) {
+  return function (WrappedComponent) {
+    var _class, _temp;
+
+    return _temp = _class = function (_Component) {
+      inherits(_class, _Component);
+
+      function _class(props, context) {
+        classCallCheck(this, _class);
+
+        var _this = possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props, context));
+
+        _this.inject = function (nextProps) {
+          if (!_this.store) return;
+
+          _this.setState(function (state) {
+            return _extends({}, state, {
+              injectedProps: injectFunction ? injectFunction(_this.store, nextProps || _this.props, _this.store.drivers) || defaultObject : defaultObject
+            });
+          });
+        };
+
+        _this.first = true;
+        _this.state = {
+          injectedProps: {}
+        };
+        return _this;
+      }
+
+      createClass(_class, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+          var _this2 = this;
+
+          var store = this.context.store;
+
+
+          if (!store) {
+            var bold = 'font-weight: bolder; font-style: italic;';
+            // eslint-disable-next-line no-console
+            console.error('[k-ramel/react] Error in %cinject%c for the component %c' + getWrappedDisplayName(WrappedComponent) + '%c\n' + '\t> The store needs to be provided by an ancestor of this component.\n' + '\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\n' + 'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n', bold, '', bold, '', bold, '', bold, '', bold, '', bold, '');
+            return;
+          }
+          this.store = store;
+
+          // run in once
+          this.inject();
+
+          // subscribe
+          this.unsubscribe = store.subscribe(function () {
+            _this2.inject();
+          });
+        }
+      }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+          this.inject(nextProps);
+        }
+      }, {
+        key: 'shouldComponentUpdate',
+        value: function shouldComponentUpdate(nextProps, nextState) {
+          if (this.first) return true;
+
+          return !(shallowEqual(this.props, nextProps) && shallowEqual(withoutFunctions(nextState.injectedProps), withoutFunctions(this.state.injectedProps)));
+        }
+      }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+          this.store = undefined;
+          this.unsubscribe();
+        }
+      }, {
+        key: 'render',
+        value: function render() {
+          if (this.first) this.first = false;
+
+          return React__default.createElement(WrappedComponent
+          /* this is parent props */
+          , _extends({}, this.props, this.state.injectedProps));
+        }
+      }]);
+      return _class;
+    }(React.Component), _class.displayName = 'inject(' + getWrappedDisplayName(WrappedComponent), _class.contextTypes = {
+      store: function store() {
+        return null;
+      } // this is to avoid importing prop-types
+    }, _temp;
+  };
+});
+
+/* eslint-disable import/prefer-default-export */
+
+var provider = (function (store) {
+  return function (WrappedComponent) {
+    var _class, _temp;
+
+    return _temp = _class = function (_Component) {
+      inherits(_class, _Component);
+
+      function _class() {
+        classCallCheck(this, _class);
+        return possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+      }
+
+      createClass(_class, [{
+        key: 'getChildContext',
+        value: function getChildContext() {
+          return { store: store };
+        }
+      }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+          store.dispatch('@@krml/INIT');
+        }
+      }, {
+        key: 'render',
+        value: function render() {
+          return React__default.createElement(WrappedComponent, this.props);
+        }
+      }]);
+      return _class;
+    }(React.Component), _class.displayName = 'provider(' + getWrappedDisplayName(WrappedComponent) + ')', _class.childContextTypes = {
+      store: function store() {
+        return null;
+      } // this is to avoid importing prop-types
+    }, _temp;
+  };
+});
+
+var defaultListeners = [];
+
+var toActionFactory = function toActionFactory(name) {
+  var suffix = '' + (name ? '>' : '') + (name || '');
+  return function (type) {
+    return '@@krml/LISTENERS>' + type + suffix;
+  };
+};
+
+var listen = (function () {
+  var listeners = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultListeners;
+  var name = arguments[1];
+  return function (WrappedComponent) {
+    var _class, _temp;
+
+    var toAction = toActionFactory(name);
+
+    return _temp = _class = function (_Component) {
+      inherits(_class, _Component);
+
+      function _class() {
+        classCallCheck(this, _class);
+        return possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+      }
+
+      createClass(_class, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+          var store = this.context.store;
+
+
+          store.listeners.add(listeners);
+          store.dispatch(toAction('ADDED'));
+        }
+      }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+          var store = this.context.store;
+
+
+          store.dispatch(toAction('REMOVING'));
+          store.listeners.remove(listeners);
+        }
+      }, {
+        key: 'render',
+        value: function render() {
+          return React__default.createElement(WrappedComponent, this.props);
+        }
+      }]);
+      return _class;
+    }(React.Component), _class.displayName = 'listen(' + getWrappedDisplayName(WrappedComponent), _class.contextTypes = {
+      store: function store() {
+        return null;
+      } // this is to avoid importing prop-types
+    }, _temp;
+  };
+});
+
+exports.inject = inject;
+exports.provider = provider;
+exports.listen = listen;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 //# sourceMappingURL=index.umd.js.map
