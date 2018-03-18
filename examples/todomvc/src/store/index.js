@@ -4,13 +4,14 @@ import listeners from './listeners'
 export default createStore(
   {
     data: {
-      todos: {
-        all: { type: 'keyValue', key: 'id' },
-        completed: keyValue({ key: 'id' }),
-        active: keyValue({ key: 'id' }),
-      },
+      todos: keyValue({ key: 'id' }), // or you can create with if you want to serialize it : { type: 'keyValue', key: 'id' }
     },
     ui: {
+      views: {
+        all: simpleObject({ defaultData: [] }),
+        completed: simpleObject({ defaultData: [] }),
+        active: simpleObject({ defaultData: [] }),
+      },
       footer: simpleObject({
         defaultData: {
           todos: 0,
@@ -19,7 +20,7 @@ export default createStore(
           filter: 'all',
         },
       }),
-      newTodo: { type: 'simpleObject', defaultData: '' },
+      newTodo: simpleObject({ defaultData: '' }),
     },
   },
   {

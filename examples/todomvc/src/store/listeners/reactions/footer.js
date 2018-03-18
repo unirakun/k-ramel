@@ -1,14 +1,12 @@
 import { reaction } from 'k-ramel'
 
 export const updateCounts = reaction((action, store) => {
-  const todos = store.data.todos.all.getAsArray()
-  const completedTodos = store.data.todos.all.getBy('completed', true)
+  const all = store.ui.views.all.get().length
+  const completed = store.ui.views.completed.get().length
 
   // count todos
-  const { length } = todos
-  const completed = completedTodos.length
-  const left = length - completed
+  const left = all - completed
 
   // store it
-  store.ui.footer.update({ todos: length, todosLeft: left, todosCompleted: completed })
+  store.ui.footer.update({ todos: all, todosLeft: left, todosCompleted: completed })
 })
