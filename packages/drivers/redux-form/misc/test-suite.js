@@ -3,7 +3,6 @@
 import { createStore as krmlCreateStore, when } from 'k-ramel'
 import React from 'react'
 import { mount } from 'enzyme'
-import { reducer } from 'redux-form'
 import makeComponent from './form'
 import { actionNames } from '../src/actions'
 import { selectorNames } from '../src/selectors'
@@ -28,9 +27,7 @@ export default (driver) => {
 
         // store
         const store = createStore(
-          {
-            form: reducer,
-          },
+          { },
           {
             listeners: [
               when('DISPATCHED')((action, st, { reduxform }) => {
@@ -64,9 +61,7 @@ export default (driver) => {
 
         // store
         const store = createStore(
-          {
-            form: reducer,
-          },
+          { },
           {
             listeners: [
               when('DISPATCHED')((action, st, { reduxform }) => {
@@ -105,9 +100,7 @@ export default (driver) => {
 
         // store
         const store = createStore(
-          {
-            form: reducer,
-          },
+          { },
           {
             listeners: [
               when('DISPATCHED')((action, st, { reduxform }) => {
@@ -142,9 +135,7 @@ export default (driver) => {
 
         // store
         const store = createStore(
-          {
-            form: reducer,
-          },
+          { },
           {
             listeners: [
               when('DISPATCHED')((action, st, { reduxform }) => {
@@ -176,9 +167,7 @@ export default (driver) => {
 
         // store
         const store = createStore(
-          {
-            ui: { form: reducer },
-          }, {
+          { }, {
             listeners: [
               when('DISPATCHED')((action, st, { reduxform }) => {
                 results = selectorNames

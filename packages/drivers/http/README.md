@@ -8,9 +8,7 @@ This driver is added by default to k-ramel stores.
 ## Examples
 In a reaction (See main documentation about listeners/reactions)
 ```js
-import { reaction } from 'k-ramel'
-
-export const login = reaction((store, action, drivers) => {
+export const login = (store, action, drivers) => {
   const { http } = drivers
   const todo = store.data.todos.get(action.payload)
 
@@ -24,5 +22,5 @@ export const login = reaction((store, action, drivers) => {
     // 4. use fetch to call your API
     // 5. trigger event like `@@http/TODOS>POST>FAILED` or `@@http/TODOS>POST>ENDED`
     .post('/api/todos', todo)
-})
+}
 ```

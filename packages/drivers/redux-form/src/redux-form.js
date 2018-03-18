@@ -1,12 +1,20 @@
+import { get } from 'lodash'
+import { reducer } from 'redux-form'
 import actions from './actions'
 import customActions from './actions.custom'
 import selectors from './selectors'
 
-export default getFormState => store => name => ({
-  // actions
-  ...actions(store)(name),
-  // selectors
-  ...selectors(getFormState)(store)(name),
-  // custom actions
-  ...customActions(store)(name),
+export default ({ path = 'form' } = {}) => ({
+  getDriver: store => name => ({
+    // actions
+    ...actions(store)(name),
+    // selectors
+    ...selectors(state => get(state, path))(store)(name),
+    // custom actions
+    ...customActions(store)(name),
+  }),
+  getReducer: () => ({
+    path,
+    reducer,
+  }),
 })

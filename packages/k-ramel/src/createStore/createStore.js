@@ -1,4 +1,4 @@
-import { createStore } from 'redux'
+import { createStore, compose } from 'redux'
 import http from '@k-ramel/driver-http'
 import reduxFactory from './reduxFactory'
 import toContext from './toContext'
@@ -13,7 +13,7 @@ const defaultOptions = {
   devtools: true,
   name: 'store',
   drivers: {
-    http,
+    http: http(),
   },
 }
 
@@ -28,9 +28,32 @@ export default (definition, options = defaultOptions) => {
     },
   }
   const { init, hideRedux, drivers } = innerOptions
+  const definitionWithDrivers = { ...definition }
+
+  // use drivers
+  const driversEnhancers = []
+  const driversInits = []
+  Object.values(drivers)
+    .forEach((driver) => {
+      // bind reducer to store definition
+      if (driver.getReducer) {
+        const { reducer, path } = driver.getReducer() // eslint-disable-line no-unused-vars
+        eval(`definitionWithDrivers${path.length > 0 ? '.' : ''}${path}=reducer`) // eslint-disable-line no-eval
+      }
+
+      // add enhancer
+      if (driver.getEnhancer) driversEnhancers.push(driver.getEnhancer())
+
+      // add init
+      if (driver.init) driversInits.push(driver.init)
+    })
+
+  // add all driver enhancers
+  if (innerOptions.enhancer) driversEnhancers.push(innerOptions.enhancer)
+  innerOptions.enhancer = compose(...driversEnhancers)
 
   // this is reducer exports (action/selectors)
-  let reducerTree = reduxFactory(definition)
+  let reducerTree = reduxFactory(definitionWithDrivers)
 
   // instanciate the listen middleware and prepare redux enhancers
   const { enhancer, listen } = enhanceRedux(innerOptions)
@@ -60,7 +83,7 @@ export default (definition, options = defaultOptions) => {
   // store with driver
   store.drivers = Object.keys(drivers)
     .reduce(
-      (acc, driver) => ({ ...acc, [driver]: drivers[driver](store) }),
+      (acc, driver) => ({ ...acc, [driver]: drivers[driver].getDriver(store) }),
       {},
     )
 
@@ -73,6 +96,9 @@ export default (definition, options = defaultOptions) => {
 
   // pass store to listen (after it has been created)
   listen.setStore(store)
+
+  // init drivers
+  driversInits.forEach(driverInit => driverInit(store))
 
   return store
 }

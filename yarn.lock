@@ -71,10 +71,6 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@k-ramel/driver-http@^0.10.0":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@k-ramel/driver-http/-/driver-http-0.10.2.tgz#a7db720ecdbea63695e7991580a86156cc21aa2b"
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -5316,14 +5312,6 @@ jsx-ast-utils@^2.0.0, jsx-ast-utils@^2.0.1:
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.0.1.tgz#e801b1b39985e20fffc87b40e3748080e2dcac7f"
   dependencies:
     array-includes "^3.0.3"
-
-k-ramel@^0.10.0:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/k-ramel/-/k-ramel-0.10.2.tgz#413a36babd78d78f526f00a4df807dcdb9af92b1"
-  dependencies:
-    "@k-ramel/driver-http" "^0.10.0"
-    k-redux-factory "5.0.1"
-    redux "3.7.2"
 
 k-redux-factory@5.0.1:
   version "5.0.1"
