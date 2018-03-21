@@ -7348,9 +7348,9 @@ redux-form@^7.3.0:
     lodash-es "^4.17.5"
     prop-types "^15.6.1"
 
-redux-little-router@15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/redux-little-router/-/redux-little-router-15.0.0.tgz#2097ee500f9e10442ea192a2e85ffc2ab4831792"
+redux-little-router@15.1.0:
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/redux-little-router/-/redux-little-router-15.1.0.tgz#02fad8d4deb22f0b65c2d6d073fcf6de6800bca2"
   dependencies:
     history "^4.6.1"
     lodash.assign "^4.2.0"
