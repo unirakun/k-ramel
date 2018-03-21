@@ -4,7 +4,7 @@ import listeners from './listeners'
 export default createStore(
   {
     data: {
-      todos: keyValue({ key: 'id' }), // or you can create with if you want to serialize it : { type: 'keyValue', key: 'id' }
+      todos: keyValue({ key: 'id' }), // or you can create it this way if you want to serialize it : { type: 'keyValue', key: 'id' }
     },
     ui: {
       views: {
