@@ -3011,9 +3011,9 @@ eslint@4.17.0:
     table "^4.0.1"
     text-table "~0.2.0"
 
-eslint@4.19.0:
-  version "4.19.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.19.0.tgz#9e900efb5506812ac374557034ef6f5c3642fc4c"
+eslint@4.19.1:
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.19.1.tgz#32d1d653e1d90408854bfb296f076ec7e186a300"
   dependencies:
     ajv "^5.3.0"
     babel-code-frame "^6.22.0"
@@ -5346,9 +5346,9 @@ jsx-ast-utils@^2.0.0, jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
-k-redux-factory@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/k-redux-factory/-/k-redux-factory-5.0.1.tgz#1507e0e23570cffa38f358206eb4f83bdf531080"
+k-redux-factory@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/k-redux-factory/-/k-redux-factory-5.0.2.tgz#79647d5fc40503d952370d8d35e64aaba7e62e5c"
 
 killable@^1.0.0:
   version "1.0.0"
@@ -7348,9 +7348,9 @@ redux-form@^7.3.0:
     lodash-es "^4.17.5"
     prop-types "^15.6.1"
 
-redux-little-router@15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/redux-little-router/-/redux-little-router-15.0.0.tgz#2097ee500f9e10442ea192a2e85ffc2ab4831792"
+redux-little-router@15.1.0:
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/redux-little-router/-/redux-little-router-15.1.0.tgz#02fad8d4deb22f0b65c2d6d073fcf6de6800bca2"
   dependencies:
     history "^4.6.1"
     lodash.assign "^4.2.0"
@@ -7682,9 +7682,9 @@ rollup-pluginutils@^2.0.1:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
 
-rollup@0.57.0:
-  version "0.57.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.57.0.tgz#0a57884477175592efe0c8bfc408ea12aa4c0f21"
+rollup@0.57.1:
+  version "0.57.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.57.1.tgz#0bb28be6151d253f67cf4a00fea48fb823c74027"
   dependencies:
     "@types/acorn" "^4.0.3"
     acorn "^5.5.3"
