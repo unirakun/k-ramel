@@ -4,11 +4,13 @@ import Header from './components/header'
 import Footer from './components/footer'
 
 const App = () => (
-  <section className="todoapp">
-    <Header />
-    <Todos />
-    <Footer />
-  </section>
+  <React.StrictMode>
+    <section className="todoapp">
+      <Header />
+      <Todos />
+      <Footer />
+    </section>
+  </React.StrictMode>
 )
 
 export default App

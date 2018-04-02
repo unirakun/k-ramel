@@ -21,16 +21,18 @@ export default injectFunction => WrappedComponent => class extends Component {
     store: () => null, // this is to avoid importing prop-types
   }
 
-  constructor(props, context) {
-    super(props, context)
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const injectedProps = getInjectedProps(nextProps)
+    if (!injectedProps) return null
 
-    this.first = true
-    this.state = {
-      injectedProps: {},
-    }
+    return { ...prevState, injectedProps }
   }
 
-  componentWillMount() {
+  constructor(props, context) {
+    super(props, context)
+    this.first = true
+
+    // attach store
     const { store } = this.context
 
     if (!store) {
@@ -48,14 +50,18 @@ export default injectFunction => WrappedComponent => class extends Component {
     this.store = store
 
     // run in once
-    this.inject()
+    this.state = {
+      ...this.state,
+      injectedProps: this.getInjectedProps() || {},
+    }
 
     // subscribe
-    this.unsubscribe = store.subscribe(() => { this.inject() })
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.inject(nextProps)
+    this.unsubscribe = store.subscribe(() => {
+      const injectedProps = this.getInjectedProps()
+      if (this.setState && injectedProps) {
+        this.setState(state => ({ ...state, injectedProps }))
+      }
+    })
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -73,17 +79,6 @@ export default injectFunction => WrappedComponent => class extends Component {
   componentWillUnmount() {
     this.store = undefined
     this.unsubscribe()
-  }
-
-  inject = (nextProps) => {
-    if (!this.store) return
-
-    this.setState(state => ({
-      ...state,
-      injectedProps: injectFunction
-        ? injectFunction(this.store, nextProps || this.props, this.store.drivers) || defaultObject
-        : defaultObject,
-    }))
   }
 
   render() {
