@@ -34,6 +34,8 @@ const getDerivedStateFromProps = injectFunction => (nextProps, prevState) => {
 }
 
 const wrapper = injectFunction => Component => class extends React.Component {
+  static displayName = `inject(${getWrappedDisplayName(Component)})`
+
   static getDerivedStateFromProps = getDerivedStateFromProps(injectFunction)
 
   static propTypes = {
@@ -101,7 +103,7 @@ export default (injectFunction) => {
       </Consumer>
     )
 
-    WithConsumer.displayName = `inject(${getWrappedDisplayName(Component)}`
+    WithConsumer.displayName = `consumer(${getWrappedDisplayName(WrappedComponent)})`
 
     return WithConsumer
   }

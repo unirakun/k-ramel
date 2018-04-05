@@ -11,10 +11,12 @@ const toActionFactory = (name) => {
 
 const defaultObject = {}
 
-const wrapper = (listeners, name) => (WrappedComponent) => {
+const wrapper = (listeners, name) => (Component) => {
   const toAction = toActionFactory(name)
 
   return class extends React.Component {
+    static displayName = `listen(${getWrappedDisplayName(Component)})`
+
     static propTypes = {
       store: () => null,
       ownProps: () => null,
@@ -40,7 +42,7 @@ const wrapper = (listeners, name) => (WrappedComponent) => {
     }
 
     render() {
-      return <WrappedComponent {...this.props.ownProps} />
+      return <Component {...this.props.ownProps} />
     }
   }
 }
@@ -59,7 +61,7 @@ export default (listeners = defaultListeners, name) => {
       </Consumer>
     )
 
-    WithConsumer.displayName = `listen(${getWrappedDisplayName(Component)}`
+    WithConsumer.displayName = `consumer(${getWrappedDisplayName(WrappedComponent)})`
 
     return WithConsumer
   }
