@@ -51,6 +51,19 @@ const wrapper = injectFunction => Component => class extends React.Component {
 
     const { store } = props
 
+    if (!store) {
+      const bold = 'font-weight: bolder; font-style: italic;'
+      // eslint-disable-next-line no-console
+      console.error(
+        `[k-ramel/react] Error in %cinject%c for the component %c${getWrappedDisplayName(Component)}%c\n` +
+        '\t> The store needs to be provided by an ancestor of this component.\n' +
+        '\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\n' +
+        'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n',
+        bold, '', bold, '', bold, '', bold, '', bold, '', bold, '',
+      )
+      return
+    }
+
     this.state = getDerivedStateFromProps(injectFunction)(
       this.props,
       {
@@ -64,6 +77,19 @@ const wrapper = injectFunction => Component => class extends React.Component {
 
   componentDidMount() {
     const { store } = this.props
+
+    if (!store) {
+      const bold = 'font-weight: bolder; font-style: italic;'
+      // eslint-disable-next-line no-console
+      console.error(
+        `[k-ramel/react] Error in %cinject%c for the component %c${getWrappedDisplayName(Component)}%c\n` +
+        '\t> The store needs to be provided by an ancestor of this component.\n' +
+        '\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\n' +
+        'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n',
+        bold, '', bold, '', bold, '', bold, '', bold, '', bold, '',
+      )
+      return
+    }
 
     this.unsubscribe = store.subscribe(() => {
       if (this.state.state !== store.getState()) {
