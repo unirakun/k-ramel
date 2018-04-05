@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import createContext from './createContext'
 import getWrappedDisplayName from './getWrappedDisplayName'
 
 const defaultListeners = []
@@ -8,32 +9,73 @@ const toActionFactory = (name) => {
   return type => `@@krml/LISTENERS>${type}${suffix}`
 }
 
-export default (listeners = defaultListeners, name) => (WrappedComponent) => {
+const defaultObject = {}
+
+const wrapper = (listeners, name) => (Component) => {
   const toAction = toActionFactory(name)
 
-  return class extends Component {
-    static displayName = `listen(${getWrappedDisplayName(WrappedComponent)}`
+  return class extends React.Component {
+    static displayName = `listen(${getWrappedDisplayName(Component)})`
 
-    static contextTypes = {
-      store: () => null, // this is to avoid importing prop-types
+    static propTypes = {
+      store: () => null,
+      ownProps: () => null,
     }
 
-    componentWillMount() {
-      const { store } = this.context
+    static defaultProps = {
+      store: undefined,
+      ownProps: defaultObject,
+    }
+
+    componentDidMount() {
+      const { store } = this.props
+
+      if (!store) {
+        const bold = 'font-weight: bolder; font-style: italic;'
+        // eslint-disable-next-line no-console
+        console.error(
+          `[k-ramel/react] Error in %clisten%c for the component %c${getWrappedDisplayName(Component)}%c\n` +
+          '\t> The store needs to be provided by an ancestor of this component.\n' +
+          '\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\n' +
+          'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n',
+          bold, '', bold, '', bold, '', bold, '', bold, '', bold, '',
+        )
+        return
+      }
 
       store.listeners.add(listeners)
       store.dispatch(toAction('ADDED'))
     }
 
     componentWillUnmount() {
-      const { store } = this.context
+      const { store } = this.props
 
       store.dispatch(toAction('REMOVING'))
       store.listeners.remove(listeners)
     }
 
     render() {
-      return <WrappedComponent {...this.props} />
+      return <Component {...this.props.ownProps} />
     }
+  }
+}
+
+export default (listeners = defaultListeners, name) => {
+  const { Consumer } = createContext()
+
+  const withListeners = wrapper(listeners, name)
+
+  return (Component) => {
+    const WrappedComponent = withListeners(Component)
+
+    const WithConsumer = props => (
+      <Consumer>
+        {store => <WrappedComponent ownProps={props} store={store} />}
+      </Consumer>
+    )
+
+    WithConsumer.displayName = `consumer(${getWrappedDisplayName(WrappedComponent)})`
+
+    return WithConsumer
   }
 }
