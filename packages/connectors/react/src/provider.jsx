@@ -1,23 +1,24 @@
 /* eslint-disable import/prefer-default-export */
 import React, { Component } from 'react'
 import getWrappedDisplayName from './getWrappedDisplayName'
+import createContext from './createContext'
 
-export default store => WrappedComponent => class extends Component {
-  static displayName = `provider(${getWrappedDisplayName(WrappedComponent)})`
+export default (store) => {
+  const { Provider } = createContext()
 
-  static childContextTypes = {
-    store: () => null, // this is to avoid importing prop-types
-  }
+  return WrappedComponent => class extends Component {
+    static displayName = `provider(${getWrappedDisplayName(WrappedComponent)})`
 
-  getChildContext() {
-    return { store }
-  }
+    componentWillMount() {
+      store.dispatch('@@krml/INIT')
+    }
 
-  componentWillMount() {
-    store.dispatch('@@krml/INIT')
-  }
-
-  render() {
-    return <WrappedComponent {...this.props} />
+    render() {
+      return (
+        <Provider value={store}>
+          <WrappedComponent {...this.props} />
+        </Provider>
+      )
+    }
   }
 }

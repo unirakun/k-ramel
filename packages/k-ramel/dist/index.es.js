@@ -1,2 +1,466 @@
-import factory from"k-redux-factory";import{combineReducers,applyMiddleware,compose,createStore}from"redux";export{applyMiddleware,compose}from"redux";import http from"@k-ramel/driver-http";import{isRegExp,isString,isFunction}from"lodash";var defineProperty=function(e,r,t){return r in e?Object.defineProperty(e,r,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[r]=t,e},_extends=Object.assign||function(e){for(var r=1;r<arguments.length;r++){var t=arguments[r];for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])}return e},slicedToArray=function(){return function(e,r){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,r){var t=[],n=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(n=(a=s.next()).done)&&(t.push(a.value),!r||t.length!==r);n=!0);}catch(e){i=!0,o=e}finally{try{!n&&s.return&&s.return()}finally{if(i)throw o}}return t}(e,r);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),toConsumableArray=function(e){if(Array.isArray(e)){for(var r=0,t=Array(e.length);r<e.length;r++)t[r]=e[r];return t}return Array.from(e)},reduxFactory=function(root){var subtree=function subtree(name,path){if(void 0===name)return Object.keys(root).map(function(e){return defineProperty({},e,subtree(e,""))}).reduce(function(e,r){return _extends({},e,r)},{});var nextPath=(path?path+".":"")+name,fullpath="root."+nextPath,options=eval(fullpath),type=options.type;return type?factory(_extends({name:name,path:path,prefix:path&&path.replace(/\./g,"_")||""},options)):"function"==typeof options?options:Object.keys(options).map(function(e){return defineProperty({},e,subtree(e,nextPath))}).reduce(function(e,r){return _extends({},e,r)},{})};return subtree()},withParams=["get","getBy","hasKey"],keysConfig={keyValue:[["set","add","update","addOrUpdate","replace","remove","orderBy","reset"],["get","getBy","getKeys","getAsArray","getLength","isInitialized","getState","hasKey"]],simpleObject:[["set","update","reset"],["get","isInitialized"]]},toContext=function(root,store){var subcontext=function subcontext(name,path){if(void 0===name)return Object.keys(root).map(function(e){return defineProperty({},e,subcontext(e,""))}).reduce(function(e,r){return _extends({},e,r)},{});var nextPath=(path?path+".":"")+name,fullpath="root."+nextPath,reducer=eval(fullpath);if(void 0!==reducer.krfType){var keys=keysConfig[reducer.krfType],_keys=slicedToArray(keys,2),actions=_keys[0],selectors=_keys[1],actionsObject=actions.map(function(e){var r=reducer[e];return defineProperty({},e,function(){return store.dispatch(r.apply(void 0,arguments))})}).reduce(function(e,r){return _extends({},e,r)},{}),selectorsObject=selectors.map(function(e){var r=reducer[e];return defineProperty({},e,function(){return withParams.includes(e)?r.apply(void 0,arguments)(store.getState()):r(store.getState())})}).reduce(function(e,r){return _extends({},e,r)},{});return Object.assign(reducer,actionsObject,selectorsObject)}return Object.keys(reducer).map(function(e){return defineProperty({},e,subcontext(e,nextPath))}).reduce(function(e,r){return _extends({},e,r)},{})};return subcontext()},combine=function(e){return function e(r){var t=Object.keys(r).map(function(t){var n=r[t];return defineProperty({},t,"function"==typeof n?n:e(n))}).reduce(function(e,r){return _extends({},e,r)},{});return combineReducers(t)}(e)},getReduxDevToolsEnhancer=function(e){return window.devToolsExtension({name:e})},getDevTools=function(e){var r=e.name;if(e.devtools&&window&&window.devToolsExtension)return getReduxDevToolsEnhancer(r)},listenFactory=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:[],r=arguments[2],t=void 0,n=[e];return{setStore:function(e){t=e},addListeners:function(e){n=[].concat(toConsumableArray(n),[e])},removeListeners:function(e){n=n.filter(function(r){return r!==e})},enhancer:applyMiddleware(function(){return function(e){return function(i){var o=r&&i.action||i,a=e(i);return n.forEach(function(e){try{e.forEach(function(e){e(o,t,t.drivers)})}catch(e){t.dispatch({type:"@@krml/EXCEPTION",payload:{from:i,exception:e,message:e.message}})}}),a}}})}},enhanceRedux=function(e){var r=e.listeners,t=e.drivers,n=e.enhancer,i=getDevTools(e),o=listenFactory(r,t,!!i),a=[n,i,o.enhancer].filter(Boolean);return{enhancer:compose.apply(void 0,toConsumableArray(a)),listen:o}},defaultOptions={hideRedux:!0,enhancer:void 0,init:{},listeners:void 0,devtools:!0,name:"store",drivers:{http:http()}},createStore$1=function(definition){var options=arguments.length>1&&void 0!==arguments[1]?arguments[1]:defaultOptions,innerOptions=_extends({},defaultOptions,options,{drivers:_extends({},defaultOptions.drivers,options.drivers)}),init=innerOptions.init,hideRedux=innerOptions.hideRedux,drivers=innerOptions.drivers,definitionWithDrivers=_extends({},definition),driversEnhancers=[],driversInits=[];Object.values(drivers).forEach(function(driver){if(driver.getReducer){var _driver$getReducer=driver.getReducer(),reducer=_driver$getReducer.reducer,path=_driver$getReducer.path;eval("definitionWithDrivers"+(path.length>0?".":"")+path+"=reducer")}driver.getEnhancer&&driversEnhancers.push(driver.getEnhancer()),driver.init&&driversInits.push(driver.init)}),innerOptions.enhancer&&driversEnhancers.push(innerOptions.enhancer),innerOptions.enhancer=compose.apply(void 0,driversEnhancers);var reducerTree=reduxFactory(definitionWithDrivers),_enhanceRedux=enhanceRedux(innerOptions),enhancer=_enhanceRedux.enhancer,listen=_enhanceRedux.listen,reduxStore=createStore(combine(reducerTree),init,enhancer);hideRedux&&(reducerTree=toContext(reducerTree,reduxStore));var store=_extends({},reducerTree,reduxStore,{listeners:{add:listen.addListeners,remove:listen.removeListeners}});store.drivers=Object.keys(drivers).reduce(function(e,r){return _extends({},e,defineProperty({},r,drivers[r].getDriver(store)))},{});var reduxDispatch=store.dispatch;return store.dispatch=function(e){for(var r=arguments.length,t=Array(r>1?r-1:0),n=1;n<r;n++)t[n-1]=arguments[n];return"string"==typeof e?reduxDispatch({type:e}):reduxDispatch.apply(void 0,[e].concat(t))},listen.setStore(store),driversInits.forEach(function(e){return e(store)}),store},keyValue=function(e){return _extends({},e,{type:"keyValue"})},simpleObject=function(e){return _extends({},e,{type:"simpleObject"})},isMatching=function(e,r){return function(t){return isString(t)&&e.type===t||isFunction(t)&&t(e,r)||isRegExp(t)&&e.type.match(t)}},_when=function(){for(var e=arguments.length,r=Array(e),t=0;t<e;t++)r[t]=arguments[t];return function(e){return function(t,n,i){return!!r.reduce(function(e,r){return e&&isMatching(t,n)(r)},!0)&&e(t,n,i)}}},reaction=function(e){return Object.assign(e,{when:function(){return _when.apply(void 0,arguments)(e)}})},reactions=function(e){return Object.keys(e).reduce(function(r,t){return _extends({},r,defineProperty({},t,reaction(e[t])))},{})};export{createStore$1 as createStore,keyValue,simpleObject,_when as when,reaction,reactions};
+import factory from 'k-redux-factory';
+import { combineReducers, applyMiddleware, compose, createStore } from 'redux';
+export { applyMiddleware, compose } from 'redux';
+import http from '@k-ramel/driver-http';
+import { isRegExp, isString, isFunction } from 'lodash';
+
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+var reduxFactory = (function (root) {
+  var subtree = function subtree(name, path) {
+    // first run
+    if (name === undefined) {
+      return Object.keys(root).map(function (key) {
+        return defineProperty({}, key, subtree(key, ''));
+      }).reduce(function (acc, next) {
+        return _extends({}, acc, next);
+      }, {});
+    }
+
+    // other runs
+    var nextPath = '' + (path ? path + '.' : '') + name;
+    var fullpath = 'root.' + nextPath;
+    var options = eval(fullpath); // eslint-disable-line no-eval
+    var type = options.type;
+
+    // - leaf
+
+    if (type) {
+      // k-redux-factory
+      return factory(_extends({
+        name: name,
+        path: path,
+        prefix: path && path.replace(/\./g, '_') || ''
+      }, options));
+    } else if (typeof options === 'function') {
+      // custom reducer
+      return options;
+    }
+
+    // - branch
+    return Object.keys(options).map(function (key) {
+      return defineProperty({}, key, subtree(key, nextPath));
+    }).reduce(function (acc, next) {
+      return _extends({}, acc, next);
+    }, {});
+  };
+
+  return subtree();
+});
+
+var withParams = ['get', 'getBy', 'hasKey'];
+
+var keysConfig = {
+  keyValue: [
+  // actions
+  ['set', 'add', 'update', 'addOrUpdate', 'replace', 'remove', 'orderBy', 'reset'],
+  // selectors
+  ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState', 'hasKey']],
+  simpleObject: [
+  // actions
+  ['set', 'update', 'reset'],
+  // selectors
+  ['get', 'isInitialized']]
+};
+
+var toContext = (function (root, store) {
+  var subcontext = function subcontext(name, path) {
+    // first run
+    if (name === undefined) {
+      return Object.keys(root).map(function (key) {
+        return defineProperty({}, key, subcontext(key, ''));
+      }).reduce(function (acc, next) {
+        return _extends({}, acc, next);
+      }, {});
+    }
+
+    // other runs
+    var nextPath = '' + (path ? path + '.' : '') + name;
+    var fullpath = 'root.' + nextPath;
+    var reducer = eval(fullpath); // eslint-disable-line no-eval
+
+    // - leaf
+    if (reducer.krfType !== undefined) {
+      var keys = keysConfig[reducer.krfType];
+
+      var _keys = slicedToArray(keys, 2),
+          actions = _keys[0],
+          selectors = _keys[1];
+
+      var actionsObject = actions.map(function (action) {
+        var legacyAction = reducer[action];
+
+        return defineProperty({}, action, function () {
+          return store.dispatch(legacyAction.apply(undefined, arguments));
+        });
+      }).reduce(function (acc, next) {
+        return _extends({}, acc, next);
+      }, {});
+      var selectorsObject = selectors.map(function (selector) {
+        var legacySelector = reducer[selector];
+
+        return defineProperty({}, selector, function () {
+          if (withParams.includes(selector)) return legacySelector.apply(undefined, arguments)(store.getState());
+          return legacySelector(store.getState());
+        });
+      }).reduce(function (acc, next) {
+        return _extends({}, acc, next);
+      }, {});
+
+      return Object.assign(reducer, actionsObject, selectorsObject);
+    }
+
+    // - branch
+    return Object.keys(reducer).map(function (key) {
+      return defineProperty({}, key, subcontext(key, nextPath));
+    }).reduce(function (acc, next) {
+      return _extends({}, acc, next);
+    }, {});
+  };
+
+  return subcontext();
+});
+
+var combine = (function (root) {
+  var subcombine = function subcombine(current) {
+    var reducers = Object.keys(current).map(function (key) {
+      var cur = current[key];
+      if (typeof cur === 'function') return defineProperty({}, key, cur);
+      return defineProperty({}, key, subcombine(cur));
+    }).reduce(function (acc, curr) {
+      return _extends({}, acc, curr);
+    }, {});
+
+    return combineReducers(reducers);
+  };
+
+  return subcombine(root);
+});
+
+var getReduxDevToolsEnhancer = function getReduxDevToolsEnhancer(name) {
+  return window.devToolsExtension({ name: name });
+};
+
+var getDevTools = (function (options) {
+  var name = options.name,
+      devtools = options.devtools;
+
+  // no devtool enable
+
+  if (!devtools || !window || !window.devToolsExtension) return undefined;
+
+  // return enhancer with devtools
+  return getReduxDevToolsEnhancer(name);
+});
+
+var listenFactory = (function () {
+  var rootListeners = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var withDevTools = arguments[2];
+
+  // k-ramel store
+  var innerStore = void 0;
+
+  // k-ramel listners
+  var innerListeners = [rootListeners];
+
+  return {
+    // this setter is needed since the middleware is pass to redux
+    // createStore, and then BEFORE, we have store instanciated
+    setStore: function setStore(store) {
+      innerStore = store;
+    },
+
+    // this is to add new listeners
+    addListeners: function addListeners(listeners) {
+      innerListeners = [].concat(toConsumableArray(innerListeners), [listeners]);
+    },
+
+    // this is to remove listeners
+    removeListeners: function removeListeners(listeners) {
+      innerListeners = innerListeners.filter(function (l) {
+        return l !== listeners;
+      });
+    },
+
+    // redux middleware
+    enhancer: applyMiddleware(function () {
+      return function (next) {
+        return function (action) {
+          var innerAction = withDevTools ? action.action || action : action;
+
+          // dispatch action
+          var res = next(action);
+
+          // trigger listeners
+          innerListeners.forEach(function (listeners) {
+            try {
+              listeners.forEach(function (listener) {
+                listener(innerAction, innerStore, innerStore.drivers);
+              });
+            } catch (exception) {
+              innerStore.dispatch({
+                type: '@@krml/EXCEPTION',
+                payload: {
+                  from: action,
+                  exception: exception,
+                  message: exception.message
+                }
+              });
+            }
+          });
+
+          // return action result
+          return res;
+        };
+      };
+    })
+  };
+});
+
+/* eslint-env browser */
+var enhanceRedux = (function (options) {
+  var listeners = options.listeners,
+      drivers = options.drivers,
+      enhancer = options.enhancer;
+
+  // devtools
+
+  var devtools = getDevTools(options);
+
+  // add custom listeners extension
+  var listen = listenFactory(listeners, drivers, !!devtools);
+
+  var enhancers = [enhancer, devtools, listen.enhancer].filter(Boolean);
+
+  // add this middleware to enhancer
+  return { enhancer: compose.apply(undefined, toConsumableArray(enhancers)), listen: listen };
+});
+
+var defaultOptions = {
+  hideRedux: true,
+  enhancer: undefined,
+  init: {},
+  listeners: undefined,
+  devtools: true,
+  name: 'store',
+  drivers: {
+    http: http()
+  }
+};
+
+var createStore$1 = (function (definition) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultOptions;
+
+  // options
+  var innerOptions = _extends({}, defaultOptions, options, {
+    drivers: _extends({}, defaultOptions.drivers, options.drivers)
+  });
+  var init = innerOptions.init,
+      hideRedux = innerOptions.hideRedux,
+      drivers = innerOptions.drivers;
+
+  var definitionWithDrivers = _extends({}, definition);
+
+  // use drivers
+  var driversEnhancers = [];
+  var driversInits = [];
+  Object.values(drivers).forEach(function (driver) {
+    // bind reducer to store definition
+    if (driver.getReducer) {
+      var _driver$getReducer = driver.getReducer(),
+          reducer = _driver$getReducer.reducer,
+          path = _driver$getReducer.path; // eslint-disable-line no-unused-vars
+
+
+      eval('definitionWithDrivers' + (path.length > 0 ? '.' : '') + path + '=reducer'); // eslint-disable-line no-eval
+    }
+
+    // add enhancer
+    if (driver.getEnhancer) driversEnhancers.push(driver.getEnhancer());
+
+    // add init
+    if (driver.init) driversInits.push(driver.init);
+  });
+
+  // add all driver enhancers
+  if (innerOptions.enhancer) driversEnhancers.push(innerOptions.enhancer);
+  innerOptions.enhancer = compose.apply(undefined, driversEnhancers);
+
+  // this is reducer exports (action/selectors)
+  var reducerTree = reduxFactory(definitionWithDrivers);
+
+  // instanciate the listen middleware and prepare redux enhancers
+
+  var _enhanceRedux = enhanceRedux(innerOptions),
+      enhancer = _enhanceRedux.enhancer,
+      listen = _enhanceRedux.listen;
+
+  // this is the redux store
+
+
+  var reduxStore = createStore(combine(reducerTree), init, enhancer);
+
+  // convert to a contextualized version
+  if (hideRedux) {
+    reducerTree = toContext(reducerTree, reduxStore);
+  }
+
+  // store (our own)
+  var store = _extends({}, reducerTree, reduxStore, {
+    listeners: {
+      add: listen.addListeners,
+      remove: listen.removeListeners
+    }
+
+    // store with driver
+  });store.drivers = Object.keys(drivers).reduce(function (acc, driver) {
+    return _extends({}, acc, defineProperty({}, driver, drivers[driver].getDriver(store)));
+  }, {});
+
+  // custom dispatch
+  var reduxDispatch = store.dispatch;
+  store.dispatch = function (action) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    if (typeof action === 'string') return reduxDispatch({ type: action });
+    return reduxDispatch.apply(undefined, [action].concat(args));
+  };
+
+  // pass store to listen (after it has been created)
+  listen.setStore(store);
+
+  // init drivers
+  driversInits.forEach(function (driverInit) {
+    return driverInit(store);
+  });
+
+  return store;
+});
+
+var keyValue = function keyValue(params) {
+  return _extends({}, params, { type: 'keyValue' });
+};
+var simpleObject = function simpleObject(params) {
+  return _extends({}, params, { type: 'simpleObject' });
+};
+
+var isMatching = function isMatching(action, store) {
+  return function (matcher) {
+    return (// test matching
+      // to a string
+      isString(matcher) && action.type === matcher ||
+      // to a function
+      isFunction(matcher) && matcher(action, store)
+      // to a regexp
+      || isRegExp(matcher) && action.type.match(matcher)
+    );
+  };
+};
+
+var _when = function _when() {
+  for (var _len = arguments.length, matchers = Array(_len), _key = 0; _key < _len; _key++) {
+    matchers[_key] = arguments[_key];
+  }
+
+  return function (callback) {
+    return function (action, store, drivers) {
+      var match = matchers.reduce(function (acc, curr) {
+        return acc && isMatching(action, store)(curr);
+      }, true);
+
+      if (match) return callback(action, store, drivers);
+      return false;
+    };
+  };
+};
+var reaction = function reaction(fn) {
+  return Object.assign(fn, { when: function when() {
+      return _when.apply(undefined, arguments)(fn);
+    } });
+};
+
+var reactions = function reactions(fns) {
+  return Object.keys(fns).reduce(function (acc, curr) {
+    return _extends({}, acc, defineProperty({}, curr, reaction(fns[curr])));
+  }, {});
+};
+
+export { createStore$1 as createStore, keyValue, simpleObject, _when as when, reaction, reactions };
 //# sourceMappingURL=index.es.js.map

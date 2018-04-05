@@ -18,6 +18,7 @@ const Footer = ({
   onClickCompleted,
   onClickActive,
 }) => {
+  console.log('render (Footer)')
   if (todos === 0) return null
   return (
     <footer style={style} className={cn('footer', className)}>

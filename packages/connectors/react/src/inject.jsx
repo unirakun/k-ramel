@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import shallowEqual from 'fbjs/lib/shallowEqual'
 import getWrappedDisplayName from './getWrappedDisplayName'
+import createContext from './createContext'
 
 const defaultObject = {}
+
 const withoutFunctions = object => Object
   .keys(object)
   .reduce(
@@ -14,83 +16,104 @@ const withoutFunctions = object => Object
     defaultObject,
   )
 
-export default injectFunction => WrappedComponent => class extends Component {
-  static displayName = `inject(${getWrappedDisplayName(WrappedComponent)}`
+const getDerivedStateFromProps = injectFunction => (nextProps, prevState) => {
+  const { store } = prevState
 
-  static contextTypes = {
-    store: () => null, // this is to avoid importing prop-types
+  // get props derivated from redux state
+  const injectedProps = injectFunction(store, nextProps.ownProps, store.drivers)
+
+  console.log('get derivated')
+  // no modifications ?
+  if (
+    shallowEqual(
+      withoutFunctions(prevState.injectedProps),
+      withoutFunctions(injectedProps),
+    )
+  ) return null
+
+  return { ...prevState, injectedProps, state: store.getState() }
+}
+
+const wrapper = injectFunction => Component => class extends React.Component {
+  static getDerivedStateFromProps = getDerivedStateFromProps(injectFunction)
+
+  constructor(props) {
+    super(props)
+
+    const { store } = props
+
+    this.mounted = false
+    this.state = getDerivedStateFromProps(injectFunction)(
+      this.props,
+      {
+        // needed for first call (where we shallow compare old and new one)
+        injectedProps: defaultObject,
+        // store needed to call injectFunction
+        store,
+      },
+    )
+
+    console.log('constructor', Component.displayName)
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const injectedProps = getInjectedProps(nextProps)
-    if (!injectedProps) return null
+  componentDidMount() {
+    console.log('didmount', Component.displayName)
 
-    return { ...prevState, injectedProps }
-  }
+    const { store } = this.props
 
-  constructor(props, context) {
-    super(props, context)
-    this.first = true
-
-    // attach store
-    const { store } = this.context
-
-    if (!store) {
-      const bold = 'font-weight: bolder; font-style: italic;'
-      // eslint-disable-next-line no-console
-      console.error(
-        `[k-ramel/react] Error in %cinject%c for the component %c${getWrappedDisplayName(WrappedComponent)}%c\n` +
-        '\t> The store needs to be provided by an ancestor of this component.\n' +
-        '\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\n' +
-        'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n',
-        bold, '', bold, '', bold, '', bold, '', bold, '', bold, '',
-      )
-      return
-    }
-    this.store = store
-
-    // run in once
-    this.state = {
-      ...this.state,
-      injectedProps: this.getInjectedProps() || {},
-    }
-
-    // subscribe
     this.unsubscribe = store.subscribe(() => {
-      const injectedProps = this.getInjectedProps()
-      if (this.setState && injectedProps) {
-        this.setState(state => ({ ...state, injectedProps }))
+      console.log('subscribe', Component.displayName)
+      if (this.state.state !== store.getState()) {
+        const newState = getDerivedStateFromProps(injectFunction)(this.props, this.state)
+        console.log('get derivated - subscribe', Component.displayName)
+
+        if (newState !== null) {
+          if (!this.mounted) this.state = newState
+          else this.setState(newState)
+        }
       }
     })
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.first) return true
-
-    return !(
-      shallowEqual(this.props, nextProps)
-      && shallowEqual(
-        withoutFunctions(nextState.injectedProps),
-        withoutFunctions(this.state.injectedProps),
-      )
-    )
-  }
-
   componentWillUnmount() {
-    this.store = undefined
+    console.log('unmount')
     this.unsubscribe()
   }
 
   render() {
-    if (this.first) this.first = false
+    const { ownProps, injectedProps } = this.state
+
+    this.mounted = true
 
     return (
-      <WrappedComponent
-        /* this is parent props */
-        {...this.props}
-        /* this is injected props from hoc */
-        {...this.state.injectedProps}
+      <Component
+        {...ownProps}
+        {...injectedProps}
       />
     )
+  }
+}
+
+export default (injectFunction) => {
+  const { Consumer } = createContext()
+  const withInjectFunction = wrapper(injectFunction)
+
+  return (Component) => {
+    const WrappedComponent = withInjectFunction(Component)
+
+    const WithConsumer = props => (
+      <Consumer>
+        {(store) => {
+          console.log('new store from context', WithConsumer.displayName)
+          return <WrappedComponent ownProps={props} store={store} />
+        }}
+      </Consumer>
+    )
+
+    WithConsumer.displayName = `inject(${getWrappedDisplayName(Component)}`
+
+    console.log('hoc', WithConsumer.displayName)
+
+    return WithConsumer
   }
 }

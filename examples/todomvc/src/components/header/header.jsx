@@ -9,20 +9,23 @@ const Header = ({
   newTodo,
   onKeyDown,
   onChange,
-}) => (
-  <header style={style} className={cn('header', className)}>
-    <h1>todos</h1>
-    <input
-      className="new-todo"
-      name="newTodo"
-      placeholder="What needs to be done?"
-      autoFocus
-      value={newTodo}
-      onKeyDown={onKeyDown}
-      onChange={onChange}
-    />
-  </header>
-)
+}) => {
+  console.log('re-render Header')
+  return (
+    <header style={style} className={cn('header', className)}>
+      <h1>todos</h1>
+      <input
+        className="new-todo"
+        name="newTodo"
+        placeholder="What needs to be done?"
+        autoFocus
+        value={newTodo}
+        onKeyDown={onKeyDown}
+        onChange={onChange}
+      />
+    </header>
+  )
+}
 
 Header.propTypes = {
   style: PropTypes.object,

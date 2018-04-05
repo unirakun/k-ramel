@@ -1,2 +1,204 @@
-!function(r,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t(require("redux-form"),require("lodash")):"function"==typeof define&&define.amd?define(["redux-form","lodash"],t):r["@k-ramel/driver-redux-form"]=t(r.reduxform,r._)}(this,function(r,t){"use strict";var e=function(r,t,e){return t in r?Object.defineProperty(r,t,{value:e,enumerable:!0,configurable:!0,writable:!0}):r[t]=e,r},n=Object.assign||function(r){for(var t=1;t<arguments.length;t++){var e=arguments[t];for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(r[n]=e[n])}return r},u=function(r){if(Array.isArray(r)){for(var t=0,e=Array(r.length);t<r.length;t++)e[t]=r[t];return e}return Array.from(r)},i=["arrayInsert","arrayMove","arrayPop","arrayPush","arrayRemove","arrayRemoveAll","arrayShift","arraySplice","arraySwap","arrayUnshift","autofill","blur","change","clearAsyncError","clearSubmitErrors","clearFields","destroy","focus","initialize","registerField","reset","resetSection","setSubmitFailed","setSubmitSucceeded","startAsyncValidation","startSubmit","stopSubmit","stopAsyncValidation","submit","touch","unregisterField","untouch"],o=function(t){var u=t.dispatch;return function(t){return i.reduce(function(i,o){return n(e({},o,function(t,e,n){return function(){for(var u=arguments.length,i=Array(u),o=0;o<u;o++)i[o]=arguments[o];return t(r[n].apply(r,[e].concat(i)))}}(u,t,o)),i)},{})}},a=function(t,e){var n,i,o=e.dispatch,a=e.getState;return n=regeneratorRuntime.mark(function e(n){for(var i=arguments.length,c=Array(i>1?i-1:0),s=1;s<i;s++)c[s-1]=arguments[s];var f;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return o(r.startSubmit(t)),e.next=3,n.apply(void 0,u(c));case 3:return f=e.sent,r.isSubmitting(t)(a())&&o(r.stopSubmit(t)),e.abrupt("return",f);case 6:case"end":return e.stop()}},e,void 0)}),i=function(){var r=n.apply(this,arguments);return new Promise(function(t,e){return function n(u,i){try{var o=r[u](i),a=o.value}catch(r){return void e(r)}if(!o.done)return Promise.resolve(a).then(function(r){n("next",r)},function(r){n("throw",r)});t(a)}("next")})},function(r){return i.apply(this,arguments)}},c=["getFormValues","getFormInitialValues","getFormSyncErrors","getFormMeta","getFormAsyncErrors","getFormSyncWarnings","getFormSubmitErrors","getFormError","isDirty","isPristine","isValid","isInvalid","isSubmitting","hasSubmitSucceeded","hasSubmitFailed"],s=["getFormNames"],f=function(t){return function(u){var i=u.getState;return function(u){return n({},c.reduce(function(o,a){return n(e({},a,function(t,e,n,u){return function(){return r[u](n,e)(t())}}(i,t,u,a)),o)},{}),s.reduce(function(u,o){return n(e({},o,function(){return r[o](t)(i())}),u)},{}))}}};return function(){var e=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}).path,u=void 0===e?"form":e;return{getDriver:function(r){return function(e){return n({},o(r)(e),f(function(r){return t.get(r,u)})(r)(e),function(r){return function(t){return{asyncSubmit:function(e){for(var n=arguments.length,u=Array(n>1?n-1:0),i=1;i<n;i++)u[i-1]=arguments[i];return a(t,r).apply(void 0,[e].concat(u))}}}}(r)(e))}},getReducer:function(){return{path:u,reducer:r.reducer}}}}});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('redux-form'), require('lodash')) :
+  typeof define === 'function' && define.amd ? define(['redux-form', 'lodash'], factory) :
+  (global['@k-ramel/driver-redux-form'] = factory(global.reduxform,global._));
+}(this, (function (reduxform,lodash) { 'use strict';
+
+  var asyncToGenerator = function (fn) {
+    return function () {
+      var gen = fn.apply(this, arguments);
+      return new Promise(function (resolve, reject) {
+        function step(key, arg) {
+          try {
+            var info = gen[key](arg);
+            var value = info.value;
+          } catch (error) {
+            reject(error);
+            return;
+          }
+
+          if (info.done) {
+            resolve(value);
+          } else {
+            return Promise.resolve(value).then(function (value) {
+              step("next", value);
+            }, function (err) {
+              step("throw", err);
+            });
+          }
+        }
+
+        return step("next");
+      });
+    };
+  };
+
+  var defineProperty = function (obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
+    }
+
+    return obj;
+  };
+
+  var _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  var toConsumableArray = function (arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+      return arr2;
+    } else {
+      return Array.from(arr);
+    }
+  };
+
+  // actions of redux-form
+  var actionNames = ['arrayInsert', 'arrayMove', 'arrayPop', 'arrayPush', 'arrayRemove', 'arrayRemoveAll', 'arrayShift', 'arraySplice', 'arraySwap', 'arrayUnshift', 'autofill', 'blur', 'change', 'clearAsyncError', 'clearSubmitErrors', 'clearFields', 'destroy', 'focus', 'initialize', 'registerField', 'reset', 'resetSection', 'setSubmitFailed', 'setSubmitSucceeded', 'startAsyncValidation', 'startSubmit', 'stopSubmit', 'stopAsyncValidation', 'submit', 'touch', 'unregisterField', 'untouch'];
+
+  var wrapAction = function wrapAction(dispatch, name, actionName) {
+    return function () {
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return dispatch(reduxform[actionName].apply(reduxform, [name].concat(args)));
+    };
+  };
+
+  var actions = (function (_ref) {
+    var dispatch = _ref.dispatch;
+    return function (name) {
+      return actionNames.reduce(function (acc, cur) {
+        return _extends(defineProperty({}, cur, wrapAction(dispatch, name, cur)), acc);
+      }, {});
+    };
+  });
+
+  var _this = undefined;
+
+  var _asyncSubmit = function _asyncSubmit(name, _ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function () {
+      var _ref2 = asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(callback) {
+        for (var _len = arguments.length, options = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          options[_key - 1] = arguments[_key];
+        }
+
+        var res;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                dispatch(reduxform.startSubmit(name));
+                _context.next = 3;
+                return callback.apply(undefined, toConsumableArray(options));
+
+              case 3:
+                res = _context.sent;
+
+                if (reduxform.isSubmitting(name)(getState())) dispatch(reduxform.stopSubmit(name));
+                return _context.abrupt('return', res);
+
+              case 6:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+  };
+
+  // custom actions
+  var customActions = (function (store) {
+    return function (name) {
+      return {
+        asyncSubmit: function asyncSubmit(callback) {
+          for (var _len2 = arguments.length, options = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+            options[_key2 - 1] = arguments[_key2];
+          }
+
+          return _asyncSubmit(name, store).apply(undefined, [callback].concat(options));
+        }
+      };
+    };
+  });
+
+  // selectors of redux-form
+  var selectorNames = ['getFormValues', 'getFormInitialValues', 'getFormSyncErrors', 'getFormMeta', 'getFormAsyncErrors', 'getFormSyncWarnings', 'getFormSubmitErrors', 'getFormError', 'isDirty', 'isPristine', 'isValid', 'isInvalid', 'isSubmitting', 'hasSubmitSucceeded', 'hasSubmitFailed'];
+
+  // selectors without parameters
+  var selectorNamesWithoutParameter = ['getFormNames'];
+
+  var wrapSelector = function wrapSelector(getState, getFormState, name, selectorName) {
+    return function () {
+      return reduxform[selectorName](name, getFormState)(getState());
+    };
+  };
+
+  var selectors = (function (getFormState) {
+    return function (_ref) {
+      var getState = _ref.getState;
+      return function (name) {
+        return _extends({}, selectorNames.reduce(function (acc, cur) {
+          return _extends(defineProperty({}, cur, wrapSelector(getState, getFormState, name, cur)), acc);
+        }, {}), selectorNamesWithoutParameter.reduce(function (acc, cur) {
+          return _extends(defineProperty({}, cur, function () {
+            return reduxform[cur](getFormState)(getState());
+          }), acc);
+        }, {}));
+      };
+    };
+  });
+
+  var reduxForm = (function () {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref$path = _ref.path,
+        path = _ref$path === undefined ? 'form' : _ref$path;
+
+    return {
+      getDriver: function getDriver(store) {
+        return function (name) {
+          return _extends({}, actions(store)(name), selectors(function (state) {
+            return lodash.get(state, path);
+          })(store)(name), customActions(store)(name));
+        };
+      },
+      getReducer: function getReducer() {
+        return {
+          path: path,
+          reducer: reduxform.reducer
+        };
+      }
+    };
+  });
+
+  return reduxForm;
+
+})));
 //# sourceMappingURL=index.umd.js.map
