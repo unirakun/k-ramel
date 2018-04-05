@@ -30,7 +30,7 @@ export default {
       include: 'node_modules/**',
       extensions: ['.js', '.jsx'],
     }),
-    // uglify(),
+    uglify(),
   ],
   external: [
     '@k-ramel/driver-http',

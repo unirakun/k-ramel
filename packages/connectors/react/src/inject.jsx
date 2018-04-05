@@ -22,7 +22,6 @@ const getDerivedStateFromProps = injectFunction => (nextProps, prevState) => {
   // get props derivated from redux state
   const injectedProps = injectFunction(store, nextProps.ownProps, store.drivers)
 
-  console.log('get derivated')
   // no modifications ?
   if (
     shallowEqual(
@@ -36,6 +35,14 @@ const getDerivedStateFromProps = injectFunction => (nextProps, prevState) => {
 
 const wrapper = injectFunction => Component => class extends React.Component {
   static getDerivedStateFromProps = getDerivedStateFromProps(injectFunction)
+
+  static propTypes = {
+    store: () => null,
+  }
+
+  static defaultProps = {
+    store: undefined,
+  }
 
   constructor(props) {
     super(props)
@@ -52,20 +59,14 @@ const wrapper = injectFunction => Component => class extends React.Component {
         store,
       },
     )
-
-    console.log('constructor', Component.displayName)
   }
 
   componentDidMount() {
-    console.log('didmount', Component.displayName)
-
     const { store } = this.props
 
     this.unsubscribe = store.subscribe(() => {
-      console.log('subscribe', Component.displayName)
       if (this.state.state !== store.getState()) {
         const newState = getDerivedStateFromProps(injectFunction)(this.props, this.state)
-        console.log('get derivated - subscribe', Component.displayName)
 
         if (newState !== null) {
           if (!this.mounted) this.state = newState
@@ -76,7 +77,6 @@ const wrapper = injectFunction => Component => class extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log('unmount')
     this.unsubscribe()
   }
 
@@ -103,16 +103,11 @@ export default (injectFunction) => {
 
     const WithConsumer = props => (
       <Consumer>
-        {(store) => {
-          console.log('new store from context', WithConsumer.displayName)
-          return <WrappedComponent ownProps={props} store={store} />
-        }}
+        {store => <WrappedComponent ownProps={props} store={store} />}
       </Consumer>
     )
 
     WithConsumer.displayName = `inject(${getWrappedDisplayName(Component)}`
-
-    console.log('hoc', WithConsumer.displayName)
 
     return WithConsumer
   }
