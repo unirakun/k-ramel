@@ -49,7 +49,6 @@ const wrapper = injectFunction => Component => class extends React.Component {
 
     const { store } = props
 
-    this.mounted = false
     this.state = getDerivedStateFromProps(injectFunction)(
       this.props,
       {
@@ -68,10 +67,7 @@ const wrapper = injectFunction => Component => class extends React.Component {
       if (this.state.state !== store.getState()) {
         const newState = getDerivedStateFromProps(injectFunction)(this.props, this.state)
 
-        if (newState !== null) {
-          if (!this.mounted) this.state = newState
-          else this.setState(newState)
-        }
+        if (newState !== null) this.setState(newState)
       }
     })
   }
@@ -82,8 +78,6 @@ const wrapper = injectFunction => Component => class extends React.Component {
 
   render() {
     const { ownProps, injectedProps } = this.state
-
-    this.mounted = true
 
     return (
       <Component
