@@ -47,7 +47,7 @@
     "lodash": "^4.17.5",
     "npm-run-all": "4.1.2",
     "react": "16.3.1",
-    "react-dom": "16.3.1",
+    "react-dom": "16.3.2",
     "react-redux": "5.0.7",
     "redux-little-router": "15.1.0",
     "rollup": "0.57.1",
