@@ -41,7 +41,7 @@
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.7.0",
     "jest": "22.2.2",
-    "jest-environment-jsdom": "^22.3.0",
+    "jest-environment-jsdom": "^23.0.0",
     "jest-environment-jsdom-global": "^1.0.3",
     "lerna": "3.0.0-alpha.1",
     "lodash": "^4.17.5",
