@@ -53,7 +53,7 @@ const getDriver = (store) => {
         ownFetch[method.toLowerCase()] = (url, data, options = {}) => {
           const { headers = {} } = options
           let appliedOptions = options
-          
+
           if (data && ['object', 'array'].includes(typeof data)) {
             // attach data as JSON object
             let body = data
