@@ -138,10 +138,18 @@ Object {
         "fetch": Array [
           "http://google.fr",
           Object {
-            "body": "{}",
-            "headers": Object {
-              "Content-Type": "application/json",
+            "body": FormData {
+              Symbol(impl): FormDataImpl {
+                "_entries": Array [
+                  Object {
+                    "name": "some",
+                    "value": "data",
+                  },
+                ],
+                Symbol(wrapper): [Circular],
+              },
             },
+            "headers": Object {},
             "method": "POST",
           },
         ],
@@ -160,10 +168,18 @@ Object {
         "fetch": undefined,
         "payload": Object {
           "options": Object {
-            "body": "{}",
-            "headers": Object {
-              "Content-Type": "application/json",
+            "body": FormData {
+              Symbol(impl): FormDataImpl {
+                "_entries": Array [
+                  Object {
+                    "name": "some",
+                    "value": "data",
+                  },
+                ],
+                Symbol(wrapper): [Circular],
+              },
             },
+            "headers": Object {},
             "method": "POST",
           },
           "url": "http://google.fr",
@@ -177,10 +193,18 @@ Object {
     Array [
       "http://google.fr",
       Object {
-        "body": "{}",
-        "headers": Object {
-          "Content-Type": "application/json",
+        "body": FormData {
+          Symbol(impl): FormDataImpl {
+            "_entries": Array [
+              Object {
+                "name": "some",
+                "value": "data",
+              },
+            ],
+            Symbol(wrapper): [Circular],
+          },
         },
+        "headers": Object {},
         "method": "POST",
       },
     ],
