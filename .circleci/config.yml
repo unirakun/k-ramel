@@ -18,14 +18,14 @@ jobs:
             - ~/.cache/yarn
   debug:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:9 # waiting for a new version of upath (from react-scripts)
     steps:
       - run: node --version
       - run: yarn --version
 
   build:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:9 # waiting for a new version of upath (from react-scripts)
     steps:
       - checkout
       - restore_cache:
