@@ -130,6 +130,88 @@ Object {
 }
 `;
 
+exports[`drivers http should not stringify data when data is formData 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "body": FormData {
+              Symbol(impl): FormDataImpl {
+                "_entries": Array [
+                  Object {
+                    "name": "some",
+                    "value": "data",
+                  },
+                ],
+                Symbol(wrapper): [Circular],
+              },
+            },
+            "headers": Object {},
+            "method": "POST",
+          },
+        ],
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>POST>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "fetch": undefined,
+        "payload": Object {
+          "options": Object {
+            "body": FormData {
+              Symbol(impl): FormDataImpl {
+                "_entries": Array [
+                  Object {
+                    "name": "some",
+                    "value": "data",
+                  },
+                ],
+                Symbol(wrapper): [Circular],
+              },
+            },
+            "headers": Object {},
+            "method": "POST",
+          },
+          "url": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>POST>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "body": FormData {
+          Symbol(impl): FormDataImpl {
+            "_entries": Array [
+              Object {
+                "name": "some",
+                "value": "data",
+              },
+            ],
+            Symbol(wrapper): [Circular],
+          },
+        },
+        "headers": Object {},
+        "method": "POST",
+      },
+    ],
+  ],
+}
+`;
+
 exports[`drivers http should safely fail to parse json 1`] = `
 Object {
   "dispatch": Array [

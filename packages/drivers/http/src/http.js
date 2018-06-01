@@ -52,13 +52,16 @@ const getDriver = (store) => {
       .forEach((method) => {
         ownFetch[method.toLowerCase()] = (url, data, options = {}) => {
           const { headers = {} } = options
+          const isFormData = data instanceof FormData
           let appliedOptions = options
 
-          // attach data as JSON object
           if (data && ['object', 'array'].includes(typeof data)) {
-            if (!headers['Content-Type']) appliedOptions = { ...appliedOptions, headers: { ...headers, 'Content-Type': 'application/json' } }
+            // attach data as JSON object
+            if (!headers['Content-Type'] && !isFormData) {
+              appliedOptions = { ...appliedOptions, headers: { ...headers, 'Content-Type': 'application/json' } }
+            }
 
-            appliedOptions = { ...appliedOptions, body: JSON.stringify(data) }
+            appliedOptions = { ...appliedOptions, body: isFormData ? data : JSON.stringify(data) }
           }
 
           // set method
