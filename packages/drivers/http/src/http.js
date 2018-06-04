@@ -51,7 +51,7 @@ const getDriver = (store) => {
     ['GET', 'POST', 'HEAD', 'PUT', 'DELETE', 'OPTIONS', 'CONNECT']
       .forEach((method) => {
         ownFetch[method.toLowerCase()] = (url, data, options = {}) => {
-          const { headers = {} } = options
+          const headers = { ...options.headers }
           let appliedOptions = options
 
           if (data && ['object', 'array'].includes(typeof data)) {
