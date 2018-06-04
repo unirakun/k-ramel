@@ -381,6 +381,46 @@ export default (driver) => {
           fetch: mockedFetch.mock.calls,
         }).toMatchSnapshot()
       })
+
+      it('should not stringify data when data is formData', async () => {
+        // mock
+        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        (global || window).fetch = mockedFetch
+
+        // dispatch spy
+        const spy = jest.fn()
+
+        // wait
+        let resolver
+        const wait = new Promise((resolve) => { resolver = resolve })
+
+        // payload
+        const body = new FormData()
+        body.append('some', 'data')
+
+        // store
+        const store = createStore({
+          config: { type: 'simpleObject' },
+        }, {
+          listeners: [
+            when('DISPATCHED')(async (action, st, { http }) => {
+              await http('GOOGLE').post('http://google.fr', body)
+              resolver()
+            }),
+            when(() => true)(action => spy(action)),
+          ],
+        })
+
+        // dispatch event
+        store.dispatch({ type: 'DISPATCHED' })
+        await wait
+
+        // assert
+        expect({
+          dispatch: spy.mock.calls,
+          fetch: mockedFetch.mock.calls,
+        }).toMatchSnapshot()
+      })
     })
   })
 }
