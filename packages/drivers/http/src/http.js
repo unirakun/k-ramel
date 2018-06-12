@@ -74,8 +74,8 @@ const getDriver = (store) => {
 
   // custom helpers
   driver.setCredentials = (credentials) => { innerOptions = { ...innerOptions, credentials } }
-  driver.setOptions = (options) => { 
-    innerOptions = { ...options, headers: { ...options.headers } } 
+  driver.setOptions = (options) => {
+    innerOptions = { ...options, headers: { ...options.headers } }
   }
   driver.setAuthorization = (authorization) => {
     const headers = { ...innerOptions.headers, Authorization: authorization }
