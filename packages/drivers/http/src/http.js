@@ -16,7 +16,9 @@ const getDriver = (store) => {
       const { method = 'GET' } = options
       const appliedHeaders = { ...innerOptions.headers, ...innerHeaders, ...options.headers }
       const appliedOptions = { ...innerOptions, ...options, headers: appliedHeaders }
-
+      if (appliedOptions.headers.Authorization === undefined) {
+        delete appliedOptions.headers.Authorization
+      }
       // dispatcher
       const dispatch = dispatchFactory(store)(name)(method)
 
@@ -75,9 +77,10 @@ const getDriver = (store) => {
   }
 
   // custom helpers
-  driver.setAuthorization = (authorization) => { innerHeaders.Authorization = authorization }
   driver.setOptions = (options) => { innerOptions = options }
   driver.setCredentials = (credentials) => { innerOptions = { ...innerOptions, credentials } }
+  driver.setAuthorization = (authorization) => { innerHeaders.Authorization = authorization }
+  driver.clearAuthorization = () => { innerHeaders.Authorization = undefined }
 
   return driver
 }
