@@ -306,7 +306,7 @@ Object {
 
 exports[`drivers http should set and clear Authorization 1`] = `
 Object {
-  "clearedAtuh": Array [
+  "clearedAuth": Array [
     "http://google_2.fr",
     Object {
       "headers": Object {},

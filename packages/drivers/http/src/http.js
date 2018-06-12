@@ -80,7 +80,7 @@ const getDriver = (store) => {
   driver.setOptions = (options) => { innerOptions = options }
   driver.setCredentials = (credentials) => { innerOptions = { ...innerOptions, credentials } }
   driver.setAuthorization = (authorization) => { innerHeaders.Authorization = authorization }
-  driver.clearAuthorization = () => { innerHeaders.Authorization = undefined }
+  driver.clearAuthorization = () => driver.setAuthorization()
 
   return driver
 }

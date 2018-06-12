@@ -237,7 +237,7 @@ export default (driver) => {
           fetchCounts: mockedFetch.mock.calls.length,
           noOption: mockedFetch.mock.calls[0],
           overridedAuth: mockedFetch.mock.calls[1],
-          clearedAtuh: mockedFetch.mock.calls[2],
+          clearedAuth: mockedFetch.mock.calls[2],
           setAuthorization: mockedFetch.mock.calls[3],
           setAuthorizationToUndefined: mockedFetch.mock.calls[4],
         }).toMatchSnapshot()
