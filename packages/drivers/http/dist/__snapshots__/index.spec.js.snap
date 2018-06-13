@@ -304,6 +304,46 @@ Object {
 }
 `;
 
+exports[`drivers http should set and clear Authorization 1`] = `
+Object {
+  "clearedAuth": Array [
+    "http://google_2.fr",
+    Object {
+      "headers": Object {},
+    },
+  ],
+  "fetchCounts": 5,
+  "noOption": Array [
+    "http://google_0.fr",
+    Object {
+      "headers": Object {},
+    },
+  ],
+  "overridedAuth": Array [
+    "http://google_1.fr",
+    Object {
+      "headers": Object {
+        "Authorization": "auth",
+      },
+    },
+  ],
+  "setAuthorization": Array [
+    "http://google_3.fr",
+    Object {
+      "headers": Object {
+        "Authorization": "auth",
+      },
+    },
+  ],
+  "setAuthorizationToUndefined": Array [
+    "http://google_4.fr",
+    Object {
+      "headers": Object {},
+    },
+  ],
+}
+`;
+
 exports[`drivers http should set customs options 1`] = `
 Object {
   "fetchCounts": 2,

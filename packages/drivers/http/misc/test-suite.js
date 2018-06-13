@@ -190,6 +190,59 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
+      it('should set and clear Authorization', async () => {
+        // mock
+        const mockedFetch = jest.fn(() => Promise.resolve({}));
+        (global || window).fetch = mockedFetch
+
+        // wait
+        let resolver
+        const wait = new Promise((resolve) => { resolver = resolve })
+
+        // store
+        const store = createStore({
+          config: { type: 'simpleObject' },
+        }, {
+          listeners: [
+            when('DISPATCHED')(async (action, st, { http }) => {
+              // not custom per request options (should use globals)
+              await http('GOOGLE')('http://google_0.fr')
+
+              http.setOptions({
+                headers: {
+                  Authorization: 'auth',
+                },
+              })
+              await http('GOOGLE')('http://google_1.fr')
+
+              http.clearAuthorization()
+              await http('GOOGLE')('http://google_2.fr')
+
+              http.setAuthorization('auth')
+              await http('GOOGLE')('http://google_3.fr')
+
+              http.setAuthorization()
+              await http('GOOGLE')('http://google_4.fr')
+              resolver()
+            }),
+          ],
+        })
+
+        store.dispatch('SET_OPTIONS')
+        store.dispatch('DISPATCHED')
+        await wait
+
+        // assert
+        expect({
+          fetchCounts: mockedFetch.mock.calls.length,
+          noOption: mockedFetch.mock.calls[0],
+          overridedAuth: mockedFetch.mock.calls[1],
+          clearedAuth: mockedFetch.mock.calls[2],
+          setAuthorization: mockedFetch.mock.calls[3],
+          setAuthorizationToUndefined: mockedFetch.mock.calls[4],
+        }).toMatchSnapshot()
+      })
+
       it('should safely fail to parse json', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({

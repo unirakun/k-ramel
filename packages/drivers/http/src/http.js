@@ -7,16 +7,14 @@ const dispatchFactory = store => name => method =>
   })
 
 const getDriver = (store) => {
-  const innerHeaders = {}
   let innerOptions = {}
 
   const driver = (name) => {
     const ownFetch = async (url, options = {}, ...args) => {
       // options
       const { method = 'GET' } = options
-      const appliedHeaders = { ...innerOptions.headers, ...innerHeaders, ...options.headers }
+      const appliedHeaders = { ...innerOptions.headers, ...options.headers }
       const appliedOptions = { ...innerOptions, ...options, headers: appliedHeaders }
-
       // dispatcher
       const dispatch = dispatchFactory(store)(name)(method)
 
@@ -75,9 +73,17 @@ const getDriver = (store) => {
   }
 
   // custom helpers
-  driver.setAuthorization = (authorization) => { innerHeaders.Authorization = authorization }
-  driver.setOptions = (options) => { innerOptions = options }
   driver.setCredentials = (credentials) => { innerOptions = { ...innerOptions, credentials } }
+  driver.setOptions = (options) => {
+    innerOptions = { ...options, headers: { ...options.headers } }
+  }
+  driver.setAuthorization = (authorization) => {
+    const headers = { ...innerOptions.headers, Authorization: authorization }
+    if (!authorization) delete headers.Authorization
+
+    return driver.setOptions({ ...innerOptions, headers })
+  }
+  driver.clearAuthorization = () => driver.setAuthorization()
 
   return driver
 }
