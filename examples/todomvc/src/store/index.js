@@ -1,18 +1,18 @@
-import { createStore, simpleObject, keyValue } from 'k-ramel'
+import { createStore, types } from 'k-ramel'
 import listeners from './listeners'
 
 export default createStore(
   {
     data: {
-      todos: keyValue({ key: 'id' }), // or you can create it this way if you want to serialize it : { type: 'keyValue', key: 'id' }
+      todos: types.keyValue({ key: 'id' }), // or you can create it this way if you want to serialize it : { type: 'keyValue', key: 'id' }
     },
     ui: {
       views: {
-        all: simpleObject({ defaultData: [] }),
-        completed: simpleObject({ defaultData: [] }),
-        active: simpleObject({ defaultData: [] }),
+        all: types.array(),
+        completed: types.array(),
+        active: types.array(),
       },
-      footer: simpleObject({
+      footer: types.object({
         defaultData: {
           todos: 0,
           todosLeft: 0,
@@ -20,7 +20,7 @@ export default createStore(
           filter: 'all',
         },
       }),
-      newTodo: simpleObject({ defaultData: '' }),
+      newTodo: types.string(),
     },
   },
   {

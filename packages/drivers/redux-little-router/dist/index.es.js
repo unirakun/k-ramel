@@ -1,2 +1,116 @@
-import{routerForBrowser,push,replace,go,goBack,goForward,block,unblock,initializeCurrentLocation}from"redux-little-router";import{compose,applyMiddleware}from"redux";var _getParentResultParam=function r(e,t){if(e)return e[t]?e[t]:r(e.parent,t)},_isParentResultParam=function r(e,t,n){return!!e&&(e[t]===n||r(e.parent,t,n))},isRouterImpl=function(r){var e=r.reducer,t=r.middleware,n=r.enhancer;return e&&n&&t},getDriver=function(r){return function(e){var t=e.dispatch,n=e.getState,u=function(){return r(n())},o=function(){return u().result};return{push:function(r){return t(push(r))},replace:function(r){return t(replace(r))},go:function(r){return t(go(r))},goBack:function(){return t(goBack())},goForward:function(){return t(goForward())},block:function(r){return t(block(r))},unblock:function(){return t(unblock())},get:u,getRouteParam:function(r){return u().params&&u().params[r]},getQueryParam:function(r){return u().query&&u().query[r]},getResultParam:function(r){return o()&&o()[r]},getParentResultParam:function(r){return _getParentResultParam(o(),r)},isRoute:function(r){return u().route===r},isParentResultParam:function(r,e){return _isParentResultParam(o(),r,e)}}}},init=function(r){return function(e){var t=e.getState,n=e.dispatch,u=r(t());u&&n(initializeCurrentLocation(u))}},reduxLittleRouter=function(r){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:function(r){return r.router},t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:"router",n=isRouterImpl(r)?r:routerForBrowser({routes:r}),u=n.reducer,o=n.middleware,i=n.enhancer;return{getDriver:getDriver(e),getReducer:function(){return{reducer:u,path:t}},getEnhancer:function(){return compose(i,applyMiddleware(o))},init:init(e)}};export default reduxLittleRouter;
+import { routerForBrowser, push, replace, go, goBack, goForward, block, unblock, initializeCurrentLocation } from 'redux-little-router';
+import { compose, applyMiddleware } from 'redux';
+
+var _getParentResultParam = function _getParentResultParam(result, key) {
+  if (!result) return undefined;
+  if (result[key]) return result[key];
+  return _getParentResultParam(result.parent, key);
+};
+
+var _isParentResultParam = function _isParentResultParam(result, key, value) {
+  if (!result) return false;
+  if (result[key] === value) return true;
+  return _isParentResultParam(result.parent, key, value);
+};
+
+var isRouterImpl = function isRouterImpl(_ref) {
+  var reducer = _ref.reducer,
+      middleware = _ref.middleware,
+      enhancer = _ref.enhancer;
+  return reducer && enhancer && middleware;
+};
+
+var getDriver = function getDriver(selector) {
+  return function (_ref2) {
+    var dispatch = _ref2.dispatch,
+        getState = _ref2.getState;
+
+    var get = function get() {
+      return selector(getState());
+    };
+    var getResult = function getResult() {
+      return get().result;
+    };
+
+    return {
+      /* actions */
+      push: function push$$1(path) {
+        return dispatch(push(path));
+      },
+      replace: function replace$$1(path) {
+        return dispatch(replace(path));
+      },
+      go: function go$$1(nbLocations) {
+        return dispatch(go(nbLocations));
+      },
+      goBack: function goBack$$1() {
+        return dispatch(goBack());
+      },
+      goForward: function goForward$$1() {
+        return dispatch(goForward());
+      },
+      block: function block$$1(callback) {
+        return dispatch(block(callback));
+      },
+      unblock: function unblock$$1() {
+        return dispatch(unblock());
+      },
+      /* route selectors */
+      get: get,
+      getRouteParam: function getRouteParam(key) {
+        return get().params && get().params[key];
+      },
+      getQueryParam: function getQueryParam(key) {
+        return get().query && get().query[key];
+      },
+      getResultParam: function getResultParam(key) {
+        return getResult() && getResult()[key];
+      },
+      getParentResultParam: function getParentResultParam(key) {
+        return _getParentResultParam(getResult(), key);
+      },
+      isRoute: function isRoute(route) {
+        return get().route === route;
+      },
+      isParentResultParam: function isParentResultParam(key, value) {
+        return _isParentResultParam(getResult(), key, value);
+      }
+    };
+  };
+};
+
+var init = function init(selector) {
+  return function (_ref3) {
+    var getState = _ref3.getState,
+        dispatch = _ref3.dispatch;
+
+    var initialLocation = selector(getState());
+    if (initialLocation) dispatch(initializeCurrentLocation(initialLocation));
+  };
+};
+
+var reduxLittleRouter = (function (config) {
+  var selector = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (state) {
+    return state.router;
+  };
+  var path = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'router';
+
+  var _ref4 = isRouterImpl(config) ? config : routerForBrowser({ routes: config }),
+      reducer = _ref4.reducer,
+      middleware = _ref4.middleware,
+      enhancer = _ref4.enhancer;
+
+  return {
+    getDriver: getDriver(selector),
+    getReducer: function getReducer() {
+      return { reducer: reducer, path: path };
+    },
+    getEnhancer: function getEnhancer() {
+      return compose(enhancer, applyMiddleware(middleware));
+    },
+    init: init(selector)
+  };
+});
+
+export default reduxLittleRouter;
 //# sourceMappingURL=index.es.js.map

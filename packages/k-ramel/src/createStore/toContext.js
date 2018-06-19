@@ -1,5 +1,6 @@
 const withParams = ['get', 'getBy', 'hasKey']
 
+// TODO: review this list with k-redux-factory 6.0.0
 const keysConfig = {
   keyValue: [
     // actions
@@ -7,13 +8,18 @@ const keysConfig = {
     // selectors
     ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState', 'hasKey'],
   ],
-  simpleObject: [
+  simple: [
     // actions
     ['set', 'update', 'reset'],
     // selectors
     ['get', 'isInitialized'],
   ],
 }
+keysConfig.simpleObject = keysConfig.simple
+keysConfig['simple.object'] = keysConfig.simple
+keysConfig['simple.array'] = keysConfig.simple
+keysConfig['simple.bool'] = keysConfig.simple
+keysConfig['simple.string'] = keysConfig.simple
 
 export default (root, store) => {
   const subcontext = (name, path) => {
