@@ -74,7 +74,7 @@ Object {
         },
         "initialized": true,
         "keys": Array [
-          2,
+          "2",
         ],
       },
     },
@@ -149,7 +149,7 @@ Object {
         },
         "initialized": true,
         "keys": Array [
-          2,
+          "2",
         ],
       },
     },
@@ -247,7 +247,7 @@ Object {
         },
         "initialized": true,
         "keys": Array [
-          2,
+          "2",
         ],
       },
     },
