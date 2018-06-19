@@ -4,7 +4,7 @@ const withParams = ['get', 'getBy', 'hasKey']
 const keysConfig = {
   keyValue: [
     // actions
-    ['set', 'add', 'update', 'addOrUpdate', 'replace', 'remove', 'orderBy', 'reset'],
+    ['set', 'add', 'update', 'addOrUpdate', 'remove', 'reset'],
     // selectors
     ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState', 'hasKey'],
   ],
