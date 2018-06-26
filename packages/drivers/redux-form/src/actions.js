@@ -36,12 +36,12 @@ export const actionNames = [
   'untouch',
 ]
 
-const wrapAction = (dispatch, name, actionName) =>
+const wrapAction = (dispatch, name, actionName) => (
   (...args) => dispatch(reduxform[actionName](name, ...args))
+)
 
-export default ({ dispatch }) => name =>
-  actionNames
-    .reduce(
-      (acc, cur) => ({ [cur]: wrapAction(dispatch, name, cur), ...acc }),
-      {},
-    )
+export default ({ dispatch }) => name => actionNames
+  .reduce(
+    (acc, cur) => ({ [cur]: wrapAction(dispatch, name, cur), ...acc }),
+    {},
+  )

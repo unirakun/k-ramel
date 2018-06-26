@@ -30,7 +30,7 @@ const Todo = ({
       <label htmlFor="editField" onDoubleClick={onEdit}>
         {label}
       </label>
-      <button className="destroy" onClick={onRemove} />
+      <button className="destroy" onClick={onRemove} type="button" />
     </div>
     <input
       className="edit"

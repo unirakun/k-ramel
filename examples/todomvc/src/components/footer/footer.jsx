@@ -22,24 +22,33 @@ const Footer = ({
   return (
     <footer style={style} className={cn('footer', className)}>
       <span className="todo-count">
-        <strong>{todosLeft}</strong> {`item${todosLeft > 1 ? 's' : ''} left`}
+        <strong>
+          {todosLeft}
+        </strong>
+        {`item${todosLeft > 1 ? 's' : ''} left`}
       </span>
       <ul className="filters">
         <li>
-          <a className={cn({ selected: filter === 'all' })} onClick={onClickAll}>All</a>
+          <a className={cn({ selected: filter === 'all' })} onClick={onClickAll}>
+            All
+          </a>
         </li>
         <li>
-          <a className={cn({ selected: filter === 'active' })} onClick={onClickActive}>Active</a>
+          <a className={cn({ selected: filter === 'active' })} onClick={onClickActive}>
+            Active
+          </a>
         </li>
         <li>
-          <a className={cn({ selected: filter === 'completed' })} onClick={onClickCompleted}>Completed</a>
+          <a className={cn({ selected: filter === 'completed' })} onClick={onClickCompleted}>
+            Completed
+          </a>
         </li>
       </ul>
-      {todosCompleted > 0 &&
-        <button className="clear-completed" onClick={onClearCompleted}>
+      {todosCompleted > 0 && (
+        <button className="clear-completed" onClick={onClearCompleted} type="button">
           Clear completed
         </button>
-      }
+      )}
     </footer>
   )
 }
