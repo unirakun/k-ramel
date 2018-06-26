@@ -12,7 +12,7 @@ export default {
     name: pkg.name,
     file: `dist/index.${process.env.FORMAT}.js`,
     format: process.env.FORMAT,
-    sourcemap: true,
+    sourcemap: false,
     globals: {
       react: 'React',
       redux: 'Redux',

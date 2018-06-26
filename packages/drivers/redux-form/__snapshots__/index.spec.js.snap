@@ -1,0 +1,567 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`drivers redux-form should dispatch action 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "index": undefined,
+        },
+        "payload": undefined,
+        "type": "@@redux-form/ARRAY_INSERT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "from": undefined,
+          "to": undefined,
+        },
+        "type": "@@redux-form/ARRAY_MOVE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/ARRAY_POP",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "payload": undefined,
+        "type": "@@redux-form/ARRAY_PUSH",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "index": undefined,
+        },
+        "type": "@@redux-form/ARRAY_REMOVE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/ARRAY_REMOVE_ALL",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/ARRAY_SHIFT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "index": undefined,
+          "removeNum": undefined,
+        },
+        "type": "@@redux-form/ARRAY_SPLICE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "payload": undefined,
+        "type": "@@redux-form/ARRAY_UNSHIFT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "payload": undefined,
+        "type": "@@redux-form/AUTOFILL",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "touch": undefined,
+        },
+        "payload": undefined,
+        "type": "@@redux-form/BLUR",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "persistentSubmitErrors": undefined,
+          "touch": undefined,
+        },
+        "payload": undefined,
+        "type": "@@redux-form/CHANGE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/CLEAR_ASYNC_ERROR",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/CLEAR_SUBMIT_ERRORS",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "fields": Array [],
+          "form": "form",
+          "keepTouched": "field1",
+          "persistentSubmitErrors": undefined,
+        },
+        "type": "@@redux-form/CLEAR_FIELDS",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": Array [
+            "form",
+            "field1",
+          ],
+        },
+        "type": "@@redux-form/DESTROY",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/FOCUS",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+          "keepDirty": undefined,
+        },
+        "payload": "field1",
+        "type": "@@redux-form/INITIALIZE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "name": "field1",
+          "type": undefined,
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/RESET",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+          "sections": Array [
+            "field1",
+          ],
+        },
+        "type": "@@redux-form/RESET_SECTION",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_FAILED",
+      },
+    ],
+    Array [
+      Object {
+        "error": false,
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_SUCCEEDED",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+        },
+        "type": "@@redux-form/START_ASYNC_VALIDATION",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/START_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": "field1",
+        "type": "@@redux-form/STOP_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": "field1",
+        "type": "@@redux-form/STOP_ASYNC_VALIDATION",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/TOUCH",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "destroyOnUnmount": true,
+          "name": "field1",
+        },
+        "type": "@@redux-form/UNREGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "fields": Array [
+            "field1",
+          ],
+          "form": "form",
+        },
+        "type": "@@redux-form/UNTOUCH",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "field": "field1",
+          "form": "form",
+          "indexA": 1,
+          "indexB": 0,
+        },
+        "type": "@@redux-form/ARRAY_SWAP",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers redux-form should dispatch async submit and submit failed 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+          "keepDirty": false,
+          "updateUnregisteredFields": false,
+        },
+        "payload": Object {
+          "field1": "value1",
+          "field2": "value2",
+        },
+        "type": "@@redux-form/INITIALIZE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "name": "field1",
+          "type": "Field",
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "name": "field2",
+          "type": "Field",
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/START_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "type": "ASYNC_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": true,
+        "meta": Object {
+          "fields": Array [],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_FAILED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers redux-form should dispatch async submit and submit succeeded 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+          "keepDirty": false,
+          "updateUnregisteredFields": false,
+        },
+        "payload": Object {
+          "field1": "value1",
+          "field2": "value2",
+        },
+        "type": "@@redux-form/INITIALIZE",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "name": "field1",
+          "type": "Field",
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": Object {
+          "name": "field2",
+          "type": "Field",
+        },
+        "type": "@@redux-form/REGISTER_FIELD",
+      },
+    ],
+    Array [
+      Object {
+        "meta": Object {
+          "form": "form",
+        },
+        "type": "@@redux-form/START_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "type": "ASYNC_SUBMIT",
+      },
+    ],
+    Array [
+      Object {
+        "error": false,
+        "meta": Object {
+          "fields": Array [],
+          "form": "form",
+        },
+        "type": "@@redux-form/SET_SUBMIT_SUCCEEDED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "error": false,
+        "meta": Object {
+          "form": "form",
+        },
+        "payload": undefined,
+        "type": "@@redux-form/STOP_SUBMIT",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers redux-form should select form 1`] = `
+Object {
+  "results": Object {
+    "getFormAsyncErrors": undefined,
+    "getFormError": undefined,
+    "getFormInitialValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "getFormMeta": Object {},
+    "getFormNames": Array [
+      "form",
+    ],
+    "getFormSubmitErrors": Object {},
+    "getFormSyncErrors": Object {},
+    "getFormSyncWarnings": Object {},
+    "getFormValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "hasSubmitFailed": false,
+    "hasSubmitSucceeded": false,
+    "isDirty": false,
+    "isInvalid": false,
+    "isPristine": true,
+    "isSubmitting": false,
+    "isValid": true,
+  },
+}
+`;
+
+exports[`drivers redux-form should select form with other path of form state 1`] = `
+Object {
+  "results": Object {
+    "getFormAsyncErrors": undefined,
+    "getFormError": undefined,
+    "getFormInitialValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "getFormMeta": Object {},
+    "getFormNames": Array [
+      "form",
+    ],
+    "getFormSubmitErrors": Object {},
+    "getFormSyncErrors": Object {},
+    "getFormSyncWarnings": Object {},
+    "getFormValues": Object {
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "hasSubmitFailed": false,
+    "hasSubmitSucceeded": false,
+    "isDirty": false,
+    "isInvalid": false,
+    "isPristine": true,
+    "isSubmitting": false,
+    "isValid": true,
+  },
+}
+`;
