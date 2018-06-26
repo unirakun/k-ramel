@@ -54,11 +54,11 @@ TODO
 ## Examples
 ### Create a simple store
 ```js
-import { createStore, keyValue } from 'k-ramel'
+import { createStore, types } from 'k-ramel'
 
 // create a store of todos
 const store = createStore({
-  todos: keyValue({ key: 'id' }),
+  todos: types.keyValue(),
 })
 
 // dispatch an action and update the store in one line, without k-ramel inner reducer
