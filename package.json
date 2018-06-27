@@ -120,6 +120,10 @@
       "jsx-a11y/no-static-element-interactions": "off",
       "react/forbid-prop-types": "off",
       "operator-linebreak": "off",
+      "max-len": [
+        2,
+        200
+      ],
       "semi": [
         2,
         "never"
