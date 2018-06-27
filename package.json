@@ -112,6 +112,10 @@
     "rules": {
       "import/no-extraneous-dependencies": "off",
       "import/prefer-default-export": "off",
+      "max-len": [
+        2,
+        200
+      ],
       "semi": [
         2,
         "never"
