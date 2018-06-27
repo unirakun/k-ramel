@@ -61,11 +61,13 @@ export default injectFunction => WrappedComponent => class extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (this.first) return true
 
+    const { injectedProps } = this.state
+
     return !(
       shallowEqual(this.props, nextProps)
       && shallowEqual(
         withoutFunctions(nextState.injectedProps),
-        withoutFunctions(this.state.injectedProps),
+        withoutFunctions(injectedProps),
       )
     )
   }
@@ -89,12 +91,14 @@ export default injectFunction => WrappedComponent => class extends Component {
   render() {
     if (this.first) this.first = false
 
+    const { injectedProps } = this.state
+
     return (
       <WrappedComponent
         /* this is parent props */
         {...this.props}
         /* this is injected props from hoc */
-        {...this.state.injectedProps}
+        {...injectedProps}
       />
     )
   }

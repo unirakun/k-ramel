@@ -1,10 +1,11 @@
-const dispatchFactory = store => name => method =>
+const dispatchFactory = store => name => method => (
   (event, payload, status, fetch) => store.dispatch({
     type: `@@http/${name}>${method}>${event}`,
     payload,
     status,
     fetch,
   })
+)
 
 const getDriver = (store) => {
   let innerOptions = {}

@@ -20,16 +20,17 @@ export default (root) => {
     const { type } = options
 
     // - leaf
-    if (type) { // k-redux-factory
+    // -- k-redux-factory
+    if (type) {
       return factory({
         name,
         path,
         prefix: (path && path.replace(/\./g, '_')) || '',
         ...options,
       })
-    } else if (typeof options === 'function') { // custom reducer
-      return options
     }
+    // -- not a k-redux-factory but a common reducer
+    if (typeof options === 'function') return options
 
     // - branch
     return Object

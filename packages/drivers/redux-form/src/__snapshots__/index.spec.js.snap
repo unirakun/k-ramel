@@ -351,6 +351,7 @@ Object {
         "meta": Object {
           "form": "form",
           "keepDirty": false,
+          "keepValues": undefined,
           "updateUnregisteredFields": false,
         },
         "payload": Object {
@@ -429,6 +430,7 @@ Object {
         "meta": Object {
           "form": "form",
           "keepDirty": false,
+          "keepValues": undefined,
           "updateUnregisteredFields": false,
         },
         "payload": Object {

@@ -8,8 +8,6 @@
   "description": "redux-little-router driver for k-ramel",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/redux-little-router",
   "devDependencies": {
-    "cross-env": "5.1.3",
-    "eslint": "4.17.0",
     "k-ramel": "^0.12.0"
   },
   "publishConfig": {

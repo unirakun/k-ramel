@@ -15,7 +15,7 @@ const Todos = ({
   onCompleteAll,
 }) => (
   <section className="main">
-    {todos.length > 0 &&
+    {todos.length > 0 && (
       <Fragment>
         <input
           className="toggle-all"
@@ -24,7 +24,7 @@ const Todos = ({
         />
         <label onClick={onCompleteAll} />
       </Fragment>
-    }
+    )}
     <ul style={style} className={cn('todo-list', className)}>
       {todos.map(id => <Todo key={id} id={id} />)}
     </ul>

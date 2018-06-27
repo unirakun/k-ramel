@@ -24,19 +24,19 @@ export const selectorNamesWithoutParameter = [
   'getFormNames',
 ]
 
-const wrapSelector = (getState, getFormState, name, selectorName) =>
+const wrapSelector = (getState, getFormState, name, selectorName) => (
   () => reduxform[selectorName](name, getFormState)(getState())
+)
 
-export default getFormState => ({ getState }) => name =>
-  ({
-    ...selectorNames
-      .reduce(
-        (acc, cur) => ({ [cur]: wrapSelector(getState, getFormState, name, cur), ...acc }),
-        {},
-      ),
-    ...selectorNamesWithoutParameter
-      .reduce(
-        (acc, cur) => ({ [cur]: () => reduxform[cur](getFormState)(getState()), ...acc }),
-        {},
-      ),
-  })
+export default getFormState => ({ getState }) => name => ({
+  ...selectorNames
+    .reduce(
+      (acc, cur) => ({ [cur]: wrapSelector(getState, getFormState, name, cur), ...acc }),
+      {},
+    ),
+  ...selectorNamesWithoutParameter
+    .reduce(
+      (acc, cur) => ({ [cur]: () => reduxform[cur](getFormState)(getState()), ...acc }),
+      {},
+    ),
+})

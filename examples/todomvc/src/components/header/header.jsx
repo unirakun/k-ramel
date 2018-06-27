@@ -11,7 +11,9 @@ const Header = ({
   onChange,
 }) => (
   <header style={style} className={cn('header', className)}>
-    <h1>todos</h1>
+    <h1>
+      todos
+    </h1>
     <input
       className="new-todo"
       name="newTodo"

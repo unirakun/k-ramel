@@ -1,4 +1,14 @@
-import { routerForBrowser, push, replace, go, goBack, goForward, block, unblock, initializeCurrentLocation } from 'redux-little-router'
+import {
+  routerForBrowser,
+  push,
+  replace,
+  go,
+  goBack,
+  goForward,
+  block,
+  unblock,
+  initializeCurrentLocation,
+} from 'redux-little-router'
 import { compose, applyMiddleware } from 'redux'
 
 const getParentResultParam = (result, key) => {
