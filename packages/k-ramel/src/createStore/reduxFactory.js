@@ -1,4 +1,5 @@
 import factory from 'k-redux-factory'
+import { getFromPath } from '../utils'
 
 export default (root) => {
   const subtree = (name, path) => {
@@ -15,8 +16,7 @@ export default (root) => {
 
     // other runs
     const nextPath = `${path ? `${path}.` : ''}${name}`
-    const fullpath = `root.${nextPath}`
-    const options = eval(fullpath) // eslint-disable-line no-eval
+    const options = getFromPath(root, nextPath)
     const { type } = options
 
     // - leaf
