@@ -1,3 +1,5 @@
+import { getFromPath } from '../utils'
+
 const withParams = ['get', 'getBy', 'hasKey']
 
 const keysConfig = {
@@ -35,8 +37,7 @@ export default (root, store) => {
 
     // other runs
     const nextPath = `${path ? `${path}.` : ''}${name}`
-    const fullpath = `root.${nextPath}`
-    const reducer = eval(fullpath) // eslint-disable-line no-eval
+    const reducer = getFromPath(root, nextPath)
 
     // - leaf
     if (reducer.krfType !== undefined) {
