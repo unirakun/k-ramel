@@ -138,7 +138,7 @@ export default (lib) => {
     it('should inject store to a component', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       // tested component
@@ -158,7 +158,7 @@ export default (lib) => {
 
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       // tested component
@@ -177,7 +177,7 @@ export default (lib) => {
     it('should not throw when using inject without params', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       const Component = () => <div />
@@ -190,7 +190,7 @@ export default (lib) => {
     it('should not throw when inject function return undefined', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       // tested component
@@ -204,7 +204,7 @@ export default (lib) => {
     it('should inject callbacks', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       // tested component
@@ -220,7 +220,7 @@ export default (lib) => {
     it('should refresh when store changes', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       // tested component
@@ -238,7 +238,7 @@ export default (lib) => {
     it('should refresh when props changes', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       // tested component
@@ -259,7 +259,7 @@ export default (lib) => {
     it('should unsubscribe on unmount', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       })
 
       // tested component
@@ -277,8 +277,8 @@ export default (lib) => {
     it('should not refresh component when there is no change', () => {
       // store
       const testStore = createStore({
-        config: { type: 'simpleObject' },
-        dummy: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
+        dummy: { type: 'simple.object' },
       })
 
       // tested component
