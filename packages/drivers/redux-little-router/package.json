@@ -1,6 +1,6 @@
 {
   "name": "@k-ramel/driver-redux-little-router",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Benjamin PETETOT <bpetetot@gmail.com>",
@@ -8,8 +8,8 @@
   "description": "redux-little-router driver for k-ramel",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/redux-little-router",
   "devDependencies": {
-    "k-ramel": "^0.12.0",
-    "cross-env": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "k-ramel": "^0.13.0"
   },
   "publishConfig": {
     "access": "public",
