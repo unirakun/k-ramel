@@ -176,7 +176,7 @@ export default (lib) => {
           store.dispatch(store.data.todos.add({ id: '3', label: 'hide-redux' }))
           expect({
             state: store.getState(),
-            todo: store.data.todos.get(3)(store.getState()),
+            todo: store.data.todos.get('3')(store.getState()),
           }).toMatchSnapshot()
         })
       })

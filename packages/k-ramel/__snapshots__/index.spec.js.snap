@@ -278,7 +278,10 @@ Object {
       },
     },
   },
-  "todo": undefined,
+  "todo": Object {
+    "id": "3",
+    "label": "hide-redux",
+  },
 }
 `;
 
