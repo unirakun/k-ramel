@@ -9,7 +9,8 @@
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/redux-form",
   "devDependencies": {
     "k-ramel": "^0.12.1",
-    "redux-form": "^7.3.0"
+    "redux-form": "^7.3.0",
+    "cross-env": "^5.2.0"
   },
   "peerDependencies": {
     "redux-form": "^7.3.0"

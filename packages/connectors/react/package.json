@@ -8,7 +8,8 @@
   "description": "React bindings for k-ramel",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/connectors/react",
   "devDependencies": {
-    "k-ramel": "^0.12.0"
+    "k-ramel": "^0.12.0",
+    "cross-env": "^5.2.0"
   },
   "publishConfig": {
     "access": "public",

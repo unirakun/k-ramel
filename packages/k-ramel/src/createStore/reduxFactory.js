@@ -1,4 +1,4 @@
-import factory from 'k-redux-factory'
+import { factory } from 'k-redux-factory'
 import { getFromPath } from '../utils'
 
 export default (root) => {

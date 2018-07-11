@@ -9,11 +9,14 @@
   "license": "MIT",
   "dependencies": {
     "@k-ramel/driver-http": "^0.12.2",
-    "k-redux-factory": "6.0.0-rc3",
+    "k-redux-factory": "6.0.0-rc5",
     "redux": "3.7.2"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
   }
 }
