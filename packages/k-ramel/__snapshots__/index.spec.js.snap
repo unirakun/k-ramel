@@ -83,7 +83,7 @@ Object {
 }
 `;
 
-exports[`k-ramel with helpers should instanciate a simpleObject reducer 1`] = `
+exports[`k-ramel with helpers should instanciate a simple.object reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -148,7 +148,7 @@ Object {
 }
 `;
 
-exports[`k-ramel with plain object should instanciate a simpleObject reducer 1`] = `
+exports[`k-ramel with plain object should instanciate a simple.object reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {
@@ -235,7 +235,7 @@ Object {
 }
 `;
 
-exports[`k-ramel with raw reducers should instanciate a simpleObject reducer 1`] = `
+exports[`k-ramel with raw reducers should instanciate a simple.object reducer 1`] = `
 Object {
   "label": "finish tests",
   "state": Object {

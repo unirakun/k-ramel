@@ -2,8 +2,7 @@
 export default (lib) => {
   const {
     createStore,
-    simpleObject,
-    keyValue,
+    types,
     compose,
     applyMiddleware,
     when,
@@ -33,7 +32,7 @@ export default (lib) => {
         }).toMatchSnapshot()
       })
 
-      it('should instanciate a simpleObject reducer', () => {
+      it('should instanciate a simple.object reducer', () => {
         const store = getStore()
 
         // mutation
@@ -56,7 +55,7 @@ export default (lib) => {
         },
         ui: {
           screens: {
-            newTodo: { type: 'simpleObject' },
+            newTodo: { type: 'simple.object' },
           },
         },
       })
@@ -67,11 +66,11 @@ export default (lib) => {
     describe('with helpers', () => {
       const getNewStore = () => createStore({
         data: {
-          todos: keyValue({ key: 'id' }),
+          todos: types.keyValue({ key: 'id' }),
         },
         ui: {
           screens: {
-            newTodo: simpleObject(),
+            newTodo: types.object(),
           },
         },
       })
@@ -82,7 +81,7 @@ export default (lib) => {
     describe('with raw reducers', () => {
       const getNewStore = () => createStore({
         data: {
-          todos: keyValue({ key: 'id' }),
+          todos: types.keyValue({ key: 'id' }),
         },
         ui: {
           config: (state = 'defaultState', action) => {
@@ -92,7 +91,7 @@ export default (lib) => {
             }
           },
           screens: {
-            newTodo: simpleObject(),
+            newTodo: types.object(),
           },
         },
       })
@@ -122,7 +121,7 @@ export default (lib) => {
         },
         ui: {
           screens: {
-            newTodo: { type: 'simpleObject' },
+            newTodo: { type: 'simple.object' },
           },
         },
       }, options)
@@ -186,7 +185,7 @@ export default (lib) => {
   describe('bugs', () => {
     it('should works with first level reducers', () => {
       const store = createStore({
-        label: { type: 'simpleObject' },
+        label: { type: 'simple.object' },
       })
 
       store.label.set('yeah it works')
@@ -203,7 +202,7 @@ export default (lib) => {
       const spyCatch = jest.fn(() => { throw new Error('Exception !') })
       const spyNoCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           when('@@krf/SET>CONFIG')(spyCatch),
@@ -226,7 +225,7 @@ export default (lib) => {
       const spyCatch = jest.fn()
       const spyNoCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           when('@@krf/SET>CONFIG')(spyCatchRoot),
@@ -256,7 +255,7 @@ export default (lib) => {
       const init = jest.fn()
 
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
         a: {},
       }, {
         listeners: [
@@ -290,7 +289,7 @@ export default (lib) => {
     it('should works with others middlewares', () => {
       const spyCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         enhancer: compose(applyMiddleware(() => next => action => next(action))),
         listeners: [
@@ -305,7 +304,7 @@ export default (lib) => {
 
     it('should still dispatch events', () => {
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [jest.fn()],
       })
@@ -321,7 +320,7 @@ export default (lib) => {
     it('should not catch action', () => {
       const spy = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [when('NO_CATCH')(spy)],
       })
@@ -335,7 +334,7 @@ export default (lib) => {
       const spyCatch = jest.fn()
       const spyNoCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           when(/SET>CONFIG/)(spyCatch),
@@ -354,7 +353,7 @@ export default (lib) => {
       const spyCatch = jest.fn()
       const spyNoCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           when('@@krf/SET>CONFIG')(spyCatch),
@@ -373,7 +372,7 @@ export default (lib) => {
       const spyCatch = jest.fn()
       const spyNoCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           when(spyFilter)(spyCatch),
@@ -393,7 +392,7 @@ export default (lib) => {
       const spyCatch = jest.fn()
       const spyNoCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           when(() => true, () => true)(spyCatch),
@@ -413,8 +412,8 @@ export default (lib) => {
     it('should catch and dispatch a new action', () => {
       const spy = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
-        saved: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
+        saved: { type: 'simple.object' },
       }, {
         listeners: [
           when(/SET>SAVED/)(spy),
@@ -434,7 +433,7 @@ export default (lib) => {
       const spyCatch = jest.fn()
       const spyNoCatch = jest.fn()
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           when(/SET>CONFIG/)(reaction(spyCatch)),
@@ -453,7 +452,7 @@ export default (lib) => {
       const spyCatch = reaction(jest.fn())
       const spyNoCatch = reaction(jest.fn())
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           spyCatch.when(/SET>CONFIG/),
@@ -475,7 +474,7 @@ export default (lib) => {
       })
 
       const store = createStore({
-        config: { type: 'simpleObject' },
+        config: { type: 'simple.object' },
       }, {
         listeners: [
           spyCatch.when(/SET>CONFIG/),
@@ -501,7 +500,7 @@ export default (lib) => {
       const enhancer = jest.fn(f => f)
       window.devToolsExtension = jest.fn(() => enhancer)
 
-      createStore({ dumb: { type: 'simpleObject' } })
+      createStore({ dumb: { type: 'simple.object' } })
       expect({
         devToolsExtension: window.devToolsExtension.mock.calls,
         devToolsEnhancer: enhancer.mock.calls,
@@ -512,7 +511,7 @@ export default (lib) => {
       const enhancer = jest.fn(f => f)
       window.devToolsExtension = jest.fn(() => enhancer)
 
-      createStore({ dumb: { type: 'simpleObject' } }, { name: 'my-store' })
+      createStore({ dumb: { type: 'simple.object' } }, { name: 'my-store' })
       expect({
         devToolsExtension: window.devToolsExtension.mock.calls,
         devToolsEnhancer: enhancer.mock.calls,
@@ -524,7 +523,7 @@ export default (lib) => {
       const enhancer = jest.fn(f => f)
       window.devToolsExtension = jest.fn(() => enhancer)
 
-      createStore({ dumb: { type: 'simpleObject' } }, { enhancer: otherEnhancer, name: 'my-store' })
+      createStore({ dumb: { type: 'simple.object' } }, { enhancer: otherEnhancer, name: 'my-store' })
       expect({
         devToolsExtension: window.devToolsExtension.mock.calls,
         devToolsEnhancer: enhancer.mock.calls,
@@ -536,7 +535,7 @@ export default (lib) => {
       const enhancer = jest.fn(f => f)
       window.devToolsExtension = jest.fn(() => enhancer)
 
-      createStore({ dumb: { type: 'simpleObject' } }, { devtools: false })
+      createStore({ dumb: { type: 'simple.object' } }, { devtools: false })
       expect({
         devToolsExtension: window.devToolsExtension.mock.calls,
         devToolsEnhancer: enhancer.mock.calls,

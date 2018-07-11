@@ -35,7 +35,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -71,7 +71,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -107,7 +107,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -140,7 +140,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('SET_OPTIONS')(async (action, st, { http }) => {
@@ -201,7 +201,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -260,7 +260,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -297,7 +297,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -336,7 +336,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -375,7 +375,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -413,7 +413,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
@@ -453,7 +453,7 @@ export default (driver) => {
 
         // store
         const store = createStore({
-          config: { type: 'simpleObject' },
+          config: { type: 'simple.object' },
         }, {
           listeners: [
             when('DISPATCHED')(async (action, st, { http }) => {
