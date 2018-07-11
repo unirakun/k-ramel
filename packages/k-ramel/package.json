@@ -10,7 +10,7 @@
   "dependencies": {
     "@k-ramel/driver-http": "^0.13.0",
     "k-redux-factory": "6.0.0-rc5",
-    "redux": "3.7.2"
+    "redux": "4.0.0"
   },
   "publishConfig": {
     "access": "public",
