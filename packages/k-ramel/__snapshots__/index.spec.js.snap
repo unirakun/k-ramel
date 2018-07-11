@@ -41,10 +41,8 @@ exports[`k-ramel with helpers should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
-      "array": Array [],
-      "data": Object {},
+      "data": Array [],
       "initialized": false,
-      "keys": Array [],
     },
   },
   "ui": Object {
@@ -60,22 +58,16 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [
-          Object {
-            "id": 2,
-            "label": "find a name",
-          },
+        "data": Array [
+          Array [
+            2,
+            Object {
+              "id": 2,
+              "label": "find a name",
+            },
+          ],
         ],
-        "data": Object {
-          "2": Object {
-            "id": 2,
-            "label": "find a name",
-          },
-        },
         "initialized": true,
-        "keys": Array [
-          "2",
-        ],
       },
     },
     "ui": Object {
@@ -97,10 +89,8 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [],
-        "data": Object {},
+        "data": Array [],
         "initialized": false,
-        "keys": Array [],
       },
     },
     "ui": Object {
@@ -116,10 +106,8 @@ exports[`k-ramel with plain object should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
-      "array": Array [],
-      "data": Object {},
+      "data": Array [],
       "initialized": false,
-      "keys": Array [],
     },
   },
   "ui": Object {
@@ -135,22 +123,16 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [
-          Object {
-            "id": 2,
-            "label": "find a name",
-          },
+        "data": Array [
+          Array [
+            2,
+            Object {
+              "id": 2,
+              "label": "find a name",
+            },
+          ],
         ],
-        "data": Object {
-          "2": Object {
-            "id": 2,
-            "label": "find a name",
-          },
-        },
         "initialized": true,
-        "keys": Array [
-          "2",
-        ],
       },
     },
     "ui": Object {
@@ -172,10 +154,8 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [],
-        "data": Object {},
+        "data": Array [],
         "initialized": false,
-        "keys": Array [],
       },
     },
     "ui": Object {
@@ -193,10 +173,8 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [],
-        "data": Object {},
+        "data": Array [],
         "initialized": false,
-        "keys": Array [],
       },
     },
     "ui": Object {
@@ -213,10 +191,8 @@ exports[`k-ramel with raw reducers should initialized 1`] = `
 Object {
   "data": Object {
     "todos": Object {
-      "array": Array [],
-      "data": Object {},
+      "data": Array [],
       "initialized": false,
-      "keys": Array [],
     },
   },
   "ui": Object {
@@ -233,22 +209,16 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [
-          Object {
-            "id": 2,
-            "label": "find a name",
-          },
+        "data": Array [
+          Array [
+            2,
+            Object {
+              "id": 2,
+              "label": "find a name",
+            },
+          ],
         ],
-        "data": Object {
-          "2": Object {
-            "id": 2,
-            "label": "find a name",
-          },
-        },
         "initialized": true,
-        "keys": Array [
-          "2",
-        ],
       },
     },
     "ui": Object {
@@ -271,10 +241,8 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [],
-        "data": Object {},
+        "data": Array [],
         "initialized": false,
-        "keys": Array [],
       },
     },
     "ui": Object {
@@ -292,22 +260,16 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [
-          Object {
-            "id": "3",
-            "label": "hide-redux",
-          },
+        "data": Array [
+          Array [
+            "3",
+            Object {
+              "id": "3",
+              "label": "hide-redux",
+            },
+          ],
         ],
-        "data": Object {
-          "3": Object {
-            "id": "3",
-            "label": "hide-redux",
-          },
-        },
         "initialized": true,
-        "keys": Array [
-          "3",
-        ],
       },
     },
     "ui": Object {
@@ -316,10 +278,7 @@ Object {
       },
     },
   },
-  "todo": Object {
-    "id": "3",
-    "label": "hide-redux",
-  },
+  "todo": undefined,
 }
 `;
 
@@ -328,10 +287,8 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [],
-        "data": Object {},
+        "data": Array [],
         "initialized": false,
-        "keys": Array [],
       },
     },
     "ui": Object {
@@ -348,10 +305,8 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [],
-        "data": Object {},
+        "data": Array [],
         "initialized": false,
-        "keys": Array [],
       },
     },
     "ui": Object {
@@ -375,10 +330,8 @@ Object {
         "state": Object {
           "data": Object {
             "todos": Object {
-              "array": Array [],
-              "data": Object {},
+              "data": Array [],
               "initialized": false,
-              "keys": Array [],
             },
           },
           "ui": Object {
@@ -393,10 +346,8 @@ Object {
   "state": Object {
     "data": Object {
       "todos": Object {
-        "array": Array [],
-        "data": Object {},
+        "data": Array [],
         "initialized": false,
-        "keys": Array [],
       },
     },
     "ui": Object {

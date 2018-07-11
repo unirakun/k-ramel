@@ -2083,7 +2083,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cross-env@5.2.0:
+cross-env@5.2.0, cross-env@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
   dependencies:
@@ -5329,9 +5329,9 @@ jsx-ast-utils@^2.0.0, jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
-k-redux-factory@6.0.0-rc3:
-  version "6.0.0-rc3"
-  resolved "https://registry.yarnpkg.com/k-redux-factory/-/k-redux-factory-6.0.0-rc3.tgz#f85d2b6b0241767de9daddc3ba62bdeff1ceb085"
+k-redux-factory@6.0.0-rc5:
+  version "6.0.0-rc5"
+  resolved "https://registry.yarnpkg.com/k-redux-factory/-/k-redux-factory-6.0.0-rc5.tgz#d6e9fdb7a5f7a526c6bf4a5c9b70eb796e112ddf"
 
 killable@^1.0.0:
   version "1.0.0"

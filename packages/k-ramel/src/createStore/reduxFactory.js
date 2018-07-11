@@ -1,4 +1,4 @@
-import factory from 'k-redux-factory'
+import { factory } from 'k-redux-factory'
 
 export default (root) => {
   const subtree = (name, path) => {

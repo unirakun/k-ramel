@@ -4,6 +4,7 @@ export const types = {
   bool: params => ({ ...params, type: 'simple.bool' }),
   string: params => ({ ...params, type: 'simple.string' }),
   object: params => ({ ...params, type: 'simple.object' }),
+  number: params => ({ ...params, type: 'simple.number' }),
   keyValue: params => ({ ...params, type: 'keyValue' }),
 }
 
