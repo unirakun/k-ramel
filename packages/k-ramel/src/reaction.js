@@ -1,19 +1,17 @@
-import { isRegExp, isString, isFunction } from 'lodash'
-
 const isMatching = (action, store) => matcher => ( // test matching
   // to a string
   (
-    isString(matcher) &&
+    (typeof matcher === 'string' || matcher instanceof String) &&
     action.type === matcher
   )
   // to a function
   || (
-    isFunction(matcher) &&
+    (typeof matcher === 'function' || matcher instanceof Function) &&
     matcher(action, store)
   )
   // to a regexp
   || (
-    isRegExp(matcher) &&
+    matcher instanceof RegExp &&
     action.type.match(matcher)
   )
 )
