@@ -6,7 +6,7 @@
     "packages/connectors/*",
     "examples/*"
   ],
-  "version": "0.13.0",
+  "version": "0.13.1",
   "command": {
     "init": {
       "exact": true

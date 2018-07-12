@@ -1,6 +1,6 @@
 {
   "name": "@k-ramel/driver-redux-form",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Guillaume CRESPEL <guillaume.crespel@gmail.com>",
@@ -9,7 +9,7 @@
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/redux-form",
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "k-ramel": "^0.13.0",
+    "k-ramel": "^0.13.1",
     "redux-form": "^7.3.0"
   },
   "peerDependencies": {
