@@ -21,6 +21,7 @@ keysConfig['simple.object'] = keysConfig.simple
 keysConfig['simple.array'] = keysConfig.simple
 keysConfig['simple.bool'] = keysConfig.simple
 keysConfig['simple.string'] = keysConfig.simple
+keysConfig['simple.number'] = keysConfig.simple
 
 export default (root, store) => {
   const subcontext = (name, path) => {
