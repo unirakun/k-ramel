@@ -1,4 +1,4 @@
-import { keyValue } from 'k-ramel'
+import { types } from 'k-ramel'
 import actions from './actions'
 import selectors from './selectors'
 
@@ -9,8 +9,8 @@ export default ({
   getReducer: () => ({
     path,
     reducer: {
-      values: keyValue({ key: 'form' }),
-      errors: keyValue({ key: 'form' }),
+      values: types.keyValue(),
+      errors: types.keyValue(),
     },
   }),
   getDriver: store => (form) => {

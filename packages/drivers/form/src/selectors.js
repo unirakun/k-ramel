@@ -4,11 +4,11 @@ export default state => form => ({
     const values = state[type].get(form)
 
     if (!field && values) {
-      delete values.form
-      return values
+      // remove id from the result so as not to pollute
+      const { id, ...rest } = values
+      return rest
     }
 
-    if (!values) return ''
-    return values[field] || ''
+    return (values && values[field]) || ''
   },
 })
