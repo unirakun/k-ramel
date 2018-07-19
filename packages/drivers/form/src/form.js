@@ -5,19 +5,20 @@ import selectors from './selectors'
 export default ({
   path = 'form',
   getState = store => store.form,
+  key = '@@form-name',
 }) => ({
   getReducer: () => ({
     path,
     reducer: {
-      values: types.keyValue({ key: 'name' }),
-      errors: types.keyValue({ key: 'name' }),
+      values: types.keyValue({ key }),
+      errors: types.keyValue({ key }),
     },
   }),
-  getDriver: store => (form) => {
+  getDriver: store => (name) => {
     const state = getState(store)
     return ({
-      ...actions(state)(form),
-      ...selectors(state)(form),
+      ...actions(key)(state)(name),
+      ...selectors(key)(state)(name),
     })
   },
 })

@@ -1,15 +1,15 @@
-export default state => (form) => {
-  const set = type => (values = {}) => state[type].addOrUpdate({ name: form, ...values })
+export default key => state => (name) => {
+  const set = type => (values = {}) => state[type].addOrUpdate({ [key]: name, ...values })
 
   return ({
     init: set('values'),
     set: set('values'),
     setErrors: set('errors'),
-    clearErrors: () => state.errors.reset(form),
-    onChange: field => value => state.values.addOrUpdate({ name: form, [field]: value }),
-    destroy: () => {
-      state.values.remove(form)
-      state.errors.remove(form)
+    clearErrors: () => state.errors.reset(name),
+    onChange: field => value => state.values.addOrUpdate({ [key]: name, [field]: value }),
+    remove: () => {
+      state.values.remove(name)
+      state.errors.remove(name)
     },
   })
 }

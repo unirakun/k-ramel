@@ -1,10 +1,11 @@
-export default state => (form) => {
+export default key => state => (name) => {
   const get = type => (field) => {
-    const values = state[type].get(form)
+    const values = state[type].get(name)
 
     if (!field && values) {
-      // remove name from the result so as not to pollute
-      const { name, ...rest } = values
+      // remove `key` from the result so as not to pollute
+      const rest = { ...values }
+      delete rest[key]
       return rest
     }
 
@@ -12,7 +13,7 @@ export default state => (form) => {
   }
 
   return {
-    exists: () => !!state.values.get(form),
+    exists: () => !!state.values.get(name),
     get: get('values'),
     getErrors: get('errors'),
   }
