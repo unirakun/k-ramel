@@ -33,3 +33,22 @@ export const setError = (action, store, { form }) => {
   form('login').setErrors({ code: 'login_error' })
 }
 ```
+
+In a component container (See main documentation about @k-ramel/react)
+```js
+/* input.container.js */
+
+import { inject } from '@k-ramel/react'
+import Component from './input'
+
+const mapStore = inject((store, { formName, field }, drivers) => {
+  const form = drivers.form(formName)
+  return {
+    value: form.get(field),
+    error: form.getErrors(field),
+    onChange: (e) => { form.onChange(field)(e.target.value) },
+  }
+})
+
+export default mapStore(Component)
+```
