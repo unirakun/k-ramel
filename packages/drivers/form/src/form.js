@@ -1,4 +1,4 @@
-import { keyValue } from 'k-ramel'
+import { types } from 'k-ramel'
 import actions from './actions'
 import selectors from './selectors'
 
@@ -10,8 +10,8 @@ export default ({
   getReducer: () => ({
     path,
     reducer: {
-      values: keyValue({ key }),
-      errors: keyValue({ key }),
+      values: types.keyValue({ key }),
+      errors: types.keyValue({ key }),
     },
   }),
   getDriver: store => (name) => {
