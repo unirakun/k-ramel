@@ -94,7 +94,7 @@ export default (driver) => {
     it('should remove form with regexp', () => {
       let formValues
       let removed
-      makeReaction(params)((action, st, { form }) => {
+      runReaction(params)((action, st, { form }) => {
         form('form1').set(defaultValues)
         form('form1').setErrors(defaultValues)
         form('form2').set(defaultValues)
