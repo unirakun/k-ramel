@@ -88,6 +88,27 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
+    it('should remove form with regexp', () => {
+      let formValues
+      let removed
+      makeReaction(params)((action, st, { form }) => {
+        form('form1').set(defaultValues)
+        form('form1').setErrors(defaultValues)
+        form('form2').set(defaultValues)
+        form('form2').setErrors(defaultValues)
+        form('notRemove').set(defaultValues)
+        form('notRemove').setErrors(defaultValues)
+        formValues = st.getState()
+        form(/form.*/).remove()
+        removed = st.getState()
+      })
+      // assert
+      expect({
+        formValues,
+        removed,
+      }).toMatchSnapshot()
+    })
+
     it('should change field', () => {
       let formValues
       let changed
