@@ -9,27 +9,15 @@ export default ({
   getReducer: () => ({
     path,
     reducer: {
-      values: types.keyValue(),
-      errors: types.keyValue(),
+      values: types.keyValue({ key: 'name' }),
+      errors: types.keyValue({ key: 'name' }),
     },
   }),
   getDriver: store => (form) => {
     const state = getState(store)
-    const { set, reset, onChange, destroy } = actions(state)(form)
-    const { exists, get } = selectors(state)(form)
     return ({
-      /* meta */
-      exists,
-      init: set('values'),
-      destroy,
-      /* values */
-      get: get('values'),
-      set: set('values'),
-      onChange,
-      /* errors */
-      setErrors: set('errors'),
-      getErrors: get('errors'),
-      clearErrors: reset('errors'),
+      ...actions(state)(form),
+      ...selectors(state)(form),
     })
   },
 })

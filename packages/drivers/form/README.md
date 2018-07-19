@@ -24,9 +24,12 @@ In a reaction (See main documentation about listeners/reactions)
 ```js
 /* reaction.js */
 
-export const signin = (store, action, drivers) => {
-  const { form, http } = drivers
-  const signinForm = form('signin')
-  const loginValues = signinForm.get()
+export const login = (store, action, { form, http }) => {
+  const loginValues = form('login').get()
+  http('LOGIN').post('/api/login', loginValues)
+}
+
+export const setError = (action, store, { form }) => {
+  form('login').setErrors({ code: 'login_error' })
 }
 ```

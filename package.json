@@ -118,7 +118,6 @@
       "jsx-a11y/no-static-element-interactions": "off",
       "react/forbid-prop-types": "off",
       "operator-linebreak": "off",
-      "object-curly-newline": "off",
       "max-len": [
         2,
         200
