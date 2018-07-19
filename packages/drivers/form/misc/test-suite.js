@@ -16,17 +16,16 @@ export default (driver) => {
     },
   )
 
-  const makeReaction = params => (reaction) => {
+  const runReaction = params => (reaction) => {
     const store = createStore([
       when('DISPATCHED')(reaction),
     ])(params)
 
     store.dispatch({ type: 'DISPATCHED' })
-    return store
   }
 
   const tests = (params) => {
-    it('should initialize', () => {
+    it('should initialize the driver', () => {
       // store
       const store = createStore()(params)
       // assert
@@ -35,33 +34,37 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should init', () => {
-      const store = makeReaction(params)((action, st, { form }) => {
-        form('form').init()
+    it('should initialize a form', () => {
+      let formState
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').init()
+        formState = st.getState()
       })
       // assert
       expect({
-        state: store.getState(),
+        formState,
       }).toMatchSnapshot()
     })
 
     it('should set values', () => {
-      const store = makeReaction(params)((action, st, { form }) => {
-        form('form').set(defaultValues)
+      let formState
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set(defaultValues)
+        formState = st.getState()
       })
       // assert
       expect({
-        state: store.getState(),
+        formState,
       }).toMatchSnapshot()
     })
 
     it('should set errors and clear', () => {
       let errors
       let cleared
-      makeReaction(params)((action, st, { form }) => {
-        form('form').setErrors(defaultValues)
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').setErrors(defaultValues)
         errors = st.getState()
-        form('form').clearErrors()
+        form('form-name').clearErrors()
         cleared = st.getState()
       })
       // assert
@@ -74,11 +77,11 @@ export default (driver) => {
     it('should remove form', () => {
       let formValues
       let removed
-      makeReaction(params)((action, st, { form }) => {
-        form('form').set(defaultValues)
-        form('form').setErrors(defaultValues)
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set(defaultValues)
+        form('form-name').setErrors(defaultValues)
         formValues = st.getState()
-        form('form').remove()
+        form('form-name').remove()
         removed = st.getState()
       })
       // assert
@@ -91,10 +94,10 @@ export default (driver) => {
     it('should change field', () => {
       let formValues
       let changed
-      makeReaction(params)((action, st, { form }) => {
-        form('form').set(defaultValues)
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set(defaultValues)
         formValues = st.getState()
-        form('form').onChange('second')('NEW_VALUE')
+        form('form-name').onChange('second')('NEW_VALUE')
         changed = st.getState()
       })
       // assert
@@ -106,9 +109,9 @@ export default (driver) => {
 
     it('should get all values', () => {
       let values
-      makeReaction(params)((action, st, { form }) => {
-        form('form').set(defaultValues)
-        values = form('form').get()
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set(defaultValues)
+        values = form('form-name').get()
       })
       // assert
       expect({
@@ -118,9 +121,9 @@ export default (driver) => {
 
     it('should get one value', () => {
       let value
-      makeReaction(params)((action, st, { form }) => {
-        form('form').set(defaultValues)
-        value = form('form').get('second')
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set(defaultValues)
+        value = form('form-name').get('second')
       })
       // assert
       expect({
@@ -130,9 +133,9 @@ export default (driver) => {
 
     it('should get all errors', () => {
       let errors
-      makeReaction(params)((action, st, { form }) => {
-        form('form').setErrors(defaultValues)
-        errors = form('form').getErrors()
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').setErrors(defaultValues)
+        errors = form('form-name').getErrors()
       })
       // assert
       expect({
@@ -142,9 +145,9 @@ export default (driver) => {
 
     it('should get one error', () => {
       let errors
-      makeReaction(params)((action, st, { form }) => {
-        form('form').setErrors(defaultValues)
-        errors = form('form').getErrors('second')
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').setErrors(defaultValues)
+        errors = form('form-name').getErrors('second')
       })
       // assert
       expect({
@@ -155,9 +158,9 @@ export default (driver) => {
     it('should check if form exists', () => {
       let exists
       let notExists
-      makeReaction(params)((action, st, { form }) => {
-        form('form').set(defaultValues)
-        exists = form('form').exists()
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set(defaultValues)
+        exists = form('form-name').exists()
         notExists = form('emptyForm').exists()
       })
       // assert

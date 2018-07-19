@@ -13,9 +13,9 @@ Object {
         "values": Object {
           "data": Array [
             Array [
-              "form",
+              "form-name",
               Object {
-                "customKey": "form",
+                "customKey": "form-name",
                 "first": "value",
                 "second": "NEW_VALUE",
               },
@@ -37,9 +37,9 @@ Object {
         "values": Object {
           "data": Array [
             Array [
-              "form",
+              "form-name",
               Object {
-                "customKey": "form",
+                "customKey": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -90,9 +90,9 @@ Object {
 }
 `;
 
-exports[`drivers/form [custom path and key] should init 1`] = `
+exports[`drivers/form [custom path and key] should initialize a form 1`] = `
 Object {
-  "state": Object {
+  "formState": Object {
     "ui": Object {
       "default": false,
       "form": Object {
@@ -103,9 +103,9 @@ Object {
         "values": Object {
           "data": Array [
             Array [
-              "form",
+              "form-name",
               Object {
-                "customKey": "form",
+                "customKey": "form-name",
               },
             ],
           ],
@@ -117,7 +117,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [custom path and key] should initialize 1`] = `
+exports[`drivers/form [custom path and key] should initialize the driver 1`] = `
 Object {
   "state": Object {
     "ui": Object {
@@ -146,9 +146,9 @@ Object {
         "errors": Object {
           "data": Array [
             Array [
-              "form",
+              "form-name",
               Object {
-                "customKey": "form",
+                "customKey": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -159,9 +159,9 @@ Object {
         "values": Object {
           "data": Array [
             Array [
-              "form",
+              "form-name",
               Object {
-                "customKey": "form",
+                "customKey": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -214,9 +214,9 @@ Object {
         "errors": Object {
           "data": Array [
             Array [
-              "form",
+              "form-name",
               Object {
-                "customKey": "form",
+                "customKey": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -236,7 +236,7 @@ Object {
 
 exports[`drivers/form [custom path and key] should set values 1`] = `
 Object {
-  "state": Object {
+  "formState": Object {
     "ui": Object {
       "default": false,
       "form": Object {
@@ -247,9 +247,9 @@ Object {
         "values": Object {
           "data": Array [
             Array [
-              "form",
+              "form-name",
               Object {
-                "customKey": "form",
+                "customKey": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -274,9 +274,9 @@ Object {
       "values": Object {
         "data": Array [
           Array [
-            "form",
+            "form-name",
             Object {
-              "@@form-name": "form",
+              "@@form-name": "form-name",
               "first": "value",
               "second": "NEW_VALUE",
             },
@@ -298,9 +298,9 @@ Object {
       "values": Object {
         "data": Array [
           Array [
-            "form",
+            "form-name",
             Object {
-              "@@form-name": "form",
+              "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
             },
@@ -353,9 +353,9 @@ Object {
 }
 `;
 
-exports[`drivers/form [default path and key] should init 1`] = `
+exports[`drivers/form [default path and key] should initialize a form 1`] = `
 Object {
-  "state": Object {
+  "formState": Object {
     "form": Object {
       "errors": Object {
         "data": Array [],
@@ -364,9 +364,9 @@ Object {
       "values": Object {
         "data": Array [
           Array [
-            "form",
+            "form-name",
             Object {
-              "@@form-name": "form",
+              "@@form-name": "form-name",
             },
           ],
         ],
@@ -380,7 +380,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [default path and key] should initialize 1`] = `
+exports[`drivers/form [default path and key] should initialize the driver 1`] = `
 Object {
   "state": Object {
     "form": Object {
@@ -407,9 +407,9 @@ Object {
       "errors": Object {
         "data": Array [
           Array [
-            "form",
+            "form-name",
             Object {
-              "@@form-name": "form",
+              "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
             },
@@ -420,9 +420,9 @@ Object {
       "values": Object {
         "data": Array [
           Array [
-            "form",
+            "form-name",
             Object {
-              "@@form-name": "form",
+              "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
             },
@@ -475,9 +475,9 @@ Object {
       "errors": Object {
         "data": Array [
           Array [
-            "form",
+            "form-name",
             Object {
-              "@@form-name": "form",
+              "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
             },
@@ -499,7 +499,7 @@ Object {
 
 exports[`drivers/form [default path and key] should set values 1`] = `
 Object {
-  "state": Object {
+  "formState": Object {
     "form": Object {
       "errors": Object {
         "data": Array [],
@@ -508,9 +508,9 @@ Object {
       "values": Object {
         "data": Array [
           Array [
-            "form",
+            "form-name",
             Object {
-              "@@form-name": "form",
+              "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
             },
