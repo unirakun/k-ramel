@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`drivers/form should initialize store with custom path 1`] = `
+Object {
+  "store": Object {
+    "dispatch": [Function],
+    "drivers": Object {
+      "form": [Function],
+      "http": [Function],
+    },
+    "getState": [Function],
+    "listeners": Object {
+      "add": [Function],
+      "remove": [Function],
+    },
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    "ui": Object {
+      "default": [Function],
+      "form": Object {
+        "errors": [Function],
+        "values": [Function],
+      },
+    },
+    Symbol(observable): [Function],
+  },
+}
+`;
+
+exports[`drivers/form should initialize store with default path 1`] = `
+Object {
+  "store": Object {
+    "dispatch": [Function],
+    "drivers": Object {
+      "form": [Function],
+      "http": [Function],
+    },
+    "form": Object {
+      "errors": [Function],
+      "values": [Function],
+    },
+    "getState": [Function],
+    "listeners": Object {
+      "add": [Function],
+      "remove": [Function],
+    },
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+    "ui": Object {
+      "default": [Function],
+    },
+    Symbol(observable): [Function],
+  },
+}
+`;
