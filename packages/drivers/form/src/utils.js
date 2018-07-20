@@ -7,6 +7,6 @@ export default (state) => {
 
   return ({
     find,
-    removeEach: search => find(search).forEach(remove),
+    remove: (...formNames) => formNames.forEach(remove),
   })
 }
