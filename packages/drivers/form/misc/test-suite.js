@@ -37,7 +37,7 @@ export default (driver) => {
     it('should initialize a form', () => {
       let formState
       runReaction(params)((action, st, { form }) => {
-        form('form-name').init()
+        form('form-name').set()
         formState = st.getState()
       })
       // assert
@@ -91,11 +91,26 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should change field', () => {
+    it('should change existing field', () => {
       let formValues
       let changed
       runReaction(params)((action, st, { form }) => {
         form('form-name').set(defaultValues)
+        formValues = st.getState()
+        form('form-name').onChange('second')('NEW_VALUE')
+        changed = st.getState()
+      })
+      // assert
+      expect({
+        formValues,
+        changed,
+      }).toMatchSnapshot()
+    })
+
+    it('should change when form is gone', () => {
+      let formValues
+      let changed
+      runReaction(params)((action, st, { form }) => {
         formValues = st.getState()
         form('form-name').onChange('second')('NEW_VALUE')
         changed = st.getState()
