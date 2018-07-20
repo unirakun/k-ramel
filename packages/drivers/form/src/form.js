@@ -1,6 +1,7 @@
 import { types } from 'k-ramel'
 import actions from './actions'
 import selectors from './selectors'
+import utils from './utils'
 
 export default ({
   path = 'form',
@@ -14,11 +15,14 @@ export default ({
       errors: types.keyValue({ key }),
     },
   }),
-  getDriver: store => (name) => {
+  getDriver: (store) => {
     const state = getState(store)
-    return ({
-      ...actions(key)(state)(name),
-      ...selectors(key)(state)(name),
-    })
+    return Object.assign(
+      name => ({
+        ...actions(key)(state)(name),
+        ...selectors(key)(state)(name),
+      }),
+      utils(state),
+    )
   },
 })
