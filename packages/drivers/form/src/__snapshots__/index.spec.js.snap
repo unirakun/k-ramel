@@ -1,101 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`drivers/form [custom path and key] should change existing field 1`] = `
-Object {
-  "changed": Object {
-    "ui": Object {
-      "default": false,
-      "form": Object {
-        "errors": Object {
-          "data": Array [],
-          "initialized": false,
-        },
-        "values": Object {
-          "data": Array [
-            Array [
-              "form-name",
-              Object {
-                "customKey": "form-name",
-                "first": "value",
-                "second": "NEW_VALUE",
-              },
-            ],
-          ],
-          "initialized": true,
-        },
-      },
-    },
-  },
-  "formValues": Object {
-    "ui": Object {
-      "default": false,
-      "form": Object {
-        "errors": Object {
-          "data": Array [],
-          "initialized": false,
-        },
-        "values": Object {
-          "data": Array [
-            Array [
-              "form-name",
-              Object {
-                "customKey": "form-name",
-                "first": "value",
-                "second": "otherValue",
-              },
-            ],
-          ],
-          "initialized": true,
-        },
-      },
-    },
-  },
-}
-`;
-
-exports[`drivers/form [custom path and key] should change when form is gone 1`] = `
-Object {
-  "changed": Object {
-    "ui": Object {
-      "default": false,
-      "form": Object {
-        "errors": Object {
-          "data": Array [],
-          "initialized": false,
-        },
-        "values": Object {
-          "data": Array [
-            Array [
-              "form-name",
-              Object {
-                "customKey": "form-name",
-                "second": "NEW_VALUE",
-              },
-            ],
-          ],
-          "initialized": true,
-        },
-      },
-    },
-  },
-  "formValues": Object {
-    "ui": Object {
-      "default": false,
-      "form": Object {
-        "errors": Object {
-          "data": Array [],
-          "initialized": false,
-        },
-        "values": Object {
-          "data": Array [],
-          "initialized": false,
-        },
-      },
-    },
-  },
-}
-`;
-
 exports[`drivers/form [custom path and key] should check if form exists 1`] = `
 Object {
   "exists": true,
@@ -306,97 +210,97 @@ Object {
 }
 `;
 
-exports[`drivers/form [default path and key] should change existing field 1`] = `
+exports[`drivers/form [custom path and key] should update existing field 1`] = `
 Object {
-  "changed": Object {
-    "form": Object {
-      "errors": Object {
-        "data": Array [],
-        "initialized": false,
-      },
-      "values": Object {
-        "data": Array [
-          Array [
-            "form-name",
-            Object {
-              "@@form-name": "form-name",
-              "first": "value",
-              "second": "NEW_VALUE",
-            },
-          ],
-        ],
-        "initialized": true,
-      },
-    },
+  "formValues": Object {
     "ui": Object {
       "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
     },
   },
-  "formValues": Object {
-    "form": Object {
-      "errors": Object {
-        "data": Array [],
-        "initialized": false,
-      },
-      "values": Object {
-        "data": Array [
-          Array [
-            "form-name",
-            Object {
-              "@@form-name": "form-name",
-              "first": "value",
-              "second": "otherValue",
-            },
-          ],
-        ],
-        "initialized": true,
-      },
-    },
+  "updated": Object {
     "ui": Object {
       "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "NEW_VALUE",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
     },
   },
 }
 `;
 
-exports[`drivers/form [default path and key] should change when form is gone 1`] = `
+exports[`drivers/form [custom path and key] should update when form is gone 1`] = `
 Object {
-  "changed": Object {
-    "form": Object {
-      "errors": Object {
-        "data": Array [],
-        "initialized": false,
-      },
-      "values": Object {
-        "data": Array [
-          Array [
-            "form-name",
-            Object {
-              "@@form-name": "form-name",
-              "second": "NEW_VALUE",
-            },
-          ],
-        ],
-        "initialized": true,
-      },
-    },
+  "formValues": Object {
     "ui": Object {
       "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+      },
     },
   },
-  "formValues": Object {
-    "form": Object {
-      "errors": Object {
-        "data": Array [],
-        "initialized": false,
-      },
-      "values": Object {
-        "data": Array [],
-        "initialized": false,
-      },
-    },
+  "updated": Object {
     "ui": Object {
       "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "second": "NEW_VALUE",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
     },
   },
 }
@@ -599,6 +503,102 @@ Object {
               "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should update existing field 1`] = `
+Object {
+  "formValues": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+  "updated": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "NEW_VALUE",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should update when form is gone 1`] = `
+Object {
+  "formValues": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+  "updated": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "second": "NEW_VALUE",
             },
           ],
         ],
