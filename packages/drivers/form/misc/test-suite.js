@@ -91,6 +91,27 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
+    it('should remove form with an array of formName', () => {
+      let formValues
+      let removed
+      runReaction(params)((action, st, { form }) => {
+        form('form1').set(defaultValues)
+        form('form1').setErrors(defaultValues)
+        form('form2').set(defaultValues)
+        form('form2').setErrors(defaultValues)
+        form('notRemove').set(defaultValues)
+        form('notRemove').setErrors(defaultValues)
+        formValues = st.getState()
+        form.remove(['form1', 'form2'])
+        removed = st.getState()
+      })
+      // assert
+      expect({
+        formValues,
+        removed,
+      }).toMatchSnapshot()
+    })
+
     it('should update existing field', () => {
       let formValues
       let updated
@@ -182,6 +203,21 @@ export default (driver) => {
       expect({
         exists,
         notExists,
+      }).toMatchSnapshot()
+    })
+
+    it('should check if form exists', () => {
+      let formNames
+      runReaction(params)((action, st, { form }) => {
+        form('form-1').set(defaultValues)
+        form('form-2').set(defaultValues)
+        form('other-form').set(defaultValues)
+        form('form-12').set(defaultValues)
+        formNames = form.find(/form-.*/)
+      })
+      // assert
+      expect({
+        formNames,
       }).toMatchSnapshot()
     })
   }
