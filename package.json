@@ -29,6 +29,7 @@
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
+    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.6.1",
     "coveralls": "3.0.1",
     "cross-env": "5.2.0",
@@ -72,7 +73,15 @@
           "external-helpers",
           "transform-class-properties",
           "transform-react-jsx",
-          "transform-object-rest-spread"
+          "transform-object-rest-spread",
+          [
+            "transform-runtime",
+            {
+              "helpers": false,
+              "polyfill": false,
+              "regenerator": true
+            }
+          ]
         ]
       },
       "test": {
