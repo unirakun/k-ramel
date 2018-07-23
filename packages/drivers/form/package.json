@@ -1,6 +1,6 @@
 {
   "name": "@k-ramel/form",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Guillaume CRESPEL <guillaume.crespel@gmail.com>",
