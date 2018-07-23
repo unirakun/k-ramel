@@ -112,27 +112,6 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should remove form with formNames on params ', () => {
-      let formValues
-      let removed
-      runReaction(params)((action, st, { form }) => {
-        form('form1').set(defaultValues)
-        form('form1').setErrors(defaultValues)
-        form('form2').set(defaultValues)
-        form('form2').setErrors(defaultValues)
-        form('notRemove').set(defaultValues)
-        form('notRemove').setErrors(defaultValues)
-        formValues = st.getState()
-        form.remove('form1', 'form2')
-        removed = st.getState()
-      })
-      // assert
-      expect({
-        formValues,
-        removed,
-      }).toMatchSnapshot()
-    })
-
     it('should change existing field', () => {
       let formValues
       let changed

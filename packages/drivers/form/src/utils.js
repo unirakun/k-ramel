@@ -1,12 +1,8 @@
 export default (state) => {
   const find = search => state.values.getKeys().filter(k => k.match(search))
-  const remove = (k) => {
-    state.values.remove(k)
-    state.errors.remove(k)
-  }
 
   return ({
     find,
-    remove: (...formNames) => formNames.forEach(remove),
+    remove: formNames => state.values.remove(formNames) && state.errors.remove(formNames),
   })
 }
