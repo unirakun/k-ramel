@@ -3,6 +3,9 @@ export default (state) => {
 
   return ({
     find,
-    remove: formNames => state.values.remove(formNames) && state.errors.remove(formNames),
+    remove: (formNames) => {
+      state.values.remove(formNames)
+      state.errors.remove(formNames)
+    },
   })
 }

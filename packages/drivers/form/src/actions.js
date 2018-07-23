@@ -6,6 +6,9 @@ export default key => state => (name) => {
     setErrors: set('errors'),
     clearErrors: () => state.errors.reset(name),
     update: field => value => state.values.update({ [key]: name, [field]: value }),
-    remove: () => state.values.remove(name) && state.errors.remove(name),
+    remove: () => {
+      state.values.remove(name)
+      state.errors.remove(name)
+    },
   })
 }
