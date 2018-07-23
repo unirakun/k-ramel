@@ -112,34 +112,34 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should change existing field', () => {
+    it('should update existing field', () => {
       let formValues
-      let changed
+      let updated
       runReaction(params)((action, st, { form }) => {
         form('form-name').set(defaultValues)
         formValues = st.getState()
-        form('form-name').onChange('second')('NEW_VALUE')
-        changed = st.getState()
+        form('form-name').update('second')('NEW_VALUE')
+        updated = st.getState()
       })
       // assert
       expect({
         formValues,
-        changed,
+        updated,
       }).toMatchSnapshot()
     })
 
-    it('should change when form is gone', () => {
+    it('should update when form is gone', () => {
       let formValues
-      let changed
+      let updated
       runReaction(params)((action, st, { form }) => {
         formValues = st.getState()
-        form('form-name').onChange('second')('NEW_VALUE')
-        changed = st.getState()
+        form('form-name').update('second')('NEW_VALUE')
+        updated = st.getState()
       })
       // assert
       expect({
         formValues,
-        changed,
+        updated,
       }).toMatchSnapshot()
     })
 
