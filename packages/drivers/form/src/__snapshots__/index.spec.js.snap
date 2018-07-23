@@ -1,0 +1,839 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`drivers/form [custom path and key] should check if form exists 1`] = `
+Object {
+  "exists": true,
+  "notExists": false,
+}
+`;
+
+exports[`drivers/form [custom path and key] should check if form exists 2`] = `
+Object {
+  "formNames": Array [
+    "form-1",
+    "form-2",
+    "form-12",
+  ],
+}
+`;
+
+exports[`drivers/form [custom path and key] should get all errors 1`] = `
+Object {
+  "errors": Object {
+    "first": "value",
+    "second": "otherValue",
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should get all values 1`] = `
+Object {
+  "values": Object {
+    "first": "value",
+    "second": "otherValue",
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should get one error 1`] = `
+Object {
+  "errors": "otherValue",
+}
+`;
+
+exports[`drivers/form [custom path and key] should get one value 1`] = `
+Object {
+  "value": "otherValue",
+}
+`;
+
+exports[`drivers/form [custom path and key] should initialize a form 1`] = `
+Object {
+  "formState": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should initialize the driver 1`] = `
+Object {
+  "state": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should remove form 1`] = `
+Object {
+  "formValues": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+  "removed": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": true,
+        },
+        "values": Object {
+          "data": Array [],
+          "initialized": true,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should remove form with an array of formName 1`] = `
+Object {
+  "formValues": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [
+            Array [
+              "form1",
+              Object {
+                "customKey": "form1",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+            Array [
+              "form2",
+              Object {
+                "customKey": "form2",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+            Array [
+              "notRemove",
+              Object {
+                "customKey": "notRemove",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form1",
+              Object {
+                "customKey": "form1",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+            Array [
+              "form2",
+              Object {
+                "customKey": "form2",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+            Array [
+              "notRemove",
+              Object {
+                "customKey": "notRemove",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+  "removed": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [
+            Array [
+              "notRemove",
+              Object {
+                "customKey": "notRemove",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "notRemove",
+              Object {
+                "customKey": "notRemove",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should set errors and clear 1`] = `
+Object {
+  "cleared": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+      },
+    },
+  },
+  "errors": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+        "values": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should set values 1`] = `
+Object {
+  "formState": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should update existing field 1`] = `
+Object {
+  "formValues": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "otherValue",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+  "updated": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "first": "value",
+                "second": "NEW_VALUE",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should update when form is gone 1`] = `
+Object {
+  "formValues": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+      },
+    },
+  },
+  "updated": Object {
+    "ui": Object {
+      "default": false,
+      "form": Object {
+        "errors": Object {
+          "data": Array [],
+          "initialized": false,
+        },
+        "values": Object {
+          "data": Array [
+            Array [
+              "form-name",
+              Object {
+                "customKey": "form-name",
+                "second": "NEW_VALUE",
+              },
+            ],
+          ],
+          "initialized": true,
+        },
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should check if form exists 1`] = `
+Object {
+  "exists": true,
+  "notExists": false,
+}
+`;
+
+exports[`drivers/form [default path and key] should check if form exists 2`] = `
+Object {
+  "formNames": Array [
+    "form-1",
+    "form-2",
+    "form-12",
+  ],
+}
+`;
+
+exports[`drivers/form [default path and key] should get all errors 1`] = `
+Object {
+  "errors": Object {
+    "first": "value",
+    "second": "otherValue",
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should get all values 1`] = `
+Object {
+  "values": Object {
+    "first": "value",
+    "second": "otherValue",
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should get one error 1`] = `
+Object {
+  "errors": "otherValue",
+}
+`;
+
+exports[`drivers/form [default path and key] should get one value 1`] = `
+Object {
+  "value": "otherValue",
+}
+`;
+
+exports[`drivers/form [default path and key] should initialize a form 1`] = `
+Object {
+  "formState": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should initialize the driver 1`] = `
+Object {
+  "state": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should remove form 1`] = `
+Object {
+  "formValues": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+  "removed": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": true,
+      },
+      "values": Object {
+        "data": Array [],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should remove form with an array of formName 1`] = `
+Object {
+  "formValues": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [
+          Array [
+            "form1",
+            Object {
+              "@@form-name": "form1",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+          Array [
+            "form2",
+            Object {
+              "@@form-name": "form2",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+          Array [
+            "notRemove",
+            Object {
+              "@@form-name": "notRemove",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form1",
+            Object {
+              "@@form-name": "form1",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+          Array [
+            "form2",
+            Object {
+              "@@form-name": "form2",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+          Array [
+            "notRemove",
+            Object {
+              "@@form-name": "notRemove",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+  "removed": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [
+          Array [
+            "notRemove",
+            Object {
+              "@@form-name": "notRemove",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "notRemove",
+            Object {
+              "@@form-name": "notRemove",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should set errors and clear 1`] = `
+Object {
+  "cleared": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+  "errors": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+      "values": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should set values 1`] = `
+Object {
+  "formState": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should update existing field 1`] = `
+Object {
+  "formValues": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "otherValue",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+  "updated": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "first": "value",
+              "second": "NEW_VALUE",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should update when form is gone 1`] = `
+Object {
+  "formValues": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+  "updated": Object {
+    "form": Object {
+      "errors": Object {
+        "data": Array [],
+        "initialized": false,
+      },
+      "values": Object {
+        "data": Array [
+          Array [
+            "form-name",
+            Object {
+              "@@form-name": "form-name",
+              "second": "NEW_VALUE",
+            },
+          ],
+        ],
+        "initialized": true,
+      },
+    },
+    "ui": Object {
+      "default": false,
+    },
+  },
+}
+`;
