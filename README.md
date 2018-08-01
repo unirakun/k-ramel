@@ -8,6 +8,16 @@ State manager for your components apps, the safe and easy way.
   <img src="packages/k-ramel/doc/logo.png" width="400" />
 </p>
 
+## Why should you give it a try ? 🤔
+Because `k-ramel`:
+ - ⚡️ is fast
+ - 📸 is immutable
+ - 📦 is [modular](#modules)
+ - 💎 encourages to decouple UI and state management
+ - 💥 encourages to not have side effect into your buisiness logic
+ - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel@next) footprint (with http driver)
+ - 🐛 works with redux-dev-tools
+
 ## Modules
 | packages | description | size | gziped |
 | -- | -- | -- | -- |
@@ -18,98 +28,36 @@ State manager for your components apps, the safe and easy way.
 | [`@k-ramel/driver-redux-form`](./packages/drivers/redux-form/README.md) | redux-form  wrapper ([drivers documentation](./packages/k-ramel/doc/DRIVERS.md)) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg?compression=gzip)]() |
 | [`@k-ramel/driver-redux-little-router`](./packages/drivers/redux-little-router/README.MD) | redux-littler-router wrapper ([drivers documentation](./packages/k-ramel/doc/DRIVERS.md))  | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
 
-## Contents
- - [Purpose](#purpose)
- - [Why ?](#why)
- - [Installation](#installation)
- - [API](#api)
- - [Examples](#examples)
+## Ecosystem
+You can pick some modules based on your usage, or even write your own.
+\
+The modules that are supported by k-ramel are [listed here](#modules).
+\
+We add modules when we need them but feel free to open PR if you want to add your own.
 
-## Purpose
-TODO
-
-## Why
-TODO
-
-## Installation
- - `yarn add k-ramel`
- - `npm install --save k-ramel`
-
-## API
-#### listeners
-TODO
+Modules can be :
+ - **connectors**, used to connect your buisiness logic (and your data) to your UI. We only have a ReactJS connector at the moment.
+ - **drivers**, used to do some side effects (http, window, history, etc) or share some logic, besides your buisiness logic.
 
 ## Examples
-### Create a simple store
-```js
-import { createStore, types } from 'k-ramel'
+ - Our own [todo-mvc](./examples/todomvc)
+ - [conference-hall](https://github.com/bpetetot/conference-hall) from **[@bpetetot](https://github.com/bpetetot)**
+ - [k-mille](https://github.com/alakarteio/k-mille/), our personal assistant **[@alakarteio](https://github.com/alakarteio)**
 
-// create a store of todos
-const store = createStore({
-  todos: types.keyValue(),
-})
+# Contributors
+ - Fabien JUIF [[@fabienjuif](https://github.com/fabienjuif)]
+ - Guillaume CRESPEL [[@guillaumecrespel](https://github.com/guillaumecrespel)]
+ - Benjamin PETETOT [[@bpetetot](https://github.com/bpetetot)]
+ - Valentin COCAUD [[@EmrysMyrddin](https://github.com/EmrysMyrddin)]
+ - Yvonnick FRIN [[@frinyvonnick](https://github.com/frinyvonnick)]
+ - Delphine MILLET [[@delphinemillet](https://github.com/delphinemillet)]
+ - Benjamin PLOUZENNEC [[@Okazari](https://github.com/Okazari)]
 
-// dispatch an action and update the store in one line, without k-ramel inner reducer
-store.todos.add({ id: 2, label: 'write a better README' })
-
-// you can retrieve data like that
-const todo = store.todos.get(2)
-```
-
-### Connect it with ReactJS
-1. Provide this store to React context
-
-**app.jsx**
-```js
-import { provider } from '@k-ramel/react'
-import store from './store'
-import TodosContainer from './todos.container'
-
-const App = () => <TodosContainer />
-
-// use `provider` HoC to inject store to the React context
-export default provider(store)(App)
-```
-
-2. Use `inject` to interact with the store, wrap your `<Todos />` graphical component in a container
-
-**todos.container.js**
-```js
-import { inject } from '@k-ramel/react'
-import Todos from './todos'
-
-// `inject` is an HoC, like `connect` from react-redux,
-// it takes one parameter and returns props to be injected to the wrapped component
-// (FYI: props injected to the wrapped component are added to the props given by the parent)
-export default inject(store => ({
-  todos: store.todos.getAsArray(),
-  onAdd: event => store.todos.add({ id: Date.now(), label: event.target.value }),
-}))(Todos)
-```
-
-4. Write your classical React JSX component (here, as pure function)
-
-**todos.jsx**
-```js
-import React from 'react'
-import PropTypes from 'prop-types'
-
-const Todos = ({ todos, onAdd }) => (
-  <div>
-    <input onBlur={onAdd} />
-    <ul>
-      {todos.map(todo => <li>{todo.label}</li>})}
-    </ul>
-  </div>
-)
-
-Todos.propTypes = {
-  todos: PropTypes.array.isRequired,
-  onAdd: PropTypes.func.isRequired,
-}
-
-export default Todos
-```
+# Known users
+ - [sparklane](https://www.sparklane-group.com) - B2B Predictive lead scoring _[closed source]_
+ - [metroscope](http://metroscope.tech/) - AI diagnosis for targeted maintenance _[closed source]_
+ - [conference-hall](https://github.com/bpetetot/conference-hall) - A call for paper project _[open source]_
+ - [k-mille](https://github.com/alakarteio/k-mille/) - alakarteio assistant _[open source]_
 
 # About ![alakarteio](http://alakarte.io/assets/img/logo.markdown.png)
 **alakarteio** is created by two passionate french developers.
