@@ -29,15 +29,15 @@ Because `k-ramel`:
 | [`@k-ramel/driver-redux-little-router`](./packages/drivers/redux-little-router/README.MD) | redux-littler-router wrapper ([drivers documentation](./packages/k-ramel/doc/DRIVERS.md))  | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
 
 ## Ecosystem
-You can pick some module based on your usage, or even write your own.
+You can pick some modules based on your usage, or even write your own.
 \
-The modules that are supported by k-ramel are listed at the [beginin of the README](#modules).
+The modules that are supported by k-ramel are [listed here](#modules).
 \
 We add modules when we need them but feel free to open PR if you want to add your own.
 
 Modules can be :
  - **connectors**, used to connect your buisiness logic (and your data) to your UI. We only have a ReactJS connector at the moment.
- - **drivers**, used for doing side effects (http, window, history, etc) or share some logic.
+ - **drivers**, used to do some side effects (http, window, history, etc) or share some logic, besides your buisiness logic.
 
 ## Examples
  - Our own [todo-mvc](./examples/todomvc)
