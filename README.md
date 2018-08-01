@@ -8,6 +8,16 @@ State manager for your components apps, the safe and easy way.
   <img src="packages/k-ramel/doc/logo.png" width="400" />
 </p>
 
+## Why should you give it a try ? 🤔
+Because `k-ramel`:
+ - ⚡️ is fast
+ - 📸 is immutable
+ - 📦 is [modular](#modules)
+ - 💎 encourages to decouple UI and state management
+ - 💥 encourages to not have side effect into your buisiness logic
+ - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel@next) footprint (with http driver)
+ - 🐛 works with redux-dev-tools
+
 ## Modules
 | packages | description | size | gziped |
 | -- | -- | -- | -- |
@@ -17,20 +27,6 @@ State manager for your components apps, the safe and easy way.
 | [`@k-ramel/driver-form`](./packages/drivers/form/README.md) | minimalist form handler ([drivers documentation](./packages/k-ramel/doc/DRIVERS.md)) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/form/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/form/dist/index.es.js.svg?compression=gzip)]() |
 | [`@k-ramel/driver-redux-form`](./packages/drivers/redux-form/README.md) | redux-form  wrapper ([drivers documentation](./packages/k-ramel/doc/DRIVERS.md)) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg?compression=gzip)]() |
 | [`@k-ramel/driver-redux-little-router`](./packages/drivers/redux-little-router/README.MD) | redux-littler-router wrapper ([drivers documentation](./packages/k-ramel/doc/DRIVERS.md))  | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
-
-## Contents
- - [Why do we like our lib ?](#why-do-we-like-our-lib)
- - [Ecosystem](#ecosystem)
- - [Examples](#examples)
-
-## Why do we like our lib
- - ⚡️ fast
- - 📸 immutable
- - 📦 modular
- - 💎 UI and state management are decoupled, thank to the event bus
- - 💥 no side effect into your buisiness logic
- - 👌 light bundle size (see https://bundlephobia.com/result?p=k-ramel@0.13.2)
- - 🐛 works with redux-dev-tools
 
 ## Ecosystem
 You can pick some module based on your usage, or even write your own.
@@ -45,8 +41,23 @@ Modules can be :
 
 ## Examples
  - Our own [todo-mvc](./examples/todomvc)
- - [conference-hall](https://github.com/bpetetot/conference-hall) from @bpetetot
- - [k-mille](https://github.com/alakarteio/k-mille/), our personal assistant @alakarteio
+ - [conference-hall](https://github.com/bpetetot/conference-hall) from **[@bpetetot](https://github.com/bpetetot)**
+ - [k-mille](https://github.com/alakarteio/k-mille/), our personal assistant **[@alakarteio](https://github.com/alakarteio)**
+
+# Contributors
+ - Fabien JUIF [[@fabienjuif](https://github.com/fabienjuif)]
+ - Guillaume CRESPEL [[@guillaumecrespel](https://github.com/guillaumecrespel)]
+ - Benjamin PETETOT [[@bpetetot](https://github.com/bpetetot)]
+ - Valentin COCAUD [[@EmrysMyrddin](https://github.com/EmrysMyrddin)]
+ - Yvonnick FRIN [[@frinyvonnick](https://github.com/frinyvonnick)]
+ - Delphine MILLET [[@delphinemillet](https://github.com/delphinemillet)]
+ - Benjamin PLOUZENNEC [[@Okazari](https://github.com/Okazari)]
+
+# Known users
+ - [sparklane](https://www.sparklane-group.com) - B2B Predictive lead scoring _[closed source]_
+ - [metroscope](http://metroscope.tech/) - AI diagnosis for targeted maintenance _[closed source]_
+ - [conference-hall](https://github.com/bpetetot/conference-hall) - A call for paper project _[open source]_
+ - [k-mille](https://github.com/alakarteio/k-mille/) - alakarteio assistant _[open source]_
 
 # About ![alakarteio](http://alakarte.io/assets/img/logo.markdown.png)
 **alakarteio** is created by two passionate french developers.
