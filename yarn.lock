@@ -5336,9 +5336,9 @@ jsx-ast-utils@^2.0.0, jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
-k-redux-factory@6.0.0-rc5:
-  version "6.0.0-rc5"
-  resolved "https://registry.yarnpkg.com/k-redux-factory/-/k-redux-factory-6.0.0-rc5.tgz#d6e9fdb7a5f7a526c6bf4a5c9b70eb796e112ddf"
+k-redux-factory@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/k-redux-factory/-/k-redux-factory-6.0.0.tgz#76b7d2c56f3218763c9db08968c6e5afe39bf44d"
 
 killable@^1.0.0:
   version "1.0.0"

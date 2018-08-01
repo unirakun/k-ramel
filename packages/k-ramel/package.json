@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "@k-ramel/driver-http": "^0.13.2",
-    "k-redux-factory": "6.0.0-rc5",
+    "k-redux-factory": "6.0.0",
     "redux": "4.0.0"
   },
   "publishConfig": {
