@@ -39,6 +39,23 @@ Modules can be :
  - **connectors**, used to connect your buisiness logic (and your data) to your UI. We only have a ReactJS connector at the moment.
  - **drivers**, used to do some side effects (http, window, history, etc) or share some logic, besides your buisiness logic.
 
+## How to use k-ramel
+<p align="center">
+  <img src="packages/k-ramel/doc/graph.png" width="800" />
+</p>
+
+`k-ramel` is a data store that allow you to `listen` to `event` and then `react` to them.
+In a `reaction` you can access:
+ - Outside world via `drivers`, this is where you put your side effects.
+ - Data, via `store`.
+
+Your UI then refresh everytime the `store` is updated.
+
+You can find documentation about each part of `k-ramel` there:
+ - [listeners](./packages/k-ramel/doc/LISTENERS.md)
+ - [reactions](./packages/k-ramel/doc/REACTIONS.md)
+ - [drivers](./packages/k-ramel/doc/DRIVERS.md)
+
 ## Examples
  - Our own [todo-mvc](./examples/todomvc)
  - [conference-hall](https://github.com/bpetetot/conference-hall) from **[@bpetetot](https://github.com/bpetetot)**
