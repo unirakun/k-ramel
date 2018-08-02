@@ -49,7 +49,7 @@ In a `reaction` you can access:
  - the outside world via `drivers`, this is where you put your side effects, like HTTP calls
  - your data, via `store`
 
-Then if you connect an UI to k-ramel, via connectors, it can be refreshed everytime the `store` is updated.
+Then if you connect an UI to k-ramel, via connectors, it can be refreshed each time the `store` is updated.
 
 You can find documentation about each part of `k-ramel` there:
  - [listeners](./packages/k-ramel/doc/LISTENERS.md)
