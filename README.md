@@ -44,12 +44,12 @@ Modules can be :
   <img src="packages/k-ramel/doc/graph.png" width="800" />
 </p>
 
-`k-ramel` is a data store that allows you to `listen` to `event` and then `react` to them.
+`k-ramel` is a data store that allows you to `listen` to `event` and then `react` to it.
 In a `reaction` you can access:
- - outside world via `drivers`, this is where you put your side effects, like HTTP calls
+ - the outside world via `drivers`, this is where you put your side effects, like HTTP calls
  - your data, via `store`
 
-Then if you connect an UI to k-ramel, via connectors, it can refres everytime the `store` is updated.
+Then if you connect an UI to k-ramel, via connectors, it can be refreshed everytime the `store` is updated.
 
 You can find documentation about each part of `k-ramel` there:
  - [listeners](./packages/k-ramel/doc/LISTENERS.md)
