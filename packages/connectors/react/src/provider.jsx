@@ -13,10 +13,6 @@ export default store => WrappedComponent => class extends Component {
     return { store }
   }
 
-  componentWillMount() {
-    store.dispatch('@@krml/INIT')
-  }
-
   render() {
     return <WrappedComponent {...this.props} />
   }

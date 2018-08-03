@@ -1,6 +1,6 @@
 {
   "name": "@k-ramel/react",
-  "version": "0.13.2",
+  "version": "0.14.0",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
