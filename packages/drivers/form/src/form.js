@@ -1,5 +1,6 @@
 import { types } from 'k-ramel'
 import actions from './actions'
+import bulkActions from './bulk.actions'
 import selectors from './selectors'
 import utils from './utils'
 
@@ -17,11 +18,13 @@ export default ({
   }),
   getDriver: (store) => {
     const state = getState(store)
+
     return Object.assign(
       name => ({
         ...actions(key)(state)(name),
         ...selectors(key)(state)(name),
       }),
+      bulkActions(key)(state),
       utils(state),
     )
   },
