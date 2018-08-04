@@ -121,9 +121,8 @@ export default (lib) => {
       }).toMatchSnapshot()
     })
 
-    it('should provide store as context and dispatch an INIT event', () => {
-      const dispatch = jest.fn()
-      const store = { this: 'is my store', dispatch }
+    it('should provide store as context', () => {
+      const store = { this: 'is my store' }
       const App = (props, context) => <div>{JSON.stringify(context.store)}</div>
       App.contextTypes = { store: () => null }
       const Provided = provider(store)(App)
@@ -131,7 +130,6 @@ export default (lib) => {
 
       expect({
         html: wrapper.html(),
-        dispatch: dispatch.mock.calls,
       }).toMatchSnapshot()
     })
 
