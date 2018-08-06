@@ -5,6 +5,11 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -46,6 +51,11 @@ Object {
 exports[`drivers http should fetch data and calls json() 1`] = `
 Object {
   "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
     Array [
       Object {
         "fetch": Array [
@@ -91,6 +101,11 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -133,6 +148,11 @@ Object {
 exports[`drivers http should not stringify data when data is formData 1`] = `
 Object {
   "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
     Array [
       Object {
         "fetch": Array [
@@ -217,6 +237,11 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -261,6 +286,11 @@ Object {
 exports[`drivers http should safely fail to request 1`] = `
 Object {
   "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
     Array [
       Object {
         "fetch": Array [
@@ -379,6 +409,11 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -437,6 +472,11 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -493,6 +533,11 @@ Object {
 exports[`drivers http should works with method helper (OPTIONS) 1`] = `
 Object {
   "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
     Array [
       Object {
         "fetch": Array [

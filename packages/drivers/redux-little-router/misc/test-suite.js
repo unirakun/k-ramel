@@ -61,7 +61,7 @@ export default (driver) => {
           store.dispatch('DISPATCHED')
 
           // assert
-          expect(spy.mock.calls[1][0].type).toMatchSnapshot()
+          expect(spy.mock.calls[2][0].type).toMatchSnapshot()
         }
 
         it('should dispatch push', () => routerDispatchTest('push', '/foo'))

@@ -53,13 +53,8 @@ Check the documentation for an example at https://github.com/alakarteio/k-ramel#
 ]
 `;
 
-exports[`react should provide store as context and dispatch an INIT event 1`] = `
+exports[`react should provide store as context 1`] = `
 Object {
-  "dispatch": Array [
-    Array [
-      "@@krml/INIT",
-    ],
-  ],
   "html": "<div>{\\"this\\":\\"is my store\\"}</div>",
 }
 `;

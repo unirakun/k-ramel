@@ -5,6 +5,11 @@ Object {
   "dispatch": Array [
     Array [
       Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
         "meta": Object {
           "field": "field1",
           "form": "form",

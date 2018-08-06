@@ -97,6 +97,9 @@ export default (definition, options = defaultOptions) => {
   // pass store to listen (after it has been created)
   listen.setStore(store)
 
+  // dispatch init event
+  store.dispatch('@@krml/INIT')
+
   // init drivers
   driversInits.forEach(driverInit => driverInit(store))
 

@@ -327,6 +327,26 @@ Object {
     Array [
       Object {
         "action": Object {
+          "type": "@@krml/INIT",
+        },
+        "state": Object {
+          "data": Object {
+            "todos": Object {
+              "data": Array [],
+              "initialized": false,
+            },
+          },
+          "ui": Object {
+            "screens": Object {
+              "newTodo": Object {},
+            },
+          },
+        },
+      },
+    ],
+    Array [
+      Object {
+        "action": Object {
           "payload": "new",
           "type": "@@krf/SET>UI_SCREENS>NEWTODO",
         },

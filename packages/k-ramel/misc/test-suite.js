@@ -382,10 +382,10 @@ export default (lib) => {
 
       store.config.set('this is dispatched !')
 
-      expect(spyCatch.mock.calls.length).toBe(1)
+      expect(spyCatch.mock.calls.length).toBe(2) //  there is two event with INIT
       expect(spyNoCatch.mock.calls.length).toBe(0)
-      expect(spyFilter.mock.calls.length).toBe(1)
-      expect(spyFilter.mock.calls[0]).toMatchSnapshot()
+      expect(spyFilter.mock.calls.length).toBe(2) // there is two event with INIT
+      expect(spyFilter.mock.calls[1]).toMatchSnapshot()
     })
 
     it('should catch action with multiple matchers', () => {
@@ -405,7 +405,7 @@ export default (lib) => {
 
       store.config.set('this is dispatched !')
 
-      expect(spyCatch.mock.calls.length).toBe(2)
+      expect(spyCatch.mock.calls.length).toBe(4) // INIT is triggered too (catched 2 times)
       expect(spyNoCatch.mock.calls.length).toBe(0)
     })
 
