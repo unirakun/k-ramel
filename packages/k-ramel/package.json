@@ -1,6 +1,6 @@
 {
   "name": "k-ramel",
-  "version": "0.13.2",
+  "version": "0.14.0",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
@@ -8,7 +8,7 @@
   "repository": "https://github.com/alakarteio/k-ramel",
   "license": "MIT",
   "dependencies": {
-    "@k-ramel/driver-http": "^0.13.2",
+    "@k-ramel/driver-http": "^0.14.0",
     "k-redux-factory": "6.0.0",
     "redux": "4.0.0"
   },
