@@ -9,7 +9,7 @@ export default key => state => (name) => {
       return rest
     }
 
-    return (values && values[field]) || ''
+    return (values && values[field]) || undefined
   }
 
   return {

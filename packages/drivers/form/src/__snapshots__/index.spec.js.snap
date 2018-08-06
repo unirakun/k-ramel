@@ -35,6 +35,12 @@ Object {
 }
 `;
 
+exports[`drivers/form [custom path and key] should get an empty value 1`] = `
+Object {
+  "value": undefined,
+}
+`;
+
 exports[`drivers/form [custom path and key] should get one error 1`] = `
 Object {
   "errors": "otherValue",
@@ -451,6 +457,12 @@ Object {
     "first": "value",
     "second": "otherValue",
   },
+}
+`;
+
+exports[`drivers/form [default path and key] should get an empty value 1`] = `
+Object {
+  "value": undefined,
 }
 `;
 
