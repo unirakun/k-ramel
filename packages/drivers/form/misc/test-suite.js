@@ -230,5 +230,131 @@ export default (driver) => {
     describe('[custom path and key]', () => {
       tests({ path: 'ui.form', getState: state => state.ui.form, key: 'customKey' })
     })
+
+    describe('bulk mode', () => {
+      it('should set values', () => {
+        // run implementation
+        let state
+        runReaction()((action, store, { form }) => {
+          form.set([
+            { name: 'form-1', values: { firstname: 'guillaume', lastname: 'crespel' } },
+            { name: 'form-2', values: { firstname: 'fabien', lastname: 'juif' } },
+          ])
+
+          state = {
+            values: store.form.values.get(),
+            errors: store.form.errors.get(),
+          }
+        })
+
+        // assert
+        expect({
+          state,
+        }).toMatchSnapshot()
+      })
+
+      it('should set values with custom key', () => {
+        // run implementation
+        let state
+        runReaction({ key: 'my-key' })((action, store, { form }) => {
+          form.set([
+            { name: 'form-1', values: { firstname: 'guillaume', lastname: 'crespel' } },
+            { name: 'form-2', values: { firstname: 'fabien', lastname: 'juif' } },
+          ])
+
+          state = {
+            values: store.form.values.get(),
+            errors: store.form.errors.get(),
+          }
+        })
+
+        // assert
+        expect({
+          state,
+        }).toMatchSnapshot()
+      })
+
+      it('should set errors', () => {
+        // run implementation
+        let state
+        runReaction()((action, store, { form }) => {
+          form.setErrors([
+            { name: 'form-1', values: { firstname: 'required' } },
+            { name: 'form-2', values: { lastname: 'required' } },
+          ])
+
+          state = {
+            values: store.form.values.get(),
+            errors: store.form.errors.get(),
+          }
+        })
+
+        // assert
+        expect({
+          state,
+        }).toMatchSnapshot()
+      })
+
+      it('should clearErrors errors', () => {
+        // run implementation
+        let state
+        runReaction()((action, store, { form }) => {
+          // set values and errors
+          form.set([
+            { name: 'form-1', values: { lastname: 'crespel' } },
+            { name: 'form-2', values: { firstname: 'fabien' } },
+          ])
+          form.setErrors([
+            { name: 'form-1', values: { firstname: 'required' } },
+            { name: 'form-2', values: { lastname: 'required' } },
+          ])
+
+          // remove errors
+          form.clearErrors(['form-1', 'form-2'])
+
+          state = {
+            values: store.form.values.get(),
+            errors: store.form.errors.get(),
+          }
+        })
+
+        // assert
+        expect({
+          state,
+        }).toMatchSnapshot()
+      })
+
+      it('should remove forms', () => {
+        // run implementation
+        let state
+        runReaction()((action, store, { form }) => {
+          // set values and errors
+          form.set([
+            { name: 'form-1', values: { lastname: 'crespel' } },
+            { name: 'form-2', values: { firstname: 'fabien' } },
+            { name: 'form-3', values: { firstname: 'delphine' } },
+          ])
+
+          form.setErrors([
+            { name: 'form-1', values: { firstname: 'required' } },
+            { name: 'form-2', values: { lastname: 'required' } },
+            { name: 'form-3', values: { lastname: 'required' } },
+          ])
+
+          // remove forms
+          form.remove(['form-1', 'form-2'])
+
+          state = {
+            values: store.form.values.get(),
+            errors: store.form.errors.get(),
+          }
+        })
+
+        // assert
+        expect({
+          state,
+        }).toMatchSnapshot()
+      })
+    })
   })
 }
