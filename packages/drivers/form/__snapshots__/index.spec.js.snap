@@ -837,3 +837,98 @@ Object {
   },
 }
 `;
+
+exports[`drivers/form bulk mode should clearErrors errors 1`] = `
+Object {
+  "state": Object {
+    "errors": Object {},
+    "values": Object {
+      "form-1": Object {
+        "@@form-name": "form-1",
+        "lastname": "crespel",
+      },
+      "form-2": Object {
+        "@@form-name": "form-2",
+        "firstname": "fabien",
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form bulk mode should remove forms 1`] = `
+Object {
+  "state": Object {
+    "errors": Object {
+      "form-3": Object {
+        "@@form-name": "form-3",
+        "lastname": "required",
+      },
+    },
+    "values": Object {
+      "form-3": Object {
+        "@@form-name": "form-3",
+        "firstname": "delphine",
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form bulk mode should set errors 1`] = `
+Object {
+  "state": Object {
+    "errors": Object {
+      "form-1": Object {
+        "@@form-name": "form-1",
+        "firstname": "required",
+      },
+      "form-2": Object {
+        "@@form-name": "form-2",
+        "lastname": "required",
+      },
+    },
+    "values": Object {},
+  },
+}
+`;
+
+exports[`drivers/form bulk mode should set values 1`] = `
+Object {
+  "state": Object {
+    "errors": Object {},
+    "values": Object {
+      "form-1": Object {
+        "@@form-name": "form-1",
+        "firstname": "guillaume",
+        "lastname": "crespel",
+      },
+      "form-2": Object {
+        "@@form-name": "form-2",
+        "firstname": "fabien",
+        "lastname": "juif",
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form bulk mode should set values with custom key 1`] = `
+Object {
+  "state": Object {
+    "errors": Object {},
+    "values": Object {
+      "form-1": Object {
+        "firstname": "guillaume",
+        "lastname": "crespel",
+        "my-key": "form-1",
+      },
+      "form-2": Object {
+        "firstname": "fabien",
+        "lastname": "juif",
+        "my-key": "form-2",
+      },
+    },
+  },
+}
+`;
