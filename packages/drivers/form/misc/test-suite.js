@@ -167,6 +167,18 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
+    it('should get an empty value', () => {
+      let value
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set(defaultValues)
+        value = form('form-name').get('third')
+      })
+      // assert
+      expect({
+        value,
+      }).toMatchSnapshot()
+    })
+
     it('should get all errors', () => {
       let errors
       runReaction(params)((action, st, { form }) => {
