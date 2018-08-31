@@ -1,6 +1,6 @@
 # k-ramel
 
-State manager for your components apps, the safe and easy way.
+State manager for your app components, the safe and easy way.
 
 [![CircleCI](https://circleci.com/gh/alakarteio/k-ramel.svg?style=shield)](https://circleci.com/gh/alakarteio/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel) [![Greenkeeper badge](https://badges.greenkeeper.io/alakarteio/k-ramel.svg)](https://greenkeeper.io/)
 
@@ -14,7 +14,7 @@ Because `k-ramel`:
  - 📸 is immutable
  - 📦 is [modular](#modules)
  - 💎 encourages to decouple UI and state management
- - 💥 encourages to not have side effect into your buisiness logic
+ - 💥 encourages to not have side effect into your business logic
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel@next) footprint (with http driver)
  - 🐛 works with redux-dev-tools
 

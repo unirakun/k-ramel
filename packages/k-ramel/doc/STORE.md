@@ -1,4 +1,4 @@
-# Reactions
+# Store
 
 <p align="center">
   main navigation
