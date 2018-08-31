@@ -1,6 +1,6 @@
 # k-ramel
 
-State manager for your components apps, the safe and easy way.
+State manager for your app components, the safe and easy way.
 
 > **Core** module of `k-ramel` ecosystem (👉 [main documentation](../../README.md))
 
@@ -16,7 +16,7 @@ Because `k-ramel`:
  - 📸 is immutable
  - 📦 is modular
  - 💎 encourages to decouple UI and state management
- - 💥 encourages to not have side effect into your buisiness logic
+ - 💥 encourages to not have side effect into your business logic
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel@next) footprint (with http driver)
  - 🐛 works with redux-dev-tools
 
