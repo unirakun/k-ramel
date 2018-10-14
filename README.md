@@ -52,6 +52,7 @@ In a `reaction` you can access:
 Then if you connect an UI to k-ramel, via connectors, it can be refreshed each time the `store` is updated.
 
 You can find documentation about each part of `k-ramel` there:
+ - [store](./packages/k-ramel/doc/STORE.md)
  - [listeners](./packages/k-ramel/doc/LISTENERS.md)
  - [reactions](./packages/k-ramel/doc/REACTIONS.md)
  - [drivers](./packages/k-ramel/doc/DRIVERS.md)
