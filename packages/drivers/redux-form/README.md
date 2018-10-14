@@ -16,7 +16,7 @@ export default createStore(
   },
   {
     drivers: {
-      form: reduxform({ path: 'ui.form' }) // default is { path: 'form' }
+      form: reduxform({ path: 'ui.form', getState: state => state.ui.form }) // default is { path: 'form' }
     },
   },
 )
