@@ -18,10 +18,10 @@
 </p>
 
 ## What is a reaction?
-A reaction is something your plug to a listeners (see [listeners' documentation here](./LISTENERS.md)).\
+A reaction is a function plugged to a listener (see [listeners' documentation here](./LISTENERS.md)).\
 This is where you write your logical code.\
 In a reaction you can access:
- - the action that trigger your reaction (the action that your listener has filtered)
+ - the action that trigger your reaction (the action that your listener has caught)
  - the store (the k-ramel store, with dispatch, data, drivers, etc)
  - the drivers
 
@@ -31,12 +31,12 @@ A reaction is a function whom the signature is: `(action, store, drivers)`.
 ```js
 import { when } from 'k-ramel'
 
-// a reacton is a function
+// a reaction is a function
 const reaction = () => {
   console.log('I am a reaction!')
 }
 
-// you can acces the action that triggered your reaction
+// you can access the action that has triggered your reaction
 const reaction = (action) => {
   const { type, payload } = action
 
@@ -44,7 +44,7 @@ const reaction = (action) => {
   console.log('\tthe payload is:', payload)
 }
 
-// you can also acces the store, to read the state, or modify it, or dispatch a new event, etc
+// you can also access the store, to read the state, or modify it, or dispatch a new event, etc
 const reaction = (action, store) => {
   const users = action.payload
   const usersSortedByName = users.sort((first, second) => first.name < second.name)
@@ -54,7 +54,7 @@ const reaction = (action, store) => {
   store.dispatch('USERS_SORTED_BY_NAME')
 }
 
-// you can acces the drivers!
+// you can access the drivers!
 const reaction = (action, store, drivers) => {
   // here with a http driver
   const { http } = drivers
