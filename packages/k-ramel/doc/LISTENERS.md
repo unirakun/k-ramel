@@ -26,6 +26,10 @@ You listen (using a `listener` (`when` function)) a specific action from the red
 
 You can look at [reactions documentation here](./REACTIONS.md).
 
+Note that listeners can be hot loaded in your store.\
+You can use a connector (like `@k-ramel/react`) or you can mannually call `store.listeners.add` (and `store.listeners.remove`).\
+To find the documentation about connectors, feel free to look at the [ecosystem documentation](../../../README.md#modules).
+
 ## Example & API
 ```js
 // `when` is our HoF, this a helper to listen to specific function from the redux eventbus
