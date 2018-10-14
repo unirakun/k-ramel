@@ -94,7 +94,7 @@ export default [
 Finally, you can attach your listeners to a given component.\
 One of the strategy is to attach listeners to a `Screen` of your application.\
 That means that your business code is attach to a particular screen:\
-***component.container.js**
+**component.container.js**
 ```js
 // this is the previous component.container we call but we add some lines on it
 // to plug ours listeners (and reactions)
@@ -116,17 +116,17 @@ export default listen(
   listeners,  // [REQUIRED] we pass our listeners writen above 👋
   'users', // [OPTIONAL] you can pass a name to your listeners
 )(inject(mapStore)(Component))
-// from here, each time your component will be **mounted**:
-// - an action will be dispatched: `@@krml/LISTENERS>ADDED>users` (`users` is the name we give just above)
-// - the listeners are attached to the k-ramel store
-// each time your component will be **unmounted££:
-// - an action will be dispatched: `@@krml/LISTENERS>REMOVING>users` (`users` is the name we give just above)
-// - the listeners will be removed from k-ramel store
-//
-// note that you can listen to `@@krml/LISTENERS>ADDED>users` in your plugued listeners
-// since this action is dispatched AFTER listeners are added
-// it means you can some screen initialisation for example
-//
-// also note that you can listen to `@@krml/LISTENERS>REMOVING>users` but you **CAN'T** trust it to reset your store
-// because, by React nature, `ADDED` action from an other screen would be dispatched BEFORE the `REMOVING` one.
 ```
+
+From here, each time your component will be **mounted**:
+ - an action will be dispatched: `@@krml/LISTENERS>ADDED>users` (`users` is the name we give just above)
+ - the listeners are attached to the k-ramel store
+
+Each time your component will be **unmounted**:
+ - an action will be dispatched: `@@krml/LISTENERS>REMOVING>users` (`users` is the name we give just above)
+ - the listeners will be removed from k-ramel store
+
+Note that you can listen to `@@krml/LISTENERS>ADDED>users` in your plugued listeners since this action is dispatched AFTER listeners are added.\
+It means you can some screen initialisation for example.
+
+Also note that you can listen to `@@krml/LISTENERS>REMOVING>users` but you **CAN'T** trust it to reset your store because, by React nature, `ADDED` action from an other screen would be dispatched BEFORE the `REMOVING` one.
