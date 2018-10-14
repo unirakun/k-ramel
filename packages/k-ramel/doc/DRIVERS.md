@@ -18,14 +18,15 @@
 </p>
 
 ## What is a driver?
-A driver is something that can access the whole store. We use it as something where we can write our side effects (accessing HistoryAPI for instance, or `fetch`, etc). But you can also use it to add some application wise logic, like service.
+A driver can access the whole store, it is used to write our side effects (accessing HistoryAPI for instance, or fetch, etc). But you can also use it to add some application wise logic, like service.
 
-Just keep in mind that drivers can't be splited or hot loaded. The more you add logic to drivers, the more your bundle will be bloated.
-If you want to add some logic code maybe you should use `listeners` in your application instead. So you can add and remove them on the fly.
+Just keep in mind that drivers can't be splited or hot loaded. The more you add logic to drivers, the more your bundle will be bloated.\
+If you want to add some logic code maybe you should use `listeners` in your application instead. So you can add and remove them on the fly.\
+You can access the [listeners' documentation here](./LISTENERS.md).
 
 We use drivers to share our work too, you can find some in the [ecosystem documentation](../../../README.md#how-to-use-k-ramel).
 
-At the beginin, our drivers was inspired by [CycleJS description](https://cycle.js.org/drivers.html).
+At the beginning, our drivers was inspired by [CycleJS description](https://cycle.js.org/drivers.html).
 
 ## Example
 ### Creating a driver
@@ -120,7 +121,7 @@ To see our supported drivers, you can go to the [ecosystem documentation](../../
 
 Here is an example with our form driver:
 
-***store.js**
+**store.js**
 ```js
 import { createStore, data } from 'k-ramel'
 import form from '@k-ramel/driver-form'
