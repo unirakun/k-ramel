@@ -29,7 +29,7 @@ You can look at [reactions documentation here](./REACTIONS.md).
 ## Example & API
 ```js
 // `when` is our HoF, this a helper to listen to specific function from the redux eventbus
-import { when } from 'k-ramel'
+import { when, createStore, types } from 'k-ramel'
 
 // dummy reaction for the listener documentation purpose
 const reaction = () => { console.log('I am the reaction') }
@@ -52,4 +52,27 @@ const listeners = [
   when('AN_EVENT')(reaction), // 1
   when('OTHER_EVENT')(reaction), // or 2
 ]
+
+// create a store with listeners at root level
+const store = createStore(
+  {
+    data: types.keyValues(),
+  },
+  {
+    // here we attach our previous listeners to the store root level
+    // we can't detach them, and listeners will be triggered in the all store lifespan
+    listeners,
+  }
+)
+
+// you can alors attach your listener when the applications runs
+// this is convenient to split your logical code
+// since you can detach them too!
+store.listeners.add(listeners)
+// and remove them
+store.listeners.remove(listeners)
+
+// k-ramel use your array reference as key to find it and then remove it,
+// it means that YOU DON'T WANT to mutate it!
+
 ```
