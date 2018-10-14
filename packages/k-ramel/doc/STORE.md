@@ -28,7 +28,7 @@ Also note that the `redux-devtools` is activated by default.
 
 ## Example & API
 ### Types
-Our types are based on the [k-redux-factyory ones](https://github.com/alakarteio/k-redux-factory/blob/master/TYPES.md):
+Our types are based on the [k-redux-factory ones](https://github.com/alakarteio/k-redux-factory/blob/master/TYPES.md):
 
 ```js
 import { types } from 'k-ramel'
@@ -119,9 +119,9 @@ and we add some of ours:
     * remove
 
 ### drivers
-Access the drivers that are plugued into store when you call `createStore`.\
+Access the drivers that are plugged into store when you call `createStore`.\
 You can read the full [documentation here](./DRIVERS.md).
 
 ### listeners
-listeners.add and listeners.remove are used when you need to hot load listeners (and reactions), or remove them.\
+`listeners.add` and `listeners.remove` are used when you need to hot load listeners (and reactions), or remove them.\
 You can read the full [documentation here](./LISTENERS.md).
