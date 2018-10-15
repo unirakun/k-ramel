@@ -108,6 +108,7 @@ console.log(store.data.users.getAsArray())
 ## API
 store API is simple, we use [Redux one](https://redux.js.org/api/store):
  - [dispatch](https://redux.js.org/api/store#dispatch-action)
+    * take note that k-ramel allows to dispatch a string: `store.dispatch('MY_ACTION')`, in which case the resulting action will be: `{ type: 'MY_ACTION' }`
  - [getState](https://redux.js.org/api/store#getstate)
  - [replaceReducers](https://redux.js.org/api/store#replacereducer-nextreducer)
  - [subscribe](https://redux.js.org/api/store#subscribe-listener)
@@ -125,3 +126,7 @@ You can read the full [documentation here](./DRIVERS.md).
 ### listeners
 `listeners.add` and `listeners.remove` are used when you need to hot load listeners (and reactions), or remove them.\
 You can read the full [documentation here](./LISTENERS.md).
+
+### internal actions (events)
+`k-ramel` dispatches these actions by itself:
+ - `@@krml/INIT` when the store is fully initialized
