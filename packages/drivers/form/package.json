@@ -1,6 +1,6 @@
 {
   "name": "@k-ramel/form",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Guillaume CRESPEL <guillaume.crespel@gmail.com>",
@@ -9,7 +9,7 @@
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/form",
   "devDependencies": {
     "cross-env": "5.2.0",
-    "k-ramel": "^1.0.0-alpha.0"
+    "k-ramel": "^1.0.0"
   },
   "publishConfig": {
     "access": "public",

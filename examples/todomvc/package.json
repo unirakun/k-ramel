@@ -1,11 +1,11 @@
 {
   "name": "todomvc",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@k-ramel/react": "^1.0.0-alpha.0",
+    "@k-ramel/react": "^1.0.0",
     "classnames": "^2.2.5",
-    "k-ramel": "^1.0.0-alpha.0",
+    "k-ramel": "^1.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.4",
