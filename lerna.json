@@ -1,12 +1,12 @@
 {
   "lerna": "2.8.0",
   "packages": [
-    "packages/k-ramel",
-    "packages/drivers/*",
+    "examples/*",
     "packages/connectors/*",
-    "examples/*"
+    "packages/drivers/*",
+    "packages/k-ramel"
   ],
-  "version": "0.15.1",
+  "version": "1.0.0-alpha.0",
   "command": {
     "init": {
       "exact": true
