@@ -1,7 +1,7 @@
 import fs from 'fs'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
-import uglify from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
@@ -20,16 +20,20 @@ export default {
       'fbjs/lib/shallowEqual': 'fbjs/lib/shallowEqual',
       '@k-ramel/driver-http': '@k-ramel/driver-http',
       'redux-little-router': 'redux-little-router',
+      'redux-form': 'reduxForm',
+      'k-ramel': 'kRamel',
     },
   },
   plugins: [
     sourcemaps(),
-    babel(),
+    babel({
+      configFile: process.env.BABEL_CONFIG,
+    }),
     commonjs({
       include: 'node_modules/**',
       extensions: ['.js', '.jsx'],
     }),
-    uglify(),
+    terser(),
   ],
   external: [
     '@k-ramel/driver-http',

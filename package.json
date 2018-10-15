@@ -6,7 +6,7 @@
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lerna:build": "lerna exec --parallel --scope @k-ramel/* --scope k-ramel -- yarn cross-env NODE_ENV=build rollup -c ${PWD}/misc/rollup.config.js",
+    "lerna:build": "lerna exec --parallel --scope @k-ramel/* --scope k-ramel -- yarn cross-env BABEL_CONFIG=${PWD}/babel.config.js NODE_ENV=build rollup -c ${PWD}/misc/rollup.config.js",
     "build:es": "cross-env FORMAT=es yarn lerna:build",
     "build:umd": "cross-env FORMAT=umd yarn lerna:build",
     "build": "npm-run-all --parallel build:*",
@@ -22,76 +22,37 @@
     "examples/*"
   ],
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.0",
-    "babel-eslint": "9.0.0",
-    "babel-plugin-external-helpers": "6.22.0",
-    "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-plugin-transform-react-jsx": "6.24.1",
-    "babel-preset-env": "1.6.1",
-    "coveralls": "3.0.1",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "coveralls": "3.0.2",
     "cross-env": "5.2.0",
-    "enzyme": "3.5.0",
-    "enzyme-adapter-react-16": "1.3.1",
-    "eslint": "5.4.0",
+    "enzyme": "3.7.0",
+    "enzyme-adapter-react-16": "1.6.0",
+    "eslint": "5.7.0",
     "eslint-config-airbnb": "17.1.0",
-    "eslint-plugin-babel": "5.1.0",
+    "eslint-plugin-babel": "5.2.1",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
-    "jest": "22.2.2",
-    "jest-environment-jsdom": "^23.0.0",
+    "jest": "23.6.0",
+    "jest-environment-jsdom": "^23.4.0",
     "jest-environment-jsdom-global": "^1.0.3",
-    "lerna": "3.2.1",
+    "lerna": "3.4.3",
     "npm-run-all": "4.1.3",
-    "react": "16.3.1",
-    "react-dom": "16.3.1",
-    "redux-little-router": "15.1.0",
-    "rollup": "0.61.2",
-    "rollup-plugin-babel": "3.0.5",
-    "rollup-plugin-commonjs": "9.1.1",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
+    "redux-little-router": "15.1.2",
+    "rollup": "0.66.6",
+    "rollup-plugin-babel": "4.0.3",
+    "rollup-plugin-commonjs": "9.2.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-uglify": "3.0.0"
-  },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "modules": false
-        }
-      ]
-    ],
-    "plugins": [
-      "transform-object-rest-spread"
-    ],
-    "env": {
-      "build": {
-        "plugins": [
-          "external-helpers",
-          "transform-class-properties",
-          "transform-react-jsx",
-          "transform-object-rest-spread"
-        ]
-      },
-      "test": {
-        "presets": [
-          [
-            "env",
-            {
-              "modules": false
-            }
-          ]
-        ],
-        "plugins": [
-          "transform-es2015-modules-commonjs",
-          "transform-object-rest-spread",
-          "transform-react-jsx",
-          "transform-class-properties"
-        ]
-      }
-    }
+    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-uglify": "6.0.0"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -130,12 +91,15 @@
     }
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "./misc/test-setup.js",
     "testEnvironment": "jest-environment-jsdom-global",
-    "collectCoverageFrom": [
-      "packages/**/src/**/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!examples/**"
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/",
+      "/misc/",
+      "/build/"
+    ],
+    "setupFiles": [
+      "./misc/testSetup.js"
     ],
     "testURL": "http://test.k-ramel.com"
   },
