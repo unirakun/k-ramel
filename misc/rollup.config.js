@@ -17,7 +17,6 @@ export default {
       react: 'React',
       redux: 'Redux',
       'k-redux-factory': 'k-redux-factory',
-      lodash: '_',
       'fbjs/lib/shallowEqual': 'fbjs/lib/shallowEqual',
       '@k-ramel/driver-http': '@k-ramel/driver-http',
       'redux-little-router': 'redux-little-router',
@@ -43,7 +42,6 @@ export default {
     'k-redux-factory',
     'redux',
     'redux-form',
-    'lodash',
     'redux-little-router',
   ],
 }
