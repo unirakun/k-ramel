@@ -7,6 +7,16 @@
   "description": "State manager for you components apps, the safe and easy way.",
   "repository": "https://github.com/alakarteio/k-ramel",
   "license": "MIT",
+  "keywords": [
+    "state-management",
+    "state",
+    "async",
+    "redux",
+    "listeners",
+    "drivers",
+    "side-effects",
+    "reactions"
+  ],
   "dependencies": {
     "@k-ramel/driver-http": "^1.0.0-alpha.0",
     "k-redux-factory": "6.0.0",
