@@ -128,5 +128,5 @@ You can read the full [documentation here](./DRIVERS.md).
 You can read the full [documentation here](./LISTENERS.md).
 
 ### internal actions (events)
-`k-ramel` dispatchs these actions by itself:
+`k-ramel` dispatches these actions by itself:
  - `@@krml/INIT` when the store is fully initialized
