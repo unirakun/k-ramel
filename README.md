@@ -36,8 +36,8 @@ The modules that are supported by k-ramel are [listed here](#modules).
 We add modules when we need them but feel free to open PR if you want to add your own.
 
 Modules can be :
- - **connectors**, used to connect your buisiness logic (and your data) to your UI. We only have a ReactJS connector at the moment.
- - **drivers**, used to do some side effects (http, window, history, etc) or share some logic, besides your buisiness logic.
+ - **connectors**, used to connect your business logic (and your data) to your UI. We only have a ReactJS connector at the moment.
+ - **drivers**, used to do some side effects (http, window, history, etc) or share some logic, besides your business logic.
 
 ## How to use k-ramel
 <p align="center">
@@ -80,7 +80,7 @@ You can find documentation about each part of `k-ramel` there:
 # About ![alakarteio](http://alakarte.io/assets/img/logo.markdown.png)
 **alakarteio** is created by two passionate french developers.
 
-Do you want to contact them ? Go to their [website](http://alakarte.io)
+Do you want to contact them? Go to their [website](http://alakarte.io)
 
 <table border="0">
  <tr>
