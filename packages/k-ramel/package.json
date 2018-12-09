@@ -1,6 +1,6 @@
 {
   "name": "k-ramel",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
@@ -18,7 +18,7 @@
     "reactions"
   ],
   "dependencies": {
-    "@k-ramel/driver-http": "^1.0.0",
+    "@k-ramel/driver-http": "^1.0.2",
     "k-redux-factory": "6.0.2",
     "redux": "4.0.1"
   },
