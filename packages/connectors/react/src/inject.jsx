@@ -61,7 +61,7 @@ export default injectFunction => WrappedComponent => class extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (this.first) return true
 
-    const { injectedProps } = this.state
+    const { injectedProps } = this.state // eslint-disable-line react/prop-types
 
     return !(
       shallowEqual(this.props, nextProps)

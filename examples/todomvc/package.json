@@ -6,9 +6,9 @@
     "@k-ramel/react": "^1.0.2",
     "classnames": "^2.2.5",
     "k-ramel": "^1.0.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-scripts": "2.1.2",
     "recompose": "^0.30.0",
     "tinycolor2": "^1.4.1",
     "todomvc-app-css": "^2.1.0"
