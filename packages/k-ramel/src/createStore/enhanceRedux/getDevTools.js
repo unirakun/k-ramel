@@ -1,6 +1,7 @@
 const getReduxDevToolsEnhancer = (name) => {
   if (typeof window === 'undefined') return undefined
-  if (window.devToolsExtension) return window.devToolsExtension({ name })
+  // eslint-disable-next-line no-underscore-dangle
+  if (window.__REDUX_DEVTOOLS_EXTENSION__) return window.__REDUX_DEVTOOLS_EXTENSION__({ name })
   return undefined
 }
 
