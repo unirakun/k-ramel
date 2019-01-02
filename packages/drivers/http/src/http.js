@@ -47,7 +47,7 @@ const getDriver = (store) => {
     }
 
     // methods helpers
-    ['GET', 'POST', 'HEAD', 'PUT', 'DELETE', 'OPTIONS', 'CONNECT']
+    ['GET', 'POST', 'HEAD', 'PATCH', 'PUT', 'DELETE', 'OPTIONS', 'CONNECT']
       .forEach((method) => {
         ownFetch[method.toLowerCase()] = (url, data, options = {}) => {
           const headers = { ...options.headers }
