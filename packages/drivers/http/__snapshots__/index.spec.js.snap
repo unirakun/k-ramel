@@ -1,5 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`drivers http should add context on http response 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+        ],
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "fetch": undefined,
+        "payload": Object {
+          "options": Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+          "url": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+        "method": "GET",
+      },
+    ],
+  ],
+}
+`;
+
 exports[`drivers http should fetch data an trigger common events 1`] = `
 Object {
   "dispatch": Array [

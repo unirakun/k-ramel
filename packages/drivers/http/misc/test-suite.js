@@ -474,6 +474,42 @@ export default (driver) => {
           fetch: mockedFetch.mock.calls,
         }).toMatchSnapshot()
       })
+
+      it('should add context on http response', async () => {
+        // mock
+        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        (global || window).fetch = mockedFetch
+
+        // dispatch spy
+        const spy = jest.fn()
+
+        // wait
+        let resolver
+        const wait = new Promise((resolve) => { resolver = resolve })
+
+        // store
+        const store = createStore({
+          config: { type: 'simple.object' },
+        }, {
+          listeners: [
+            when('DISPATCHED')(async (action, st, { http }) => {
+              await http('GOOGLE', { context: 1, other: 'context' }).get('http://google.fr')
+              resolver()
+            }),
+            when(() => true)(action => spy(action)),
+          ],
+        })
+
+        // dispatch event
+        store.dispatch({ type: 'DISPATCHED' })
+        await wait
+
+        // assert
+        expect({
+          dispatch: spy.mock.calls,
+          fetch: mockedFetch.mock.calls,
+        }).toMatchSnapshot()
+      })
     })
   })
 }
