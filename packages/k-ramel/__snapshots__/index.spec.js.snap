@@ -581,6 +581,8 @@ Object {
     Array [
       Object {
         "name": "my-store",
+        "trace": false,
+        "traceLimit": 25,
       },
     ],
   ],
@@ -603,6 +605,8 @@ Object {
     Array [
       Object {
         "name": "my-store",
+        "trace": false,
+        "traceLimit": 25,
       },
     ],
   ],
@@ -620,6 +624,8 @@ Object {
     Array [
       Object {
         "name": "store",
+        "trace": false,
+        "traceLimit": 25,
       },
     ],
   ],
