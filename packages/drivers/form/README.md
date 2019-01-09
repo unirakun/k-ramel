@@ -1,4 +1,4 @@
-# @k-ramel/form
+# @k-ramel/driver-form
 > Form driver for k-ramel
  - Main repository: [k-ramel](https://github.com/alakarteio/k-ramel)
 
@@ -6,7 +6,7 @@
 ```js
 /* store.js */
 import { createStore } from 'k-ramel'
-import form from '@k-ramel/form'
+import form from '@k-ramel/driver-form'
 
 export default createStore(
   {
