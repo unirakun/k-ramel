@@ -71,8 +71,27 @@ const store = createStore(
   },
   // store options
   {
-    drivers: {}, // look at driver documentation
-    listeners: [], // look a listeners documentation
+    // drivers
+    // -> look at driver documentation
+    drivers: {},
+    // listeners
+    // -> look a listeners documentation
+    listeners: [],
+    // it allow you to use wrapped selectors and actions from k-redux-factory
+    // without calling `dispatch` or `getState` manually
+    hideRedux: true,
+    // you redux enhancers
+    enhancer: undefined,
+    // you initial state
+    init: {},
+    // you can unactivate redux-devtools if you want!
+    devtools: true,
+    // you can activat redux-devtools `trace` option!
+    trace: false,
+    // if you activate redux-devtools `trace` option, you can play with this limit
+    traceLimit: 25,
+    // and finally, you can name your store
+    name: 'store',
   },
 )
 ```
@@ -130,3 +149,4 @@ You can read the full [documentation here](./LISTENERS.md).
 ### internal actions (events)
 `k-ramel` dispatches these actions by itself:
  - `@@krml/INIT` when the store is fully initialized
+ - `@@krml/EXCEPTION` when an error appears in your reaction
