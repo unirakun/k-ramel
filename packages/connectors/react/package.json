@@ -7,9 +7,12 @@
   "license": "MIT",
   "description": "React bindings for k-ramel",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/connectors/react",
+  "dependencies": {
+    "fbjs": "^1.0.0"
+  },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "k-ramel": "^1.1.0"
+    "k-ramel": "^1.1.0",
   },
   "publishConfig": {
     "access": "public",
