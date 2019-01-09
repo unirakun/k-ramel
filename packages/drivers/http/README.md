@@ -32,16 +32,16 @@ export const login = (store, action, drivers) => {
 # Emitted events
 | event type | when |
 |---|---|
-|`@@http/MY_CONTEXT>POST>STARTED`| when your fetch is started |
-|`@@http/MY_CONTEXT>POST>ENDED`| when your fetch is finished with status "OK" and without exception |
-|`@@http/MY_CONTEXT>POST>FAILED`| when your fetch respond with errors |
+|`@@http/MY_CONTEXT>POST>STARTED`| dispatched just before the fetch is started |
+|`@@http/MY_CONTEXT>POST>ENDED`| dispatched once the request is done without error (based on HTTP status) |
+|`@@http/MY_CONTEXT>POST>FAILED`| dispatched once the request is done **with** error (based on HTTP status) | |
 
-# Event data
+# Actions
 All emitted events have some data
-| data | description | type |
+| field | description | type |
 |---|---|---|
 | `type` | event type | `string` | 
-| `fetch` | url and fetch options | `array` (`[url, options]`) |
-| `status` | status of respond | `number` |
-| `payload` | result data of respond | `any` |
+| `fetch` | url and fetch options, this can be used to retry a request that is on error | `array` (`[url, options]`) |
+| `status` | HTTP status of the response | `number` |
+| `payload` | data of the response (if the content type is `application/json`, the data is already parsed) | `any` |
 | `context` | your optional context added when use the driver | `any` |
