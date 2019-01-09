@@ -29,7 +29,7 @@ Because `k-ramel`:
 | [`@k-ramel/driver-redux-little-router`](./packages/drivers/redux-little-router) | redux-little-router wrapper | [documentation](./packages/drivers/redux-little-router) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
 | [`k-redux-router`](https://github.com/alakarteio/k-redux-router) | Redux router (one route === one code) | [documentation](https://github.com/alakarteio/k-redux-router) | | |
 
-Note that some packages have dependencies:
+⚠️Note that some packages have dependencies:
  - @k-ramel/driver-http: `regeneratorRuntime`
  - @k-ramel/driver-redux-form: `regeneratorRuntime`
 
