@@ -2,7 +2,7 @@
 
 State manager for your app components, the safe and easy way.
 
-> **Core** module of `k-ramel` ecosystem (👉 [main documentation](../../README.md))
+> **Core** module of `k-ramel` ecosystem (👉 [main documentation](https://github.com/alakarteio/k-ramel))
 
 [![CircleCI](https://circleci.com/gh/alakarteio/k-ramel.svg?style=shield)](https://circleci.com/gh/alakarteio/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel)
 
@@ -20,8 +20,8 @@ Because `k-ramel`:
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel@next) footprint (with http driver)
  - 🐛 works with redux-dev-tools
 
-## [Ecosystem](../../README.md#ecosystem)
-[Go to the ecosystem documentation](../../README.md#ecosystem)
+## [Ecosystem](https://github.com/alakarteio/k-ramel#ecosystem)
+[Go to the ecosystem documentation](https://github.com/alakarteio/k-ramel#ecosystem)
 
 ## How to use k-ramel
 <p align="center">
@@ -36,7 +36,7 @@ In a `reaction` you can access:
 Then if you connect an UI to k-ramel, via connectors, it can be refreshed each time the `store` is updated.
 
 You can find documentation about each part of `k-ramel` there:
- - [store](./doc/STORE.md)
- - [listeners](./doc/LISTENERS.md)
- - [reactions](./doc/REACTIONS.md)
- - [drivers](./doc/DRIVERS.md)
+ - [store](https://github.com/alakarteio/k-ramel/blob/master/packages/k-ramel/doc/STORE.md)
+ - [listeners](https://github.com/alakarteio/k-ramel/blob/master/packages/k-ramel/doc/LISTENERS.md)
+ - [reactions](https://github.com/alakarteio/k-ramel/blob/master/packages/k-ramel/doc/REACTIONS.md)
+ - [drivers](https://github.com/alakarteio/k-ramel/blob/master/packages/k-ramel/doc/DRIVERS.md)
