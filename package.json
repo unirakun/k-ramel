@@ -42,7 +42,7 @@
     "jest": "23.6.0",
     "jest-environment-jsdom": "^23.4.0",
     "jest-environment-jsdom-global": "^1.0.3",
-    "lerna": "3.10.1",
+    "lerna": "3.10.2",
     "npm-run-all": "4.1.5",
     "react": "16.7.0",
     "react-dom": "16.7.0",
