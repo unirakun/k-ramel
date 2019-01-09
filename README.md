@@ -18,15 +18,16 @@ Because `k-ramel`:
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel) footprint (with http driver)
  - 🐛 works with redux-dev-tools
 
-## Modules
-| packages | description | documentation | size | gziped |
-| -- | -- | -- | -- | -- |
-| [`k-ramel`](./packages/k-ramel) | core package | [documentation](./packages/k-ramel) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/react`](./packages/connectors/react) | ReactJS connector | [documentation](./packages/connectors/react) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-http`](./packages/drivers/http) | fetch wrapper | [documentation](./packages/drivers/http) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-form`](./packages/drivers/form) | minimalist form handler | [documentation](./packages/drivers/form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/form/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/form/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-redux-form`](./packages/drivers/redux-form) | redux-form  wrapper | [documentation](./packages/drivers/redux-form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-redux-little-router`](./packages/drivers/redux-little-router) | redux-littler-router wrapper | [documentation](./packages/drivers/redux-little-router) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg)]() | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
+## Modules and libs
+| packages | description | documentation | gziped size |
+| -- | -- | -- | -- |
+| [`k-ramel`](./packages/k-ramel) | core package | [documentation](./packages/k-ramel) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/react`](./packages/connectors/react) | ReactJS connector | [documentation](./packages/connectors/react) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/driver-http`](./packages/drivers/http) | fetch wrapper | [documentation](./packages/drivers/http) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/driver-form`](./packages/drivers/form) | minimalist form handler | [documentation](./packages/drivers/form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/form/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/driver-redux-form`](./packages/drivers/redux-form) | redux-form  wrapper | [documentation](./packages/drivers/redux-form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/driver-redux-little-router`](./packages/drivers/redux-little-router) | redux-little-router wrapper | [documentation](./packages/drivers/redux-little-router) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
+| [`k-redux-router`](https://github.com/alakarteio/k-redux-router) | Redux router (one route === one code) | [documentation](https://github.com/alakarteio/k-redux-router) | | |
 
 ## Ecosystem
 You can pick some modules based on your usage, or even write your own.
