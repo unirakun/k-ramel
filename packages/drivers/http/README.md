@@ -5,6 +5,9 @@
 
 This driver is added by default to k-ramel stores.
 
+## Install it
+`yarn add @k-ramel/driver-http regeneratorRuntime`
+
 ## Examples
 In a reaction (See main documentation about listeners/reactions)
 ```js
