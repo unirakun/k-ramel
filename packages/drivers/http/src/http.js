@@ -1,23 +1,24 @@
-const dispatchFactory = store => name => method => (
+const dispatchFactory = store => (name, context) => method => (
   (event, payload, status, fetch) => store.dispatch({
     type: `@@http/${name}>${method}>${event}`,
     payload,
     status,
     fetch,
+    context,
   })
 )
 
 const getDriver = (store) => {
   let innerOptions = {}
 
-  const driver = (name) => {
+  const driver = (name, context) => {
     const ownFetch = async (url, options = {}, ...args) => {
       // options
       const { method = 'GET' } = options
       const appliedHeaders = { ...innerOptions.headers, ...options.headers }
       const appliedOptions = { ...innerOptions, ...options, headers: appliedHeaders }
       // dispatcher
-      const dispatch = dispatchFactory(store)(name)(method)
+      const dispatch = dispatchFactory(store)(name, context)(method)
 
       // request
       let data

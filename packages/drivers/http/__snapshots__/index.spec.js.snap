@@ -1,5 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`drivers http should add context on http response 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+        ],
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": undefined,
+        "payload": Object {
+          "options": Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+          "url": "http://google.fr",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+        "method": "GET",
+      },
+    ],
+  ],
+}
+`;
+
 exports[`drivers http should fetch data an trigger common events 1`] = `
 Object {
   "dispatch": Array [
@@ -10,6 +72,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -28,6 +91,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": undefined,
         "payload": Object {
           "json": [Function],
@@ -58,6 +122,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -76,6 +141,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": undefined,
         "payload": Object {
           "result": "http://google.fr",
@@ -106,6 +172,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -124,6 +191,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": undefined,
         "payload": Object {
           "status": 404,
@@ -155,6 +223,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -185,6 +254,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": undefined,
         "payload": Object {
           "options": Object {
@@ -242,6 +312,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -260,6 +331,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -293,6 +365,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -306,6 +379,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -414,6 +488,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -436,6 +511,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": undefined,
         "payload": Object {
           "options": Object {
@@ -477,6 +553,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -499,6 +576,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": undefined,
         "payload": Object {
           "options": Object {
@@ -540,6 +618,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": Array [
           "http://google.fr",
           Object {
@@ -559,6 +638,7 @@ Object {
     ],
     Array [
       Object {
+        "context": undefined,
         "fetch": undefined,
         "payload": Object {
           "options": Object {
