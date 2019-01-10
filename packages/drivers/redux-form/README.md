@@ -2,6 +2,9 @@
 > Redux Form driver for k-ramel
  - All Redux Form 's [actions](https://redux-form.com/7.3.0/docs/api/actioncreators.md/#action-creators) and [selectors](https://redux-form.com/7.3.0/docs/api/selectors.md/#selectors) are available and wrapped.
  - Main repository: [k-ramel](https://github.com/alakarteio/k-ramel)
+ 
+## Install it
+`yarn add @k-ramel/driver-redux-form regeneratorRuntime`
 
 ## Examples
 In store definition (See main documentation about description)

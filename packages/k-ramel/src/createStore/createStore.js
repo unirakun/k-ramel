@@ -11,6 +11,8 @@ const defaultOptions = {
   init: {},
   listeners: undefined,
   devtools: true,
+  trace: false,
+  traceLimit: 25,
   name: 'store',
   drivers: {
     http: http(),
