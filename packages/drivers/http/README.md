@@ -28,7 +28,7 @@ export const save = (action, store, drivers) => {
 ```
 
 ## Context
-Sometimes you need to remember why you did a request when you receive a termial event (`FAILED` or `ENDED`):
+Sometimes you need to remember why you did a request when you receive a terminal event (`FAILED` or `ENDED`):
 
 In the previous example, if your API just returns `200` in case of success without any payload and you still want to let your user knows that the todo is actually saved (green border), then you don't know which todo to update!
 
