@@ -80,13 +80,13 @@ const store = createStore(
     // it allow you to use wrapped selectors and actions from k-redux-factory
     // without calling `dispatch` or `getState` manually
     hideRedux: true,
-    // you redux enhancers
+    // your redux enhancers
     enhancer: undefined,
-    // you initial state
+    // your initial state
     init: {},
     // you can unactivate redux-devtools if you want!
     devtools: true,
-    // you can activat redux-devtools `trace` option!
+    // you can activate redux-devtools `trace` option!
     trace: false,
     // if you activate redux-devtools `trace` option, you can play with this limit
     traceLimit: 25,
