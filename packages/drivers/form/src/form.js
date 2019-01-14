@@ -8,24 +8,35 @@ export default ({
   path = 'form',
   getState = store => store.form,
   key = '@@form-name',
-} = {}) => ({
-  getReducer: () => ({
-    path,
-    reducer: {
-      values: types.keyValue({ key }),
-      errors: types.keyValue({ key }),
-    },
-  }),
-  getDriver: (store) => {
-    const state = getState(store)
+} = {}) => {
+  const keyName = key
+  let baseKey = '@@form'
 
-    return Object.assign(
-      name => ({
-        ...actions(key)(state)(name),
-        ...selectors(key)(state)(name),
-      }),
-      bulkActions(key)(state),
-      utils(state),
-    )
-  },
-})
+  // in case this is not the default key that is given, we just consider the baseKey is the key
+  // in this case this is not a breaking change from 1.2.0 to 1.3.0
+  if (key !== '@@form-name') baseKey = key
+
+  const keyFields = `${baseKey}-fields`
+
+  return {
+    getReducer: () => ({
+      path,
+      reducer: {
+        values: types.keyValue({ key: keyName }),
+        errors: types.keyValue({ key: keyName }),
+      },
+    }),
+    getDriver: (store) => {
+      const state = getState(store)
+
+      return Object.assign(
+        name => ({
+          ...actions({ keyName, keyFields })(state)(name),
+          ...selectors({ keyName, keyFields })(state)(name),
+        }),
+        bulkActions({ keyName, keyFields })(state),
+        utils(state),
+      )
+    },
+  }
+}

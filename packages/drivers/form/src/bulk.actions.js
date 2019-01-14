@@ -1,5 +1,9 @@
-export default key => (state) => {
-  const set = type => forms => state[type].addOrUpdate(forms.map(({ name, values }) => ({ ...values, [key]: name })))
+export default ({ keyName, keyFields }) => (state) => {
+  const set = type => forms => state[type].addOrUpdate(forms.map(({ name, values }) => ({
+    ...values,
+    [keyName]: name,
+    [keyFields]: Object.keys(values),
+  })))
 
   return ({
     set: set('values'),

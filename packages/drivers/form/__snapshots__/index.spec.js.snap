@@ -20,6 +20,10 @@ Object {
 exports[`drivers/form [custom path and key] should get all errors 1`] = `
 Object {
   "errors": Object {
+    "customKey-fields": Array [
+      "first",
+      "second",
+    ],
     "first": "value",
     "second": "otherValue",
   },
@@ -29,6 +33,10 @@ Object {
 exports[`drivers/form [custom path and key] should get all values 1`] = `
 Object {
   "values": Object {
+    "customKey-fields": Array [
+      "first",
+      "second",
+    ],
     "first": "value",
     "second": "otherValue",
   },
@@ -63,6 +71,7 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [],
               },
             ],
           ],
@@ -106,6 +115,10 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -119,6 +132,10 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -159,6 +176,10 @@ Object {
               "form1",
               Object {
                 "customKey": "form1",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -167,6 +188,10 @@ Object {
               "form2",
               Object {
                 "customKey": "form2",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -175,6 +200,10 @@ Object {
               "notRemove",
               Object {
                 "customKey": "notRemove",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -188,6 +217,10 @@ Object {
               "form1",
               Object {
                 "customKey": "form1",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -196,6 +229,10 @@ Object {
               "form2",
               Object {
                 "customKey": "form2",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -204,6 +241,10 @@ Object {
               "notRemove",
               Object {
                 "customKey": "notRemove",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -224,6 +265,10 @@ Object {
               "notRemove",
               Object {
                 "customKey": "notRemove",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -237,6 +282,10 @@ Object {
               "notRemove",
               Object {
                 "customKey": "notRemove",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -277,6 +326,10 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -310,6 +363,10 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -339,6 +396,10 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [
+                  "first",
+                  "second",
+                ],
                 "first": "value",
                 "second": "otherValue",
               },
@@ -363,6 +424,9 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [
+                  "second",
+                ],
                 "first": "value",
                 "second": "NEW_VALUE",
               },
@@ -407,6 +471,9 @@ Object {
               "form-name",
               Object {
                 "customKey": "form-name",
+                "customKey-fields": Array [
+                  "second",
+                ],
                 "second": "NEW_VALUE",
               },
             ],
@@ -439,6 +506,10 @@ Object {
 exports[`drivers/form [default path and key] should get all errors 1`] = `
 Object {
   "errors": Object {
+    "@@form-fields": Array [
+      "first",
+      "second",
+    ],
     "first": "value",
     "second": "otherValue",
   },
@@ -448,6 +519,10 @@ Object {
 exports[`drivers/form [default path and key] should get all values 1`] = `
 Object {
   "values": Object {
+    "@@form-fields": Array [
+      "first",
+      "second",
+    ],
     "first": "value",
     "second": "otherValue",
   },
@@ -479,6 +554,7 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [],
               "@@form-name": "form-name",
             },
           ],
@@ -522,6 +598,10 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
@@ -535,6 +615,10 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
@@ -575,6 +659,10 @@ Object {
           Array [
             "form1",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form1",
               "first": "value",
               "second": "otherValue",
@@ -583,6 +671,10 @@ Object {
           Array [
             "form2",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form2",
               "first": "value",
               "second": "otherValue",
@@ -591,6 +683,10 @@ Object {
           Array [
             "notRemove",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "notRemove",
               "first": "value",
               "second": "otherValue",
@@ -604,6 +700,10 @@ Object {
           Array [
             "form1",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form1",
               "first": "value",
               "second": "otherValue",
@@ -612,6 +712,10 @@ Object {
           Array [
             "form2",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form2",
               "first": "value",
               "second": "otherValue",
@@ -620,6 +724,10 @@ Object {
           Array [
             "notRemove",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "notRemove",
               "first": "value",
               "second": "otherValue",
@@ -640,6 +748,10 @@ Object {
           Array [
             "notRemove",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "notRemove",
               "first": "value",
               "second": "otherValue",
@@ -653,6 +765,10 @@ Object {
           Array [
             "notRemove",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "notRemove",
               "first": "value",
               "second": "otherValue",
@@ -693,6 +809,10 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
@@ -726,6 +846,10 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
@@ -755,6 +879,10 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [
+                "first",
+                "second",
+              ],
               "@@form-name": "form-name",
               "first": "value",
               "second": "otherValue",
@@ -779,6 +907,9 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [
+                "second",
+              ],
               "@@form-name": "form-name",
               "first": "value",
               "second": "NEW_VALUE",
@@ -823,6 +954,9 @@ Object {
           Array [
             "form-name",
             Object {
+              "@@form-fields": Array [
+                "second",
+              ],
               "@@form-name": "form-name",
               "second": "NEW_VALUE",
             },
@@ -844,10 +978,16 @@ Object {
     "errors": Object {},
     "values": Object {
       "form-1": Object {
+        "@@form-fields": Array [
+          "lastname",
+        ],
         "@@form-name": "form-1",
         "lastname": "crespel",
       },
       "form-2": Object {
+        "@@form-fields": Array [
+          "firstname",
+        ],
         "@@form-name": "form-2",
         "firstname": "fabien",
       },
@@ -861,12 +1001,18 @@ Object {
   "state": Object {
     "errors": Object {
       "form-3": Object {
+        "@@form-fields": Array [
+          "lastname",
+        ],
         "@@form-name": "form-3",
         "lastname": "required",
       },
     },
     "values": Object {
       "form-3": Object {
+        "@@form-fields": Array [
+          "firstname",
+        ],
         "@@form-name": "form-3",
         "firstname": "delphine",
       },
@@ -880,10 +1026,16 @@ Object {
   "state": Object {
     "errors": Object {
       "form-1": Object {
+        "@@form-fields": Array [
+          "firstname",
+        ],
         "@@form-name": "form-1",
         "firstname": "required",
       },
       "form-2": Object {
+        "@@form-fields": Array [
+          "lastname",
+        ],
         "@@form-name": "form-2",
         "lastname": "required",
       },
@@ -899,11 +1051,19 @@ Object {
     "errors": Object {},
     "values": Object {
       "form-1": Object {
+        "@@form-fields": Array [
+          "firstname",
+          "lastname",
+        ],
         "@@form-name": "form-1",
         "firstname": "guillaume",
         "lastname": "crespel",
       },
       "form-2": Object {
+        "@@form-fields": Array [
+          "firstname",
+          "lastname",
+        ],
         "@@form-name": "form-2",
         "firstname": "fabien",
         "lastname": "juif",
@@ -922,11 +1082,19 @@ Object {
         "firstname": "guillaume",
         "lastname": "crespel",
         "my-key": "form-1",
+        "my-key-fields": Array [
+          "firstname",
+          "lastname",
+        ],
       },
       "form-2": Object {
         "firstname": "fabien",
         "lastname": "juif",
         "my-key": "form-2",
+        "my-key-fields": Array [
+          "firstname",
+          "lastname",
+        ],
       },
     },
   },
