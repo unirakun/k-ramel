@@ -21,6 +21,7 @@ Object {
             "method": "GET",
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -38,6 +39,7 @@ Object {
           "other": "context",
         },
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "options": Object {
             "headers": Object {},
@@ -79,6 +81,7 @@ Object {
             "headers": Object {},
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -93,6 +96,7 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "json": [Function],
         },
@@ -129,6 +133,7 @@ Object {
             "headers": Object {},
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -143,6 +148,7 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "result": "http://google.fr",
         },
@@ -179,6 +185,7 @@ Object {
             "headers": Object {},
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -193,6 +200,7 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "status": 404,
           "url": "http://google.fr",
@@ -242,6 +250,7 @@ Object {
             "method": "POST",
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>POST>STARTED",
@@ -256,6 +265,7 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "options": Object {
             "body": FormData {
@@ -319,6 +329,7 @@ Object {
             "headers": Object {},
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -338,6 +349,7 @@ Object {
             "headers": Object {},
           },
         ],
+        "headers": undefined,
         "payload": [Error: oups-json-http://google.fr],
         "status": undefined,
         "type": "@@http/GOOGLE>GET>FAILED",
@@ -372,6 +384,7 @@ Object {
             "headers": Object {},
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>GET>STARTED",
@@ -386,6 +399,7 @@ Object {
             "headers": Object {},
           },
         ],
+        "headers": undefined,
         "payload": [Error: oups-http://google.fr],
         "status": undefined,
         "type": "@@http/GOOGLE>GET>FAILED",
@@ -499,6 +513,7 @@ Object {
             "method": "POST",
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>POST>STARTED",
@@ -513,6 +528,7 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "options": Object {
             "body": "{\\"some\\":\\"data\\"}",
@@ -564,6 +580,7 @@ Object {
             "method": "POST",
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>POST>STARTED",
@@ -578,6 +595,7 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "options": Object {
             "body": "{\\"some\\":\\"data\\"}",
@@ -626,6 +644,7 @@ Object {
             "method": "OPTIONS",
           },
         ],
+        "headers": undefined,
         "payload": undefined,
         "status": undefined,
         "type": "@@http/GOOGLE>OPTIONS>STARTED",
@@ -640,6 +659,7 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
+        "headers": undefined,
         "payload": Object {
           "options": Object {
             "headers": Object {},
@@ -658,6 +678,69 @@ Object {
       Object {
         "headers": Object {},
         "method": "OPTIONS",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers should add headers on http response 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+        ],
+        "headers": undefined,
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": undefined,
+        "headers": Object {
+          "Content-Length": "10",
+          "Content-Type": "application/json",
+        },
+        "payload": Object {
+          "actual": "data",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+        "method": "GET",
       },
     ],
   ],
