@@ -7,9 +7,16 @@ import utils from './utils'
 export default ({
   path = 'form',
   getState = store => store.form,
-  key = '@@form',
+  key = '@@form-name',
 } = {}) => {
-  const keyName = `${key}-name`
+  const keyName = key
+  let baseKey = '@@form'
+
+  // in case this is not the default key that is given, we just consider the baseKey is the key
+  // in this case this is not a breaking change from 1.2.0 to 1.3.0
+  if (key !== '@@form-name') baseKey = key
+
+  const keyFields = `${baseKey}-fields`
 
   return {
     getReducer: () => ({
@@ -24,10 +31,10 @@ export default ({
 
       return Object.assign(
         name => ({
-          ...actions(key)(state)(name),
-          ...selectors(keyName)(state)(name),
+          ...actions({ keyName, keyFields })(state)(name),
+          ...selectors({ keyName, keyFields })(state)(name),
         }),
-        bulkActions(key)(state),
+        bulkActions({ keyName, keyFields })(state),
         utils(state),
       )
     },

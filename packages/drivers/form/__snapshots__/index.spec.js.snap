@@ -70,8 +70,8 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [],
-                "customKey-name": "form-name",
               },
             ],
           ],
@@ -114,11 +114,11 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -131,11 +131,11 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -175,11 +175,11 @@ Object {
             Array [
               "form1",
               Object {
+                "customKey": "form1",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form1",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -187,11 +187,11 @@ Object {
             Array [
               "form2",
               Object {
+                "customKey": "form2",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form2",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -199,11 +199,11 @@ Object {
             Array [
               "notRemove",
               Object {
+                "customKey": "notRemove",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "notRemove",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -216,11 +216,11 @@ Object {
             Array [
               "form1",
               Object {
+                "customKey": "form1",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form1",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -228,11 +228,11 @@ Object {
             Array [
               "form2",
               Object {
+                "customKey": "form2",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form2",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -240,11 +240,11 @@ Object {
             Array [
               "notRemove",
               Object {
+                "customKey": "notRemove",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "notRemove",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -264,11 +264,11 @@ Object {
             Array [
               "notRemove",
               Object {
+                "customKey": "notRemove",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "notRemove",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -281,11 +281,11 @@ Object {
             Array [
               "notRemove",
               Object {
+                "customKey": "notRemove",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "notRemove",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -325,11 +325,11 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -362,11 +362,11 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -395,11 +395,11 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [
                   "first",
                   "second",
                 ],
-                "customKey-name": "form-name",
                 "first": "value",
                 "second": "otherValue",
               },
@@ -423,10 +423,10 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [
                   "second",
                 ],
-                "customKey-name": "form-name",
                 "first": "value",
                 "second": "NEW_VALUE",
               },
@@ -470,10 +470,10 @@ Object {
             Array [
               "form-name",
               Object {
+                "customKey": "form-name",
                 "customKey-fields": Array [
                   "second",
                 ],
-                "customKey-name": "form-name",
                 "second": "NEW_VALUE",
               },
             ],
@@ -1081,20 +1081,20 @@ Object {
       "form-1": Object {
         "firstname": "guillaume",
         "lastname": "crespel",
+        "my-key": "form-1",
         "my-key-fields": Array [
           "firstname",
           "lastname",
         ],
-        "my-key-name": "form-1",
       },
       "form-2": Object {
         "firstname": "fabien",
         "lastname": "juif",
+        "my-key": "form-2",
         "my-key-fields": Array [
           "firstname",
           "lastname",
         ],
-        "my-key-name": "form-2",
       },
     },
   },

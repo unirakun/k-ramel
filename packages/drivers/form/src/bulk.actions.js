@@ -1,7 +1,4 @@
-export default key => (state) => {
-  const keyName = `${key}-name`
-  const keyFields = `${key}-fields`
-
+export default ({ keyName, keyFields }) => (state) => {
   const set = type => forms => state[type].addOrUpdate(forms.map(({ name, values }) => ({
     ...values,
     [keyName]: name,

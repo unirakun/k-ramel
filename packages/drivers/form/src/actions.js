@@ -1,7 +1,4 @@
-export default key => state => (name) => {
-  const keyName = `${key}-name`
-  const keyFields = `${key}-fields`
-
+export default ({ keyName, keyFields }) => state => (name) => {
   const set = type => (values = {}) => state[type].addOrUpdate({
     ...values,
     [keyName]: name,
