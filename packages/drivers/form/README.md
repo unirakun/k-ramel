@@ -56,4 +56,4 @@ export default mapStore(Component)
 ## Helpers
   - `drivers.form.getUpdatedValues(action)` will return an _object_ of all updated pair (field name -> field value) for the given action.
   - `drivers.form.getUpdatedEntries(action)` will return an _array_ of all updated pair (field name -> field value) for the given action.
-  - `drivers.form.getUpdatedFieldNames(action)` will return an _array_ of all updated fields names for the given action.
+  - `drivers.form.getUpdatedFieldNames(action)` will return an _array_ of all updated field names for the given action.
