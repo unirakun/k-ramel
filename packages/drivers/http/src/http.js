@@ -1,8 +1,12 @@
+// TODO: once Object.fromEntries reach the JS Standard, remove this
+const fromEntries = iterable => Object.assign({}, ...Array.from(iterable, ([key, val]) => ({ [key]: val })))
+
 const dispatchFactory = store => (name, context) => method => (
-  (event, payload, status, fetch) => store.dispatch({
+  (event, payload, status, headers, fetch) => store.dispatch({
     type: `@@http/${name}>${method}>${event}`,
     payload,
     status,
+    headers,
     fetch,
     context,
   })
@@ -23,25 +27,30 @@ const getDriver = (store) => {
       // request
       let data
       let raw
+      let headers
       const fetchArgs = [url, appliedOptions, ...args]
-      dispatch('STARTED', undefined, undefined, fetchArgs)
+      dispatch('STARTED', undefined, undefined, undefined, fetchArgs)
       try {
         raw = await (global || window).fetch(...fetchArgs)
         data = raw
+
+        if (raw.headers && raw.headers.entries) {
+          headers = fromEntries(raw.headers.entries())
+        }
 
         if (raw.headers && raw.headers.get('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
           data = await raw.json()
         }
       } catch (ex) {
-        dispatch('FAILED', ex, (raw || {}).status, fetchArgs)
+        dispatch('FAILED', ex, (raw || {}).status, headers, fetchArgs)
         return ex
       }
 
       const { status } = raw
       if (status >= 400 || status < 200) {
-        dispatch('FAILED', data, status)
+        dispatch('FAILED', data, status, headers)
       } else {
-        dispatch('ENDED', data, status)
+        dispatch('ENDED', data, status, headers)
       }
 
       return data

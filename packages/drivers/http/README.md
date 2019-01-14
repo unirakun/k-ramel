@@ -75,5 +75,6 @@ All emitted events have some data
 | `type` | event type | `string` |
 | `fetch` | url and fetch options, this can be used to retry a request that is on error | `array` (`[url, options]`) |
 | `status` | HTTP status of the response | `number` |
+| `headers` | HTTP response headers | `object` (`header name` -> `header value`) |
 | `payload` | data of the response (if the content type is `application/json`, the data is already parsed) | `any` |
 | `context` | your optional context added when use the driver. The context help you to recognize the `FAILED` or `ENDED` event and react with the right reaction. | `any` |
