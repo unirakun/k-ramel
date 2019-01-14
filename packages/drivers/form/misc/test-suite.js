@@ -355,6 +355,66 @@ export default (driver) => {
           state,
         }).toMatchSnapshot()
       })
+
+      it('should returns updated field names', () => {
+        // run implementation
+        let fieldNames
+        runReaction()((action, store, { form }) => {
+          fieldNames = form.getUpdatedFieldNames({
+            payload: {
+              '@@form-name': 'myForm',
+              '@@form-fields': ['first', 'second'],
+              first: true,
+              second: 'ok',
+            },
+          })
+        })
+
+        // assert
+        expect({
+          fieldNames,
+        }).toMatchSnapshot()
+      })
+
+      it('should returns updated field names and values', () => {
+        // run implementation
+        let fieldValues
+        runReaction()((action, store, { form }) => {
+          fieldValues = form.getUpdatedValues({
+            payload: {
+              '@@form-name': 'myForm',
+              '@@form-fields': ['first', 'second'],
+              first: true,
+              second: 'ok',
+            },
+          })
+        })
+
+        // assert
+        expect({
+          fieldValues,
+        }).toMatchSnapshot()
+      })
+
+      it('should returns updated field entries', () => {
+        // run implementation
+        let entries
+        runReaction()((action, store, { form }) => {
+          entries = form.getUpdatedEntries({
+            payload: {
+              '@@form-name': 'myForm',
+              '@@form-fields': ['first', 'second'],
+              first: true,
+              second: 'ok',
+            },
+          })
+        })
+
+        // assert
+        expect({
+          entries,
+        }).toMatchSnapshot()
+      })
     })
   })
 }

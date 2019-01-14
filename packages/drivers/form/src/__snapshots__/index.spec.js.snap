@@ -1021,6 +1021,39 @@ Object {
 }
 `;
 
+exports[`drivers/form bulk mode should returns updated field entries 1`] = `
+Object {
+  "entries": Array [
+    Array [
+      "first",
+      true,
+    ],
+    Array [
+      "second",
+      "ok",
+    ],
+  ],
+}
+`;
+
+exports[`drivers/form bulk mode should returns updated field names 1`] = `
+Object {
+  "fieldNames": Array [
+    "first",
+    "second",
+  ],
+}
+`;
+
+exports[`drivers/form bulk mode should returns updated field names and values 1`] = `
+Object {
+  "fieldValues": Object {
+    "first": true,
+    "second": "ok",
+  },
+}
+`;
+
 exports[`drivers/form bulk mode should set errors 1`] = `
 Object {
   "state": Object {

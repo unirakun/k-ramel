@@ -3,6 +3,7 @@ import actions from './actions'
 import bulkActions from './bulk.actions'
 import selectors from './selectors'
 import utils from './utils'
+import helpers from './helpers'
 
 export default ({
   path = 'form',
@@ -36,6 +37,7 @@ export default ({
         }),
         bulkActions({ keyName, keyFields })(state),
         utils(state),
+        helpers({ keyName, keyFields }),
       )
     },
   }
