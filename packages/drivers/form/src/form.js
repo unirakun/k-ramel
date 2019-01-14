@@ -7,25 +7,29 @@ import utils from './utils'
 export default ({
   path = 'form',
   getState = store => store.form,
-  key = '@@form-name',
-} = {}) => ({
-  getReducer: () => ({
-    path,
-    reducer: {
-      values: types.keyValue({ key }),
-      errors: types.keyValue({ key }),
-    },
-  }),
-  getDriver: (store) => {
-    const state = getState(store)
+  key = '@@form',
+} = {}) => {
+  const keyName = `${key}-name`
 
-    return Object.assign(
-      name => ({
-        ...actions(key)(state)(name),
-        ...selectors(key)(state)(name),
-      }),
-      bulkActions(key)(state),
-      utils(state),
-    )
-  },
-})
+  return {
+    getReducer: () => ({
+      path,
+      reducer: {
+        values: types.keyValue({ key: keyName }),
+        errors: types.keyValue({ key: keyName }),
+      },
+    }),
+    getDriver: (store) => {
+      const state = getState(store)
+
+      return Object.assign(
+        name => ({
+          ...actions(key)(state)(name),
+          ...selectors(keyName)(state)(name),
+        }),
+        bulkActions(key)(state),
+        utils(state),
+      )
+    },
+  }
+}
