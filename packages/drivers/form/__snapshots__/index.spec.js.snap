@@ -20,10 +20,6 @@ Object {
 exports[`drivers/form [custom path and key] should get all errors 1`] = `
 Object {
   "errors": Object {
-    "customKey-fields": Array [
-      "first",
-      "second",
-    ],
     "first": "value",
     "second": "otherValue",
   },
@@ -33,10 +29,6 @@ Object {
 exports[`drivers/form [custom path and key] should get all values 1`] = `
 Object {
   "values": Object {
-    "customKey-fields": Array [
-      "first",
-      "second",
-    ],
     "first": "value",
     "second": "otherValue",
   },
@@ -506,10 +498,6 @@ Object {
 exports[`drivers/form [default path and key] should get all errors 1`] = `
 Object {
   "errors": Object {
-    "@@form-fields": Array [
-      "first",
-      "second",
-    ],
     "first": "value",
     "second": "otherValue",
   },
@@ -519,10 +507,6 @@ Object {
 exports[`drivers/form [default path and key] should get all values 1`] = `
 Object {
   "values": Object {
-    "@@form-fields": Array [
-      "first",
-      "second",
-    ],
     "first": "value",
     "second": "otherValue",
   },
