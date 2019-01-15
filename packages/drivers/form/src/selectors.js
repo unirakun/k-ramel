@@ -1,4 +1,4 @@
-export default ({ keyName }) => state => (name) => {
+export default keys => state => (name) => {
   const get = type => (field) => {
     const values = state[type].get(name)
     if (!values) {
@@ -7,9 +7,10 @@ export default ({ keyName }) => state => (name) => {
     }
 
     if (!field && values) {
-      // remove `key` from the result so as not to pollute
+      // remove `key` from the returned values
       const rest = { ...values }
-      delete rest[keyName]
+      Object.values(keys).forEach((key) => { delete rest[key] })
+
       return rest
     }
 
