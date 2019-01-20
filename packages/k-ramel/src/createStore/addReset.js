@@ -1,6 +1,14 @@
 import { getFromPath } from '../utils'
 
-const resetFactory = path => () => ({ type: '@@krml/RESET', payload: path })
+export const TYPE = '@@krml/RESET'
+
+const resetFactory = path => Object.assign(
+  () => ({ type: TYPE, payload: path }),
+  {
+    TYPE,
+    krmlAction: true,
+  },
+)
 
 const addResetFactory = (options, dispatch) => (object, path) => {
   let reset = resetFactory(path)

@@ -543,7 +543,7 @@ export default (lib) => {
     })
   })
 
-  describe('dispatch', () => {
+  describe.only('dispatch', () => {
     const customReducer = (state = '', action) => {
       switch (action.type) {
         case 'SET_DUMB': return 'ok !'
