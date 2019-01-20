@@ -40,7 +40,10 @@ export default (root, store) => {
     const nextPath = `${path ? `${path}.` : ''}${name}`
     const reducer = getFromPath(root, nextPath)
 
-    // - leaf
+    // - leaf (custom reducer)
+    if (typeof reducer === 'function' && reducer.krfType === undefined) return reducer
+
+    // - leaf (k-redux-factory)
     if (reducer.krfType !== undefined) {
       const keys = keysConfig[reducer.krfType]
       const [actions, selectors] = keys
@@ -73,30 +76,18 @@ export default (root, store) => {
           {},
         )
 
-      // TODO: reset action creator should be set `before` `toContext`
-      // TODO: factorize code + verify that `reset` doesn't exist, if it exists -> warning
-      return Object.assign(reducer, actionsObject, selectorsObject, { reset: () => store.dispatch({ type: '@@krml/RESET', payload: nextPath }) })
+      return Object.assign(reducer, actionsObject, selectorsObject)
     }
 
     // - branch
-    return Object.assign(
-      Object
-        .keys(reducer)
-        .map(key => ({ [key]: subcontext(key, nextPath) }))
-        .reduce(
-          (acc, next) => ({ ...acc, ...next }),
-          {},
-        )
-      ,
-      {
-                // TODO: factorize code + verify that `reset` doesn't exist, if it exists -> warning
-        reset: () => store.dispatch({ type: '@@krml/RESET', payload: nextPath }),
-      },
-    )
+    return Object
+      .keys(reducer)
+      .map(key => ({ [key]: subcontext(key, nextPath) }))
+      .reduce(
+        (acc, next) => ({ ...acc, ...next }),
+        {},
+      )
   }
 
-          // TODO: factorize code + verify that `reset` doesn't exist, if it exists -> warning
-  return Object.assign(subcontext(), {
-    reset: () => store.dispatch({ type: '@@krml/RESET' }),
-  })
+  return subcontext()
 }
