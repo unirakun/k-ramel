@@ -73,18 +73,30 @@ export default (root, store) => {
           {},
         )
 
-      return Object.assign(reducer, actionsObject, selectorsObject)
+      // TODO: reset action creator should be set `before` `toContext`
+      // TODO: factorize code + verify that `reset` doesn't exist, if it exists -> warning
+      return Object.assign(reducer, actionsObject, selectorsObject, { reset: () => store.dispatch({ type: '@@krml/RESET', payload: nextPath }) })
     }
 
     // - branch
-    return Object
-      .keys(reducer)
-      .map(key => ({ [key]: subcontext(key, nextPath) }))
-      .reduce(
-        (acc, next) => ({ ...acc, ...next }),
-        {},
-      )
+    return Object.assign(
+      Object
+        .keys(reducer)
+        .map(key => ({ [key]: subcontext(key, nextPath) }))
+        .reduce(
+          (acc, next) => ({ ...acc, ...next }),
+          {},
+        )
+      ,
+      {
+                // TODO: factorize code + verify that `reset` doesn't exist, if it exists -> warning
+        reset: () => store.dispatch({ type: '@@krml/RESET', payload: nextPath }),
+      },
+    )
   }
 
-  return subcontext()
+          // TODO: factorize code + verify that `reset` doesn't exist, if it exists -> warning
+  return Object.assign(subcontext(), {
+    reset: () => store.dispatch({ type: '@@krml/RESET' }),
+  })
 }
