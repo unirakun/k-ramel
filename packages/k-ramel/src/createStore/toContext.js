@@ -40,6 +40,9 @@ export default (root, store) => {
     const nextPath = `${path ? `${path}.` : ''}${name}`
     const reducer = getFromPath(root, nextPath)
 
+    // - leaf (RESET action)
+    if (name === 'RESET') return reducer
+
     // - leaf (custom reducer)
     if (typeof reducer === 'function' && reducer.krfType === undefined) return reducer
 

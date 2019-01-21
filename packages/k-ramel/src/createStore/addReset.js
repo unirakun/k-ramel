@@ -2,13 +2,7 @@ import { getFromPath } from '../utils'
 
 export const TYPE = '@@krml/RESET'
 
-const resetFactory = path => Object.assign(
-  () => ({ type: TYPE, payload: path }),
-  {
-    TYPE,
-    krmlAction: true,
-  },
-)
+const resetFactory = path => () => ({ type: TYPE, payload: path })
 
 const addResetFactory = (options, dispatch) => (object, path) => {
   let reset = resetFactory(path)
@@ -18,6 +12,7 @@ const addResetFactory = (options, dispatch) => (object, path) => {
   }
 
   object.reset = reset // eslint-disable-line no-param-reassign
+  object.RESET = TYPE // eslint-disable-line no-param-reassign
 
   return object
 }
@@ -43,7 +38,7 @@ export default options => (root, store) => {
 
     // - branch
     let next = reducer
-    if (reducer.krfType === undefined) {
+    if (typeof reducer !== 'function' && name !== 'RESET') {
       next = Object
         .keys(reducer)
         .map(key => ({ [key]: subcontext(key, nextPath) }))
