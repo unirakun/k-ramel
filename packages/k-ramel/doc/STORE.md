@@ -133,6 +133,7 @@ store API is simple, we use [Redux one](https://redux.js.org/api/store):
  - [subscribe](https://redux.js.org/api/store#subscribe-listener)
 
 and we add some of ours:
+ - reset, you can reset all of part of your store by calling `reset` action, eg: `store.data.reset()`
  - drivers
  - listeners
     * add
