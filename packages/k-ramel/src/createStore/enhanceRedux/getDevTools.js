@@ -14,6 +14,15 @@ export default (options) => {
   // no devtool enable
   if (!devtools) return undefined
 
+  // production build
+  if (
+    typeof process !== 'undefined'
+    && process.env
+    && process.env.NODE_ENV === 'production'
+  ) {
+    return undefined
+  }
+
   // return enhancer with devtools
   return getReduxDevToolsEnhancer(options)
 }
