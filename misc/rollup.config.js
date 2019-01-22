@@ -19,7 +19,6 @@ export default {
       'k-redux-factory': 'k-redux-factory',
       'fbjs/lib/shallowEqual': 'fbjs/lib/shallowEqual',
       '@k-ramel/driver-http': '@k-ramel/driver-http',
-      'redux-little-router': 'redux-little-router',
       'redux-form': 'reduxForm',
       'k-ramel': 'kRamel',
     },
@@ -42,6 +41,5 @@ export default {
     'k-redux-factory',
     'redux',
     'redux-form',
-    'redux-little-router',
   ],
 }
