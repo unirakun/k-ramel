@@ -19,7 +19,7 @@ Because `k-ramel`:
  - 🐛 works with redux-dev-tools
 
 ## Migrating
-Hey ! If you come from an early version of k-ramel and want to upgrade, you can read this [migration guide](./MIGRATION.md) 💎
+Hey! If you come from an early version of k-ramel and want to upgrade, you can read this [migration guide](./MIGRATION.md) 💎
 
 ## Modules and libs
 | packages | description | documentation | gziped size |

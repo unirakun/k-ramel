@@ -2,12 +2,12 @@
 ## From 1.x.x to 2.0.0
 ### Deprecated
  - `@k-ramel/driver-redux-little-router` driver is deprecated. [You can now use `k-redux-router`](https://github.com/alakarteio/k-redux-router):
-    * We are removing it because `redux-little-router` is deprecated and archived from its authors: https://github.com/FormidableLabs/redux-little-router
+    * We are removing it because `redux-little-router` is deprecated and has been archived by its authors: https://github.com/FormidableLabs/redux-little-router
 
 ### Breaking changes
  - `@k-ramel/driver-http` is not imported by default
     * In order to keep `k-ramel` as light as possible we remove the default usage of this driver
-    * When we added it as a default driver, we though that almost everybody would use it but since `graphql` is becoming strong, we believe it's time to not make it a default one
+    * When we added it as a default driver, we thought that almost everybody would use it but since `graphql` is becoming strong, we believe it's time to not make it a default one
     * `k-ramel` will be even lighter by default!
 
 ### May be breaking changes
