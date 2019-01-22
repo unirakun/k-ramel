@@ -23,7 +23,7 @@ All options are optionals to keep the default usage as simple as possible.
 import { types } from 'k-ramel'
 ```
 
-You can use when of our types as reducers (+ selectors and reactions).
+You can use one of our types as reducers (+ selectors and reactions).
 Types are:
  - `types.object()`: a simple object, default is `{}`
  - `types.string()`: a simple string, default is `''`
