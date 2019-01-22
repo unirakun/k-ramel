@@ -584,7 +584,7 @@ export default (lib) => {
     })
   })
 
-  describe.only('reset', () => {
+  describe('reset', () => {
     const getDiffPaths = (before, after) => Array.from(new Set(diff(before, after).map(({ path }) => path.join('.'))))
 
     const initStore = ({ hideRedux = true } = {}) => {

@@ -389,6 +389,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {
@@ -414,6 +415,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {
@@ -442,6 +444,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {
@@ -470,6 +473,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {
@@ -498,6 +502,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {
