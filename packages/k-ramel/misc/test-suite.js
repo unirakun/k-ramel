@@ -1,4 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-env jest */
+import diff from 'deep-diff'
+
 export default (lib) => {
   const {
     createStore,
@@ -543,7 +546,7 @@ export default (lib) => {
     })
   })
 
-  describe.only('dispatch', () => {
+  describe('dispatch', () => {
     const customReducer = (state = '', action) => {
       switch (action.type) {
         case 'SET_DUMB': return 'ok !'
@@ -577,6 +580,135 @@ export default (lib) => {
         before,
         dispatch,
         after,
+      }).toMatchSnapshot()
+    })
+  })
+
+  describe.only('reset', () => {
+    const getDiffPaths = (before, after) => Array.from(new Set(diff(before, after).map(({ path }) => path.join('.'))))
+
+    const initStore = ({ hideRedux = true } = {}) => {
+      const store = createStore({
+        data: {
+          nested: {
+            current: types.string(),
+            other: {
+              reducer: types.array(),
+            },
+          },
+          other: types.bool(),
+        },
+        ui: {
+          title: types.string(),
+        },
+      }, { hideRedux })
+
+      const before = store.getState()
+
+      const dispatch = (action) => {
+        if (hideRedux) return
+        store.dispatch(action)
+      }
+
+      dispatch(store.data.nested.current.set('some value'))
+      dispatch(store.data.nested.other.reducer.set(['value', 'in', 'array']))
+      dispatch(store.data.other.set(true))
+      dispatch(store.ui.title.set('test reset'))
+
+      return {
+        store,
+        before,
+        data: store.getState(),
+      }
+    }
+
+    it('should reset all state', () => {
+      const { store, before, data } = initStore()
+      const action = store.reset()
+      const end = store.getState()
+
+      expect(before).toEqual(end)
+      expect({
+        action,
+        diffPaths: getDiffPaths(data, end),
+      }).toMatchSnapshot()
+    })
+
+    it('should reset part of the state', () => {
+      const { store, before, data } = initStore()
+      const action = store.data.nested.reset()
+      const end = store.getState()
+
+      expect(before.data.nested).toEqual(end.data.nested)
+      expect({
+        action,
+        diffPaths: getDiffPaths(data, end),
+      }).toMatchSnapshot()
+    })
+
+    it('should reset a single reducer', () => {
+      const { store, before, data } = initStore()
+      const action = store.data.nested.current.reset()
+      const end = store.getState()
+
+      expect(before.data.nested.current).toEqual(end.data.nested.current)
+      expect({
+        action,
+        diffPaths: getDiffPaths(data, end),
+      }).toMatchSnapshot()
+    })
+
+    it('should not auto dispatch', () => {
+      const { store, before, data } = initStore({ hideRedux: false })
+      const action = store.reset()
+      const after = store.getState()
+
+      expect(before).not.toEqual(data)
+      expect(data).toEqual(after)
+
+      store.dispatch(action)
+      const end = store.getState()
+
+      expect({
+        action,
+        diffPaths: getDiffPaths(data, end),
+      }).toMatchSnapshot()
+    })
+
+    it('should reset custom reducers', () => {
+      const store = createStore({
+        data: {
+          custom: (state = 'init', action = {}) => {
+            switch (action.type) {
+              case 'SET_CUSTOM': return action.payload
+              default: return state
+            }
+          },
+        },
+        ui: (state = 'init-ui', action = {}) => {
+          switch (action.type) {
+            case 'SET_UI': return action.payload
+            default: return state
+          }
+        },
+      })
+
+      const before = store.getState()
+
+      store.dispatch({ type: 'SET_CUSTOM', payload: 'custom value' })
+      store.dispatch({ type: 'SET_UI', payload: 'ui value' })
+
+      const data = store.getState()
+
+      const action = store.reset()
+
+      const end = store.getState()
+
+      expect(before).toEqual(end)
+      expect(before).not.toEqual(data)
+      expect({
+        action,
+        diffPaths: getDiffPaths(data, end),
       }).toMatchSnapshot()
     })
   })
