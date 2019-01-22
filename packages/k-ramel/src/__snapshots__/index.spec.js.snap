@@ -632,7 +632,14 @@ Object {
 }
 `;
 
-exports[`redux devtools should not add redux devtools to middlewares 1`] = `
+exports[`redux devtools should not add redux devtools to middlewares [explicitely disabled] 1`] = `
+Object {
+  "devToolsEnhancer": Array [],
+  "devToolsExtension": Array [],
+}
+`;
+
+exports[`redux devtools should not add redux devtools to middlewares [production build] 1`] = `
 Object {
   "devToolsEnhancer": Array [],
   "devToolsExtension": Array [],
