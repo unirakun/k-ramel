@@ -1,5 +1,4 @@
 import { createStore, compose } from 'redux'
-import http from '@k-ramel/driver-http'
 import reduxFactory from './reduxFactory'
 import toContext from './toContext'
 import combine from './combine'
@@ -14,9 +13,7 @@ const defaultOptions = {
   trace: false,
   traceLimit: 25,
   name: 'store',
-  drivers: {
-    http: http(),
-  },
+  drivers: {},
 }
 
 export default (definition, options = defaultOptions) => {
