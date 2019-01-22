@@ -17,7 +17,7 @@ Because `k-ramel`:
  - 📦 is modular
  - 💎 encourages to decouple UI and state management
  - 💥 encourages to not have side effect into your business logic
- - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel@next) footprint (with http driver)
+ - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel@next) footprint
  - 🐛 works with redux-dev-tools
 
 ## [Ecosystem](https://github.com/alakarteio/k-ramel#ecosystem)

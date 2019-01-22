@@ -3,15 +3,32 @@
 
  - Main repository: [k-ramel](https://github.com/alakarteio/k-ramel)
 
-## Installation
-This driver is added by default to k-ramel stores.
-
 ## Install it
 `yarn add @k-ramel/driver-http regeneratorRuntime`
 
 ## How to use it
 In a reaction (See main documentation about listeners/reactions)
 
+First you have to add it to define it to the store.
+```js
+import { createStore, types } from 'k-ramel'
+import http from '@k-ramel/driver-http'
+
+const store = createStore(
+  {
+    data: {
+      users: types.keyValue(),
+    },
+  },
+  {
+    drivers: {
+      http,
+    },
+  },
+)
+```
+
+Then you can use it in reactions and listeners
 ```js
 export const save = (action, store, drivers) => {
   const { http } = drivers
