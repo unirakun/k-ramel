@@ -64,18 +64,18 @@ We take care of looking for action.status so we make sure the request is ok!
 
 ```js
 when(/@@http\/.*TVMAZE.*/)((action, store) => {
-  // if the request is failed, we are doing nothing
+  // if the request fails, we do nothing
   if (action.status < 200 || action.status >= 400) return
 
-  // in others cases we register our show description to the store
+  // in other cases we register our show description to the store
   store.show.set(action.payload)
 })
 ```
 
 #### Example 3: with a function
 We are doing the same example given previously but using a function matcher.
- - The first matcher used is a regexp (like previous exemple): we are making sure to process a HTTP action.
- - The second matcher is a function to make sure the request is not failed!
+ - The first matcher used is a regexp (like previous exemple): we ensure to process a HTTP action.
+ - The second matcher is a function to ensure the request has not failed!
     * Then, we don't need to check this in our reaction
 
 
