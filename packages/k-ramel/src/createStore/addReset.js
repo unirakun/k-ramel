@@ -27,8 +27,7 @@ export default options => (root, store) => {
         .map(key => ({ [key]: subcontext(key, '') }))
         .reduce(
           (acc, next) => ({ ...acc, ...next }),
-          {
-          },
+          {},
         )
     }
 
