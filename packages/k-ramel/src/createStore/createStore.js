@@ -10,7 +10,7 @@ const defaultOptions = {
   enhancer: undefined,
   init: {},
   listeners: undefined,
-  devtools: true,
+  devtools: undefined, // meaning activated if not in production
   trace: false,
   traceLimit: 25,
   name: 'store',
