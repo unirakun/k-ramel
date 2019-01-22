@@ -645,10 +645,3 @@ Object {
   "devToolsExtension": Array [],
 }
 `;
-
-exports[`redux devtools should not add redux devtools to middlewares 1`] = `
-Object {
-  "devToolsEnhancer": Array [],
-  "devToolsExtension": Array [],
-}
-`;
