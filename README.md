@@ -18,6 +18,9 @@ Because `k-ramel`:
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel) footprint (with http driver)
  - 🐛 works with redux-dev-tools
 
+## Migrating
+Hey ! If you come from an early version of k-ramel and want to upgrade, you can read this [migration guide](./MIGRATION.md) 💎
+
 ## Modules and libs
 | packages | description | documentation | gziped size |
 | -- | -- | -- | -- |
