@@ -1,4 +1,5 @@
 /* eslint-env jest */
+/* eslint-disable no-underscore-dangle */
 export default (lib) => {
   const {
     createStore,
@@ -492,8 +493,11 @@ export default (lib) => {
 
   describe('redux devtools', () => {
     const { __REDUX_DEVTOOLS_EXTENSION__ } = window
+    const { NODE_ENV } = process.env
+
     afterEach(() => {
       window.__REDUX_DEVTOOLS_EXTENSION__ = __REDUX_DEVTOOLS_EXTENSION__
+      process.env.NODE_ENV = NODE_ENV
     })
 
     it('should add redux devtools to middlewares [w/o name, w/o enhancer]', () => {
@@ -531,11 +535,23 @@ export default (lib) => {
       }).toMatchSnapshot()
     })
 
-    it('should not add redux devtools to middlewares', () => {
+    it('should not add redux devtools to middlewares [explicitely disabled]', () => {
       const enhancer = jest.fn(f => f)
       window.__REDUX_DEVTOOLS_EXTENSION__ = jest.fn(() => enhancer)
 
       createStore({ dumb: { type: 'simple.object' } }, { devtools: false })
+      expect({
+        devToolsExtension: window.__REDUX_DEVTOOLS_EXTENSION__.mock.calls,
+        devToolsEnhancer: enhancer.mock.calls,
+      }).toMatchSnapshot()
+    })
+
+    it('should not add redux devtools to middlewares [production build]', () => {
+      const enhancer = jest.fn(f => f)
+      window.__REDUX_DEVTOOLS_EXTENSION__ = jest.fn(() => enhancer)
+      process.env.NODE_ENV = 'production'
+
+      createStore({ dumb: { type: 'simple.object' } }, { devtools: undefined })
       expect({
         devToolsExtension: window.__REDUX_DEVTOOLS_EXTENSION__.mock.calls,
         devToolsEnhancer: enhancer.mock.calls,
