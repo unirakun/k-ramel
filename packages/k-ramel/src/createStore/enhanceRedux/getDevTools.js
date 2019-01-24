@@ -11,8 +11,18 @@ const getReduxDevToolsEnhancer = (options) => {
 export default (options) => {
   const { devtools } = options
 
-  // no devtool enable
-  if (!devtools) return undefined
+  // devtool is explicitely disabled
+  if (devtools === false) return undefined
+
+  // production build
+  if (
+    devtools === undefined // devtools is not explicitely enabled
+    && typeof process !== 'undefined' // process exists
+    && process.env // env exists
+    && process.env.NODE_ENV === 'production' // production build -> unactivate
+  ) {
+    return undefined
+  }
 
   // return enhancer with devtools
   return getReduxDevToolsEnhancer(options)
