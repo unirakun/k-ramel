@@ -18,8 +18,8 @@ Because `k-ramel`:
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel) footprint
  - 🐛 works with redux-dev-tools
 
-## Are you looking for the next version documentation? ⚗
-You just have to go to the `next` branch [by clicking here!](https://github.com/alakarteio/k-ramel/tree/next)
+## Migrating
+Hey! If you come from an early version of k-ramel and want to upgrade, you can read this [migration guide](./MIGRATION.md) 💎
 
 ## Modules and libs
 | packages | description | documentation | gziped size |
