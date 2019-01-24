@@ -8,7 +8,7 @@ State manager for your app components, the safe and easy way.
   <img src="packages/k-ramel/doc/logo.png" width="400" />
 </p>
 
-## Why should you give it a try ? 🤔
+## Why should you give it a try? 🤔
 Because `k-ramel`:
  - ⚡️ is fast
  - 📸 is immutable
@@ -17,6 +17,9 @@ Because `k-ramel`:
  - 💥 encourages to not have side effect into your business logic
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel) footprint (with http driver)
  - 🐛 works with redux-dev-tools
+
+## Are you looking for the next version documentation? ⚗
+You just have to go to the `next` branch [by clicking here!](https://github.com/alakarteio/k-ramel/tree/next)
 
 ## Modules and libs
 | packages | description | documentation | gziped size |
