@@ -29,7 +29,6 @@ Hey! If you come from an early version of k-ramel and want to upgrade, you can r
 | [`@k-ramel/driver-http`](./packages/drivers/http) | fetch wrapper | [documentation](./packages/drivers/http) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg?compression=gzip)]() |
 | [`@k-ramel/driver-form`](./packages/drivers/form) | minimalist form handler | [documentation](./packages/drivers/form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/form/dist/index.es.js.svg?compression=gzip)]() |
 | [`@k-ramel/driver-redux-form`](./packages/drivers/redux-form) | redux-form  wrapper | [documentation](./packages/drivers/redux-form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-redux-little-router`](./packages/drivers/redux-little-router) | redux-little-router wrapper | [documentation](./packages/drivers/redux-little-router) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-little-router/dist/index.es.js.svg?compression=gzip)]() |
 | [`k-redux-router`](https://github.com/alakarteio/k-redux-router) | Redux router (one route === one code) | [documentation](https://github.com/alakarteio/k-redux-router) | | |
 
 ⚠️Note that some packages have dependencies:
@@ -84,6 +83,11 @@ You can find documentation about each part of `k-ramel` there:
  - [metroscope](http://metroscope.tech/) - AI diagnosis for targeted maintenance _[closed source]_
  - [conference-hall](https://github.com/bpetetot/conference-hall) - A call for paper project _[open source]_
  - [k-mille](https://github.com/alakarteio/k-mille/) - alakarteio assistant _[open source]_
+
+# Deprecated modules
+| packages | description | documentation | last version | why |
+| -- | -- | -- | -- | -- |
+| [`@k-ramel/driver-redux-little-router`](https://github.com/alakarteio/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | redux-little-router wrapper | [documentation](https://github.com/alakarteio/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | 1.2.0 | [redux-little-router is deprecated](https://github.com/FormidableLabs/redux-little-router) |
 
 # About ![alakarteio](http://alakarte.io/assets/img/logo.markdown.png)
 **alakarteio** is created by two passionate french developers.
