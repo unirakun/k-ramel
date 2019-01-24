@@ -18,7 +18,6 @@
     "reactions"
   ],
   "dependencies": {
-    "@k-ramel/driver-http": "^1.4.0",
     "k-redux-factory": "6.0.2",
     "redux": "4.0.1"
   },
