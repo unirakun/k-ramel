@@ -392,9 +392,7 @@ Array [
     "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
-    "drivers": Object {
-      "http": [Function],
-    },
+    "drivers": Object {},
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -418,9 +416,7 @@ Array [
     "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
-    "drivers": Object {
-      "http": [Function],
-    },
+    "drivers": Object {},
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -431,9 +427,7 @@ Array [
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
-  Object {
-    "http": [Function],
-  },
+  Object {},
 ]
 `;
 
@@ -447,9 +441,7 @@ Array [
     "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
-    "drivers": Object {
-      "http": [Function],
-    },
+    "drivers": Object {},
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -460,9 +452,7 @@ Array [
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
-  Object {
-    "http": [Function],
-  },
+  Object {},
 ]
 `;
 
@@ -476,9 +466,7 @@ Array [
     "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
-    "drivers": Object {
-      "http": [Function],
-    },
+    "drivers": Object {},
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -489,9 +477,7 @@ Array [
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
-  Object {
-    "http": [Function],
-  },
+  Object {},
 ]
 `;
 
@@ -505,9 +491,7 @@ Array [
     "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
-    "drivers": Object {
-      "http": [Function],
-    },
+    "drivers": Object {},
     "getState": [Function],
     "listeners": Object {
       "add": [Function],
@@ -518,9 +502,7 @@ Array [
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
-  Object {
-    "http": [Function],
-  },
+  Object {},
 ]
 `;
 
