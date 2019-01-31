@@ -389,6 +389,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {},
@@ -398,6 +399,7 @@ Array [
       "remove": [Function],
     },
     "replaceReducer": [Function],
+    "reset": [Function],
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
@@ -411,6 +413,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {},
@@ -420,6 +423,7 @@ Array [
       "remove": [Function],
     },
     "replaceReducer": [Function],
+    "reset": [Function],
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
@@ -434,6 +438,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {},
@@ -443,6 +448,7 @@ Array [
       "remove": [Function],
     },
     "replaceReducer": [Function],
+    "reset": [Function],
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
@@ -457,6 +463,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {},
@@ -466,6 +473,7 @@ Array [
       "remove": [Function],
     },
     "replaceReducer": [Function],
+    "reset": [Function],
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
@@ -480,6 +488,7 @@ Array [
     "type": "@@krf/SET>CONFIG",
   },
   Object {
+    "RESET": "@@krml/RESET",
     "config": [Function],
     "dispatch": [Function],
     "drivers": Object {},
@@ -489,6 +498,7 @@ Array [
       "remove": [Function],
     },
     "replaceReducer": [Function],
+    "reset": [Function],
     "subscribe": [Function],
     Symbol(observable): [Function],
   },
@@ -625,5 +635,73 @@ exports[`redux devtools should not add redux devtools to middlewares [production
 Object {
   "devToolsEnhancer": Array [],
   "devToolsExtension": Array [],
+}
+`;
+
+exports[`reset should not auto dispatch 1`] = `
+Object {
+  "action": Object {
+    "payload": undefined,
+    "type": "@@krml/RESET",
+  },
+  "diffPaths": Array [
+    "data.nested.current",
+    "data.nested.other.reducer",
+    "data.other",
+    "ui.title",
+  ],
+}
+`;
+
+exports[`reset should reset a single reducer 1`] = `
+Object {
+  "action": Object {
+    "payload": "data.nested.current",
+    "type": "@@krml/RESET",
+  },
+  "diffPaths": Array [
+    "data.nested.current",
+  ],
+}
+`;
+
+exports[`reset should reset all state 1`] = `
+Object {
+  "action": Object {
+    "payload": undefined,
+    "type": "@@krml/RESET",
+  },
+  "diffPaths": Array [
+    "data.nested.current",
+    "data.nested.other.reducer",
+    "data.other",
+    "ui.title",
+  ],
+}
+`;
+
+exports[`reset should reset custom reducers 1`] = `
+Object {
+  "action": Object {
+    "payload": undefined,
+    "type": "@@krml/RESET",
+  },
+  "diffPaths": Array [
+    "data.custom",
+    "ui",
+  ],
+}
+`;
+
+exports[`reset should reset part of the state 1`] = `
+Object {
+  "action": Object {
+    "payload": "data.nested",
+    "type": "@@krml/RESET",
+  },
+  "diffPaths": Array [
+    "data.nested.current",
+    "data.nested.other.reducer",
+  ],
 }
 `;
