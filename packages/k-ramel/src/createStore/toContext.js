@@ -40,7 +40,13 @@ export default (root, store) => {
     const nextPath = `${path ? `${path}.` : ''}${name}`
     const reducer = getFromPath(root, nextPath)
 
-    // - leaf
+    // - leaf (RESET action)
+    if (name === 'RESET') return reducer
+
+    // - leaf (custom reducer)
+    if (typeof reducer === 'function' && reducer.krfType === undefined) return reducer
+
+    // - leaf (k-redux-factory)
     if (reducer.krfType !== undefined) {
       const keys = keysConfig[reducer.krfType]
       const [actions, selectors] = keys
