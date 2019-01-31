@@ -19,6 +19,12 @@ export default (driver) => {
         ['Content-Type', 'application/json'],
       ])
 
+      const defaultMockedFetch = () => jest.fn((url, options) => Promise.resolve({
+        url,
+        headers: new Map(),
+        options,
+      }))
+
       const { fetch } = (global || window)
       afterEach(() => {
         if (global) global.fetch = fetch
@@ -27,7 +33,8 @@ export default (driver) => {
 
       it('should stringify data but not override content-type', async () => {
         // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        const mockedFetch = defaultMockedFetch();
+
         (global || window).fetch = mockedFetch
 
         // dispatch spy
@@ -63,7 +70,7 @@ export default (driver) => {
 
       it('should stringify data with method helper', async () => {
         // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        const mockedFetch = defaultMockedFetch();
         (global || window).fetch = mockedFetch
 
         // dispatch spy
@@ -99,7 +106,7 @@ export default (driver) => {
 
       it('should works with method helper (OPTIONS)', async () => {
         // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        const mockedFetch = defaultMockedFetch();
         (global || window).fetch = mockedFetch
 
         // dispatch spy
@@ -135,7 +142,7 @@ export default (driver) => {
 
       it('should set customs options', async () => {
         // mock
-        const mockedFetch = jest.fn(() => Promise.resolve({}));
+        const mockedFetch = defaultMockedFetch();
         (global || window).fetch = mockedFetch
 
         // wait
@@ -196,7 +203,7 @@ export default (driver) => {
 
       it('should set and clear Authorization', async () => {
         // mock
-        const mockedFetch = jest.fn(() => Promise.resolve({}));
+        const mockedFetch = defaultMockedFetch();
         (global || window).fetch = mockedFetch
 
         // wait
@@ -326,6 +333,7 @@ export default (driver) => {
       it('should fetch data and dispatch a FAILED', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({
+          headers: new Map(),
           status: 404,
           url,
         }));
@@ -442,7 +450,7 @@ export default (driver) => {
 
       it('should not stringify data when data is formData', async () => {
         // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        const mockedFetch = defaultMockedFetch();
         (global || window).fetch = mockedFetch
 
         // dispatch spy
@@ -482,7 +490,7 @@ export default (driver) => {
 
       it('should add context on http response', async () => {
         // mock
-        const mockedFetch = jest.fn((url, options) => Promise.resolve({ url, options }));
+        const mockedFetch = defaultMockedFetch();
         (global || window).fetch = mockedFetch
 
         // dispatch spy

@@ -39,8 +39,9 @@ Object {
           "other": "context",
         },
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {},
         "payload": Object {
+          "headers": Map {},
           "options": Object {
             "headers": Object {},
             "method": "GET",
@@ -204,8 +205,9 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {},
         "payload": Object {
+          "headers": Map {},
           "status": 404,
           "url": "http://google.fr",
         },
@@ -269,8 +271,9 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {},
         "payload": Object {
+          "headers": Map {},
           "options": Object {
             "body": FormData {
               Symbol(impl): FormDataImpl {
@@ -534,8 +537,9 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {},
         "payload": Object {
+          "headers": Map {},
           "options": Object {
             "body": "{\\"some\\":\\"data\\"}",
             "headers": Object {
@@ -601,8 +605,9 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {},
         "payload": Object {
+          "headers": Map {},
           "options": Object {
             "body": "{\\"some\\":\\"data\\"}",
             "headers": Object {
@@ -665,8 +670,9 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {},
         "payload": Object {
+          "headers": Map {},
           "options": Object {
             "headers": Object {},
             "method": "OPTIONS",

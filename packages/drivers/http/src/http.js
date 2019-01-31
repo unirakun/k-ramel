@@ -36,18 +36,16 @@ const getDriver = (store) => {
         raw = await (global || window).fetch(...fetchArgs)
         data = raw
 
-        if (raw.headers) {
-          headers = fromEntries(raw.headers.entries())
+        headers = fromEntries(raw.headers.entries())
 
-          if (raw.headers.has('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
-            data = await raw.json()
-          }
+        if (raw.headers.has('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
+          data = await raw.json()
+        }
 
-          if (raw.headers.has('Content-Disposition')) {
-            data = {
-              blob: await raw.blob(),
-              filename: getFilename(raw.headers.get('Content-Disposition')),
-            }
+        if (raw.headers.has('Content-Disposition')) {
+          data = {
+            blob: await raw.blob(),
+            filename: getFilename(raw.headers.get('Content-Disposition')),
           }
         }
       } catch (ex) {
