@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`drivers/form [custom path and key] should add or update fields (errors) in a given form 1`] = `
+Object {
+  "errors": Object {
+    "before": "field-error-updated",
+    "new": "field-error",
+    "should": "still be there (error)",
+  },
+}
+`;
+
+exports[`drivers/form [custom path and key] should add or update fields (values) in a given form 1`] = `
+Object {
+  "values": Object {
+    "before": "field-value-updated",
+    "new": "field-value",
+    "should": "still be there",
+  },
+}
+`;
+
 exports[`drivers/form [custom path and key] should check if form exists 1`] = `
 Object {
   "exists": true,
@@ -474,6 +494,26 @@ Object {
         },
       },
     },
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should add or update fields (errors) in a given form 1`] = `
+Object {
+  "errors": Object {
+    "before": "field-error-updated",
+    "new": "field-error",
+    "should": "still be there (error)",
+  },
+}
+`;
+
+exports[`drivers/form [default path and key] should add or update fields (values) in a given form 1`] = `
+Object {
+  "values": Object {
+    "before": "field-value-updated",
+    "new": "field-value",
+    "should": "still be there",
   },
 }
 `;

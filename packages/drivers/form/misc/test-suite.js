@@ -49,6 +49,7 @@ export default (driver) => {
     it('should set values', () => {
       let formState
       runReaction(params)((action, st, { form }) => {
+        form('form-name').set({ should: 'be removed' })
         form('form-name').set(defaultValues)
         formState = st.getState()
       })
@@ -218,6 +219,32 @@ export default (driver) => {
       // assert
       expect({
         formNames,
+      }).toMatchSnapshot()
+    })
+
+    it('should add or update fields (values) in a given form', () => {
+      let values
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set({ before: 'field-value', should: 'still be there' })
+        form('form-name').addOrUpdate({ before: 'field-value-updated', new: 'field-value' })
+        values = form('form-name').get()
+      })
+      // assert
+      expect({
+        values,
+      }).toMatchSnapshot()
+    })
+
+    it('should add or update fields (errors) in a given form', () => {
+      let errors
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').setErrors({ before: 'field-error', should: 'still be there (error)' })
+        form('form-name').addOrUpdateErrors({ before: 'field-error-updated', new: 'field-error' })
+        errors = form('form-name').getErrors()
+      })
+      // assert
+      expect({
+        errors,
       }).toMatchSnapshot()
     })
   }

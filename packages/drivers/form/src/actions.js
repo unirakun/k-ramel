@@ -24,7 +24,7 @@ export default ({ keyName, keyFields }) => state => (name) => {
     addOrUpdate: addOrUpdate('values'),
     // errors
     setErrors: set('errors'),
-    addOrUpdateErrors: addOrUpdate('values'),
+    addOrUpdateErrors: addOrUpdate('errors'),
     resetErrors: () => state.errors.remove(name),
     // both values and errors
     reset: () => {
