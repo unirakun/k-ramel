@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux'
+import reseter from './reseter'
 
 export default (root) => {
-  const subcombine = (current) => {
+  const subcombine = (current, currentPath) => {
     const reducers = Object
       .keys(current)
       .map((key) => {
         const cur = current[key]
-        if (typeof cur === 'function') return ({ [key]: cur })
-        return ({ [key]: subcombine(cur) })
+        const path = `${currentPath ? `${currentPath}.` : ''}${key}`
+        if (typeof cur === 'function') return ({ [key]: reseter(cur, path) })
+        return ({ [key]: subcombine(cur, path) })
       })
       .reduce(
         (acc, curr) => ({ ...acc, ...curr }),
@@ -17,5 +19,5 @@ export default (root) => {
     return combineReducers(reducers)
   }
 
-  return subcombine(root)
+  return subcombine(root, '')
 }
