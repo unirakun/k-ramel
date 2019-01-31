@@ -35,6 +35,199 @@ Hey! If you come from an early version of k-ramel and want to upgrade, you can r
  - @k-ramel/driver-http: `regeneratorRuntime`
  - @k-ramel/driver-redux-form: `regeneratorRuntime`
 
+## Getting started
+This getting started shows you how to use k-ramel with React, but you can use k-ramel with something else (or as a standalone).
+
+1. Create the store
+```diff
++import { createStore, types } from 'k-ramel'
++
++const store = createStore({
++  todos: types.keyValue(),
++})
+```
+
+Here we created a store with `todos` that is a keyValue types.
+
+2. Use the store
+```diff
+import { createStore, types } from 'k-ramel'
+
+const store = createStore({
+  todos: types.keyValue(),
+})
+
++store.todos.add({ id: 2, label: 'finish the documentation' }) // a.
++store.todos.add({ id: 32, label: 'an other' })
+
++console.log(store.todos.get(2)) // b.
+```
+
+Now you can use the store :
+  - (a) We added a todo, the id is the default key used by keyValue
+  - (b) We retrieve (and log) the todo that has the key equals to `2`
+
+3. Provide the store to React (context)
+```diff
+import { createStore, types } from 'k-ramel'
++import { provider } from '@k-ramel/react'
+
+const store = createStore({
+  todos: types.keyValue(),
+})
+
+store.todos.add({ id: 2, label: 'finish the documentation' })
+store.todos.add({ id: 32, label: 'an other' })
+
+console.log(store.todos.get(2))
++
++const App = () => (
++  <div>Hey!</div>
++)
++
++export default provider(store)(App)
+```
+
+Now the store is provided in React context, we can use it and bind our a component to it!
+
+4. Bind a React component
+```diff
+import { createStore, types } from 'k-ramel'
+-import { provider } from '@k-ramel/react'
++import { provider, inject } from '@k-ramel/react'
+
+const store = createStore({
+  todos: types.keyValue(),
+})
+
+store.todos.add({ id: 2, label: 'finish the documentation' })
+store.todos.add({ id: 32, label: 'an other' })
+
+console.log(store.todos.get(2))
++
++ // a.
++const Todos = ({ todos }) => (
++  <ul>
++    {todos.map(({ label }) => (
++      <li>{label}</li>
++    ))}
++  </ul>
++)
++
++ // b.
++const TodosContainer = inject((store) => {
++  return {
++    todos: store.todos.getAsArray(),
++  }
++})
+
+const App = ({ todos }) => (
+-  <div>Hey!</div>
++  <TodosContainer /> {/* c. */}
+)
+
+export default provider(store)(App)
+```
+
+We create a classical React Component (a) and inject todos (as array) in its props (b), and finally we use this new component in our App (c)
+
+5. Add a new todos (store mutation)
+```diff
+import { createStore, types } from 'k-ramel'
+import { provider, inject } from '@k-ramel/react'
+
+const store = createStore({
+  todos: types.keyValue(),
+})
+
+store.todos.add({ id: 2, label: 'finish the documentation' })
+store.todos.add({ id: 32, label: 'an other' })
+
+console.log(store.todos.get(2))
+
+const Todos = ({ todos }) => (
+  <ul>
+    {todos.map(({ label }) => (
+      <li>{label}</li>
+    ))}
+  </ul>
+)
+
+const TodosContainer = inject((store) => {
+  return {
+    todos: store.todos.getAsArray(),
++    // a.
++    onClick: () => {
++      // b.
++      store.todos.add({ id: Math.random(), label: 'Yo! I am a new todo!' })
++    }
+  }
+})
+
+const App = ({ todos, onClick }) => (
++  <div>
++    <button onClick={onClick}>Add a todo!</button> {/* c. */}
++
+    <TodosContainer />
++  </div>
+)
+
+export default provider(store)(App)
+```
+
+When we click on the new button (c), the function injected (a) is triggered. This function ask for a mutation (b), which add a new todo (the label is hardcoded here)
+
+6. Listen to the todo addition
+```diff
+import { createStore, types } from 'k-ramel'
+import { provider, inject } from '@k-ramel/react'
+
+const store = createStore({
+  todos: types.keyValue(),
+})
+
+store.todos.add({ id: 2, label: 'finish the documentation' })
+store.todos.add({ id: 32, label: 'an other' })
+
+console.log(store.todos.get(2))
+
+const Todos = ({ todos }) => (
+  <ul>
+    {todos.map(({ label }) => (
+      <li>{label}</li>
+    ))}
+  </ul>
+)
+
+const TodosContainer = inject((store) => {
+  return {
+    todos: store.todos.getAsArray(),
+    onClick: () => {
+      store.todos.add({ id: Math.random(), label: 'Yo! I am a new todo!' })
+    }
+  }
+})
+
+const App = ({ todos, onClick }) => (
+  <div>
+    <button onClick={onClick}>Add a todo!</button> {/* c. */}
+
+    <TodosContainer />
+  </div>
+)
++
++const listeners = [
++  when('@@krf>ADD>TODOS)(() => {
++    console.log('todos!')
++  })
++]
++
++const AppContainer = listen(listeners)(App)
+
+-export default provider(store)(App)
++export default provider(store)(AppContainer)
+```
+
 ## Ecosystem
 You can pick some modules based on your usage, or even write your own.
 \
