@@ -83,6 +83,9 @@ These functions are used right into the `driver.form` field without giving a nam
 | `addOrUpdate([{ name: <string>, values: <object> }, ...])` | add or update `values` to the form identified by `name` |
 | `resetErrors([<string>, ...])` | reset errors for all the given form names |
 | `reset([<string>, ...])` | reset errors and values for all the given form names |
+| --- | --- |
+| `find(<regexp>)` | find all form names that matches the given `regexp` |
+
 
 ## Helpers
   - `drivers.form.getUpdatedValues(action)` will return an _object_ of all updated pair (field name -> field value) for the given action.
