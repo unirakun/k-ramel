@@ -53,6 +53,37 @@ const mapStore = inject((store, { formName, field }, drivers) => {
 export default mapStore(Component)
 ```
 
+## API
+### Local to a form
+These functions are available on form that is returned by this call: `driver.form(formName)` where `formName` is you form name.
+
+| function | description |
+| --- | --- |
+| `set(<object>)` | set values to the `formName` form, and remove the old ones |
+| `update(fieldName)(value)` | update the value of the given fieldName to the `formName` form |
+| `addOrUpdate(<object>)` | add or update given values to the `formName` form |
+| `setErrors(<object>)` | set errors to the `formName` form, and remove the old ones |
+| `addOrUpdateErrors(<object>)` | add or update errors to the `formName` form |
+| `resetErrors()` | remove all errors to the `formName` form |
+| `reset()` | remove all errors and values to the `formName` form |
+| --- | --- |
+| `exists()` | test that the `formName` form exists |
+| `get()` | retrieve the key/value object from the `formName` form, all fields are retrieved |
+| `get(<string>)` | retrieve the value of the given field name from the `formName` form |
+| `getErrors()` | retrieve the key/value error object from the `formName` form |
+| `getErrors(<string>)` | retrieve error of the given field name from the `formName` form |
+
+### Batched to all given forms at once
+
+These functions are used right into the `driver.form` field without giving a name to it.
+
+| function | description |
+| --- | --- |
+| `set([{ name: <string>, values: <object> }, ...])` | set `values` to the form identified by `name`, older values are removed |
+| `addOrUpdate([{ name: <string>, values: <object> }, ...])` | add or update `values` to the form identified by `name` |
+| `resetErrors([<string>, ...])` | reset errors for all the given form names |
+| `reset([<string>, ...])` | reset errors and values for all the given form names |
+
 ## Helpers
   - `drivers.form.getUpdatedValues(action)` will return an _object_ of all updated pair (field name -> field value) for the given action.
   - `drivers.form.getUpdatedEntries(action)` will return an _array_ of all updated pair (field name -> field value) for the given action.

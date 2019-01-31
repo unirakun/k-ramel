@@ -64,7 +64,7 @@ export default (driver) => {
       runReaction(params)((action, st, { form }) => {
         form('form-name').setErrors(defaultValues)
         errors = st.getState()
-        form('form-name').clearErrors()
+        form('form-name').resetErrors()
         cleared = st.getState()
       })
       // assert
@@ -74,14 +74,14 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should remove form', () => {
+    it('should remove form', () => { // TODO: remove -> reset
       let formValues
       let removed
       runReaction(params)((action, st, { form }) => {
         form('form-name').set(defaultValues)
         form('form-name').setErrors(defaultValues)
         formValues = st.getState()
-        form('form-name').remove()
+        form('form-name').reset()
         removed = st.getState()
       })
       // assert
@@ -91,7 +91,7 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should remove form with an array of formName', () => {
+    it('should remove form with an array of formName', () => { // TODO: remove -> reset
       let formValues
       let removed
       runReaction(params)((action, st, { form }) => {
@@ -102,7 +102,7 @@ export default (driver) => {
         form('notRemove').set(defaultValues)
         form('notRemove').setErrors(defaultValues)
         formValues = st.getState()
-        form.remove(['form1', 'form2'])
+        form.reset(['form1', 'form2'])
         removed = st.getState()
       })
       // assert
@@ -206,7 +206,7 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should check if form exists', () => {
+    it('should check if form exists', () => { // TODO: forms
       let formNames
       runReaction(params)((action, st, { form }) => {
         form('form-1').set(defaultValues)
@@ -295,7 +295,7 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
-      it('should clearErrors errors', () => {
+      it('should clearErrors errors', () => { // TODO: clearErrors -> resetErrors
         // run implementation
         let state
         runReaction()((action, store, { form }) => {
@@ -310,7 +310,7 @@ export default (driver) => {
           ])
 
           // remove errors
-          form.clearErrors(['form-1', 'form-2'])
+          form.resetErrors(['form-1', 'form-2'])
 
           state = {
             values: store.form.values.get(),
@@ -324,7 +324,7 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
-      it('should remove forms', () => {
+      it('should remove forms', () => { // TODO: remove -> reset
         // run implementation
         let state
         runReaction()((action, store, { form }) => {
@@ -342,7 +342,7 @@ export default (driver) => {
           ])
 
           // remove forms
-          form.remove(['form-1', 'form-2'])
+          form.reset(['form-1', 'form-2'])
 
           state = {
             values: store.form.values.get(),

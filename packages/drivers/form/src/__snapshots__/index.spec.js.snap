@@ -299,7 +299,7 @@ Object {
       "form": Object {
         "errors": Object {
           "data": Array [],
-          "initialized": false,
+          "initialized": true,
         },
         "values": Object {
           "data": Array [],
@@ -775,7 +775,7 @@ Object {
     "form": Object {
       "errors": Object {
         "data": Array [],
-        "initialized": false,
+        "initialized": true,
       },
       "values": Object {
         "data": Array [],
