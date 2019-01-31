@@ -71,7 +71,7 @@ const getDriver = (store) => {
         ownFetch[method.toLowerCase()] = (url, data, options = {}) => {
           const headers = { ...options.headers }
           let appliedOptions = options
-          if (!['GET', 'HEAD'].includes(method) && data && ['object', 'array'].includes(typeof data)) {
+          if (data && ['object', 'array'].includes(typeof data)) {
             // attach data as JSON object
             let body = data
             if (!(data instanceof FormData)) {
