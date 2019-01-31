@@ -3,6 +3,7 @@ import reduxFactory from './reduxFactory'
 import toContext from './toContext'
 import combine from './combine'
 import enhanceRedux from './enhanceRedux'
+import addReset from './addReset'
 
 const defaultOptions = {
   hideRedux: true,
@@ -63,6 +64,9 @@ export default (definition, options = defaultOptions) => {
     init,
     enhancer,
   )
+
+  // add resets actions
+  reducerTree = addReset(innerOptions)(reducerTree, reduxStore)
 
   // convert to a contextualized version
   if (hideRedux) {
