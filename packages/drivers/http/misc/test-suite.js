@@ -15,6 +15,10 @@ export default (driver) => {
 
   describe('drivers', () => {
     describe('http', () => {
+      const headers = new Map([
+        ['Content-Type', 'application/json'],
+      ])
+
       const { fetch } = (global || window)
       afterEach(() => {
         if (global) global.fetch = fetch
@@ -246,7 +250,7 @@ export default (driver) => {
       it('should safely fail to parse json', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({
-          headers: { get: () => 'application/json' },
+          headers,
           json: () => { throw new Error(`oups-json-${url}`) },
         }));
         (global || window).fetch = mockedFetch
@@ -361,7 +365,7 @@ export default (driver) => {
       it('should fetch data and calls json()', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({
-          headers: { get: () => 'application/json' },
+          headers,
           json: () => Promise.resolve({ result: url }),
         }));
         (global || window).fetch = mockedFetch
@@ -400,6 +404,7 @@ export default (driver) => {
       it('should fetch data an trigger common events', async () => {
         // mock
         const mockedFetch = jest.fn(url => Promise.resolve({
+          headers,
           json: () => Promise.resolve({ result: url }),
         }));
         (global || window).fetch = mockedFetch
@@ -552,5 +557,90 @@ export default (driver) => {
         fetch: mockedFetch.mock.calls,
       }).toMatchSnapshot()
     })
+
+    it('should fetch file', async () => {
+      // mock
+      const mockedFetch = jest.fn((url, options) => Promise.resolve({
+        url,
+        options,
+        headers: new Map([
+          ['Content-Type', 'application/pdf'],
+          ['Content-Disposition', 'attachment; filename="file.pdf"'],
+        ]),
+        blob: () => Promise.resolve('my file content'),
+      }));
+      (global || window).fetch = mockedFetch
+
+      // dispatch spy
+      const spy = jest.fn()
+
+      // wait
+      let resolver
+      const wait = new Promise((resolve) => { resolver = resolve })
+
+      // store
+      const store = createStore({
+        config: { type: 'simple.object' },
+      }, {
+        listeners: [
+          when('DISPATCHED')(async (action, st, { http }) => {
+            await http('GOOGLE', { context: 1, other: 'context' }).get('http://google.fr')
+            resolver()
+          }),
+          when(() => true)(action => spy(action)),
+        ],
+      })
+
+      // dispatch event
+      store.dispatch({ type: 'DISPATCHED' })
+      await wait
+
+      // assert
+      expect({
+        dispatch: spy.mock.calls,
+        fetch: mockedFetch.mock.calls,
+      }).toMatchSnapshot()
+    })
+  })
+
+  it('should return raw response when content-type is not application/json', async () => {
+    // mock
+    const mockedFetch = jest.fn((url, options) => Promise.resolve({
+      url,
+      options,
+      headers: new Map([['Content-Type', 'text/plain']]),
+      text: () => Promise.resolve('my body content'),
+    }));
+    (global || window).fetch = mockedFetch
+
+    // dispatch spy
+    const spy = jest.fn()
+
+    // wait
+    let resolver
+    const wait = new Promise((resolve) => { resolver = resolve })
+
+    // store
+    const store = createStore({
+      config: { type: 'simple.object' },
+    }, {
+      listeners: [
+        when('DISPATCHED')(async (action, st, { http }) => {
+          await http('GOOGLE', { context: 1, other: 'context' }).get('http://google.fr')
+          resolver()
+        }),
+        when(() => true)(action => spy(action)),
+      ],
+    })
+
+    // dispatch event
+    store.dispatch({ type: 'DISPATCHED' })
+    await wait
+
+    // assert
+    expect({
+      dispatch: spy.mock.calls,
+      fetch: mockedFetch.mock.calls,
+    }).toMatchSnapshot()
   })
 }

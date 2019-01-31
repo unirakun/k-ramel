@@ -96,9 +96,11 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
         "payload": Object {
-          "json": [Function],
+          "result": "http://google.fr",
         },
         "status": undefined,
         "type": "@@http/GOOGLE>GET>ENDED",
@@ -148,7 +150,9 @@ Object {
       Object {
         "context": undefined,
         "fetch": undefined,
-        "headers": undefined,
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
         "payload": Object {
           "result": "http://google.fr",
         },
@@ -349,7 +353,9 @@ Object {
             "headers": Object {},
           },
         ],
-        "headers": undefined,
+        "headers": Object {
+          "Content-Type": "application/json",
+        },
         "payload": [Error: oups-json-http://google.fr],
         "status": undefined,
         "type": "@@http/GOOGLE>GET>FAILED",
@@ -729,6 +735,140 @@ Object {
         },
         "payload": Object {
           "actual": "data",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+        "method": "GET",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`drivers should fetch file 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+        ],
+        "headers": undefined,
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": undefined,
+        "headers": Object {
+          "Content-Disposition": "attachment; filename=\\"file.pdf\\"",
+          "Content-Type": "application/pdf",
+        },
+        "payload": Object {
+          "blob": "my file content",
+          "filename": "file.pdf",
+        },
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>ENDED",
+      },
+    ],
+  ],
+  "fetch": Array [
+    Array [
+      "http://google.fr",
+      Object {
+        "headers": Object {},
+        "method": "GET",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`should return raw response when content-type is not application/json 1`] = `
+Object {
+  "dispatch": Array [
+    Array [
+      Object {
+        "type": "@@krml/INIT",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": Array [
+          "http://google.fr",
+          Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+        ],
+        "headers": undefined,
+        "payload": undefined,
+        "status": undefined,
+        "type": "@@http/GOOGLE>GET>STARTED",
+      },
+    ],
+    Array [
+      Object {
+        "type": "DISPATCHED",
+      },
+    ],
+    Array [
+      Object {
+        "context": Object {
+          "context": 1,
+          "other": "context",
+        },
+        "fetch": undefined,
+        "headers": Object {
+          "Content-Type": "text/plain",
+        },
+        "payload": Object {
+          "headers": Map {
+            "Content-Type" => "text/plain",
+          },
+          "options": Object {
+            "headers": Object {},
+            "method": "GET",
+          },
+          "text": [Function],
+          "url": "http://google.fr",
         },
         "status": undefined,
         "type": "@@http/GOOGLE>GET>ENDED",

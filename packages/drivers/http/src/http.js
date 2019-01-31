@@ -1,5 +1,7 @@
 // TODO: once Object.fromEntries reach the JS Standard, remove this
 const fromEntries = iterable => Object.assign({}, ...Array.from(iterable, ([key, val]) => ({ [key]: val })))
+// extract filename of content-disposition
+const getFilename = string => /filename="(.*)"/g.exec(string)[1]
 
 const dispatchFactory = store => (name, context) => method => (
   (event, payload, status, headers, fetch) => store.dispatch({
@@ -34,12 +36,19 @@ const getDriver = (store) => {
         raw = await (global || window).fetch(...fetchArgs)
         data = raw
 
-        if (raw.headers && raw.headers.entries) {
+        if (raw.headers) {
           headers = fromEntries(raw.headers.entries())
-        }
 
-        if (raw.headers && raw.headers.get('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
-          data = await raw.json()
+          if (raw.headers.has('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
+            data = await raw.json()
+          }
+
+          if (raw.headers.has('Content-Disposition')) {
+            data = {
+              blob: await raw.blob(),
+              filename: getFilename(raw.headers.get('Content-Disposition')),
+            }
+          }
         }
       } catch (ex) {
         dispatch('FAILED', ex, (raw || {}).status, headers, fetchArgs)
@@ -62,8 +71,7 @@ const getDriver = (store) => {
         ownFetch[method.toLowerCase()] = (url, data, options = {}) => {
           const headers = { ...options.headers }
           let appliedOptions = options
-
-          if (data && ['object', 'array'].includes(typeof data)) {
+          if (!['GET', 'HEAD'].includes(method) && data && ['object', 'array'].includes(typeof data)) {
             // attach data as JSON object
             let body = data
             if (!(data instanceof FormData)) {
