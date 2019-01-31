@@ -74,7 +74,7 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should remove form', () => { // TODO: remove -> reset
+    it('should reset form', () => {
       let formValues
       let removed
       runReaction(params)((action, st, { form }) => {
@@ -91,7 +91,7 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should remove form with an array of formName', () => { // TODO: remove -> reset
+    it('should reset form with an array of formName', () => {
       let formValues
       let removed
       runReaction(params)((action, st, { form }) => {
@@ -206,7 +206,7 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should check if form exists', () => { // TODO: forms
+    it('should check if forms exists', () => {
       let formNames
       runReaction(params)((action, st, { form }) => {
         form('form-1').set(defaultValues)
@@ -295,7 +295,7 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
-      it('should clearErrors errors', () => { // TODO: clearErrors -> resetErrors
+      it('should resetErrors errors', () => {
         // run implementation
         let state
         runReaction()((action, store, { form }) => {
@@ -324,7 +324,7 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
-      it('should remove forms', () => { // TODO: remove -> reset
+      it('should reset forms', () => {
         // run implementation
         let state
         runReaction()((action, store, { form }) => {

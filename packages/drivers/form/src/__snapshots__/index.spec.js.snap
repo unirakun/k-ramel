@@ -7,7 +7,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [custom path and key] should check if form exists 2`] = `
+exports[`drivers/form [custom path and key] should check if forms exists 1`] = `
 Object {
   "formNames": Array [
     "form-1",
@@ -95,7 +95,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [custom path and key] should remove form 1`] = `
+exports[`drivers/form [custom path and key] should reset form 1`] = `
 Object {
   "formValues": Object {
     "ui": Object {
@@ -156,7 +156,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [custom path and key] should remove form with an array of formName 1`] = `
+exports[`drivers/form [custom path and key] should reset form with an array of formName 1`] = `
 Object {
   "formValues": Object {
     "ui": Object {
@@ -485,7 +485,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [default path and key] should check if form exists 2`] = `
+exports[`drivers/form [default path and key] should check if forms exists 1`] = `
 Object {
   "formNames": Array [
     "form-1",
@@ -573,7 +573,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [default path and key] should remove form 1`] = `
+exports[`drivers/form [default path and key] should reset form 1`] = `
 Object {
   "formValues": Object {
     "form": Object {
@@ -634,7 +634,7 @@ Object {
 }
 `;
 
-exports[`drivers/form [default path and key] should remove form with an array of formName 1`] = `
+exports[`drivers/form [default path and key] should reset form with an array of formName 1`] = `
 Object {
   "formValues": Object {
     "form": Object {
@@ -956,31 +956,7 @@ Object {
 }
 `;
 
-exports[`drivers/form bulk mode should clearErrors errors 1`] = `
-Object {
-  "state": Object {
-    "errors": Object {},
-    "values": Object {
-      "form-1": Object {
-        "@@form-fields": Array [
-          "lastname",
-        ],
-        "@@form-name": "form-1",
-        "lastname": "crespel",
-      },
-      "form-2": Object {
-        "@@form-fields": Array [
-          "firstname",
-        ],
-        "@@form-name": "form-2",
-        "firstname": "fabien",
-      },
-    },
-  },
-}
-`;
-
-exports[`drivers/form bulk mode should remove forms 1`] = `
+exports[`drivers/form bulk mode should reset forms 1`] = `
 Object {
   "state": Object {
     "errors": Object {
@@ -999,6 +975,30 @@ Object {
         ],
         "@@form-name": "form-3",
         "firstname": "delphine",
+      },
+    },
+  },
+}
+`;
+
+exports[`drivers/form bulk mode should resetErrors errors 1`] = `
+Object {
+  "state": Object {
+    "errors": Object {},
+    "values": Object {
+      "form-1": Object {
+        "@@form-fields": Array [
+          "lastname",
+        ],
+        "@@form-name": "form-1",
+        "lastname": "crespel",
+      },
+      "form-2": Object {
+        "@@form-fields": Array [
+          "firstname",
+        ],
+        "@@form-name": "form-2",
+        "firstname": "fabien",
       },
     },
   },
