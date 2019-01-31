@@ -18,6 +18,16 @@ Because `k-ramel`:
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel) footprint
  - 🐛 works with redux-dev-tools
 
+## Table of content
+- [🚚 Migrating](https://github.com/alakarteio/k-ramel#migrating)
+- [📦 Modules and libs](https://github.com/alakarteio/k-ramel#modules-and-libs)
+- [🎉 Getting started](https://github.com/alakarteio/k-ramel#getting-started)
+- [📝 Ecosystem and documentation](https://github.com/alakarteio/k-ramel#ecosystem)
+- [📚 Examples](https://github.com/alakarteio/k-ramel#examples)
+- [💜 Contributors](https://github.com/alakarteio/k-ramel#contributors)
+- [💪 Known users](https://github.com/alakarteio/k-ramel#known-users)
+
+
 ## Migrating
 Hey! If you come from an early version of k-ramel and want to upgrade, you can read this [migration guide](./MIGRATION.md) 💎
 
