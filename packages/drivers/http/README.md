@@ -70,6 +70,7 @@ export const updateAfterSave = (action, store) => {
 
 ## Actions
 All emitted events have some data
+
 | field | description | type |
 |---|---|---|
 | `type` | event type | `string` |
