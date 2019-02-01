@@ -1,6 +1,9 @@
 // TODO: once Object.fromEntries reach the JS Standard, remove this
 const fromEntries = iterable => Object.assign({}, ...Array.from(iterable, ([key, val]) => ({ [key]: val })))
 
+// extract filename of content-disposition
+const getFilename = string => /filename="(.*)"/g.exec(string)[1]
+
 const dispatchFactory = store => (name, context) => method => (
   (event, payload, status, headers, fetch) => store.dispatch({
     type: `@@http/${name}>${method}>${event}`,
@@ -34,11 +37,14 @@ const getDriver = (store) => {
         raw = await (global || window).fetch(...fetchArgs)
         data = raw
 
-        if (raw.headers && raw.headers.entries) {
-          headers = fromEntries(raw.headers.entries())
-        }
+        headers = fromEntries(raw.headers.entries())
 
-        if (raw.headers && raw.headers.get('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
+        if (raw.headers.has('Content-Disposition')) {
+          data = {
+            blob: await raw.blob(),
+            filename: getFilename(raw.headers.get('Content-Disposition')),
+          }
+        } else if (raw.headers.has('Content-Type') && raw.headers.get('Content-Type').includes('json')) {
           data = await raw.json()
         }
       } catch (ex) {
