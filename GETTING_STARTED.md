@@ -17,7 +17,7 @@ But first of all, you have to install dependencies: `yarn add k-ramel @k-ramel/d
 +)
 ```
 
-Here we created a store with `todos` that is a keyValue types.
+Here we created a store with `todos` that is a keyValue type.
 
 ## 2. Use the store
 ```diff
@@ -34,7 +34,7 @@ const store = createStore({
 ```
 
 Now you can use the store :
-  - (a) We added a todo, the id is the default key used by keyValue
+  - (a) We added a todo, id is the default key used by keyValue
   - (b) We retrieve (and log) the todo that has the key equals to `2`
 
 ## 3. Provide the store to React (context)
@@ -61,7 +61,7 @@ console.log(store.todos.get(2))
 +export default provider(store)(App)
 ```
 
-Now the store is provided in React context, we can use it and bind our a component to it!
+The store is now accessible in React context, we can use it and bind a component to it!
 
 ## 4. Bind a React component
 ```diff
@@ -105,7 +105,7 @@ const App = () => (
 export default provider(store)(App)
 ```
 
-We create a classical React Component (a) and inject todos (as array) in its props (b), and finally we use this new component in our App (c)
+We create a classic React Component (a) and inject todos (as array) in its props (b), and finally we use this new component in our App (c)
 
 ## 5. Add a new todos (store mutation)
 ```diff
@@ -154,7 +154,7 @@ const App = () => (
 export default provider(store)(App)
 ```
 
-When we click on the new button (c), the function injected (a) is triggered. This function ask for a mutation (b), which add a new todo (the title is hardcoded here)
+When we click on the new button (c), the injected function (a) is called. This function ask for a mutation (b), which add a todo (the title is hardcoded here)
 
 ## 6. Listen to the todo addition
 ```diff
@@ -211,8 +211,8 @@ const App = ({ onClick }) => (
 +export default provider(store)(AppContainer)
 ```
 
-Here we opened redux-devtools, click on the button, and look at actions that are logged into redux-devtools :).\
-We see that the action `@@krf>ADD>TODOS` is the one triggered when a new todo is added.\
+Open redux-devtools, click on the button, and look the action is logged into redux-devtools :).\
+The action `@@krf>ADD>TODOS` is triggered when a new todo is added.\
 We then **listen** to this specific action, and **react** to it, here we print a message to the console.
 
 Note that you can bind listeners everywhere you want, this is convenient to add listeners to a screen, so your code logic is near the related screen!
@@ -289,7 +289,7 @@ export default provider(store)(AppContainer)
 ```
 
 First we add a new driver to **k-ramel**, the http driver. (a.) \
-Then we changed the `onClick` callback so it dispatch an empty action whose type is `@@ui/ADD_TODO>CLICKED` (b.), this action is catched into our **listeners**, and we react to it by calling an API (c.).\
+Then we change the `onClick` callback so it dispatchs an empty action whose type is `@@ui/ADD_TODO>CLICKED` (b.), this action is catched into our **listeners**, and we react to it by calling an API (c.).\
 The TODO title is hardcoded, you can see we `await` the API response, and add the todo to the store after the API responds.
 
 If you open your redux-devtools you will see that the HTTP driver trigger 2 actions (2 events) :
@@ -369,6 +369,6 @@ const AppContainer = listen(listeners)(App)
 export default provider(store)(AppContainer)
 ```
 
-We don't use **async/await** anymore but you Redux as an eventbus and react to the **ENDED** event triggered by the HTTP driver to, at the end, add the todo into the store.
+We don't use **async/await** anymore but we use Redux as an eventbus and react to the **ENDED** event triggered by the HTTP driver to add the todo into the store.
 
 You can find the last version here in [examples/getting_started](https://github.com/alakarteio/k-ramel/tree/master/examples/getting_started).
