@@ -18,6 +18,16 @@ Because `k-ramel`:
  - 👌 has a [light bundle size](https://bundlephobia.com/result?p=k-ramel) footprint
  - 🐛 works with redux-dev-tools
 
+## Table of content
+- [🚚 Migrating](https://github.com/alakarteio/k-ramel#migrating)
+- [📦 Modules and libs](https://github.com/alakarteio/k-ramel#modules-and-libs)
+- [🎉 Getting started](https://github.com/alakarteio/k-ramel#getting-started)
+- [📝 Ecosystem and documentation](https://github.com/alakarteio/k-ramel#ecosystem)
+- [📚 Examples](https://github.com/alakarteio/k-ramel#examples)
+- [💜 Contributors](https://github.com/alakarteio/k-ramel#contributors)
+- [💪 Known users](https://github.com/alakarteio/k-ramel#known-users)
+
+
 ## Migrating
 Hey! If you come from an early version of k-ramel and want to upgrade, you can read this [migration guide](./MIGRATION.md) 💎
 
@@ -34,6 +44,31 @@ Hey! If you come from an early version of k-ramel and want to upgrade, you can r
 ⚠️Note that some packages have dependencies:
  - @k-ramel/driver-http: `regeneratorRuntime`
  - @k-ramel/driver-redux-form: `regeneratorRuntime`
+
+## [Getting started](https://github.com/alakarteio/k-ramel/tree/master/GETTING_STARTED.md)
+[This getting started](https://github.com/alakarteio/k-ramel/tree/master/GETTING_STARTED.md) helps you to understand how to do things like that!
+```js
+  // when the user clicked on "add a todo" button
+  // we ask the API to add a new todo (the title is hardcoded for simplicity here)
+  when('@@ui/ADD_TODO>CLICKED')((action, store, drivers) => {
+    drivers.http('TODO').post(
+      'https://todo-backend-modern-js.herokuapp.com/todos',
+      {
+        title: 'Yo! I am a new todo!',
+      },
+    )
+  }),
+  // when the API responds (not in error),
+  // we add the new todo returned by the API in the store
+  when('@@http/TODO>POST>ENDED')((action, store) => {
+    store.todos.add(action.payload)
+  }),
+  // when a new todo is added to the store
+  // we log a message :)
+  when('@@krf/ADD>TODOS')(() => {
+    console.log('A todo is added!')
+  }),
+```
 
 ## Ecosystem
 You can pick some modules based on your usage, or even write your own.
