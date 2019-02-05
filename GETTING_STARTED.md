@@ -141,8 +141,7 @@ const TodosContainer = inject((store) => {
     todos: store.todos.getAsArray(),
 +    // a.
 +    onClick: () => {
-+      // b.
-+      store.todos.add({ id: Math.random(), title: 'Yo! I am a new todo!' })
++      store.todos.add({ id: Math.random(), title: 'Yo! I am a new todo!' }) // b.
 +    }
   }
 })(Todos)
@@ -154,7 +153,7 @@ const App = () => (
 export default provider(store)(App)
 ```
 
-When we click on the new button (c), the injected function (a) is called. This function ask for a mutation (b), which add a todo (the title is hardcoded here)
+When we click on the new button (c), the injected function (a) is called. This function asks for a mutation (b), which add a todo (the title is hardcoded here)
 
 ## 6. Listen to the todo addition
 ```diff
@@ -257,8 +256,7 @@ const TodosContainer = inject((store) => {
 -    onClick: () => {
 -      store.todos.add({ id: Math.random(), title: 'Yo! I am a new todo!' })
 -    }
-+    // b.
-+    onClick: () => store.dispatch('@@ui/ADD_TODO>CLICKED')
++    onClick: () => store.dispatch('@@ui/ADD_TODO>CLICKED') // b.
   }
 })(Todos)
 
@@ -289,10 +287,10 @@ export default provider(store)(AppContainer)
 ```
 
 First we add a new driver to **k-ramel**, the http driver. (a.) \
-Then we change the `onClick` callback so it dispatchs an empty action whose type is `@@ui/ADD_TODO>CLICKED` (b.), this action is catched into our **listeners**, and we react to it by calling an API (c.).\
+Then we change the `onClick` callback so it dispatches an empty action whose type is `@@ui/ADD_TODO>CLICKED` (b.), this action is catched into our **listeners**, and we react to it by calling an API (c.).\
 The TODO title is hardcoded, you can see we `await` the API response, and add the todo to the store after the API responds.
 
-If you open your redux-devtools you will see that the HTTP driver trigger 2 actions (2 events) :
+If you open your redux-devtools you will see that the HTTP driver triggers 2 actions (2 events) :
  - One at start
  - One at end
 
