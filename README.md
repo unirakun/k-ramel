@@ -48,6 +48,7 @@ Hey! If you come from an early version of k-ramel and want to upgrade, you can r
 ## [Getting started](https://github.com/alakarteio/k-ramel/tree/master/GETTING_STARTED.md)
 [This getting started](https://github.com/alakarteio/k-ramel/tree/master/GETTING_STARTED.md) helps you to understand how to do things like that!
 ```js
+const listeners = [
   // when the user clicked on "add a todo" button
   // we ask the API to add a new todo (the title is hardcoded for simplicity here)
   when('@@ui/ADD_TODO>CLICKED')((action, store, drivers) => {
@@ -68,6 +69,7 @@ Hey! If you come from an early version of k-ramel and want to upgrade, you can r
   when('@@krf/ADD>TODOS')(() => {
     console.log('A todo is added!')
   }),
+]
 ```
 
 ## Ecosystem
