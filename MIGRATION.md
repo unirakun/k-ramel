@@ -6,9 +6,13 @@
 
 ### Breaking changes
  - `@k-ramel/driver-http` is not imported by default
-    * In order to keep `k-ramel` as light as possible we remove the default usage of this driver
-    * When we added it as a default driver, we thought that almost everybody would use it but since `graphql` is becoming strong, we believe it's time to not make it a default one
-    * `k-ramel` will be even lighter by default!
+   * In order to keep `k-ramel` as light as possible we remove the default usage of this driver
+   * When we added it as a default driver, we thought that almost everybody would use it but since `graphql` is becoming strong, we believe it's time to not make it a default one
+   * `k-ramel` will be even lighter by default!
+ - `@k-ramel/driver-form` API has changed
+   * `set` now remove older fields
+   * `clearErrors` is renamed to `resetErrors`
+   * `remove` is renamed to `reset`
 
 ### May be breaking changes
  - `devtools` options (from `createStore`) is now `undefined` by default

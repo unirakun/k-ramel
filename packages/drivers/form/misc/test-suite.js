@@ -49,6 +49,7 @@ export default (driver) => {
     it('should set values', () => {
       let formState
       runReaction(params)((action, st, { form }) => {
+        form('form-name').set({ should: 'be removed' })
         form('form-name').set(defaultValues)
         formState = st.getState()
       })
@@ -64,7 +65,7 @@ export default (driver) => {
       runReaction(params)((action, st, { form }) => {
         form('form-name').setErrors(defaultValues)
         errors = st.getState()
-        form('form-name').clearErrors()
+        form('form-name').resetErrors()
         cleared = st.getState()
       })
       // assert
@@ -74,14 +75,14 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should remove form', () => {
+    it('should reset form', () => {
       let formValues
       let removed
       runReaction(params)((action, st, { form }) => {
         form('form-name').set(defaultValues)
         form('form-name').setErrors(defaultValues)
         formValues = st.getState()
-        form('form-name').remove()
+        form('form-name').reset()
         removed = st.getState()
       })
       // assert
@@ -91,7 +92,7 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should remove form with an array of formName', () => {
+    it('should reset form with an array of formName', () => {
       let formValues
       let removed
       runReaction(params)((action, st, { form }) => {
@@ -102,7 +103,7 @@ export default (driver) => {
         form('notRemove').set(defaultValues)
         form('notRemove').setErrors(defaultValues)
         formValues = st.getState()
-        form.remove(['form1', 'form2'])
+        form.reset(['form1', 'form2'])
         removed = st.getState()
       })
       // assert
@@ -206,7 +207,7 @@ export default (driver) => {
       }).toMatchSnapshot()
     })
 
-    it('should check if form exists', () => {
+    it('should check if forms exists', () => {
       let formNames
       runReaction(params)((action, st, { form }) => {
         form('form-1').set(defaultValues)
@@ -218,6 +219,32 @@ export default (driver) => {
       // assert
       expect({
         formNames,
+      }).toMatchSnapshot()
+    })
+
+    it('should add or update fields (values) in a given form', () => {
+      let values
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').set({ before: 'field-value', should: 'still be there' })
+        form('form-name').addOrUpdate({ before: 'field-value-updated', new: 'field-value' })
+        values = form('form-name').get()
+      })
+      // assert
+      expect({
+        values,
+      }).toMatchSnapshot()
+    })
+
+    it('should add or update fields (errors) in a given form', () => {
+      let errors
+      runReaction(params)((action, st, { form }) => {
+        form('form-name').setErrors({ before: 'field-error', should: 'still be there (error)' })
+        form('form-name').addOrUpdateErrors({ before: 'field-error-updated', new: 'field-error' })
+        errors = form('form-name').getErrors()
+      })
+      // assert
+      expect({
+        errors,
       }).toMatchSnapshot()
     })
   }
@@ -295,7 +322,7 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
-      it('should clearErrors errors', () => {
+      it('should resetErrors errors', () => {
         // run implementation
         let state
         runReaction()((action, store, { form }) => {
@@ -310,7 +337,7 @@ export default (driver) => {
           ])
 
           // remove errors
-          form.clearErrors(['form-1', 'form-2'])
+          form.resetErrors(['form-1', 'form-2'])
 
           state = {
             values: store.form.values.get(),
@@ -324,7 +351,7 @@ export default (driver) => {
         }).toMatchSnapshot()
       })
 
-      it('should remove forms', () => {
+      it('should reset forms', () => {
         // run implementation
         let state
         runReaction()((action, store, { form }) => {
@@ -342,7 +369,7 @@ export default (driver) => {
           ])
 
           // remove forms
-          form.remove(['form-1', 'form-2'])
+          form.reset(['form-1', 'form-2'])
 
           state = {
             values: store.form.values.get(),
