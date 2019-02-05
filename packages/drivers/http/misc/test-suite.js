@@ -472,6 +472,8 @@ export default (driver) => {
         expect({
           dispatch: spy.mock.calls,
           fetch: mockedFetch.mock.calls,
+          // since jest 24 body formdata (which is a symbol) is not serialized
+          fetchBodyForm: new Map(mockedFetch.mock.calls[0][1].body.entries()),
         }).toMatchSnapshot()
       })
 
