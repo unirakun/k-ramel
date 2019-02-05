@@ -55,7 +55,7 @@ export default mapStore(Component)
 
 ## API
 ### Local to a form
-These functions are availables on form that is returned by this call: `driver.form(formName)` where `formName` is you form name.
+These functions are availables on form that is returned by this call: `driver.form(formName)` where `formName` is your form name.
 
 | function | description |
 | --- | --- |
@@ -75,7 +75,7 @@ These functions are availables on form that is returned by this call: `driver.fo
 
 ### Batched to all given forms at once
 
-These functions are used right into the `driver.form` field without giving a name to it.
+These functions are used right into the `drivers.form` field without giving a name to it.
 
 | function | description |
 | --- | --- |
