@@ -241,17 +241,7 @@ Object {
         "fetch": Array [
           "http://google.fr",
           Object {
-            "body": FormData {
-              Symbol(impl): FormDataImpl {
-                "_entries": Array [
-                  Object {
-                    "name": "some",
-                    "value": "data",
-                  },
-                ],
-                Symbol(wrapper): [Circular],
-              },
-            },
+            "body": FormData {},
             "headers": Object {},
             "method": "POST",
           },
@@ -275,17 +265,7 @@ Object {
         "payload": Object {
           "headers": Map {},
           "options": Object {
-            "body": FormData {
-              Symbol(impl): FormDataImpl {
-                "_entries": Array [
-                  Object {
-                    "name": "some",
-                    "value": "data",
-                  },
-                ],
-                Symbol(wrapper): [Circular],
-              },
-            },
+            "body": FormData {},
             "headers": Object {},
             "method": "POST",
           },
@@ -300,22 +280,15 @@ Object {
     Array [
       "http://google.fr",
       Object {
-        "body": FormData {
-          Symbol(impl): FormDataImpl {
-            "_entries": Array [
-              Object {
-                "name": "some",
-                "value": "data",
-              },
-            ],
-            Symbol(wrapper): [Circular],
-          },
-        },
+        "body": FormData {},
         "headers": Object {},
         "method": "POST",
       },
     ],
   ],
+  "fetchBodyForm": Map {
+    "some" => "data",
+  },
 }
 `;
 
