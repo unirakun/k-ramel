@@ -39,7 +39,7 @@ You just have to go to the `next` branch [by clicking here!](https://github.com/
 ## Ecosystem
 You can pick some modules based on your usage, or even write your own.
 \
-The modules that are supported by k-ramel are [listed here](#modules).
+The modules that are supported by k-ramel are [listed here](#modules-and-libs).
 \
 We add modules when we need them but feel free to open PR if you want to add your own.
 
