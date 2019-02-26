@@ -52,11 +52,17 @@ export default injectFunction => WrappedComponent => class extends Component {
     this.inject()
 
     // subscribe
-    this.unsubscribe = store.subscribe(() => { this.inject() })
+    this.unsubscribe = store.subscribe(() => {
+      // the state doesn't chxange, so we don't have to call containers
+      if (this.store && this.reduxState === this.store.getState()) return
+
+      this.inject()
+    })
   }
 
   componentWillReceiveProps(nextProps) {
     if (shallowEqual(this.props, nextProps)) return
+
     this.inject(nextProps)
   }
 
@@ -81,9 +87,6 @@ export default injectFunction => WrappedComponent => class extends Component {
 
   inject = (nextProps) => {
     if (!this.store) return
-
-    // the state doesn't chxange, so we don't have to call containers
-    if (this.reduxState === this.store.getState()) return
 
     this.setState(state => ({
       ...state,
