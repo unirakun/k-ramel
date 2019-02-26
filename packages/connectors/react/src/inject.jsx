@@ -25,6 +25,7 @@ export default injectFunction => WrappedComponent => class extends Component {
     super(props, context)
 
     this.first = true
+    this.reduxState = undefined
     this.state = {
       injectedProps: {},
     }
@@ -55,6 +56,7 @@ export default injectFunction => WrappedComponent => class extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (shallowEqual(this.props, nextProps)) return
     this.inject(nextProps)
   }
 
@@ -80,12 +82,17 @@ export default injectFunction => WrappedComponent => class extends Component {
   inject = (nextProps) => {
     if (!this.store) return
 
+    // the state doesn't chxange, so we don't have to call containers
+    if (this.reduxState === this.store.getState()) return
+
     this.setState(state => ({
       ...state,
       injectedProps: injectFunction
         ? injectFunction(this.store, nextProps || this.props, this.store.drivers) || defaultObject
         : defaultObject,
     }))
+
+    this.reduxState = this.store.getState()
   }
 
   render() {
