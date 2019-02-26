@@ -281,9 +281,9 @@ export default (lib) => {
 
       // tested component
       const spy = jest.fn()
-      const Component = ({ label }) => {
+      const Component = ({ label, parentProp }) => {
         spy()
-        return <div>{label}</div>
+        return <div>{label}-{parentProp}</div>
       }
       const mapStore = jest.fn(store => ({
         label: store.config.get(),
@@ -295,7 +295,7 @@ export default (lib) => {
       // 1. mapStore is called because state is modified
       // 2. component is rerendered because mapStore depends on store.config
       testStore.config.set('a label')
-      mount(<WrappedComponent />, { context: { store: testStore } })
+      const mounted = mount(<WrappedComponent />, { context: { store: testStore } })
       // expect
       expect(spy.mock.calls.length).toBe(1)
       expect(mapStore.mock.calls.length).toBe(1)
@@ -313,6 +313,21 @@ export default (lib) => {
       // expect
       expect(spy.mock.calls.length).toBe(1)
       expect(mapStore.mock.calls.length).toBe(2)
+
+      // 1. mapStore is called because parent prop is modified
+      // 2. component is rerendered because parent prop is modified
+      const parentProp = 'new value'
+      mounted.setProps({ parentProp })
+      // expect
+      expect(spy.mock.calls.length).toBe(2)
+      expect(mapStore.mock.calls.length).toBe(3)
+
+      // 1. mapStore is NOT called because parent prop is NOT modified
+      // 2. component is NOT rerendered because parent prop is NOT modified
+      mounted.setProps({ parentProp })
+      // expect
+      expect(spy.mock.calls.length).toBe(2)
+      expect(mapStore.mock.calls.length).toBe(3)
     })
   })
 }
