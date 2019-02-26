@@ -233,7 +233,7 @@ export default (lib) => {
       expect(wrapper.find('div').html()).toMatchSnapshot()
     })
 
-    it.only('should refresh when props changes', () => {
+    it('should refresh when props changes', () => {
       // store
       const testStore = createStore({
         config: { type: 'simple.object' },
