@@ -272,7 +272,7 @@ export default (lib) => {
       testStore.config.set('an other label')
     })
 
-    it('should not refresh component when there is no change', () => {
+    it('should be optimized to not re-render nor recall mapStore to often', () => {
       // store
       const testStore = createStore({
         config: { type: 'simple.object' },
@@ -281,22 +281,53 @@ export default (lib) => {
 
       // tested component
       const spy = jest.fn()
-      const Component = ({ label }) => {
+      const Component = ({ label, parentProp }) => {
         spy()
-        return <div>{label}</div>
+        return <div>{label}-{parentProp}</div>
       }
-      const WrappedComponent = inject(store => ({
+      const mapStore = jest.fn(store => ({
         label: store.config.get(),
         fn: () => {},
-      }))(Component)
+      }))
+      const WrappedComponent = inject(mapStore)(Component)
 
       // try to render and wrapped component
+      // 1. mapStore is called because state is modified
+      // 2. component is rerendered because mapStore depends on store.config
       testStore.config.set('a label')
-      mount(<WrappedComponent />, { context: { store: testStore } })
-      testStore.dummy.set('this should not trigger a re-render')
-
-      // only one render
+      const mounted = mount(<WrappedComponent />, { context: { store: testStore } })
+      // expect
       expect(spy.mock.calls.length).toBe(1)
+      expect(mapStore.mock.calls.length).toBe(1)
+
+      // 1. mapStore is called because state is modified
+      // 2. component is NOT rerendered because mapStore does NOT depend on store.dummy
+      testStore.dummy.set('this should not trigger a re-render')
+      // expect
+      expect(spy.mock.calls.length).toBe(1)
+      expect(mapStore.mock.calls.length).toBe(2)
+
+      // 1. mapStore is NOT called because state is NOT modified
+      // 2. component is NOT rerendered because mapStore does NOT depend on store.dummy
+      testStore.dispatch('@@dummy>ACTION')
+      // expect
+      expect(spy.mock.calls.length).toBe(1)
+      expect(mapStore.mock.calls.length).toBe(2)
+
+      // 1. mapStore is called because parent prop is modified
+      // 2. component is rerendered because parent prop is modified
+      const parentProp = 'new value'
+      mounted.setProps({ parentProp })
+      // expect
+      expect(spy.mock.calls.length).toBe(2)
+      expect(mapStore.mock.calls.length).toBe(3)
+
+      // 1. mapStore is NOT called because parent prop is NOT modified
+      // 2. component is NOT rerendered because parent prop is NOT modified
+      mounted.setProps({ parentProp })
+      // expect
+      expect(spy.mock.calls.length).toBe(2)
+      expect(mapStore.mock.calls.length).toBe(3)
     })
   })
 }
