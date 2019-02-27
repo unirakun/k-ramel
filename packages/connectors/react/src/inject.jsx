@@ -53,7 +53,7 @@ export default injectFunction => WrappedComponent => class extends Component {
 
     // subscribe
     this.unsubscribe = store.subscribe(() => {
-      // the state doesn't chxange, so we don't have to call containers
+      // the state doesn't change, so we don't have to call containers
       if (this.store && this.reduxState === this.store.getState()) return
 
       this.inject()
