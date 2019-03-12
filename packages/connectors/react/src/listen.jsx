@@ -12,7 +12,7 @@ export default (listeners = defaultListeners, name) => (WrappedComponent) => {
   const toAction = toActionFactory(name)
 
   return class extends Component {
-    static displayName = `listen(${getWrappedDisplayName(WrappedComponent)}`
+    static displayName = `listen(${getWrappedDisplayName(WrappedComponent)})`
 
     static contextTypes = {
       store: () => null, // this is to avoid importing prop-types
