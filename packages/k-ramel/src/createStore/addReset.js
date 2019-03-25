@@ -22,13 +22,12 @@ export default options => (root, store) => {
   const subcontext = (name, path) => {
     // first run
     if (name === undefined) {
-      return Object
+      Object
         .keys(root)
-        .map(key => ({ [key]: subcontext(key, '') }))
-        .reduce(
-          (acc, next) => ({ ...acc, ...next }),
-          {},
-        )
+        .forEach((key) => {
+          subcontext(key, '')
+        })
+      return
     }
 
     // other runs
@@ -36,20 +35,15 @@ export default options => (root, store) => {
     const reducer = getFromPath(root, nextPath)
 
     // - branch
-    let next = reducer
     if (typeof reducer !== 'function' && name !== 'RESET') {
-      next = Object
+      Object
         .keys(reducer)
-        .map(key => ({ [key]: subcontext(key, nextPath) }))
-        .reduce(
-          (acc, curr) => ({ ...acc, ...curr }),
-          {},
-        )
+        .forEach((key) => {
+          subcontext(key, nextPath)
+        })
     }
 
     addReset(reducer, nextPath)
-
-    return next
   }
 
   subcontext()

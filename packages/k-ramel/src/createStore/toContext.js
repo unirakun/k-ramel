@@ -5,13 +5,13 @@ const withParams = ['get', 'getBy', 'hasKey']
 const keysConfig = {
   keyValue: [
     // actions
-    ['set', 'add', 'update', 'addOrUpdate', 'remove', 'reset'],
+    ['set', 'add', 'update', 'addOrUpdate', 'remove'], // reset is not in this list because it is already handled by k-ramel
     // selectors
     ['get', 'getBy', 'getKeys', 'getAsArray', 'getLength', 'isInitialized', 'getState', 'hasKey'],
   ],
   simple: [
     // actions
-    ['set', 'update', 'reset'],
+    ['set', 'update'], // reset is not in this list because it is already handled by k-ramel
     // selectors
     ['get', 'isInitialized'],
   ],
