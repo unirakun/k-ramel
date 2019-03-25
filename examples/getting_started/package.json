@@ -12,9 +12,9 @@
     "@k-ramel/driver-http": "^2.0.0",
     "@k-ramel/react": "^2.0.0",
     "k-ramel": "^2.0.0",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-scripts": "2.1.8"
   },
   "browserslist": [
     ">0.2%",
