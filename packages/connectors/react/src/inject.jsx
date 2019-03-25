@@ -15,7 +15,7 @@ const withoutFunctions = object => Object
   )
 
 export default injectFunction => WrappedComponent => class extends Component {
-  static displayName = `inject(${getWrappedDisplayName(WrappedComponent)}`
+  static displayName = `inject(${getWrappedDisplayName(WrappedComponent)})`
 
   static contextTypes = {
     store: () => null, // this is to avoid importing prop-types
