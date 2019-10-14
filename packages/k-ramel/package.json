@@ -28,5 +28,6 @@
   "devDependencies": {
     "cross-env": "^5.2.0",
     "deep-diff": "^1.0.2"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }
