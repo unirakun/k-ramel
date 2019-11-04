@@ -38,7 +38,10 @@ export default (definition, options = defaultOptions) => {
       // bind reducer to store definition
       if (driver.getReducer) {
         const { reducer, path } = driver.getReducer() // eslint-disable-line no-unused-vars
-        eval(`definitionWithDrivers${path.length > 0 ? '.' : ''}${path}=reducer`) // eslint-disable-line no-eval
+        if (path.length) {
+          const [firstKey, ...others] = path.split('.')
+          definitionWithDrivers[firstKey] = others.reverse().reduce((acc, key) => ({ [key]: acc }), reducer)
+        }
       }
 
       // add enhancer
