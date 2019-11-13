@@ -11,14 +11,8 @@ const toActionFactory = (name) => {
 export default (listeners = defaultListeners, name) => (WrappedComponent) => {
   const toAction = toActionFactory(name)
 
-  return class extends Component {
-    static displayName = `listen(${getWrappedDisplayName(WrappedComponent)})`
-
-    static contextTypes = {
-      store: () => null, // this is to avoid importing prop-types
-    }
-
-    componentWillMount() {
+  class ListenComponent extends Component {
+    UNSAFE_componentWillMount() { // eslint-disable-line camelcase
       const { store } = this.context
 
       store.listeners.add(listeners)
@@ -36,4 +30,11 @@ export default (listeners = defaultListeners, name) => (WrappedComponent) => {
       return <WrappedComponent {...this.props} />
     }
   }
+
+  ListenComponent.displayName = `listen(${getWrappedDisplayName(WrappedComponent)})`
+  ListenComponent.contextTypes = {
+    store: () => null, // this is to avoid importing prop-types
+  }
+
+  return ListenComponent
 }
