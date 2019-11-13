@@ -10,9 +10,9 @@
   "devDependencies": {
     "cross-env": "^6.0.3",
     "k-ramel": "^2.1.0",
-    "react-redux": "^5.1.1",
-    "redux": "^4.0.1",
-    "redux-form": "^7.3.0"
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.4",
+    "redux-form": "^8.2.6"
   },
   "peerDependencies": {
     "redux-form": "^7.3.0"
