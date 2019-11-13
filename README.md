@@ -114,6 +114,9 @@ You can find documentation about each part of `k-ramel` there:
  - Yvonnick FRIN [[@frinyvonnick](https://github.com/frinyvonnick)]
  - Delphine MILLET [[@delphinemillet](https://github.com/delphinemillet)]
  - Benjamin PLOUZENNEC [[@Okazari](https://github.com/Okazari)]
+ - Benjamin PLOUZENNEC [[@Okazari](https://github.com/Okazari)]
+ - Corinne KRYCH [@corinnekrych](https://github.com/corinnekrych)
+ - Arthur FAUGERAS [@AFaugeras](https://github.com/AFaugeras)
 
 # Known users
  - [sparklane](https://www.sparklane-group.com) - B2B Predictive lead scoring _[closed source]_
