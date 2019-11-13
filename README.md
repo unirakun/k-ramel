@@ -126,10 +126,10 @@ You can find documentation about each part of `k-ramel` there:
 | -- | -- | -- | -- | -- |
 | [`@k-ramel/driver-redux-little-router`](https://github.com/alakarteio/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | redux-little-router wrapper | [documentation](https://github.com/alakarteio/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | 1.2.0 | [redux-little-router is deprecated](https://github.com/FormidableLabs/redux-little-router) |
 
-# About ![alakarteio](http://alakarte.io/assets/img/logo.markdown.png)
-**alakarteio** is created by two passionate french developers.
+# About [uni rakun](https://unirakun.fr)
+**uni rakun** is created by two passionate french developers.
 
-Do you want to contact them? Go to their [website](http://alakarte.io)
+Do you want to contact them? Go to their [website](https://unirakun.fr)
 
 <table border="0">
  <tr>
