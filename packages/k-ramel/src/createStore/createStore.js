@@ -33,20 +33,33 @@ export default (definition, options = defaultOptions) => {
   // use drivers
   const driversEnhancers = []
   const driversInits = []
-  Object.values(drivers)
-    .forEach((driver) => {
-      // bind reducer to store definition
-      if (driver.getReducer) {
-        const { reducer, path } = driver.getReducer() // eslint-disable-line no-unused-vars
-        eval(`definitionWithDrivers${path.length > 0 ? '.' : ''}${path}=reducer`) // eslint-disable-line no-eval
+  Object.values(drivers).forEach((driver) => {
+    // bind reducer to store definition
+    if (driver.getReducer) {
+      const { reducer, path } = driver.getReducer() // eslint-disable-line no-unused-vars
+      if (path.length) {
+        const keys = path.split('.')
+        let pointer = definitionWithDrivers
+        for (let i = 0; i < keys.length; i += 1) {
+          const key = keys[i]
+          if (i === keys.length - 1) {
+            pointer[key] = reducer
+            break
+          }
+          if (!pointer[key]) {
+            pointer[key] = {}
+          }
+          pointer = pointer[key]
+        }
       }
+    }
 
-      // add enhancer
-      if (driver.getEnhancer) driversEnhancers.push(driver.getEnhancer())
+    // add enhancer
+    if (driver.getEnhancer) driversEnhancers.push(driver.getEnhancer())
 
-      // add init
-      if (driver.init) driversInits.push(driver.init)
-    })
+    // add init
+    if (driver.init) driversInits.push(driver.init)
+  })
 
   // add all driver enhancers
   if (innerOptions.enhancer) driversEnhancers.push(innerOptions.enhancer)
@@ -59,11 +72,7 @@ export default (definition, options = defaultOptions) => {
   const { enhancer, listen } = enhanceRedux(innerOptions)
 
   // this is the redux store
-  const reduxStore = createStore(
-    combine(reducerTree),
-    init,
-    enhancer,
-  )
+  const reduxStore = createStore(combine(reducerTree), init, enhancer)
 
   // add resets actions
   reducerTree = addReset(innerOptions)(reducerTree, reduxStore)
@@ -84,11 +93,7 @@ export default (definition, options = defaultOptions) => {
   }
 
   // store with driver
-  store.drivers = Object.keys(drivers)
-    .reduce(
-      (acc, driver) => ({ ...acc, [driver]: drivers[driver].getDriver(store) }),
-      {},
-    )
+  store.drivers = Object.keys(drivers).reduce((acc, driver) => ({ ...acc, [driver]: drivers[driver].getDriver(store) }), {})
 
   // custom dispatch
   const reduxDispatch = store.dispatch
