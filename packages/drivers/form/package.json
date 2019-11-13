@@ -8,7 +8,7 @@
   "description": "Form driver for k-ramel",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/form",
   "devDependencies": {
-    "cross-env": "5.2.0",
+    "cross-env": "6.0.3",
     "k-ramel": "^2.1.0"
   },
   "publishConfig": {

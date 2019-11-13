@@ -2,18 +2,21 @@
 import React, { Component } from 'react'
 import getWrappedDisplayName from './getWrappedDisplayName'
 
-export default store => WrappedComponent => class extends Component {
-  static displayName = `provider(${getWrappedDisplayName(WrappedComponent)})`
+export default store => (WrappedComponent) => {
+  class ProvidedComponent extends Component {
+    getChildContext() {
+      return { store }
+    }
 
-  static childContextTypes = {
+    render() {
+      return <WrappedComponent {...this.props} />
+    }
+  }
+
+  ProvidedComponent.displayName = `provider(${getWrappedDisplayName(WrappedComponent)})`
+  ProvidedComponent.childContextTypes = {
     store: () => null, // this is to avoid importing prop-types
   }
 
-  getChildContext() {
-    return { store }
-  }
-
-  render() {
-    return <WrappedComponent {...this.props} />
-  }
+  return ProvidedComponent
 }
