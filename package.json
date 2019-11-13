@@ -33,12 +33,13 @@
     "cross-env": "6.0.3",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.15.1",
-    "eslint": "5.15.3",
-    "eslint-config-airbnb": "17.1.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-import": "2.16.0",
-    "eslint-plugin-jsx-a11y": "6.2.1",
-    "eslint-plugin-react": "7.12.4",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "24.9.0",
     "jest-environment-jsdom": "^24.9.0",
     "jest-environment-jsdom-global": "^1.2.0",
@@ -79,6 +80,7 @@
       "jsx-a11y/label-has-associated-control": "off",
       "jsx-a11y/no-static-element-interactions": "off",
       "react/forbid-prop-types": "off",
+      "react/jsx-props-no-spreading": "off",
       "operator-linebreak": "off",
       "max-len": [
         2,
@@ -87,6 +89,13 @@
       "semi": [
         2,
         "never"
+      ],
+      "arrow-parens": [
+        "error",
+        "as-needed",
+        {
+          "requireForBlockBody": true
+        }
       ]
     }
   },
