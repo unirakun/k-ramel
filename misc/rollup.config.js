@@ -3,6 +3,7 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import sourcemaps from 'rollup-plugin-sourcemaps'
+import copy from 'rollup-plugin-copy'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
 
@@ -33,6 +34,11 @@ export default {
       extensions: ['.js', '.jsx'],
     }),
     terser(),
+    copy({
+      targets: [
+        { src: 'typing/index.d.ts', dest: 'dist' },
+      ]
+    }),
   ],
   external: [
     '@k-ramel/driver-http',
