@@ -1,6 +1,6 @@
 {
   "name": "@k-ramel/react",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
-    "k-ramel": "^2.1.0"
+    "k-ramel": "^3.0.0"
   },
   "publishConfig": {
     "access": "public",
