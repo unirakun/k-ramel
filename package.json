@@ -48,7 +48,7 @@
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "regenerator-runtime": "^0.13.3",
-    "rollup": "1.27.0",
+    "rollup": "1.27.1",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
