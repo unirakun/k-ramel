@@ -1,30 +1,35 @@
-declare module '@k-ramel/driver-http' {
-  import { StoreBase, Driver, BaseAction } from 'k-ramel'
+declare module "@k-ramel/driver-http" {
+  import { StoreBase, Driver, BaseAction } from "k-ramel";
 
-  const httpDriver: () => Driver
+  const httpDriver: () => Driver;
 
-  export type HTTPOptions = Omit<body, RequestInit>
-  export type RequestFunction = (url: string, body?: BodyInit | object, options?: HTTPOptions) => void
+  export type HTTPOptions = Omit<body, RequestInit>;
+  export type RequestFunction = (
+    url: string,
+    body?: BodyInit | object,
+    options?: HTTPOptions
+  ) => void;
 
   export type HTTPDriver = (
     name: string,
-    context?: object,
+    context?: any
   ) => {
-    post: RequestFunction
-    get: RequestFunction
-    head: RequestFunction
-    patch: RequestFunction
-    put: RequestFunction
-    delete: RequestFunction
-    options: RequestFunction
-    connect: RequestFunction
-  }
+    post: RequestFunction;
+    get: RequestFunction;
+    head: RequestFunction;
+    patch: RequestFunction;
+    put: RequestFunction;
+    delete: RequestFunction;
+    options: RequestFunction;
+    connect: RequestFunction;
+  };
 
   export interface HTTPBaseAction<Payload> extends BaseAction {
-    payload: Payload
-    status: number
-    headers: Headers
+    payload: Payload;
+    context: any;
+    status: number;
+    headers: Headers;
   }
 
-  export default httpDriver
+  export default httpDriver;
 }
