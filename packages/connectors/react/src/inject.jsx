@@ -36,7 +36,7 @@ export default injectFunction => (WrappedComponent) => {
           `[k-ramel/react] Error in %cinject%c for the component %c${getWrappedDisplayName(WrappedComponent)}%c\n` +
           '\t> The store needs to be provided by an ancestor of this component.\n' +
           '\t> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.\n\n' +
-          'Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs\n',
+          'Check the documentation for an example at https://github.com/unirakun/k-ramel/tree/master/packages/connectors/react#examples--api\n',
           bold, '', bold, '', bold, '', bold, '', bold, '', bold, '',
         )
         return

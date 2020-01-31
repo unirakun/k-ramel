@@ -6,7 +6,7 @@
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "description": "React bindings for k-ramel",
-  "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/connectors/react",
+  "repository": "https://github.com/unirakun/k-ramel/tree/master/packages/connectors/react",
   "dependencies": {
     "fbjs": "^1.0.0"
   },

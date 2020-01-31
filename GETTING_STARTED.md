@@ -369,4 +369,4 @@ export default provider(store)(AppContainer)
 
 We don't use **async/await** anymore but we use Redux as an eventbus and react to the **ENDED** event triggered by the HTTP driver to add the todo into the store.
 
-You can find this last step in this project : [examples/getting_started](https://github.com/alakarteio/k-ramel/tree/master/examples/getting_started/src/App.js).
+You can find this last step in this project : [examples/getting_started](https://github.com/unirakun/k-ramel/tree/master/examples/getting_started/src/App.js).

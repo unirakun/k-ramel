@@ -2,9 +2,9 @@
 
 State manager for your app components, the safe and easy way.
 
-> **Core** module of `k-ramel` ecosystem (👉 [main documentation](https://github.com/alakarteio/k-ramel))
+> **Core** module of `k-ramel` ecosystem (👉 [main documentation](https://github.com/unirakun/k-ramel))
 
-[![CircleCI](https://circleci.com/gh/alakarteio/k-ramel.svg?style=shield)](https://circleci.com/gh/alakarteio/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel)
+[![CircleCI](https://circleci.com/gh/unirakun/k-ramel.svg?style=shield)](https://circleci.com/gh/unirakun/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/unirakun/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/unirakun/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel)
 
 <p align="center">
   <img src="./doc/logo.png" width="400" />
