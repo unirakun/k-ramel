@@ -6,7 +6,7 @@
   "author": "Guillaume CRESPEL <guillaume.crespel@gmail.com>",
   "license": "MIT",
   "description": "Redux-form driver for k-ramel",
-  "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/redux-form",
+  "repository": "https://github.com/unirakun/k-ramel/tree/master/packages/drivers/redux-form",
   "devDependencies": {
     "cross-env": "^7.0.0",
     "k-ramel": "^3.0.0",

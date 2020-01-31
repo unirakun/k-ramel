@@ -1,7 +1,7 @@
 # @k-ramel/react
 > React bindings for k-ramel
 
- - Main repository: [k-ramel](https://github.com/alakarteio/k-ramel)
+ - Main repository: [k-ramel](https://github.com/unirakun/k-ramel)
 
 ## Examples & API
 ### provide the store to react context

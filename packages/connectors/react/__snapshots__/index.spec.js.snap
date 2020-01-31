@@ -35,7 +35,7 @@ Array [
 	> The store needs to be provided by an ancestor of this component.
 	> You can use %cprovider%c from %c@k-ramel/react%c or %cProvider%c from %creact-redux%c.
 
-Check the documentation for an example at https://github.com/alakarteio/k-ramel#connect-it-with-reactjs
+Check the documentation for an example at https://github.com/unirakun/k-ramel/tree/master/packages/connectors/react#examples--api
 ",
     "font-weight: bolder; font-style: italic;",
     "",

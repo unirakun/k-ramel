@@ -28,7 +28,7 @@ Also note that the `redux-devtools` is activated by default.
 
 ## Example & API
 ### Types
-Our types are based on the [k-redux-factory ones](https://github.com/alakarteio/k-redux-factory/blob/master/TYPES.md):
+Our types are based on the [k-redux-factory ones](https://github.com/unirakun/k-redux-factory/blob/master/TYPES.md):
 
 ```js
 import { types } from 'k-ramel'

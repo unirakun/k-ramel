@@ -1,7 +1,7 @@
 # @k-ramel/driver-http
 > HTTP driver for k-ramel
 
- - Main repository: [k-ramel](https://github.com/alakarteio/k-ramel)
+ - Main repository: [k-ramel](https://github.com/unirakun/k-ramel)
 
 ## Install it
 `yarn add @k-ramel/driver-http regeneratorRuntime`

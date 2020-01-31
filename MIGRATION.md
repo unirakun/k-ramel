@@ -1,7 +1,7 @@
 # Migration Guide
 ## From 1.x.x to 2.0.0
 ### Deprecated
- - `@k-ramel/driver-redux-little-router` driver is deprecated. [You can now use `k-redux-router`](https://github.com/alakarteio/k-redux-router):
+ - `@k-ramel/driver-redux-little-router` driver is deprecated. [You can now use `k-redux-router`](https://github.com/unirakun/k-redux-router):
     * We are removing it because `redux-little-router` is deprecated and has been archived by its authors: https://github.com/FormidableLabs/redux-little-router
 
 ### Breaking changes

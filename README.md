@@ -2,7 +2,7 @@
 
 State manager for your app components, the safe and easy way.
 
-[![CircleCI](https://circleci.com/gh/alakarteio/k-ramel.svg?style=shield)](https://circleci.com/gh/alakarteio/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/alakarteio/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/alakarteio/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel) [![Greenkeeper badge](https://badges.greenkeeper.io/alakarteio/k-ramel.svg)](https://greenkeeper.io/)
+[![CircleCI](https://circleci.com/gh/unirakun/k-ramel.svg?style=shield)](https://circleci.com/gh/unirakun/k-ramel) [![Coverage Status](https://coveralls.io/repos/github/unirakun/k-ramel/badge.svg?branch=master)](https://coveralls.io/github/unirakun/k-ramel?branch=master) [![NPM Version](https://badge.fury.io/js/k-ramel.svg)](https://www.npmjs.com/package/k-ramel) [![Greenkeeper badge](https://badges.greenkeeper.io/unirakun/k-ramel.svg)](https://greenkeeper.io/)
 
 <p align="center">
   <img src="packages/k-ramel/doc/logo.png" width="400" />
@@ -19,13 +19,13 @@ Because `k-ramel`:
  - 🐛 works with redux-dev-tools
 
 ## Table of content
-- [🚚 Migrating](https://github.com/alakarteio/k-ramel#migrating)
-- [📦 Modules and libs](https://github.com/alakarteio/k-ramel#modules-and-libs)
-- [🎉 Getting started](https://github.com/alakarteio/k-ramel#getting-started)
-- [📝 Ecosystem and documentation](https://github.com/alakarteio/k-ramel#ecosystem)
-- [📚 Examples](https://github.com/alakarteio/k-ramel#examples)
-- [💜 Contributors](https://github.com/alakarteio/k-ramel#contributors)
-- [💪 Known users](https://github.com/alakarteio/k-ramel#known-users)
+- [🚚 Migrating](https://github.com/unirakun/k-ramel#migrating)
+- [📦 Modules and libs](https://github.com/unirakun/k-ramel#modules-and-libs)
+- [🎉 Getting started](https://github.com/unirakun/k-ramel#getting-started)
+- [📝 Ecosystem and documentation](https://github.com/unirakun/k-ramel#ecosystem)
+- [📚 Examples](https://github.com/unirakun/k-ramel#examples)
+- [💜 Contributors](https://github.com/unirakun/k-ramel#contributors)
+- [💪 Known users](https://github.com/unirakun/k-ramel#known-users)
 
 
 ## Migrating
@@ -34,19 +34,19 @@ Hey! If you come from an early version of k-ramel and want to upgrade, you can r
 ## Modules and libs
 | packages | description | documentation | gziped size |
 | -- | -- | -- | -- |
-| [`k-ramel`](./packages/k-ramel) | core package | [documentation](./packages/k-ramel) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/k-ramel/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/react`](./packages/connectors/react) | ReactJS connector | [documentation](./packages/connectors/react) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/connectors/react/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-http`](./packages/drivers/http) | fetch wrapper | [documentation](./packages/drivers/http) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/http/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-form`](./packages/drivers/form) | minimalist form handler | [documentation](./packages/drivers/form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/form/dist/index.es.js.svg?compression=gzip)]() |
-| [`@k-ramel/driver-redux-form`](./packages/drivers/redux-form) | redux-form  wrapper | [documentation](./packages/drivers/redux-form) | [![Size](http://img.badgesize.io/alakarteio/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg?compression=gzip)]() |
-| [`k-redux-router`](https://github.com/alakarteio/k-redux-router) | Redux router (one route === one code) | [documentation](https://github.com/alakarteio/k-redux-router) | | |
+| [`k-ramel`](./packages/k-ramel) | core package | [documentation](./packages/k-ramel) | [![Size](https://img.badgesize.io/unirakun/k-ramel/master/packages/k-ramel/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/react`](./packages/connectors/react) | ReactJS connector | [documentation](./packages/connectors/react) | [![Size](https://img.badgesize.io/unirakun/k-ramel/master/packages/connectors/react/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/driver-http`](./packages/drivers/http) | fetch wrapper | [documentation](./packages/drivers/http) | [![Size](https://img.badgesize.io/unirakun/k-ramel/master/packages/drivers/http/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/driver-form`](./packages/drivers/form) | minimalist form handler | [documentation](./packages/drivers/form) | [![Size](https://img.badgesize.io/unirakun/k-ramel/master/packages/drivers/form/dist/index.es.js.svg?compression=gzip)]() |
+| [`@k-ramel/driver-redux-form`](./packages/drivers/redux-form) | redux-form  wrapper | [documentation](./packages/drivers/redux-form) | [![Size](https://img.badgesize.io/unirakun/k-ramel/master/packages/drivers/redux-form/dist/index.es.js.svg?compression=gzip)]() |
+| [`k-redux-router`](https://github.com/unirakun/k-redux-router) | Redux router (one route === one code) | [documentation](https://github.com/unirakun/k-redux-router) | | |
 
 ⚠️Note that some packages have dependencies:
  - @k-ramel/driver-http: `regeneratorRuntime`
  - @k-ramel/driver-redux-form: `regeneratorRuntime`
 
-## [Getting started](https://github.com/alakarteio/k-ramel/tree/master/GETTING_STARTED.md)
-[This getting started](https://github.com/alakarteio/k-ramel/tree/master/GETTING_STARTED.md) helps you to understand how to do things like that!
+## [Getting started](https://github.com/unirakun/k-ramel/tree/master/GETTING_STARTED.md)
+[This getting started](https://github.com/unirakun/k-ramel/tree/master/GETTING_STARTED.md) helps you to understand how to do things like that!
 ```js
 const listeners = [
   // when the user clicked on "add a todo" button
@@ -104,7 +104,7 @@ You can find documentation about each part of `k-ramel` there:
 ## Examples
  - Our own [todo-mvc](./examples/todomvc)
  - [conference-hall](https://github.com/bpetetot/conference-hall) from **[@bpetetot](https://github.com/bpetetot)**
- - [k-mille](https://github.com/alakarteio/k-mille/), our personal assistant **[@alakarteio](https://github.com/alakarteio)**
+ - [k-mille](https://github.com/unirakun/k-mille/), our personal assistant **[@unirakun](https://github.com/unirakun)**
 
 # Contributors
  - Fabien JUIF [[@fabienjuif](https://github.com/fabienjuif)]
@@ -122,12 +122,12 @@ You can find documentation about each part of `k-ramel` there:
  - [sparklane](https://www.sparklane-group.com) - B2B Predictive lead scoring _[closed source]_
  - [metroscope](http://metroscope.tech/) - AI diagnosis for targeted maintenance _[closed source]_
  - [conference-hall](https://github.com/bpetetot/conference-hall) - A call for paper project _[open source]_
- - [k-mille](https://github.com/alakarteio/k-mille/) - alakarteio assistant _[open source]_
+ - [k-mille](https://github.com/unirakun/k-mille/) - uni rakun assistant _[open source]_
 
 # Deprecated modules
 | packages | description | documentation | last version | why |
 | -- | -- | -- | -- | -- |
-| [`@k-ramel/driver-redux-little-router`](https://github.com/alakarteio/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | redux-little-router wrapper | [documentation](https://github.com/alakarteio/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | 1.2.0 | [redux-little-router is deprecated](https://github.com/FormidableLabs/redux-little-router) |
+| [`@k-ramel/driver-redux-little-router`](https://github.com/unirakun/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | redux-little-router wrapper | [documentation](https://github.com/unirakun/k-ramel/tree/v1.3.1/packages/drivers/redux-little-router) | 1.2.0 | [redux-little-router is deprecated](https://github.com/FormidableLabs/redux-little-router) |
 
 # About [uni rakun](https://unirakun.fr)
 **uni rakun** is created by two passionate french developers.

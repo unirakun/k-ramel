@@ -5,7 +5,7 @@
   "module": "dist/index.es.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "description": "State manager for you components apps, the safe and easy way.",
-  "repository": "https://github.com/alakarteio/k-ramel",
+  "repository": "https://github.com/unirakun/k-ramel",
   "license": "MIT",
   "keywords": [
     "state-management",
