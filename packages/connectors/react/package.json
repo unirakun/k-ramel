@@ -11,7 +11,7 @@
     "fbjs": "^1.0.0"
   },
   "devDependencies": {
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.0",
     "k-ramel": "^3.0.0"
   },
   "publishConfig": {
