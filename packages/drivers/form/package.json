@@ -1,6 +1,6 @@
 {
   "name": "@k-ramel/driver-form",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
   "author": "Guillaume CRESPEL <guillaume.crespel@gmail.com>",
@@ -9,7 +9,7 @@
   "repository": "https://github.com/unirakun/k-ramel/tree/master/packages/drivers/form",
   "devDependencies": {
     "cross-env": "7.0.0",
-    "k-ramel": "^3.0.0"
+    "k-ramel": "^3.0.1"
   },
   "publishConfig": {
     "access": "public",

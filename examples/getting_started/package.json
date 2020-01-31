@@ -1,6 +1,6 @@
 {
   "name": "getting_started",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "scripts": {
     "start": "BROWSER=none react-scripts start",
@@ -9,9 +9,9 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@k-ramel/driver-http": "^3.0.0",
-    "@k-ramel/react": "^3.0.0",
-    "k-ramel": "^3.0.0",
+    "@k-ramel/driver-http": "^3.0.1",
+    "@k-ramel/react": "^3.0.1",
+    "k-ramel": "^3.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.1"
