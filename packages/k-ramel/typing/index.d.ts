@@ -49,17 +49,22 @@ declare module "k-ramel" {
 
   export interface StoreBase extends StoreDefinitionBase {
     dispatch: Dispatch;
+    listeners: any;
   }
 
-  export type BaseAction = {
+  export interface BaseAction {
     type: string;
-  };
+  }
 
   export type ReactionType<
-    Action extends BaseAction = BaseAction,
-    Store = {},
-    Drivers = {}
-  > = (action: Action, store: Store, drivers: Drivers) => void;
+    A extends API = {},
+    S extends StoreDefinitionBase = {},
+    D = {}
+  > = (action: A & BaseAction, store: S & StoreBase, drivers: D) => any;
 
-  export const when = (type: string | RegExp) => (reaction: any) => {};
+  export const when: (
+    ...matchers: (string | RegExp)[]
+  ) => <A extends API, S extends StoreDefinitionBase, D>(
+    callback: ReactionType<A, S, D>
+  ) => ReactionType<A, S, D>;
 }
