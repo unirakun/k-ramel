@@ -8,7 +8,7 @@
   "description": "HTTP driver for k-ramel",
   "repository": "https://github.com/alakarteio/k-ramel/tree/master/packages/drivers/http",
   "devDependencies": {
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.0",
     "k-ramel": "^3.0.0"
   },
   "publishConfig": {
